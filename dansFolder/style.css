@@ -120,6 +120,22 @@ Media Queries
     main {
         padding: 25px;
     }
+
+    footer {
+        padding-bottom: 10px;
+    }
+    footer span:first-of-type {
+        font-size: 1em;
+    }
+
+    footer span:last-of-type {
+        font-size: .85em;
+    }
+
+    .social-links img {
+        width: 40px;
+        margin-left: 5px;
+    }
 }
 
 /*@media (min-width: 1025px) {}*/
