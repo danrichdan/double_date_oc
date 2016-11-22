@@ -9,6 +9,14 @@
 <h4>&mdash; by Author</h4>
 <p></p>
 <hr>
+<h3>2016.11.22 - It's a User Interface, not a Login Interface</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>Based on Eric's feedback, I have renamed the LoginService to be a UserService instead, that handles login,
+logout, etc.  This is better form.  Also, I have split up the login_handler.php into multiple files in a user/
+folder: login.php, logout.php, check_login.php.  This gives a better breakdown of the functions, instead of
+overloading it all into the same .php file.  This will also port easily to when we route the back-end processing
+based on the URLs.</p>
+<hr>
 <h3>2016.11.19 - Login Service Complete</h3>
 <h4>&mdash; by Wade Wooldridge</h4>
 <p>The login_service is complete. I have created a proto_login_controller that can serve as a template for
