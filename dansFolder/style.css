@@ -78,9 +78,7 @@ footer ul.social-links {
 }
 
 footer {
-    height: 8vh;
-    position: fixed;
-    bottom: 0;
+
     width: 100%;
 }
 
@@ -92,14 +90,33 @@ MAIN CONTENT
 main {
     width: 85%;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
+main div[ng-view] .age-range button{
+    background-color: tomato;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 15px;
+    border-radius: 5%;
+}
 
 
 /********************
 Media Queries
 *********************/
-
+@media (min-width: 468px){
+   footer{
+       height: 8vh;
+       position: fixed;
+       bottom: 0;
+       margin-top: 50px;
+   }
+}
 @media (min-width: 769px) {
     header {
         display: flex;

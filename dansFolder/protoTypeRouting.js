@@ -24,8 +24,10 @@ app.config(function($routeProvider){
 // Controllers for the different pages below
 app.controller('mainController',function($scope){
     //Page1 Controller
-    $scope.message = 'Routing is working!  Yeah! Page1';
+    $scope.user_age = 'Please select a range that reflects your age.';
+    $scope.match_age = 'Please select the age range for couples you are interested.';
 }).controller('page2Controller', function($scope){
     //Page2 Controller
     $scope.message = 'Routing is still working!  Yeah! Page2';
 });
+
