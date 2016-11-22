@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="doubleDateApp">
+<head>
+    <title>Prototype</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>-->
+    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">-->
+
+    <link rel="stylesheet" href="normalize.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="protoTypeRouting.js"></script>
+</head>
+<body ng-controller="routeController" >
+  <div class="wrapper">
+      <header>
+          <div class="logo">
+              <img src="images/logo.png" alt="Double Date Logo">
+          </div>
+          <nav>
+            <ul class="main-nav">
+                <li><a href="#/">Page1</a></li>
+                <li><a href="#page2">Page2</a></li>
+                <li><a href="login.hmtl">Login</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="help.html">Help</a></li>
+            </ul>
+          </nav>
+      </header>
+      <main>
+          <div ng-view></div>
+      </main>
+      <footer>
+        <ul class="social-links">
+            <li><a href="http://www.facebook.com"><img src="images/facebook.png" alt="facebook icon"/></a></li>
+            <li><a href="http://www.twitter.com"><img src="images/twitter.png" alt="facebook icon"/></a></li>
+        </ul>
+        <div class="copyright">
+            <span><a href="#">Media Queries</a></span>
+            <span>Copyright &copy;2016</span>
+        </div>
+      </footer>
+  </div>
+</body>
+</html>
