@@ -1,18 +1,18 @@
 /**
- *  proto_login_controller.js - DoubleDate prototype for Angular controller to manage logins.
- *      This module is a prototype controller to test the login_service,
- *      along with the back end login_server.php.
+ *  proto_user_controller.js - DoubleDate prototype for Angular controller to manage current user.
+ *      This module is a prototype controller to test the user_service,
+ *      along with the back end user/*.php files.
  */
 
-gApp.controller("loginController", function(loginService){
-    console.log('loginController: constructor');
+gApp.controller("protoUserController", function(userService){
+    console.log('protoUserController: constructor');
     var self = this;
 
     /**
-     *  loginStatus - reference to main login status object in loginService.
+     *  userStatus - reference to main user status object in userService.
      *  @type {Object}
      */
-    this.loginStatus = loginService.loginStatus;
+    this.userStatus = userService.userStatus;
 
     /**
      *  username - username from text input.
@@ -42,7 +42,7 @@ gApp.controller("loginController", function(loginService){
             self.checkStatusResults = 'Please specify a username.';
         } else {
             self.checkStatusResults = 'Starting status check.';
-            loginService.doCheckStatus(username)
+            userService.doCheckStatus(username)
                 .then(function(response) {
                         console.log('onCheckStatusButton: success');
                         self.checkStatusResults = 'Success: username ' + response.username + ' is logged in';
@@ -65,7 +65,7 @@ gApp.controller("loginController", function(loginService){
             this.loginResults = 'Please specify a username and password.';
         } else {
             this.loginResults = 'Starting login.';
-            loginService.doLogin(username, password)
+            userService.doLogin(username, password)
                 .then(function(response) {
                     console.log('onLogInButton: success');
                     self.loginResults = 'Success: user ID is ' + response.userId;
@@ -83,7 +83,7 @@ gApp.controller("loginController", function(loginService){
     this.onLogOutButton = function() {
         console.log('onLogOutButton');
         this.logoutResults = 'Starting logout.';
-        loginService.doLogout()
+        userService.doLogout()
             .then(function(response) {
                     console.log('onLogOutButton: success');
                     self.logoutResults = 'Success: ' + response.message;
