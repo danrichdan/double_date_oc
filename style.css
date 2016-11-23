@@ -55,15 +55,9 @@
 
 
 
-
-
-
-
-
 /*welcome page*/
 .welcome_body{
     font-size: 3em;
-    height:95vh;
     position: absolute;
     bottom: 50%;
     right: 50%;
@@ -71,4 +65,3 @@
     height: 30vh;
     width: 77%;
 }
-
