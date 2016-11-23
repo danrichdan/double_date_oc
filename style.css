@@ -1,0 +1,67 @@
+/*Log-in page */
+.login_body, .welcome_body{
+    background-color: #B2DFDB;
+    overflow:visible;
+    color:white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 2.2em;
+    vertical-align: middle;
+    position:relative;
+}
+
+.login_body::before{
+    content:"";
+    /*background-image: url("assets/get_started_background.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /*background-position: top center;*/
+    height:100%;
+    width: 100%;
+    position: absolute;
+    /* opacity: 0.2; */
+    /*filter: blur(6px);*/
+}
+
+.form-group {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(51%,47%);
+    height: 32vh;
+    width: 59%;
+}
+
+.form-control{
+    width:90%;
+    height:20%;
+}
+
+.login_body{
+    height:95vh;
+}
+
+.forgotPW{
+    font-size: 0.65em;
+    position:relative;
+    bottom: 38px;
+}
+
+.arrow {
+    height: 24%;
+    position: relative;
+    left: 34%;
+    bottom: 21px;
+}
+
+
+
+/*welcome page*/
+.welcome_body{
+    font-size: 3em;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(54%,47%);
+    height: 30vh;
+    width: 77%;
+}
