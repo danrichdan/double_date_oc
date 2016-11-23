@@ -1,44 +1,60 @@
 <?php
 require_once('user_common.php');
+require_once('connect_database.php');
+
+$username = get_sanitized_username();
+$password = get_sanitized_password();
 
 $userRecord = null;
 $response = [];
 
-// If username and password provided, try to log in.
+// If username and password provided, try to look up the username in the user database.
 if ($username && $password) {
-    $found = false;
-    foreach ($validUsers as $userId => $userRecord) {
-        if ($userRecord['username'] == $username &&
-            $userRecord['password'] == $password) {
-            // $username in table, and $password matches.  Save in $_SESSION.
-            $_SESSION['user_record'] = $userRecord;
-            $_SESSION['user_record']['username'] = $username;
-            //unset($_SESSION['user_record']['password']);
+    if ($conn) {
+        $query = "SELECT * FROM `users` WHERE `username` = '$username';";
+        $result = mysqli_query($conn, $query);
+        if ($result && (mysqli_num_rows($result) == 1) && ($userRecord = mysqli_fetch_assoc($result))) {
+            // Got the row data.
+            if ($userRecord['username'] == $username &&
+                $userRecord['password'] == $password) {
+                // $username and $password match.  Save in $_SESSION, leaving off the password.
+                unset($userRecord['password]']);
+                $_SESSION['user_record'] = $userRecord;
 
-            // Build success response to user.
+                // Build success response to user.
+                $response = [
+                    'success' => true,
+                    'username' =>   $userRecord['username'],
+                    'name' =>       $userRecord['name'],
+                    'userId' =>     $userRecord['id'],
+                    'userLevel' =>  $userRecord['userLevel']
+                ];
+            }
+            // Password did not match.
+            else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Invalid username or password (code p7)'
+                ];
+            }
+        }
+        // Failed to get the row data.
+        else {
             $response = [
-                'success' => true,
-                'name' => $_SESSION['user_record']['name'],
-                'username' => $_SESSION['user_record']['username'],
-                'userId' => $userId,
-                'userLevel' => $_SESSION['user_record']['userLevel']
+                'success' => false,
+                'message' => 'Invalid username or password (code q6)'
             ];
-            $found = true;
-            break;
         }
+
     }
-
-    if (!$found) {
-        // $username not found, or $password did not match.
-        if (isset($_SESSION['user_record'])) {
-            unset($_SESSION['user_record']);
-        }
-
+    // Failed to connect to the database.
+    else {
         $response = [
             'success' => false,
-            'message' => 'Invalid username or password'
+            'message' => 'Failed to connect to user database'
         ];
     }
+
 }
 
 // If username or password missing, return an error.

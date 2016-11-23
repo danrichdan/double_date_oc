@@ -23,6 +23,10 @@
             <td>{{uc.userStatus.loggedIn}}</td>
         </tr>
         <tr>
+            <td>User ID:</td>
+            <td>{{uc.userStatus.userId}}</td>
+        </tr>
+        <tr>
             <td>Username:</td>
             <td>{{uc.userStatus.username}}</td>
         </tr>
@@ -36,7 +40,7 @@
         </tr>
     </table>
     <hr>
-    <h3>Please log in:</h3>
+    <h3>Login:</h3>
     <form>
         <label for="username">Username:</label>
         <input type="text" id="username" ng-model="uc.username">
@@ -47,21 +51,38 @@
         <br>
     </form>
     <button id="log-in-button" ng-click="uc.onLogInButton()">Log In</button>
+    <br>
+    <h4>Login Results: <span>{{uc.loginResults}}</span></h4>
     <hr>
-    <h4>Login Results:</h4>
-    <div>{{uc.loginResults}}</div>
-    <hr>
-    <h3>Check Login Status:</h3>
+    <h3>Check Status:</h3>
     <button id="check-status-button" ng-click="uc.onCheckStatusButton()">Check Status</button>
+    <br>
+    <h4>Check Status Results: <span>{{uc.checkStatusResults}}</span></h4>
     <hr>
-    <h4>Status Results:</h4>
-    <div>{{uc.checkStatusResults}}</div>
-    <hr>
-    <h3>Log out when you are finished:</h3>
+    <h3>Logout:</h3>
     <button id="log-out-button" ng-click="uc.onLogOutButton()">Log Out</button>
+    <br>
+    <h4>Logout Results: <span>{{uc.logoutResults}}</span></h4>
     <hr>
-    <h4>Logout Results:</h4>
-    <div>{{uc.logoutResults}}</div>
+    <h3>Add User:</h3>
+    <p>Specify given name or names; add operation returns a new username.</p>
+    <form>
+        <label for="new-name">New name:</label>
+        <input type="text" id="new-name" ng-model="uc.newName">
+        <br>
+        <label for="new-password">Password:</label>
+        <input type="text" id="new-password" ng-model="uc.newPassword">
+        <br>
+        <label for="new-email">Email:</label>
+        <input type="text" id="new-email" ng-model="uc.newEmail">
+        <br>
+        <br>
+    </form>
+    <button id="add-user-button" ng-click="uc.onAddUserButton()">Add User</button>
+    <br>
+    <h4>Add User Results: <span>{{uc.addUserResults}}</span></h4>
+    <hr>
+
 </div>
 </body>
 </html>
