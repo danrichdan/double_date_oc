@@ -15,6 +15,7 @@ gApp.controller("protoUserController", function(userService){
     this.userStatus = userService.userStatus;
 
     /**
+     *  Data being collected for a login attempt.
      *  username - username from text input.
      *  password - password from text input.
      *  @type (string)
@@ -24,13 +25,52 @@ gApp.controller("protoUserController", function(userService){
     this.password = null;
 
     /**
-     *  checkStatusResults - Results from check status operation.
-     *  loginResults - Results from login operation.
-     *  logoutResults - Results from logout operation.
+     *  Data being collected for a new user attempt.
+     *  new_name        - name from text input.
+     *  new_password    - password from text input.
+     *  new_email       - email from text input.
+     *  @type (string)
+     *  @type (string)
+     *  @type {string}
+     */
+    this.newName = null;
+    this.newPassword = null;
+    this.newEmail = null;
+
+    /**
+     *  checkStatusResults  - Results from check status operation.
+     *  loginResults        - Results from login operation.
+     *  logoutResults       - Results from logout operation.
+     *  addUserResults      - Results from add user operation.
      */
     this.checkStatusResults = '';
     this.loginResults = '';
     this.logoutResults = '';
+    this.addUserResults = '';
+
+    /**
+     *  onAddUserButton - click handler.
+     */
+    this.onAddUserButton = function() {
+        console.log('onAddUserButton: ' + this.newName + ', ' + this.newPassword + ', ' + this.newEmail);
+        var name = $('#new-name').val();
+        var password = $('#new-password').val();
+        var email = $('#new-email').val();
+        if (!username || !password || !email) {
+            self.addUserResults = 'Please specify a name, password, and email address in the form.';
+        } else {
+            self.addUserResults = 'Starting add user.';
+            userService.doAdd(name, password, email)
+                .then(function(response) {
+                        console.log('onAddUserButton: success');
+                        self.addUserResults = 'Success: id ' + response.userId + ' username ' + response.username + ' added';
+                    },
+                    function(response) {
+                        console.log('onAddUserButton: error');
+                        self.addUserResults = response;
+                    });
+        }
+    };
 
     /**
      *  onCheckStatusButton - click handler.

@@ -43,6 +43,52 @@ gApp.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
     };
 
     /**
+     *  doAdd - start an add operation.
+     *  @param name (string)        - Given name (not username) of user to add.
+     *  @param password (string)    - Password of user to add.
+     *  @param email (string)       - Email address to add.
+     *  @returns (object) - promise.
+     *  Defaults to adding at userLevel=normal; eventually returns ID and username added.
+     */
+    this.doAdd = function(name, password, email) {
+        $log.log('doAdd: ' + name + ', ' + password + ', ' + email);
+        var def = $q.defer();
+
+        $.ajax({
+            url: 'user/add.php',
+            method: 'post',
+            dataType: 'json',
+            cache: false,
+            data: {
+                name: name,
+                password: password,
+                email: email
+            },
+            success: function(response) {
+                $log.log('doAdd: success: ' + response.success);
+                debugger;
+                if (response.success) {
+                    self.userStatus.loggedIn = true;
+                    self.userStatus.username = response.username;
+                    self.userStatus.name = response.name;
+                    self.userStatus.userId = response.userId;
+                    self.userStatus.userLevel = response.userLevel;
+
+                    def.resolve(response);
+                } else {
+                    def.reject('Server error: ' + response.message);
+                }
+            },
+            error: function(response) {
+                $log.warn('doAdd: error');
+                def.reject('Network error ' + response.status + ': ' + response.statusText);
+            }
+        });
+
+        return def.promise;
+    };
+
+    /**
      *  doCheckStatus - start a check status on the current username.
      *  @param username (string)
      *  @returns (object) - promise.
