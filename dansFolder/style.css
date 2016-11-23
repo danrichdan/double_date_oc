@@ -94,8 +94,9 @@ main {
     justify-content: center;
 }
 
-main div[ng-view] .age-range button{
-    background-color: tomato;
+main div[ng-view] .age-range .age-range-buttons button,
+main div[ng-view] .location div.match-locale button,
+main div[ng-view] .previous-next button {
     border: none;
     color: white;
     padding: 15px 32px;
@@ -105,15 +106,24 @@ main div[ng-view] .age-range button{
     border-radius: 5%;
 }
 
+main div[ng-view] .age-range button,
+main div[ng-view] .location button {
+    background-color: tomato;
+}
+
+main div[ng-view] .previous-next button {
+    background-color: rgb(229,138,65);
+}
+
 
 /********************
 Media Queries
 *********************/
 @media (min-width: 468px){
    footer{
-       height: 8vh;
-       position: fixed;
-       bottom: 0;
+       /*height: 8vh;*/
+       /*position: fixed;*/
+       /*bottom: 0;*/
        margin-top: 50px;
    }
 }
@@ -153,6 +163,20 @@ Media Queries
         width: 40px;
         margin-left: 5px;
     }
+
+    main div[ng-view] .interests .interest-checkboxes {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    main div[ng-view] .interests .groupings-tablet {
+        flex: 1;
+    }
 }
 
-/*@media (min-width: 1025px) {}*/
+@media (min-width: 1025px) {
+    main div[ng-view] .interests .groupings {
+        flex: 1;
+    }
+}
