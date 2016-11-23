@@ -66,7 +66,6 @@ gApp.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
             },
             success: function(response) {
                 $log.log('doAdd: success: ' + response.success);
-                debugger;
                 if (response.success) {
                     self.userStatus.loggedIn = true;
                     self.userStatus.username = response.username;
