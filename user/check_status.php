@@ -4,6 +4,8 @@ require_once('user_common.php');
 $userRecord = null;
 $response = [];
 
+$username = get_sanitized_username();
+
 // If username provided, check login status.
 if ($username) {
     if (isset($_SESSION['user_record']) &&

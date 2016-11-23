@@ -1,5 +1,6 @@
 <?php
 // Array of valid login information - will be replaced by database access.
+/*
 $validUsers = [
     '1' => [
         'username'  => 'dan.riches',
@@ -50,6 +51,7 @@ $validUsers = [
         'userLevel' => 1
     ]
 ];
+*/
 
 // Common code for all user/*.php actions.
 
@@ -59,14 +61,32 @@ session_start();
 // Get the data passed in, and do basic verification.
 $username = '';
 $password = '';
+$name = '';
+$email = '';
 
-// Get the username and password provided.
-// If we cannot do this, or strip it down to nothing, it is the same as a logout.
-if (isset($_POST['username']) && $_POST['username']) {
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING,
-        FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+function get_sanitized_username() {
+    if (isset($_POST['username']) && $_POST['username']) {
+        return filter_var($_POST['username'], FILTER_SANITIZE_STRING,
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+    }
 }
 
-if (isset($_POST['password']) && $_POST['password']) {
-    $password = sha1($_POST['password']);
+function get_sanitized_password() {
+    if (isset($_POST['password']) && $_POST['password']) {
+        return sha1($_POST['password']);
+    }
+}
+
+function get_sanitized_name() {
+    if (isset($_POST['name']) && $_POST['name']) {
+        return filter_var($_POST['name'], FILTER_SANITIZE_STRING,
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+    }
+}
+
+function get_sanitized_email() {
+    if (isset($_POST['email']) && $_POST['email']) {
+        return filter_var($_POST['email'], FILTER_SANITIZE_STRING,
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+    }
 }
