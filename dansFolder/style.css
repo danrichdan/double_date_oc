@@ -94,7 +94,8 @@ main {
     justify-content: center;
 }
 
-main div[ng-view] .age-range button{
+main div[ng-view] .age-range button,
+main div[ng-view] .location button {
     background-color: tomato;
     border: none;
     color: white;

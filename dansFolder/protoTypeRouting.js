@@ -16,6 +16,10 @@ app.config(function($routeProvider){
             templateUrl: 'protoTypePage2.html',
             controller: 'page2Controller'
         })
+        .when('/page3',{
+            templateUrl: 'proto_page_3.html',
+            controller: 'page3Controller'
+        })
         .otherwise({
             redirectTo: "/"
         });
@@ -24,10 +28,14 @@ app.config(function($routeProvider){
 // Controllers for the different pages below
 app.controller('mainController',function($scope){
     //Page1 Controller
-    $scope.user_age = 'Please select a range that reflects your age.';
-    $scope.match_age = 'Please select the age range for couples you are interested.';
+    $scope.user_age = 'What age ranges are we looking for?';
+    $scope.match_age = 'We are looking for people who are (pick multiple)';
 }).controller('page2Controller', function($scope){
     //Page2 Controller
-    $scope.message = 'Routing is still working!  Yeah! Page2';
+    $scope.match_location = 'Where Are You?';
+}).controller('page3Controller', function($scope){
+    //Page3 Controller
+    $scope.interests = 'What Do You Like to Do?';
+    $scope.interests2 = 'Click on one or more of the following things you are interested in doing with other couples.';
 });
 
