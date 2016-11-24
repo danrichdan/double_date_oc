@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Francois+One|News+Cycle|Open+Sans+Condensed:300|PT+Sans+Narrow" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <header>
@@ -20,7 +20,12 @@
     <label for="pwd">password:</label><br>
     <input type="password" class="form-control" id="pwd"><br>
     <a href="" class="forgotPW">forgot my password</href></a>
-    <a href=""><img class="arrow" src="assets/login_arrow.png"></a>
+    <div class="chevronButtonContainer">
+    <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </button>
+    </div>
+
 </div>
 </body>
 <footer>
