@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DoubleDate Development Blog</title>
+</head>
+<body>
+<h3>2016.11.nn - Title</h3>
+<h4>&mdash; by Author</h4>
+<p></p>
+<hr>
+<h3>2016.11.22 - It's a User Interface, not a Login Interface</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>Based on Eric's feedback, I have renamed the LoginService to be a UserService instead, that handles login,
+logout, etc.  This is better form.  Also, I have split up the login_handler.php into multiple files in a user/
+folder: login.php, logout.php, check_login.php.  This gives a better breakdown of the functions, instead of
+overloading it all into the same .php file.  This will also port easily to when we route the back-end processing
+based on the URLs.</p>
+<hr>
+<h3>2016.11.19 - Login Service Complete</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>The login_service is complete. I have created a proto_login_controller that can serve as a template for
+creating the real login_controller when we are ready. I have also created a proto_login_page.html that can
+serve as a template for the real login page; it also provides a test harness for the login_service, so I can
+make sure it is working. The back end login_handler.php still has hard-coded data, so look in there for the
+login information. This will be sufficient for now, so we don't have to make copies of the database while
+it is still being developed.</p>
+<hr>
+<h3>2016.11.17 - To Angular Material or not To Angular Material?</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>Junie is prototyping the first two pages, and Dan is prototyping the Angular routing for a one-page app.
+Besides the look-and-feel, Junie looking into whether we can/should use Angular Material for the responsive
+part of the design. We will need to decide this in the next few working days, or decide that we are going to
+user Bootstrap for the responsive portion.</p>
+<hr>
+<h3>2016.11.17 - Ahh, Minions</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>We have four new minions from the next cohort: Sean, Cung, Brian, and Vernon.  We don't have a lot for them
+to do yet, but we have set them on reviewing the design document draft and making comments.</p>
+<hr>
+<h3>2016.11.16 - Simplification and the Soft Hook</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>After a long meeting with Eric and then separately, the app has morphed significantly. Based primarily on
+Eric's experience, we have to shoot for a much simpler first-user experience: only a few clicks required to
+get some response from the server. Dan, Junie, and I are working through the new-user flows to make this as
+painless as possible for the user. Of course that means we are jettisoning most of the filters, becuase the
+more we ask, the more chance we have where the user will just say, "to hell with it."</p>
+<hr>
+<h3>2016.11.15 - Farmers Only - City Folk Just Don't Understand</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>I am now Wayne W. on FarmersOnly.com, and boy, there are some interesting women on there. My personal
+favorite was one that posed holding up the head of a buck she had just shot, by the horns of course. I don't
+see a lot of new information to learn from this site; we have this basically covered.</p>
+<hr>
+<h3>2016.11.11 - This is a Lot of Data</h3>
+<h4>&mdash; by Wade Wooldridge</h4>
+<p>We have a lot of filters, including smoking, drinking, drugs, and religion. I don't know if we can even do a
+mobile version of this app with all the data to be displayed and chosen.</p>
+<hr>
+</body>
+</html>

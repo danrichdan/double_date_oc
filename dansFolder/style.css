@@ -1,0 +1,182 @@
+/************************************
+BASE STYLES
+*************************************/
+.logo img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/****************************
+HEADER
+****************************/
+
+header .logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 15px 0 10px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    padding: 5px;
+}
+
+
+
+/****************************
+FOOTER
+****************************/
+
+footer span:first-of-type {
+    font-size: .95em;
+}
+
+footer span:last-of-type {
+    font-size: .7em;
+}
+
+.social-links img {
+    width: 25px;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+}
+
+footer div.copyright {
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+footer ul.social-links {
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+footer {
+
+    width: 100%;
+}
+
+
+/********************
+MAIN CONTENT
+*********************/
+
+main {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+main div[ng-view] .age-range .age-range-buttons button,
+main div[ng-view] .location div.match-locale button,
+main div[ng-view] .previous-next button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 15px;
+    border-radius: 5%;
+}
+
+main div[ng-view] .age-range button,
+main div[ng-view] .location button {
+    background-color: tomato;
+}
+
+main div[ng-view] .previous-next button {
+    background-color: rgb(229,138,65);
+}
+
+
+/********************
+Media Queries
+*********************/
+@media (min-width: 468px){
+   footer{
+       /*height: 8vh;*/
+       /*position: fixed;*/
+       /*bottom: 0;*/
+       margin-top: 50px;
+   }
+}
+@media (min-width: 769px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    nav {
+        flex: 1;
+    }
+    header .logo {
+        flex: 1;
+        justify-content: flex-start;
+        padding-left: 25px;
+    }
+    nav ul li{
+        margin-left: 20px;
+    }
+    main {
+        padding: 25px;
+    }
+
+    footer {
+        padding-bottom: 10px;
+    }
+    footer span:first-of-type {
+        font-size: 1em;
+    }
+
+    footer span:last-of-type {
+        font-size: .85em;
+    }
+
+    .social-links img {
+        width: 40px;
+        margin-left: 5px;
+    }
+
+    main div[ng-view] .interests .interest-checkboxes {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    main div[ng-view] .interests .groupings-tablet {
+        flex: 1;
+    }
+}
+
+@media (min-width: 1025px) {
+    main div[ng-view] .interests .groupings {
+        flex: 1;
+    }
+}
