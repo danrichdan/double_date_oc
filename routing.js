@@ -7,6 +7,10 @@ app.controller('routeController',function($scope){
 app.config(function($routeProvider){
     $routeProvider
         //route for protoTypePage1
+        .when('/', {
+            templateUrl: 'welcome.html',
+            controller: 'mainController'
+        })
         .when('/location',{
             templateUrl: 'pages/location.html',
             controller: 'locationController'
@@ -26,7 +30,9 @@ app.config(function($routeProvider){
 });
 
 // Controllers for the different pages below
-app.controller('locationController',function($scope){
+app.controller('mainController', function($scope){
+    $scope.welcome_message = '';
+}).controller('locationController',function($scope){
     //Location Page Controller
     $scope.user_age = 'What age ranges are we looking for?';
     $scope.match_age = 'We are looking for people who are (pick multiple)';
