@@ -46,22 +46,45 @@
     bottom: 38px;
 }
 
-.arrow {
-    height: 24%;
-    position: relative;
-    left: 34%;
-    bottom: 21px;
-}
-
-
 
 /*welcome page*/
 .welcome_body{
     font-size: 3em;
     position: absolute;
     bottom: 50%;
-    right: 50%;
+    right: 52.5%;
     transform: translate(54%,47%);
     height: 30vh;
     width: 77%;
+}
+
+.btn{
+    background: #74ada0;
+    border: black;
+    display: inline-block;
+    color:white;
+}
+
+.login_body .chevronButton:hover,
+.login_body .chevronButton:focus,
+.login_body .chevronButton:active,
+.welcome_body .btn-default:hover,
+.welcome_body .btn-default:focus,
+.welcome_body .btn-default:active,
+.open>.dropdown-toggle.welcome_body .btn .btn-default .chevronButton {
+    background-color: #559385;
+    color:white;
+    /*border-color:;*/
+    border: 2px #E9D555 solid;
+}
+
+.login_body .chevronButtonContainer{
+    position: relative;
+    bottom: 20%;
+}
+
+.login_body .chevronButtonContainer .chevronButton{
+    position: absolute;
+    right: 10%;
+
 }
