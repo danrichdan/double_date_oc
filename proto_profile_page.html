@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="protoProfileApp">
+<head>
+    <meta charset="UTF-8">
+    <title>DoubleDate Proto User Page</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script data-require="angularjs@1.3.6" data-semver="1.3.6" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.6/angular.js"></script>
+    <script src="proto_profile_script.js"></script>
+    <script src="profile_service.js"></script>
+    <script src="proto_profile_controller.js"></script>
+    <style>
+        button {
+            width: 10%;
+        }
+        td {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="protoProfileController as pc">
+    <h3>Operations:</h3>
+    <div>
+        <button id="add-button" ng-click="pc.onAddButton()">Add</button>
+        <span>Fill in all the relevant data.</span>
+    </div>
+    <div>
+        <button id="clear-button" ng-click="pc.onClearButton()">Clear</button>
+        <span>Clear out the data in the service.</span>
+    </div>
+    <div>
+        <button id="get-button" ng-click="pc.onGetButton()">Get</button>
+        <span>Fill in username, and 'get' the rest.</span>
+    </div>
+    <div>
+        <button id="update-button" ng-click="pc.onUpdateButton()">Update</button>
+        <span>Use 'get' first, then change data and hit 'update'.</span>
+    </div>
+    <hr>
+    <h3>Results:</h3>
+    <p>Add Results: <span>{{pc.addResults}}</span></p>
+    <p>Get Results: <span>{{pc.getResults}}</span></p>
+    <p>Update Results: <span>{{pc.updateResults}}</span></p>
+    <hr>
+    <h3>Current Profile:</h3>
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input id="add-get-username" ng-model="pc.addGetUsername" placeholder="username to get or add"></td>
+            <td>username supplied for Get or Add option</td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td>{{pc.currentProfile.username}}</td>
+            <td>username returned from the server from Get</td>
+        </tr>
+
+        <tr>
+            <td>Profile ID:</td>
+            <td>{{pc.currentProfile.profileId}}</td>
+        </tr>
+        <tr>
+            <td>Picture Link:</td>
+            <td><input type="text" ng-model="pc.currentProfile.pictureLink"></td>
+        </tr>
+        <tr>
+            <td>Paragraph:</td>
+            <td><input type="text" ng-model="pc.currentProfile.paragraph"></td>
+        </tr>
+        <tr>
+            <td>Zip Code:</td>
+            <td><input type="number" ng-model="pc.currentProfile.zipCode"></td>
+        </tr>
+        <tr>
+            <td>Distance Max:</td>
+            <td><input type="number" ng-model="pc.currentProfile.distanceMax"></td>
+        </tr>
+        <tr>
+            <td>Our Age Min:</td>
+            <td><input type="number" ng-model="pc.currentProfile.ourAgeMin"></td>
+        </tr>
+        <tr>
+            <td>Our Age Max:</td>
+            <td><input type="number" ng-model="pc.currentProfile.ourAgeMax"></td>
+        </tr>
+        <tr>
+            <td>Their Age Min:</td>
+            <td><input type="number" ng-model="pc.currentProfile.theirAgeMin"></td>
+        </tr>
+        <tr>
+            <td>Their Age Max:</td>
+            <td><input type="number" ng-model="pc.currentProfile.theirAgeMax"></td>
+        </tr>
+        <tr>
+            <td>Bicycling:</td>
+            <td><input type="checkbox" ng-model="pc.currentProfile.bicycling"></td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>
+
