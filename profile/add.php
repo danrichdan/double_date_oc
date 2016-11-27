@@ -26,10 +26,17 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                 // Build query strings for the field names and their values.
                 $query1 = '`id`';
                 $query2 = 'NULL';
+                global $fields;
                 foreach ($fields as $field) {
                     $query1 .= ", `$field`";
                     $query2 .= ", '$profile[$field]'";
                 }
+                global $booleanFields;
+                foreach ($booleanFields as $field) {
+                    $query1 .= ", `$field`";
+                    $query2 .= ", '$profile[$field]'";
+                }
+
                 $query = "INSERT INTO `profiles` ($query1) VALUES ($query2);";
 
                 $result = mysqli_query($conn, $query);

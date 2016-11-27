@@ -25,7 +25,40 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         theirAgeMin: null,
         theirAgeMax: null,
 
-        bicycling: false
+        boardGames: false,
+        cardGames: false,
+        cooking: false,
+        conversation: false,
+
+        artGalleries: false,
+        comedy: false,
+        classicalConcerts: false,
+        popularConcerts: false,
+        ballroomDancing: false,
+        countryDancing: false,
+        salsaDancing: false,
+        casualDining: false,
+        fineDining: false,
+        karaoke: false,
+        liveTheater: false,
+        movies: false,
+        wineTasting: false,
+
+        bicycling: false,
+        bowling: false,
+        golf: false,
+        hiking: false,
+        horsebackRiding: false,
+        kayaking: false,
+        motorcycling: false,
+        racquetball: false,
+        tennis: false,
+        walking: false,
+        
+        camping: false,
+        rving: false,
+        domesticTravel: false,
+        foreignTravel: false
     };
 
     /**
@@ -44,7 +77,40 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         this.currentProfile.theirAgeMin = null;
         this.currentProfile.theirAgeMax = null;
 
+        this.currentProfile.boardGames = false;
+        this.currentProfile.cardGames = false;
+        this.currentProfile.cooking = false;
+        this.currentProfile.conversation = false;
+        
+        this.currentProfile.artGalleries = false;
+        this.currentProfile.comedy = false;
+        this.currentProfile.classicalConcerts = false;
+        this.currentProfile.popularConcerts = false;
+        this.currentProfile.ballroomDancing = false;
+        this.currentProfile.countryDancing = false;
+        this.currentProfile.salsaDancing = false;
+        this.currentProfile.casualDining = false;
+        this.currentProfile.fineDining = false;
+        this.currentProfile.karaoke = false;
+        this.currentProfile.liveTheater = false;
+        this.currentProfile.movies = false;
+        this.currentProfile.wineTasting = false;
+
         this.currentProfile.bicycling = false;
+        this.currentProfile.bowling = false;
+        this.currentProfile.golf = false;
+        this.currentProfile.hiking = false;
+        this.currentProfile.horsebackRiding = false;
+        this.currentProfile.kayaking = false;
+        this.currentProfile.motorcycling = false;
+        this.currentProfile.racquetball = false;
+        this.currentProfile.tennis = false;
+        this.currentProfile.walking = false;
+
+        this.currentProfile.camping = false;
+        this.currentProfile.rving = false;
+        this.currentProfile.domesticTravel = false;
+        this.currentProfile.foreignTravel = false
     };
 
     /**

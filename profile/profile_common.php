@@ -10,8 +10,15 @@ $username = '';
 // Get the list of fields to use, excluding the id.
 $fields = array('username', 'pictureLink', 'paragraph',
                 'zipCode', 'distanceMax',
-                'ourAgeMin', 'ourAgeMax', 'theirAgeMin', 'theirAgeMax',
-                'bicycling');
+                'ourAgeMin', 'ourAgeMax', 'theirAgeMin', 'theirAgeMax');
+
+$booleanFields = array('boardGames', 'cardGames', 'cooking', 'conversation',
+    'artGalleries', 'comedy', 'classicalConcerts', 'popularConcerts',
+    'ballroomDancing', 'countryDancing', 'salsaDancing', 'casualDining', 'fineDining',
+    'karaoke', 'liveTheater', 'movies', 'wineTasting',
+    'bicycling', 'bowling', 'golf', 'hiking', 'horsebackRiding', 'kayaking',
+    'motorcycling', 'racquetball', 'tennis', 'walking',
+    'camping', 'rving', 'domesticTravel', 'foreignTravel');
 
 // Get a sanitized version of a string parameter.
 function get_sanitized_string($s) {
@@ -45,7 +52,10 @@ function convert_profile_to_client($profile) {
     $profile['theirAgeMax'] = intval($profile['theirAgeMax']);
 
     // Convert the booleans from "0" or "1" to a boolean.
-    $profile['bicycling'] = ($profile['bicycling'] == "1");
+    global $booleanFields;
+    foreach ($booleanFields as $field) {
+        $profile[$field] = ($profile[$field] == "1");
+    }
 
     return $profile;
 }
@@ -67,7 +77,10 @@ function convert_profile_from_client($profile) {
     $profile['theirAgeMax'] = get_sanitized_string((string)$profile['theirAgeMax']);
 
     // Convert the booleans from a boolean to "0" or "1".
-    $profile['bicycling'] = check_boolean_string($profile['bicycling']) ? "1" : "0";
+    global $booleanFields;
+    foreach ($booleanFields as $field) {
+        $profile[$field] = check_boolean_string($profile[$field]) ? "1" : "0";
+    }
 
     return $profile;
 }

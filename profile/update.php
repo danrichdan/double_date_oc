@@ -27,6 +27,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             // Add the specified profile to the profiles table.
             if ($conn) {
                 // Build query strings for the field names and their values.
+                global $fields;
                 $query1 = '';
                 foreach ($fields as $field) {
                     if ($query1) {
@@ -34,6 +35,11 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     }
                     $query1 .= "`$field` = '$profile[$field]'";
                 }
+                global $booleanFields;
+                foreach ($booleanFields as $field) {
+                    $query1 .= ", `$field` = '$profile[$field]'";
+                }
+
                 $query = "UPDATE `profiles` SET $query1 WHERE `profiles`.`id` = $profileId;";
 
                 $result = mysqli_query($conn, $query);
