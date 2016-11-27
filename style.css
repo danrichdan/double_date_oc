@@ -1,5 +1,5 @@
 /*Log-in page */
-.login_body, .welcome_body{
+.login_body, .welcome_body, .location_body{
     background-color: #B2DFDB;
     overflow:visible;
     color:white;
@@ -46,6 +46,16 @@
     bottom: 38px;
 }
 
+.login_body .chevronButtonContainer{
+    position: relative;
+    bottom: 20%;
+}
+
+.login_body .chevronButtonContainer .chevronButton{
+    position: absolute;
+    right: 10%;
+}
+
 
 /*welcome page*/
 .welcome_body{
@@ -61,8 +71,15 @@
 .btn{
     background: #74ada0;
     border: black;
-    display: inline-block;
     color:white;
+}
+.button-spacing > a:not(:last-child){
+    margin-bottom: 2%;
+
+}
+
+.button-spacing > a:first-child{
+    margin-top: 2%;
 }
 
 .login_body .chevronButton:hover,
@@ -75,16 +92,19 @@
     background-color: #559385;
     color:white;
     /*border-color:;*/
-    border: 2px #E9D555 solid;
+    border: 1px #E9D555 solid;
 }
 
-.login_body .chevronButtonContainer{
-    position: relative;
-    bottom: 20%;
+
+
+.location_pin{
+    height: 40px;
+    width:20px;
 }
 
-.login_body .chevronButtonContainer .chevronButton{
+/*age range page*/
+
+.age-range{
     position: absolute;
-    right: 10%;
-
+    bottom: 10px;
 }

@@ -1,21 +1,32 @@
-<div class="location">
-    <h1>Location</h1>
-    <div class="match-locale">
-        <p>{{match_location}}</p>
-        <button value="south-orange-county">South Orange County</button>
-        <button value="central-orange-county">Central Orange County</button>
-        <button value="north-orange-county">Central Orange County</button>
-    </div>
-    <p>Great! You're looking for couples in <span></span></p>
-    <div class="previous-next">
-        <a href="#/age_range"><button>Next</button></a>
-    </div>
+
+<body>
+<h1>we're looking for couples within ____ miles of us </h1>
+
+<input type="range" min="0" max="50" value="25" />
+
+
+<!--<button type="button" class="btn btn-default chevronButton" aria-label="Left Align">5-->
+<!--</button>-->
+
+<!--<button type="button" class="btn btn-default chevronButton" aria-label="Left Align">10-->
+<!--</button>-->
+
+<!--<button type="button" class="btn btn-default chevronButton" aria-label="Left Align">15-->
+<!--</button>-->
+
+<!--<button type="button" class="btn btn-default chevronButton" aria-label="Left Align">20-->
+<!--</button>-->
+
+<div class="previous-next">
+    <a href="#/user_location">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </button>
+    </a>
+    <a href="#/user_age_range">
+    <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </button>
+    </a>
 </div>
-
-
-
-
-
-
-
-
+</body>
