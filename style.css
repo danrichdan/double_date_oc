@@ -108,3 +108,12 @@
     position: absolute;
     bottom: 10px;
 }
+
+.input_text{
+    color:grey;
+}
+
+.btn-block {
+    display: block;
+    width: 95%;
+}
