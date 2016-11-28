@@ -23,41 +23,59 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             ($currentUserLevel == 'normal' && $currentUsername == $username)) {
             // Add the specified profile to the profiles table.
             if ($conn) {
-                // Build query strings for the field names and their values.
-                $query1 = '`id`';
-                $query2 = 'NULL';
-                global $fields;
-                foreach ($fields as $field) {
-                    $query1 .= ", `$field`";
-                    $query2 .= ", '$profile[$field]'";
-                }
-                global $booleanFields;
-                foreach ($booleanFields as $field) {
-                    $query1 .= ", `$field`";
-                    $query2 .= ", '$profile[$field]'";
-                }
+                // Validate the zipcode field, and translate it to city, state, latitude, and longitude.
+                $zipcodeRow = lookup_zip_code($conn, $profile['zipcode']);
+                if ($zipcodeRow) {
+                    // lookup_zip_code succeeded.
+                    // Build query strings for the field names and their values.
+                    $query1 = '`id`';
+                    $query2 = 'NULL';
+                    global $fields;
+                    foreach ($fields as $field) {
+                        $query1 .= ", `$field`";
+                        $query2 .= ", '$profile[$field]'";
+                    }
+                    global $booleanFields;
+                    foreach ($booleanFields as $field) {
+                        $query1 .= ", `$field`";
+                        $query2 .= ", '$profile[$field]'";
+                    }
 
-                $query = "INSERT INTO `profiles` ($query1) VALUES ($query2);";
+                    global $zipcodeFields;
+                    foreach ($zipcodeFields as $field) {
+                        $query1 .= ", `$field`";
+                        $query2 .= ", '$zipcodeRow[$field]'";
+                    }
 
-                $result = mysqli_query($conn, $query);
-                if ($result && (mysqli_affected_rows($conn) == 1)) {
-                    // Get the new id.
-                    $profileId = mysqli_insert_id($conn);
+                    $query = "INSERT INTO `profiles` ($query1) VALUES ($query2);";
 
-                    // Build success response to user.
-                    $response = [
-                        'success' => true,
-                        'profileId' => $profileId,
-                        'temp' => $temp,
-                        'query' => $query
-                    ];
+                    $result = mysqli_query($conn, $query);
+                    if ($result && (mysqli_affected_rows($conn) == 1)) {
+                        // Get the new id.
+                        $profileId = mysqli_insert_id($conn);
+
+                        // Build success response to user.
+                        $response = [
+                            'success' => true,
+                            'profileId' => $profileId,
+                            'temp' => $temp,
+                            'query' => $query
+                        ];
+                    }
+                    // Failed to get the row data.
+                    else {
+                        $response = [
+                            'success' => false,
+                            'message' => 'Failed to insert profile',
+                            'query' => $query
+                        ];
+                    }
                 }
-                // Failed to get the row data.
+                // lookup_zip_code failed.
                 else {
                     $response = [
                         'success' => false,
-                        'message' => 'Failed to insert profile',
-                        'query' => $query
+                        'message' => 'Invalid zip code'
                     ];
                 }
             }

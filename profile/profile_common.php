@@ -9,7 +9,7 @@ $username = '';
 
 // Get the list of fields to use, excluding the id.
 $fields = array('username', 'pictureLink', 'paragraph',
-                'zipCode', 'distanceMax',
+                'zipcode', 'distanceMax',
                 'ourAgeMin', 'ourAgeMax', 'theirAgeMin', 'theirAgeMax');
 
 $booleanFields = array('boardGames', 'cardGames', 'cooking', 'conversation',
@@ -19,6 +19,8 @@ $booleanFields = array('boardGames', 'cardGames', 'cooking', 'conversation',
     'bicycling', 'bowling', 'golf', 'hiking', 'horsebackRiding', 'kayaking',
     'motorcycling', 'racquetball', 'tennis', 'walking',
     'camping', 'rving', 'domesticTravel', 'foreignTravel');
+
+$zipcodeFields = array('city', 'latitude', 'longitude');
 
 // Get a sanitized version of a string parameter.
 function get_sanitized_string($s) {
@@ -36,6 +38,28 @@ function get_sanitized_username() {
     }
 }
 
+// Look up a zip code in the zipcodes table and return city, latitude, longitude.
+// Returns false on any failure.
+function lookup_zip_code($conn, $zipcode)
+{
+    $query = "SELECT `zipcode`, `city`, `latitude`, `longitude`
+              FROM `zipcodes` 
+              WHERE `zipcode` = '$zipcode';";
+
+    $result = mysqli_query($conn, $query);
+    if ($result && (mysqli_num_rows($result) == 1) && ($row = mysqli_fetch_assoc($result))) {
+        return array(
+            'zipcode' => $row['zipcode'],
+            'city' => $row['city'],
+            'latitude' => $row['latitude'],
+            'longitude' => $row['longitude']
+        );
+    }
+
+    // Query failed, e.g. zipcode not valid or in table.
+    return false;
+}
+
 // Check whether a boolean string is "true" or "1".
 function check_boolean_string($s) {
     return $s == "true" || $s == "1";
@@ -44,7 +68,9 @@ function check_boolean_string($s) {
 function convert_profile_to_client($profile) {
     // Convert the numeric values from "123" to 123.
     $profile['profileId'] = intval($profile['id']);
-    $profile['zipCode'] = intval($profile['zipCode']);
+    $profile['zipcode'] = intval($profile['zipcode']);
+    $profile['latitude'] = doubleval($profile['latitude']);
+    $profile['longitude'] = doubleval($profile['longitude']);
     $profile['distanceMax'] = intval($profile['distanceMax']);
     $profile['ourAgeMin'] = intval($profile['ourAgeMin']);
     $profile['ourAgeMax'] = intval($profile['ourAgeMax']);
@@ -69,7 +95,7 @@ function convert_profile_from_client($profile) {
     
     // Convert the numeric values to sanitized versions.
     $profile['profileId'] = get_sanitized_string((string)$profile['id']);
-    $profile['zipCode'] = get_sanitized_string((string)$profile['zipCode']);
+    $profile['zipcode'] = get_sanitized_string((string)$profile['zipcode']);
     $profile['distanceMax'] = get_sanitized_string((string)$profile['distanceMax']);
     $profile['ourAgeMin'] = get_sanitized_string((string)$profile['ourAgeMin']);
     $profile['ourAgeMax'] = get_sanitized_string((string)$profile['ourAgeMax']);
