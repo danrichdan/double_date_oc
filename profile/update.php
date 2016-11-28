@@ -26,43 +26,59 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             ($currentUserLevel == 'normal' && $currentUsername == $username)) {
             // Add the specified profile to the profiles table.
             if ($conn) {
-                // Build query strings for the field names and their values.
-                global $fields;
-                $query1 = '';
-                foreach ($fields as $field) {
-                    if ($query1) {
-                        $query1 .= ', ';
+                // Validate the zipcode field, and translate it to city, state, latitude, and longitude.
+                $zipcodeRow = lookup_zip_code($conn, $profile['zipcode']);
+                if ($zipcodeRow) {
+                    // lookup_zip_code succeeded.
+                    // Build query strings for the field names and their values.
+                    global $fields;
+                    $query1 = '';
+                    foreach ($fields as $field) {
+                        if ($query1) {
+                            $query1 .= ', ';
+                        }
+                        $query1 .= "`$field` = '$profile[$field]'";
                     }
-                    $query1 .= "`$field` = '$profile[$field]'";
-                }
-                global $booleanFields;
-                foreach ($booleanFields as $field) {
-                    $query1 .= ", `$field` = '$profile[$field]'";
-                }
+                    global $booleanFields;
+                    foreach ($booleanFields as $field) {
+                        $query1 .= ", `$field` = '$profile[$field]'";
+                    }
 
-                $query = "UPDATE `profiles` SET $query1 WHERE `profiles`.`id` = $profileId;";
+                    // Add in the extra values from the zip code.
+                    global $zipcodeFields;
+                    foreach ($zipcodeFields as $field) {
+                        $query1 .= ", `$field` = '$zipcodeRow[$field]'";
+                    }
 
-                $result = mysqli_query($conn, $query);
-                // Just check result; don't check affected rows, to tolerate not updating any fields.
-                if ($result) {
-                    // Get the new id.
-                    $profileId = mysqli_insert_id($conn);
+                    $query = "UPDATE `profiles` SET $query1 WHERE `profiles`.`id` = $profileId;";
 
-                    // Build success response to user.
-                    $response = [
-                        'success' => true,
-                        'temp1' => $temp1,
-                        'temp2' => $temp2,
-                        'temp3' => $temp3,
-                        'query' => $query
-                    ];
-                }
-                // Failed to get the row data.
+                    $result = mysqli_query($conn, $query);
+                    // Just check result; don't check affected rows, to tolerate not updating any fields.
+                    if ($result) {
+                        // Get the new id.
+                        $profileId = mysqli_insert_id($conn);
+
+                        // Build success response to user.
+                        $response = [
+                            'success' => true,
+                            'temp1' => $temp1,
+                            'temp2' => $temp2,
+                            'temp3' => $temp3,
+                            'query' => $query
+                        ];
+                    } // Failed to get the row data.
+                    else {
+                        $response = [
+                            'success' => false,
+                            'message' => 'Failed to update profile',
+                            'query' => $query
+                        ];
+                    }
+                } // lookup_zip_code failed.
                 else {
                     $response = [
                         'success' => false,
-                        'message' => 'Failed to update profile',
-                        'query' => $query
+                        'message' => 'Invalid zip code'
                     ];
                 }
             }

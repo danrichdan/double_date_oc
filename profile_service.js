@@ -18,7 +18,10 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         pictureLink: null,
         paragraph: null,
 
-        zipCode: null,
+        zipcode: null,
+        city: null,
+        latitude: null,
+        longitude: null,
         distanceMax: null,
         ourAgeMin: null,
         ourAgeMax: null,
@@ -70,7 +73,10 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         this.currentProfile.pictureLink = null;
         this.currentProfile.paragraph = null;
 
-        this.currentProfile.zipCode = null;
+        this.currentProfile.zipcode = null;
+        this.currentProfile.city = null;
+        this.currentProfile.latitude = null;
+        this.currentProfile.longitude = null;
         this.currentProfile.distanceMax = null;
         this.currentProfile.ourAgeMin = null;
         this.currentProfile.ourAgeMax = null;
