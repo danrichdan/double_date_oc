@@ -1,6 +1,6 @@
 <?php
 require_once('user_common.php');
-require_once('connect_database.php');
+require_once('../common/connect_database.php');
 
 $name = get_sanitized_name();
 $password = get_sanitized_password();
