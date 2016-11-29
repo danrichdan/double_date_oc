@@ -1,5 +1,5 @@
 /*Log-in page */
-.login_body, .welcome_body{
+.login_body, .welcome_body,.match_body{
     background-color: #B2DFDB;
     overflow:visible;
     color:white;
@@ -89,13 +89,16 @@
 
 }
 
-.match_body {
+.match_content {
     width:85vw;
     margin:auto;
 }
 
 .match_card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 0.7em;
+    background-color: #ffffff;
+    color:#000000;
 }
 
 .match_buttons {
