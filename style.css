@@ -11,24 +11,18 @@
 
 .login_body::before{
     content:"";
-    /*background-image: url("assets/get_started_background.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*background-position: top center;*/
     height:100%;
     width: 100%;
     position: absolute;
-    /* opacity: 0.2; */
-    /*filter: blur(6px);*/
 }
 
 .form-group {
     position: absolute;
-    bottom: 50%;
+    bottom: 90%;
     right: 50%;
-    transform: translate(51%,47%);
+    transform: translate(55%,45%);
     height: 32vh;
-    width: 59%;
+    width: 100%;
 }
 
 .form-control{
@@ -54,6 +48,11 @@
 .login_body .chevronButtonContainer .chevronButton{
     position: absolute;
     right: 10%;
+}
+
+.login_button{
+    position: relative;
+    right: 49%;
 }
 
 
@@ -89,18 +88,13 @@
 .welcome_body .btn-default:focus,
 .welcome_body .btn-default:active,
 .open>.dropdown-toggle.welcome_body .btn .btn-default .chevronButton {
-    background-color: #559385;
+    background-color: #368e8b;
     color:white;
     /*border-color:;*/
     border: 1px #E9D555 solid;
 }
 
 
-
-.location_pin{
-    height: 40px;
-    width:20px;
-}
 
 /*age range page*/
 
@@ -109,11 +103,33 @@
     bottom: 10px;
 }
 
+
+.chevronButton{
+    /*background-color: #4cad8d;*/
+    /*color:white;*/
+    border-radius: 100%;
+    width: 47px;
+    height:47px;
+}
+
+/*location page*/
+
+.current-location{
+    margin-top:4%;
+}
+
 .input_text{
+    width:100%;
     color:grey;
 }
 
-.btn-block {
-    display: block;
-    width: 95%;
+.previous-next{
+    margin-top:10%;
+}
+
+
+/*sign-up email page*/
+
+.signup-button{
+    padding: 10%;
 }
