@@ -32,6 +32,9 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         cardGames: false,
         cooking: false,
         conversation: false,
+        crafts: false,
+        bookClub: false,
+        movieNight: false,
 
         artGalleries: false,
         comedy: false,
@@ -61,7 +64,7 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         camping: false,
         rving: false,
         domesticTravel: false,
-        foreignTravel: false
+        travelAbroad: false
     };
 
     /**
@@ -87,7 +90,10 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         this.currentProfile.cardGames = false;
         this.currentProfile.cooking = false;
         this.currentProfile.conversation = false;
-        
+        this.currentProfile.crafts = false;
+        this.currentProfile.bookClub = false;
+        this.currentProfile.movieNight = false;
+
         this.currentProfile.artGalleries = false;
         this.currentProfile.comedy = false;
         this.currentProfile.classicalConcerts = false;
@@ -116,7 +122,7 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
         this.currentProfile.camping = false;
         this.currentProfile.rving = false;
         this.currentProfile.domesticTravel = false;
-        this.currentProfile.foreignTravel = false
+        this.currentProfile.travelAbroad = false
     };
 
     /**

@@ -13,12 +13,13 @@ $fields = array('username', 'pictureLink', 'paragraph',
                 'ourAgeMin', 'ourAgeMax', 'theirAgeMin', 'theirAgeMax');
 
 $booleanFields = array('boardGames', 'cardGames', 'cooking', 'conversation',
+    'crafts', 'bookClub', 'movieNight',
     'artGalleries', 'comedy', 'classicalConcerts', 'popularConcerts',
     'ballroomDancing', 'countryDancing', 'salsaDancing', 'casualDining', 'fineDining',
     'karaoke', 'liveTheater', 'movies', 'wineTasting',
     'bicycling', 'bowling', 'golf', 'hiking', 'horsebackRiding', 'kayaking',
     'motorcycling', 'racquetball', 'tennis', 'walking',
-    'camping', 'rving', 'domesticTravel', 'foreignTravel');
+    'camping', 'rving', 'domesticTravel', 'travelAbroad');
 
 $zipcodeFields = array('city', 'latitude', 'longitude');
 
