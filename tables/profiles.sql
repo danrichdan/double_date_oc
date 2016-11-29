@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 28, 2016 at 10:44 PM
+-- Generation Time: Nov 29, 2016 at 12:40 AM
 -- Server version: 5.5.49-log
 -- PHP Version: 7.0.9
 
@@ -44,6 +44,9 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `cardGames` tinyint(1) NOT NULL,
   `cooking` tinyint(1) NOT NULL,
   `conversation` tinyint(1) NOT NULL,
+  `crafts` tinyint(1) NOT NULL,
+  `bookClub` tinyint(1) NOT NULL,
+  `movieNight` tinyint(1) NOT NULL,
   `artGalleries` tinyint(1) NOT NULL,
   `comedy` tinyint(1) NOT NULL,
   `classicalConcerts` tinyint(1) NOT NULL,
@@ -70,27 +73,28 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `camping` tinyint(1) NOT NULL,
   `rving` tinyint(1) NOT NULL,
   `domesticTravel` tinyint(1) NOT NULL,
-  `foreignTravel` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COMMENT='Profiles of user data, filters, and interests.';
+  `travelAbroad` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COMMENT='Profiles of user data, filters, and interests.';
 
 --
 -- Dumping data for table `profiles`
 --
 
-INSERT INTO `profiles` (`id`, `username`, `pictureLink`, `paragraph`, `zipcode`, `city`, `latitude`, `longitude`, `distanceMax`, `ourAgeMin`, `ourAgeMax`, `theirAgeMin`, `theirAgeMax`, `boardGames`, `cardGames`, `cooking`, `conversation`, `artGalleries`, `comedy`, `classicalConcerts`, `popularConcerts`, `ballroomDancing`, `countryDancing`, `salsaDancing`, `casualDining`, `fineDining`, `karaoke`, `liveTheater`, `movies`, `wineTasting`, `bicycling`, `bowling`, `golf`, `hiking`, `horsebackRiding`, `kayaking`, `motorcycling`, `racquetball`, `tennis`, `walking`, `camping`, `rving`, `domesticTravel`, `foreignTravel`) VALUES
-(1, 'DD123456', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 57, 58, 45, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'DD999999', 'http://www.picture.com/999999', 'Look at the trees.', 92656, 'ALISO VIEJO', 33.57, -117.72, 4, 26, 35, 24, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 'DD666666', 'http://www.starward.com', 'We like beaches.', 92708, 'FOUNTAIN VALLEY', 33.71, -117.94, 6, 60, 61, 55, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 'DD777777', 'http://www.starward.com', 'We like beaches.', 92708, 'FOUNTAIN VALLEY', 33.71, -117.94, 6, 60, 61, 55, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 'DD888888', 'http://www.snapchat.com/888888', 'We wish we were in the land of cotton...', 92618, 'IRVINE', 33.67, -117.73, 5, 44, 45, 34, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, 'DD123457', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 57, 58, 45, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, 'DD123457', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 57, 58, 45, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(8, 'DD123458', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 56, 59, 44, 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(9, 'DD123460', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 56, 59, 44, 60, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1),
-(10, 'DD123470', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 10, 56, 59, 44, 60, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
-(11, 'DD123480', 'http://', 'We like unicorns.', 92656, 'ALISO VIEJO', 33.57, -117.72, 1, 5, 6, 4, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(12, 'DD555550', 'Http://', 'Look at the sky.', 92708, 'FOUNTAIN VALLEY', 33.71, -117.94, 5, 8, 9, 7, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(13, 'DD123490', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 10, 56, 59, 42, 62, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0);
+INSERT INTO `profiles` (`id`, `username`, `pictureLink`, `paragraph`, `zipcode`, `city`, `latitude`, `longitude`, `distanceMax`, `ourAgeMin`, `ourAgeMax`, `theirAgeMin`, `theirAgeMax`, `boardGames`, `cardGames`, `cooking`, `conversation`, `crafts`, `bookClub`, `movieNight`, `artGalleries`, `comedy`, `classicalConcerts`, `popularConcerts`, `ballroomDancing`, `countryDancing`, `salsaDancing`, `casualDining`, `fineDining`, `karaoke`, `liveTheater`, `movies`, `wineTasting`, `bicycling`, `bowling`, `golf`, `hiking`, `horsebackRiding`, `kayaking`, `motorcycling`, `racquetball`, `tennis`, `walking`, `camping`, `rving`, `domesticTravel`, `travelAbroad`) VALUES
+(1, 'DD123456', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 57, 58, 45, 65, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'DD999999', 'http://www.picture.com/999999', 'Look at the trees.', 92656, 'ALISO VIEJO', 33.57, -117.72, 4, 26, 35, 24, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 'DD666666', 'http://www.starward.com', 'We like beaches.', 92708, 'FOUNTAIN VALLEY', 33.71, -117.94, 6, 60, 61, 55, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 'DD777777', 'http://www.starward.com', 'We like beaches.', 92708, 'FOUNTAIN VALLEY', 33.71, -117.94, 6, 60, 61, 55, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 'DD888888', 'http://www.snapchat.com/888888', 'We wish we were in the land of cotton...', 92618, 'IRVINE', 33.67, -117.73, 5, 44, 45, 34, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, 'DD123457', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 57, 58, 45, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, 'DD123457', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 57, 58, 45, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 'DD123458', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 56, 59, 44, 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, 'DD123460', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 8, 56, 59, 44, 60, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1),
+(10, 'DD123470', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 10, 56, 59, 44, 60, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
+(11, 'DD123480', 'http://', 'We like unicorns.', 92656, 'ALISO VIEJO', 33.57, -117.72, 1, 5, 6, 4, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(12, 'DD555550', 'Http://', 'Look at the sky.', 92708, 'FOUNTAIN VALLEY', 33.71, -117.94, 5, 8, 9, 7, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, 'DD123490', 'http://www.imgur.com/123456', 'We like horsies, too.', 92704, 'SANTA ANA', 33.71, -117.9, 10, 56, 59, 42, 62, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
+(14, 'DD123333', 'http://www.imgur.com/123456', 'We like horsies, too.', 92899, 'ANAHEIM', 33.83, -117.87, 8, 57, 58, 45, 65, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -110,7 +114,7 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Profile ID',AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Profile ID',AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
