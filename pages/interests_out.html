@@ -3,17 +3,40 @@ on a night out we like
     <div class="interest-buttons">
         <div class="out groupings">
 
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">art shows and gallleries</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">casual dining</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">comedy shows</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">concerts (classical)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">concerts (popular - jazz, rock, country)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">dancing (ballroom)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">dancing (country)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">dancing (salsa)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">fine dining</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">karaoke</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">live theater shows</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('art shows and galleries');"
+                    ng-class="{selectedButton: ioc.checkInterest('art shows and galleries')}">art shows
+                and galleries</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align" ng-click="ioc.toggleInterest('casual dining');"
+                    ng-class="{selectedButton: ioc.checkInterest('casual dining')}">casual dining</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('comedy shows');"
+                    ng-class="{selectedButton: ioc.checkInterest('comedy shows')}">comedy shows</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('concerts (classical)');"
+                    ng-class="{selectedButton: ioc.checkInterest('concerts (classical)')}">concerts (classical)</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('concerts (popular - jazz, rock, country)');"
+                    ng-class="{selectedButton: ioc.checkInterest('concerts (popular - jazz, rock, country)')}">concerts (popular - jazz, rock, country)</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('dancing (ballroom)');"
+                    ng-class="{selectedButton: ioc.checkInterest('dancing (ballroom)')}">dancing (ballroom)</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('dancing (country)');"
+                    ng-class="{selectedButton: ioc.checkInterest('dancing (country)')}">dancing (country)</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('dancing (salsa)');"
+                    ng-class="{selectedButton: ioc.checkInterest('dancing (salsa)')}">dancing
+                (salsa)</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('fine dining');"
+                    ng-class="{selectedButton: ioc.checkInterest('fine dining')}">fine dining</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('karaoke');"
+                    ng-class="{selectedButton: ioc.checkInterest('karaoke')}">karaoke</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('live theater shows');"
+                    ng-class="{selectedButton: ioc.checkInterest('live theater shows')}">live theater shows</button>
             <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">movies</button>
             <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">wine tasting</button>
 

@@ -128,7 +128,7 @@ app.controller('mainController', function(){
             if(this.checkInterest(interest)){
                 var interestIndexToRemove = signUpService.aNightOut.indexOf(interest);
                 console.log('interestIndexToRemove : ',interestIndexToRemove);
-                console.log('signUpService.aNightIn : ',signUpService.aNightOut);
+                console.log('signUpService.aNightOut : ',signUpService.aNightOut);
                 signUpService.aNightOut.splice(interestIndexToRemove,1);
             } else {
                 signUpService.aNightOut.push(interest);
