@@ -2,7 +2,10 @@ on a night out we like
 <div class="out-about groupings">
     <div class="interest-buttons">
         <div class="out groupings">
-            <button type="button" class="btn btn-default" aria-label="Left Align">art shows and gallleries</button>
+            <button type="button" class="btn btn-default" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('art shows and gallleries');"
+                    ng-class="{selectedButton: ioc.checkInterest('art shows and gallleries')}">art shows and
+                gallleries</button>
             <button type="button" class="btn btn-default" aria-label="Left Align">casual dining</button>
             <button type="button" class="btn btn-default" aria-label="Left Align">comedy shows</button>
             <button type="button" class="btn btn-default" aria-label="Left Align">concerts (classical)</button>
