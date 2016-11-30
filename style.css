@@ -92,24 +92,33 @@
 .match_content {
     width:85vw;
     margin:auto;
+    font-size: 0.7em;
 }
 
 .match_card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    font-size: 0.7em;
     background-color: #ffffff;
     color:#000000;
 }
 
 .match_buttons {
-    box-sizing: border-box;
     display:flex;
     justify-content: space-around;
     margin-top:8vw;
+}
+
+.match_name,.label {
+    background-color: #559385;
+    color:#ffffff;
+}
+
+.match_name {
+    padding:0 5%;
 }
 
 .btn.btn_match {
     width:24vw;
     height:24vw;
     border-radius: 12vw;
+    font-size: 2.5em;
 }
