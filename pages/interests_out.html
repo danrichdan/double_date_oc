@@ -37,8 +37,12 @@ on a night out we like
             <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
                     ng-click="ioc.toggleInterest('live theater shows');"
                     ng-class="{selectedButton: ioc.checkInterest('live theater shows')}">live theater shows</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">movies</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align">wine tasting</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('movies');"
+                    ng-class="{selectedButton: ioc.checkInterest('movies')}">movies</button>
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+                    ng-click="ioc.toggleInterest('wine tasting');"
+                    ng-class="{selectedButton: ioc.checkInterest('wine tasting')}">wine tasting</button>
 
 
 

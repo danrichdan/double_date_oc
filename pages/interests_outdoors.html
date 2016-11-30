@@ -2,16 +2,36 @@ to stay active we like
 <div class="outdoors-about groupings">
     <div class="interest-buttons">
         <div class="outdoor groupings">
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">bicycling</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">bowling</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">golfing</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">hiking</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">horseback-riding</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">kayaking/paddleboarding</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">motorcycling</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">racquetball</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">tennis</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align">walking</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('bicycling');"
+                    ng-class="{selectedButton: iod.checkInterest('bicycling')}">bicycling</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('bowling');"
+                    ng-class="{selectedButton: iod.checkInterest('bowling')}">bowling</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('golfing');"
+                    ng-class="{selectedButton: iod.checkInterest('golfing')}">golfing</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('hiking');"
+                    ng-class="{selectedButton: iod.checkInterest('hiking')}">hiking</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('horseback-riding');"
+                    ng-class="{selectedButton: iod.checkInterest('horseback-riding')}">horseback-riding</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('kayaking/paddleboarding');"
+                    ng-class="{selectedButton: iod.checkInterest('kayaking/paddleboarding')}">kayaking/paddleboarding</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('motorcycling');"
+                    ng-class="{selectedButton: iod.checkInterest('motorcycling')}">motorcycling</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('racquetball');"
+                    ng-class="{selectedButton: iod.checkInterest('racquetball')}">racquetball</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('tennis');"
+                    ng-class="{selectedButton: iod.checkInterest('tennis')}">tennis</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
+                    ng-click="iod.toggleInterest('walking');"
+                    ng-class="{selectedButton: iod.checkInterest('walking')}">walking</button>
         </div>
     </div>
 </div>
