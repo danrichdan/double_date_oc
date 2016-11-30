@@ -1,14 +1,14 @@
 
 <body>
-<h1>we're looking for couples within ____ miles of us </h1>
+<h1>we're looking for couples within <span class="miles">{{lc.miles}}</span> miles of us </h1>
 
 <div class="distance-btns">
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align">5</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align">10</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align">20</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align">30</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align">40</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align">50</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=5">5</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=10">10</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=20">20</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=30">30</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=40">40</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=50">50</button>
 
 </div>
 

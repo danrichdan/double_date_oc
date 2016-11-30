@@ -17,24 +17,27 @@ app.config(function($routeProvider){
         //route for user location page
         .when('/user_location',{
             templateUrl: 'pages/user_location.html',
-            controller: 'userLocationController'
+            controller: 'userLocationController',
+            controllerAs: 'ulc'
         })
         //route for location page
 
         .when('/location',{
             templateUrl: 'pages/location.html',
-            controller: 'locationController'
+            controller: 'locationController',
+            controllerAs: 'lc'
         })
         //route for user age range page
         .when('/user_age_range',{
             templateUrl: 'pages/user_age_range.html',
-            controller: 'ageRangeController'
+            controller: 'userAgeController',
+            controllerAs: 'uac'
         })
         //route for age range page
         .when('/age_range',{
             templateUrl: 'pages/age_range.html',
-            controller: 'ageRangeController',
-            controllerAs: 'arc'
+            controller: 'ageController',
+            controllerAs: 'ac'
         })
         //route for user interests page
         .when('/interests_home',{
@@ -73,43 +76,26 @@ app.config(function($routeProvider){
 });
 
 
-
-
 // Controllers for the different pages below
-app.controller('mainController', function($scope){
-})
-    .controller('userLocationController',function($scope){
+app.controller('mainController', function(){
+
+}).controller('userLocationController',function(){
         //Location Page Controller
-        $scope.match_location = 'where are you?';
         //get location input from user
         //store into a variable in controller to pass to service
-})
-    .controller('locationController',function($scope){
-
-    //Location Page Controller
-        $scope.match_location = 'where are you?';
+}).controller('locationController',function(signUpService){
         //get location input from user
-    //store into a variable in controller to pass to service
-})
-    .controller('userAgeRangeController',function($scope){
-})
-    .controller('ageRangeController', function($scope){
-    //if person click then select multiple age ranges below
-        $scope.user_age = 'We are __ years old.';
+        this.miles = '__';
 
-        this.test = 'This is a test string';
-        //Range slider config
-        this.minRangeSlider = {
-            minValue: 21,
-            maxValue: 90,
-            options: {
-                floor: 0,
-                ceil: 100,
-                step: 1
-            }
-        }
-})
-    .controller('interestsHomeController', function(signUpService){
+    //store into a variable in controller to pass to service
+}).controller('userAgeController',function(signUpService){
+        this.userAge = '__';
+
+}).controller('ageController', function($scope){
+    //if person click then select multiple age ranges below
+        this.age = '__';
+
+}).controller('interestsHomeController', function(signUpService){
          //Interest Page Controller
         this.toggleInterest = function(interest){
             console.log('interest : ',interest);
@@ -133,24 +119,21 @@ app.controller('mainController', function($scope){
                 return false;
             }
         }
-})
-    .controller('interestsOutController', function($scope){
+}).controller('interestsOutController', function($scope){
         //Interest Page Controller
-})
-    .controller('interestsOutdoorsController', function($scope){
+}).controller('interestsOutdoorsController', function($scope){
         //Interest Page Controller
-})
-    .controller('interestsTravelController', function($scope){
+}).controller('interestsTravelController', function($scope){
         //Interest Page Controller
-})
-    .controller('signUpController', function($scope) {
+}).controller('signUpController', function($scope) {
         //Login Page Controller
-})
-    .controller('loginController', function($scope){
+}).controller('loginController', function($scope){
     //Login Page Controller
 
-}) ;
+});
 
 app.service('signUpService', function(){
     this.aNightIn = [];
+    // this.locationMiles = null;
+
 });
