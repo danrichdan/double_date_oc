@@ -34,8 +34,10 @@ app.controller('mainController',function($scope){
     //Page2 Controller
     $scope.match_location = 'Where Are You?';
 }).controller('page3Controller', function($scope){
+    $scope.interests = 'Please select any activities that you\'re interested in doing.';
     //Page3 Controller
-    $scope.interests = 'What Do You Like to Do?';
-    $scope.interests2 = 'Click on one or more of the following things you are interested in doing with other couples.';
+    //Get Information from this page
+    $scope.interest = interest;
+
 });
 
