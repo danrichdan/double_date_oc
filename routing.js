@@ -1,6 +1,6 @@
 
 
-var app = angular.module('doubleDateApp',['ngRoute']);
+var app = angular.module('doubleDateApp',['ngRoute', 'rzModule', 'ui.bootstrap']);
 
 app.controller('routeController',function($scope){
     $scope.message = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.';
@@ -8,6 +8,7 @@ app.controller('routeController',function($scope){
 
 app.config(function($routeProvider){
     $routeProvider
+
         //route for location page (new user)
         .when('/', {
             templateUrl: 'pages/welcome.html',
@@ -19,6 +20,7 @@ app.config(function($routeProvider){
             controller: 'userLocationController'
         })
         //route for location page
+
         .when('/location',{
             templateUrl: 'pages/location.html',
             controller: 'locationController'
@@ -31,7 +33,8 @@ app.config(function($routeProvider){
         //route for age range page
         .when('/age_range',{
             templateUrl: 'pages/age_range.html',
-            controller: 'ageRangeController'
+            controller: 'ageRangeController',
+            controllerAs: 'arc'
         })
         //route for user interests page
         .when('/interests_home',{
@@ -83,6 +86,7 @@ app.controller('mainController', function($scope){
         //store into a variable in controller to pass to service
 })
     .controller('locationController',function($scope){
+
     //Location Page Controller
         $scope.match_location = 'where are you?';
         //get location input from user
@@ -93,6 +97,18 @@ app.controller('mainController', function($scope){
     .controller('ageRangeController', function($scope){
     //if person click then select multiple age ranges below
         $scope.user_age = 'We are __ years old.';
+
+        this.test = 'This is a test string';
+        //Range slider config
+        this.minRangeSlider = {
+            minValue: 21,
+            maxValue: 90,
+            options: {
+                floor: 0,
+                ceil: 100,
+                step: 1
+            }
+        }
 })
     .controller('interestsHomeController', function(signUpService){
          //Interest Page Controller
