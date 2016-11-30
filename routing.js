@@ -113,15 +113,12 @@ app.controller('mainController', function($scope){
          //Interest Page Controller
         this.toggleInterest = function(interest){
             console.log('interest : ',interest);
-            IHC.checkInterest('book-club');
             if(this.checkInterest(interest)){
                 var interestIndexToRemove = signUpService.aNightIn.indexOf(interest);
                 console.log('interestIndexToRemove : ',interestIndexToRemove);
                 console.log('signUpService.aNightIn : ',signUpService.aNightIn);
                 signUpService.aNightIn.splice(interestIndexToRemove,1);
-
             } else {
-
                 signUpService.aNightIn.push(interest);
             }
             console.log(' Here is the signUpService.aNightIn : ', signUpService.aNightIn);
@@ -135,8 +132,6 @@ app.controller('mainController', function($scope){
                 console.log('CheckInterest is false');
                 return false;
             }
-
-
         }
 })
     .controller('interestsOutController', function($scope){
