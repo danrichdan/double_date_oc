@@ -8,6 +8,7 @@ app.controller('routeController',function($scope){
 
 app.config(function($routeProvider){
     $routeProvider
+
         //route for location page (new user)
         .when('/', {
             templateUrl: 'pages/welcome.html',
@@ -19,6 +20,7 @@ app.config(function($routeProvider){
             controller: 'userLocationController'
         })
         //route for location page
+
         .when('/location',{
             templateUrl: 'pages/location.html',
             controller: 'locationController'
@@ -83,6 +85,7 @@ app.controller('mainController', function($scope){
         //store into a variable in controller to pass to service
 })
     .controller('locationController',function($scope){
+
     //Location Page Controller
         $scope.match_location = 'where are you?';
         //get location input from user
