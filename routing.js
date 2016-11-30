@@ -40,12 +40,13 @@ app.config(function($routeProvider){
         .when('/interests_home',{
             templateUrl: 'pages/interests_home.html',
             controller: 'interestsHomeController',
-            controllerAs: 'IHC'
+            controllerAs: 'ihc'
         })
         //route for interests page
         .when('/interests_out',{
             templateUrl: 'pages/interests_out.html',
-            controller: 'interestsOutController'
+            controller: 'interestsOutController',
+            controllerAs: 'ioc'
         })
         //route for interests page
         .when('/interests_outdoors',{
@@ -134,8 +135,30 @@ app.controller('mainController', function($scope){
             }
         }
 })
-    .controller('interestsOutController', function($scope){
+    .controller('interestsOutController', function(signUpService){
         //Interest Page Controller
+        this.toggleInterest = function(interest){
+            console.log('interest : ',interest);
+            if(this.checkInterest(interest)){
+                var interestIndexToRemove = signUpService.aNightOut.indexOf(interest);
+                console.log('interestIndexToRemove : ',interestIndexToRemove);
+                console.log('signUpService.aNightIn : ',signUpService.aNightOut);
+                signUpService.aNightOut.splice(interestIndexToRemove,1);
+            } else {
+                signUpService.aNightOut.push(interest);
+            }
+            console.log(' Here is the signUpService.aNightOut : ', signUpService.aNightOut);
+        }
+        this.checkInterest = function(interest){
+            console.log('checkInterest function is being called!');
+            if(signUpService.aNightOut.indexOf(interest) > -1){
+                console.log('CheckInterest is true');
+                return true;
+            } else {
+                console.log('CheckInterest is false');
+                return false;
+            }
+        }
 })
     .controller('interestsOutdoorsController', function($scope){
         //Interest Page Controller
@@ -153,4 +176,5 @@ app.controller('mainController', function($scope){
 
 app.service('signUpService', function(){
     this.aNightIn = [];
+    this.aNightOut = [];
 });
