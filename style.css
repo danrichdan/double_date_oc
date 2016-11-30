@@ -135,6 +135,12 @@
     font-size:18px;
 }
 
+.miles, .user-age, .age{
+    color: #368e8b;
+    font-weight: bolder;
+    /*text-decoration: underline;*/
+}
+
 /*interests page*/
 .interest-btn-home, .interest-btn-out, .interest-btn-active, .interest-btn-travel{
     padding: 3%;

@@ -1,13 +1,13 @@
 <div class="age_range">
-    we want to meet other couples who are __ years old.
+    we want to meet other couples who are <span class="age">{{ac.age}}</span> years old.
 
     <div class="age-range-buttons">
         <p>{{match_age}}</p>
-        <button type="button" class="btn btn-default age-btn" aria-label="Left Align">18-25</button>
-        <button type="button" class="btn btn-default age-btn" aria-label="Left Align">26-35</button>
-        <button type="button" class="btn btn-default age-btn" aria-label="Left Align">36-50</button>
-        <button type="button" class="btn btn-default age-btn" aria-label="Left Align">51-60</button>
-        <button type="button" class="btn btn-default age-btn" aria-label="Left Align">60+</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="ac.age='18-25'">18-25</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="ac.age='26-35'">26-35</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="ac.age='36-50'">36-50</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="ac.age='51-60'">51-60</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="ac.age='60+'">60+</button>
     </div>
 
 

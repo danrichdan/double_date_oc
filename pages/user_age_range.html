@@ -1,33 +1,16 @@
 <div class="age-range-buttons">
-    <p>we are __ and __ years old </p>
+    <p>we are <span class="user-age">{{uac.userAge}}</span> years old. </p>
     <!--Add an ng-click attr that calls a function which
      captures the value and displays the text to the user.
      Also, this function should store the value to pass on.-->
 
 
-        <div data-role="main" class="ui-content">
-            <form method="post" action="demoform.asp">
-                <div data-role="rangeslider">
-                    <!--<label for="price-min">Price:</label>-->
-                    <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                    <!--<label for="price-max">Price:</label>-->
-                    <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                </div>
-                <!--<input type="submit" data-inline="true" value="Submit">-->
-            </form>
-        </div>
-    </div>
-
-    <!--http://www.w3schools.com/jquerymobile/tryit.asp?filename=tryjqmob_forms_slider_range-->
-
-
-
     <!--Later on, maybe store text and values in an array or object and make a loop to create the buttons-->
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align">18-25</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align">26-35</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align">36-50</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align">51-60</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align">60+</button>
+    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="uac.userAge='18-25'">18-25</button>
+    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="uac.userAge='26-35'">26-35</button>
+    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="uac.userAge='36-50'">36-50</button>
+    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="uac.userAge='51-60'">51-60</button>
+    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="uac.userAge='60+'">60+</button>
 </div>
 <div class="previous-next pull-right">
     <a href="#/location">
