@@ -97,12 +97,10 @@
 
 
 /*age range page*/
-
 .age-range{
     position: absolute;
     bottom: 10px;
 }
-
 
 .chevronButton{
     /*background-color: #4cad8d;*/
@@ -110,6 +108,11 @@
     border-radius: 100%;
     width: 47px;
     height:47px;
+}
+
+.age-user-btn, .age-btn{
+    padding:4%;
+    font-size:17px;
 }
 
 /*location page*/
@@ -127,6 +130,17 @@
     margin-top:10%;
 }
 
+.distance-btn{
+    padding:5%;
+    font-size:18px;
+}
+
+/*interests page*/
+.interest-btn-home, .interest-btn-out, .interest-btn-active, .interest-btn-travel{
+    padding: 3%;
+    margin-bottom: 5%;
+    font-size: 16px;
+}
 
 /*sign-up email page*/
 
