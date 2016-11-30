@@ -133,3 +133,6 @@
 .signup-button{
     padding: 10%;
 }
+.selectedButton{
+    background-color: #368e8b;
+}

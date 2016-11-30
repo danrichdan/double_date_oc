@@ -36,7 +36,8 @@ app.config(function($routeProvider){
         //route for user interests page
         .when('/interests_home',{
             templateUrl: 'pages/interests_home.html',
-            controller: 'interestsHomeController'
+            controller: 'interestsHomeController',
+            controllerAs: 'IHC'
         })
         //route for interests page
         .when('/interests_out',{
@@ -92,8 +93,35 @@ app.controller('mainController', function($scope){
     //if person click then select multiple age ranges below
         $scope.user_age = 'We are __ years old.';
 })
-    .controller('interestsHomeController', function($scope){
+    .controller('interestsHomeController', function(signUpService){
          //Interest Page Controller
+        this.toggleInterest = function(interest){
+            console.log('interest : ',interest);
+            IHC.checkInterest('book-club');
+            if(this.checkInterest(interest)){
+                var interestIndexToRemove = signUpService.aNightIn.indexOf(interest);
+                console.log('interestIndexToRemove : ',interestIndexToRemove);
+                console.log('signUpService.aNightIn : ',signUpService.aNightIn);
+                signUpService.aNightIn.splice(interestIndexToRemove,1);
+
+            } else {
+
+                signUpService.aNightIn.push(interest);
+            }
+            console.log(' Here is the signUpService.aNightIn : ', signUpService.aNightIn);
+        }
+        this.checkInterest = function(interest){
+            console.log('checkInterest function is being called!');
+            if(signUpService.aNightIn.indexOf(interest) > -1){
+                console.log('CheckInterest is true');
+                return true;
+            } else {
+                console.log('CheckInterest is false');
+                return false;
+            }
+
+
+        }
 })
     .controller('interestsOutController', function($scope){
         //Interest Page Controller
@@ -112,4 +140,6 @@ app.controller('mainController', function($scope){
 
 }) ;
 
-
+app.service('signUpService', function(){
+    this.aNightIn = [];
+});
