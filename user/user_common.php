@@ -69,11 +69,17 @@ function get_sanitized_username() {
         return filter_var($_POST['username'], FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
     }
+    else {
+        return "";
+    }
 }
 
 function get_sanitized_password() {
     if (isset($_POST['password']) && $_POST['password']) {
         return sha1($_POST['password']);
+    }
+    else {
+        return "";
     }
 }
 
@@ -82,11 +88,17 @@ function get_sanitized_name() {
         return filter_var($_POST['name'], FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
     }
+    else {
+        return "";
+    }
 }
 
 function get_sanitized_email() {
     if (isset($_POST['email']) && $_POST['email']) {
         return filter_var($_POST['email'], FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+    }
+    else {
+        return "";
     }
 }

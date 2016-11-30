@@ -53,14 +53,16 @@ gApp.controller("protoUserController", function(userService){
      */
     this.onAddUserButton = function() {
         console.log('onAddUserButton: ' + this.newName + ', ' + this.newPassword + ', ' + this.newEmail);
-        var name = $('#new-name').val();
-        var password = $('#new-password').val();
-        var email = $('#new-email').val();
+        // Get the data from the input fields.
+        var name = this.newName;
+        var password = this.newPassword;
+        var email = this.newEmail;
+
         if (!username || !password || !email) {
             self.addUserResults = 'Please specify a name, password, and email address in the form.';
         } else {
             self.addUserResults = 'Starting add user.';
-            userService.doAdd(name, password, email)
+            userService.add(name, password, email)
                 .then(function(response) {
                         console.log('onAddUserButton: success');
                         self.addUserResults = 'Success: id ' + response.userId + ' username ' + response.username + ' added';
@@ -77,12 +79,14 @@ gApp.controller("protoUserController", function(userService){
      */
     this.onCheckStatusButton = function() {
         console.log('onCheckStatusButton');
-        var username = $('#username').val();
+        // Get the data from the input field.
+        var username = this.username;
+
         if (!username) {
             self.checkStatusResults = 'Please specify a username.';
         } else {
             self.checkStatusResults = 'Starting status check.';
-            userService.doCheckStatus(username)
+            userService.checkStatus(username)
                 .then(function(response) {
                         console.log('onCheckStatusButton: success');
                         self.checkStatusResults = 'Success: username ' + response.username + ' is logged in';
@@ -99,13 +103,15 @@ gApp.controller("protoUserController", function(userService){
      */
     this.onLogInButton = function() {
         console.log('onLogInButton');
-        var username = $('#username').val();
-        var password = $('#password').val();
+        // Get the data from the input fields.
+        var username = this.username;
+        var password = this.password;
+
         if (!username || !password) {
             this.loginResults = 'Please specify a username and password.';
         } else {
             this.loginResults = 'Starting login.';
-            userService.doLogin(username, password)
+            userService.login(username, password)
                 .then(function(response) {
                     console.log('onLogInButton: success');
                     self.loginResults = 'Success: user ID is ' + response.userId;
@@ -123,7 +129,7 @@ gApp.controller("protoUserController", function(userService){
     this.onLogOutButton = function() {
         console.log('onLogOutButton');
         this.logoutResults = 'Starting logout.';
-        userService.doLogout()
+        userService.logout()
             .then(function(response) {
                     console.log('onLogOutButton: success');
                     self.logoutResults = 'Success: ' + response.message;

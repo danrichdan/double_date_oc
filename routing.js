@@ -1,4 +1,6 @@
-var app = angular.module('doubleDateApp',['ngRoute']);
+
+
+var app = angular.module('doubleDateApp',['ngRoute', 'rzModule', 'ui.bootstrap']);
 
 app.controller('routeController',function($scope){
     $scope.message = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.';
@@ -6,42 +8,154 @@ app.controller('routeController',function($scope){
 
 app.config(function($routeProvider){
     $routeProvider
-        //route for protoTypePage1
+
+        //route for location page (new user)
         .when('/', {
-            templateUrl: 'welcome.html',
+            templateUrl: 'pages/welcome.html',
             controller: 'mainController'
         })
+        //route for user location page
+        .when('/user_location',{
+            templateUrl: 'pages/user_location.html',
+            controller: 'userLocationController'
+        })
+        //route for location page
+
         .when('/location',{
             templateUrl: 'pages/location.html',
             controller: 'locationController'
         })
-        //route for protoTypePage2
-        .when('/age_range',{
-            templateUrl: 'pages/age_range.html',
+        //route for user age range page
+        .when('/user_age_range',{
+            templateUrl: 'pages/user_age_range.html',
             controller: 'ageRangeController'
         })
-        .when('/interests',{
-            templateUrl: 'pages/interests.html',
-            controller: 'interestsController'
+        //route for age range page
+        .when('/age_range',{
+            templateUrl: 'pages/age_range.html',
+            controller: 'ageRangeController',
+            controllerAs: 'arc'
+        })
+        //route for user interests page
+        .when('/interests_home',{
+            templateUrl: 'pages/interests_home.html',
+            controller: 'interestsHomeController',
+            controllerAs: 'IHC'
+        })
+        //route for interests page
+        .when('/interests_out',{
+            templateUrl: 'pages/interests_out.html',
+            controller: 'interestsOutController'
+        })
+        //route for interests page
+        .when('/interests_outdoors',{
+            templateUrl: 'pages/interests_outdoors.html',
+            controller: 'interestsOutdoorsController'
+        })
+        //route for interests page
+        .when('/interests_travel',{
+            templateUrl: 'pages/interests_travel.html',
+            controller: 'interestsTravelController'
+        })
+        //route for sign up page
+        .when('/sign_up',{
+            templateUrl: 'pages/sign_up.html',
+            controller: 'signUpController'
+        })
+        //route for login page (returning user)
+        .when('/login',{
+            templateUrl: 'pages/login.html',
+            controller: 'loginController'
         })
         .otherwise({
             redirectTo: "/"
         });
 });
 
+
+
+
 // Controllers for the different pages below
 app.controller('mainController', function($scope){
-    $scope.welcome_message = '';
-}).controller('locationController',function($scope){
-    //Location Page Controller
-    $scope.user_age = 'What age ranges are we looking for?';
-    $scope.match_age = 'We are looking for people who are (pick multiple)';
-}).controller('ageRangeController', function($scope){
-    //Page2 Controller
-    $scope.match_location = 'Where Are You?';
-}).controller('interestsController', function($scope){
-    //Interest Page Controller
-    $scope.interests = 'What Do You Like to Do?';
-    $scope.interests2 = 'Click on one or more of the following things you are interested in doing with other couples.';
-});
+})
+    .controller('userLocationController',function($scope){
+        //Location Page Controller
+        $scope.match_location = 'where are you?';
+        //get location input from user
+        //store into a variable in controller to pass to service
+})
+    .controller('locationController',function($scope){
 
+    //Location Page Controller
+        $scope.match_location = 'where are you?';
+        //get location input from user
+    //store into a variable in controller to pass to service
+})
+    .controller('userAgeRangeController',function($scope){
+})
+    .controller('ageRangeController', function($scope){
+    //if person click then select multiple age ranges below
+        $scope.user_age = 'We are __ years old.';
+
+        this.test = 'This is a test string';
+        //Range slider config
+        this.minRangeSlider = {
+            minValue: 21,
+            maxValue: 90,
+            options: {
+                floor: 0,
+                ceil: 100,
+                step: 1
+            }
+        }
+})
+    .controller('interestsHomeController', function(signUpService){
+         //Interest Page Controller
+        this.toggleInterest = function(interest){
+            console.log('interest : ',interest);
+            IHC.checkInterest('book-club');
+            if(this.checkInterest(interest)){
+                var interestIndexToRemove = signUpService.aNightIn.indexOf(interest);
+                console.log('interestIndexToRemove : ',interestIndexToRemove);
+                console.log('signUpService.aNightIn : ',signUpService.aNightIn);
+                signUpService.aNightIn.splice(interestIndexToRemove,1);
+
+            } else {
+
+                signUpService.aNightIn.push(interest);
+            }
+            console.log(' Here is the signUpService.aNightIn : ', signUpService.aNightIn);
+        }
+        this.checkInterest = function(interest){
+            console.log('checkInterest function is being called!');
+            if(signUpService.aNightIn.indexOf(interest) > -1){
+                console.log('CheckInterest is true');
+                return true;
+            } else {
+                console.log('CheckInterest is false');
+                return false;
+            }
+
+
+        }
+})
+    .controller('interestsOutController', function($scope){
+        //Interest Page Controller
+})
+    .controller('interestsOutdoorsController', function($scope){
+        //Interest Page Controller
+})
+    .controller('interestsTravelController', function($scope){
+        //Interest Page Controller
+})
+    .controller('signUpController', function($scope) {
+        //Login Page Controller
+})
+    .controller('loginController', function($scope){
+    //Login Page Controller
+
+}) ;
+
+app.service('signUpService', function(){
+    this.aNightIn = [];
+});
