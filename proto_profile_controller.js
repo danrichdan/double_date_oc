@@ -4,7 +4,7 @@
  *      along with the back end profile/*.php files.
  */
 
-gApp.controller("protoProfileController", function(profileService){
+gApp.controller("protoProfileController", function($scope, profileService){
     console.log('protoProfileController: constructor');
     var self = this;
 
@@ -34,6 +34,47 @@ gApp.controller("protoProfileController", function(profileService){
     this.addResults = '';
     this.getResults = '';
     this.updateResults = '';
+
+    /**
+     *  Dropzone
+     */
+    Dropzone.autoDiscover = false;
+    this.pictureDropzone = new Dropzone("#picture-dropzone-div", {
+        url: 'profile/upload.php',
+        maxFilesize: 2, // MB.
+        paramName: 'file',
+        maxFiles: 1,
+        maxfilesexceeded: function(file) {
+            alert('Only one file is allowed.');
+        },
+        success: function(response) {
+            var responseObj = JSON.parse(response.xhr.response);
+            if (responseObj.success) {
+                var newLink = responseObj.newLink;
+                console.log('Dropzone: success: ' + newLink);
+
+                // Remove the existing file from the Dropzone.
+                this.removeAllFiles();
+
+                // Dropzone operates outside of the digest cycle, so we have to manually declare changes.
+                profileService.setPictureLink(newLink);
+                $scope.$apply();
+           }
+            // Error from upload.php
+            else {
+                console.warn('Dropzone: error');
+            }
+        },
+        acceptedFiles: 'image/*,.jpg,.jpeg,.gif,.png',
+        accept: function(file, done) {
+            console.log('Dropzone: accept: ' + file);
+            done();
+        },
+        init: function() {
+            console.log('Dropzone: init: ' + this);
+        }
+
+    });
 
     /**
      *  onAddButton - click handler.
