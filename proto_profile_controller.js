@@ -30,10 +30,12 @@ gApp.controller("protoProfileController", function($scope, profileService){
      *  addResults      - Results from add operation.
      *  getResults      - Results from get operation.
      *  updateResults   - Results from update operation.
+     *  uploadResults   - Results from Dropzone upload operation.
      */
     this.addResults = '';
     this.getResults = '';
     this.updateResults = '';
+    this.uploadResults = '';
 
     /**
      *  Dropzone
@@ -49,21 +51,24 @@ gApp.controller("protoProfileController", function($scope, profileService){
         },
         success: function(response) {
             var responseObj = JSON.parse(response.xhr.response);
+
+            // Remove the existing file from the Dropzone.
+            this.removeAllFiles();
+
             if (responseObj.success) {
                 var newLink = responseObj.newLink;
                 console.log('Dropzone: success: ' + newLink);
-
-                // Remove the existing file from the Dropzone.
-                this.removeAllFiles();
-
-                // Dropzone operates outside of the digest cycle, so we have to manually declare changes.
-                profileService.setPictureLink(newLink);
-                $scope.$apply();
-           }
+                self.uploadResults = 'Success, new link: ' + newLink;
+            }
             // Error from upload.php
             else {
-                console.warn('Dropzone: error');
+                console.warn('Dropzone: error: ' + responseObj.message);
+                self.uploadResults = 'Error: ' + responseObj.message;
             }
+
+            // Dropzone operates outside of the digest cycle, so we have to manually declare changes.
+            profileService.setPictureLink(newLink);
+            $scope.$apply();
         },
         acceptedFiles: 'image/*,.jpg,.jpeg,.gif,.png',
         accept: function(file, done) {
