@@ -106,7 +106,7 @@ app.controller('mainController', function(){
 }).controller('userAgeController',function(signUpService){
         this.userAge = '__';
 
-}).controller('ageController', function($scope){v
+}).controller('ageController', function($scope){
     //if person click then select multiple age ranges below
         this.age = '__';
 
