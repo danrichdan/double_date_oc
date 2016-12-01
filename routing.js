@@ -83,7 +83,19 @@ app.config(function($routeProvider){
 app.controller('mainController', function(){
 
 }).controller('userLocationController',function(){
-        //Location Page Controller
+   this.checkZip = function(){
+       console.log('this.zipCode.toString().length :', this.zip.toString().length);
+       if(this.zip.toString().length>5){
+           console.log('true');
+           this.zip = parseInt(this.zip.toString().substring(0,5));
+           console.log(this.zip.toString().substring(0,5));
+           return true;
+       }else{
+           console.log('false');
+           return false;
+       }
+    };
+     //Location Page Controller
         //get location input from user
         //store into a variable in controller to pass to service
 }).controller('locationController',function(signUpService){
