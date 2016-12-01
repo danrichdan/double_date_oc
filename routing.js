@@ -54,12 +54,14 @@ app.config(function($routeProvider){
         //route for interests page
         .when('/interests_outdoors',{
             templateUrl: 'pages/interests_outdoors.html',
-            controller: 'interestsOutdoorsController'
+            controller: 'interestsOutdoorsController',
+            controllerAs: 'iod'
         })
         //route for interests page
         .when('/interests_travel',{
             templateUrl: 'pages/interests_travel.html',
-            controller: 'interestsTravelController'
+            controller: 'interestsTravelController',
+            controllerAs: 'itc'
         })
         //route for sign up page
         .when('/sign_up',{
@@ -92,13 +94,12 @@ app.controller('mainController', function(){
 }).controller('userAgeController',function(signUpService){
         this.userAge = '__';
 
-}).controller('ageController', function($scope){
+}).controller('ageController', function($scope){v
     //if person click then select multiple age ranges below
         this.age = '__';
 
 }).controller('interestsHomeController', function(signUpService){
-         //Interest Page Controller
-        this.toggleInterest = function(interest){
+         this.toggleInterest = function(interest){
             console.log('interest : ',interest);
             if(this.checkInterest(interest)){
                 var interestIndexToRemove = signUpService.aNightIn.indexOf(interest);
@@ -111,24 +112,20 @@ app.controller('mainController', function(){
             console.log(' Here is the signUpService.aNightIn : ', signUpService.aNightIn);
         }
         this.checkInterest = function(interest){
-            console.log('checkInterest function is being called!');
             if(signUpService.aNightIn.indexOf(interest) > -1){
-                console.log('CheckInterest is true');
                 return true;
             } else {
-                console.log('CheckInterest is false');
                 return false;
             }
         }
 })
     .controller('interestsOutController', function(signUpService){
-        //Interest Page Controller
         this.toggleInterest = function(interest){
             console.log('interest : ',interest);
             if(this.checkInterest(interest)){
                 var interestIndexToRemove = signUpService.aNightOut.indexOf(interest);
                 console.log('interestIndexToRemove : ',interestIndexToRemove);
-                console.log('signUpService.aNightIn : ',signUpService.aNightOut);
+                console.log('signUpService.aNightOut : ',signUpService.aNightOut);
                 signUpService.aNightOut.splice(interestIndexToRemove,1);
             } else {
                 signUpService.aNightOut.push(interest);
@@ -136,20 +133,55 @@ app.controller('mainController', function(){
             console.log(' Here is the signUpService.aNightOut : ', signUpService.aNightOut);
         }
         this.checkInterest = function(interest){
-            console.log('checkInterest function is being called!');
             if(signUpService.aNightOut.indexOf(interest) > -1){
-                console.log('CheckInterest is true');
                 return true;
             } else {
-                console.log('CheckInterest is false');
                 return false;
             }
         }
-})
-    .controller('interestsOutdoorsController', function($scope){
-        //Interest Page Controller
-}).controller('interestsTravelController', function($scope){
-        //Interest Page Controller
+}).controller('interestsOutdoorsController', function(signUpService){
+        this.toggleInterest = function(interest){
+        console.log('interest : ',interest);
+        if(this.checkInterest(interest)){
+            var interestIndexToRemove = signUpService.stayActive.indexOf(interest);
+            console.log('interestIndexToRemove : ',interestIndexToRemove);
+            console.log('signUpService.stayActive : ',signUpService.stayActive);
+            signUpService.stayActive.splice(interestIndexToRemove,1);
+        } else {
+            signUpService.stayActive.push(interest);
+        }
+        console.log(' Here is the signUpService.stayActive : ', signUpService.stayActive);
+    }
+    this.checkInterest = function(interest){
+        if(signUpService.stayActive.indexOf(interest) > -1){
+            return true;
+        } else {
+            return false;
+        }
+    }
+}).controller('interestsTravelController', function(signUpService){
+    this.toggleInterest = function(interest){
+        console.log('interest : ',interest);
+        if(this.checkInterest(interest)){
+            var interestIndexToRemove = signUpService.whenTravelling.indexOf(interest);
+            console.log('interestIndexToRemove : ',interestIndexToRemove);
+            console.log('signUpService.whenTravelling : ',signUpService.whenTravelling);
+            signUpService.whenTravelling.splice(interestIndexToRemove,1);
+        } else {
+            signUpService.whenTravelling.push(interest);
+        }
+        console.log(' Here is the signUpService.stayActive : ', signUpService.whenTravelling);
+    }
+    this.checkInterest = function(interest){
+        console.log('checkInterest function is being called!');
+        if(signUpService.whenTravelling.indexOf(interest) > -1){
+            console.log('CheckInterest is true');
+            return true;
+        } else {
+            console.log('CheckInterest is false');
+            return false;
+        }
+    }
 }).controller('signUpController', function($scope) {
         //Login Page Controller
 }).controller('loginController', function($scope){
@@ -160,6 +192,8 @@ app.controller('mainController', function(){
 app.service('signUpService', function(){
     this.aNightIn = [];
     this.aNightOut = [];
+    this.stayActive = [];
+    this.whenTravelling = [];
     // this.locationMiles = null;
 
 });
