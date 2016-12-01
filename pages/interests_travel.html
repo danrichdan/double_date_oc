@@ -2,10 +2,18 @@ when traveling we like
 <div class="outdoors-about groupings">
     <div class="interest-buttons">
         <div class="at-home groupings">
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align">camping</button>
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align">domestic travel</button>
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align">RV-ing</button>
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align">traveling abroad</button>
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+                    ng-click="itc.toggleInterest('camping');"
+                    ng-class="{selectedButton: itc.checkInterest('camping')}">camping</button>
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+                    ng-click="itc.toggleInterest('domestic travel');"
+                    ng-class="{selectedButton: itc.checkInterest('domestic travel')}">domestic travel</button>
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+                    ng-click="itc.toggleInterest('RV-ing');"
+                    ng-class="{selectedButton: itc.checkInterest('RV-ing')}">RV-ing</button>
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+                    ng-click="itc.toggleInterest('traveling abroad');"
+                    ng-class="{selectedButton: itc.checkInterest('traveling abroad')}">traveling abroad</button>
         </div>
     </div>
 </div>
