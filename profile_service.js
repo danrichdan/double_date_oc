@@ -126,6 +126,15 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
     };
 
     /**
+     *  setPictureLink - set link to picture where it got uploaded.
+     *  @param {string} link - New string to set.
+     */
+    this.setPictureLink = function(link) {
+        $log.log('setPictureLink: ' + link);
+        this.currentProfile.pictureLink = link;
+    };
+
+    /**
      *  add - start an add operation on the currentProfile.
      *  @returns (object) - promise.
      */
