@@ -153,7 +153,13 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
             success: function(response) {
                 $log.log('add: success: ' + response.success);
                 if (response.success) {
+                    // Save the returned profilel ID.
                     self.currentProfile.profileId = response.profileId;
+                    // Save the extra values from the zip code translation.
+                    self.currentProfile.city = response.city;
+                    self.currentProfile.latitude = response.latitude;
+                    self.currentProfile.longitude = response.longitude;
+
                     def.resolve(response);
                 } else {
                     $log.log('add: error: ' + response.message);
@@ -227,6 +233,11 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
             success: function(response) {
                 $log.log('update: success: ' + response.success);
                 if (response.success) {
+                    // Save the extra values from the zip code translation.
+                    self.currentProfile.city = response.city;
+                    self.currentProfile.latitude = response.latitude;
+                    self.currentProfile.longitude = response.longitude;
+
                     def.resolve(response);
                 } else {
                     def.reject('Server error: ' + response.message);
