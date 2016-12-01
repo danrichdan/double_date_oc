@@ -61,6 +61,10 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             'temp' => $temp,
                             'query' => $query
                         ];
+                        // Add in the extra values from the zip code.
+                        foreach ($zipcodeFields as $field) {
+                            $response[$field] = $zipcodeRow[$field];
+                        }
                     }
                     // Failed to get the row data.
                     else {
