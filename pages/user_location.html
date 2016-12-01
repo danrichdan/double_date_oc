@@ -2,7 +2,7 @@
 <div class="location">
     where are you?
     <div class="match-locale">
-        <input type="number" placeholder="zip code" class="input_text">
+        <input type="number" placeholder="zip code" class="input_text" ng-model="ulc.zip" ng-change='ulc.checkZip()'>
         <button type="button" class="btn btn-default btn-block current-location">use my current location</button>
 
     <div class="previous-next pull-right">
