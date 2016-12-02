@@ -132,6 +132,62 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
     this.sampleMatches = [];
 
     /**
+     *  get methods
+     */
+    this.getProfileId =         function() { return this.currentProfile.profileId };
+    this.getUsername =          function() { return this.currentProfile.username };
+    this.getPictureLink =       function() { return this.currentProfile.pictureLink };
+    this.getParagraph =         function() { return this.currentProfile.paragraph };
+
+    this.getZipcode =           function() { return this.currentProfile.zipcode };
+    this.getCity =              function() { return this.currentProfile.city };
+    this.getLatitude =          function() { return this.currentProfile.latitude };
+    this.getLongitude =         function() { return this.currentProfile.longitude };
+    this.getDistanceMax =       function() { return this.currentProfile.distanceMax };
+    this.getOurAgeMin =         function() { return this.currentProfile.ourAgeMin };
+    this.getOurAgeMax =         function() { return this.currentProfile.outAgeMax };
+    this.getTheirAgeMin =       function() { return this.currentProfile.theirAgeMin };
+    this.getTheirAgeMax =       function() { return this.currentProfile.theirAgeMax };
+
+    this.getBoardGames =        function() { return this.currentProfile.boardGames };
+    this.getCardGames =         function() { return this.currentProfile.cardGames };
+    this.getCooking =           function() { return this.currentProfile.cooking };
+    this.getConversation =      function() { return this.currentProfile.converations };
+    this.getCrafts =            function() { return this.currentProfile.crafts };
+    this.getBookClub =          function() { return this.currentProfile.bookClub };
+    this.getMovieNight =        function() { return this.currentProfile.movieNight };
+
+    this.getArtGalleries =      function() { return this.currentProfile.artGalleries };
+    this.getComedy =            function() { return this.currentProfile.comedy };
+    this.getClassicalConcerts = function() { return this.currentProfile.classicalConcerts };
+    this.getPopularConcerts =   function() { return this.currentProfile.popularConcerts };
+    this.getBallroomDancing =   function() { return this.currentProfile.ballroomDancing };
+    this.getCountryDancing =    function() { return this.currentProfile.countryDancing };
+    this.getSalsaDancing =      function() { return this.currentProfile.salsaDancing };
+    this.getCasualDining =      function() { return this.currentProfile.casualDining };
+    this.getFineDining =        function() { return this.currentProfile.fineDining };
+    this.getKaraoke =           function() { return this.currentProfile.karaoke };
+    this.getLiveTheater =       function() { return this.currentProfile.liveTheater };
+    this.getMovies =            function() { return this.currentProfile.movies };
+    this.getWineTasting =       function() { return this.currentProfile.wineTasting };
+
+    this.getBicycling =         function() { return this.currentProfile.bicycling };
+    this.getBowling =           function() { return this.currentProfile.bowling };
+    this.getGolf =              function() { return this.currentProfile.golf };
+    this.getHiking =            function() { return this.currentProfile.hiking };
+    this.getHorsebackRiding =   function() { return this.currentProfile.horsebackRiding };
+    this.getKayaking =          function() { return this.currentProfile.kayaking };
+    this.getMotorcycling =      function() { return this.currentProfile.motorcycling };
+    this.getRacquetball =       function() { return this.currentProfile.racquetball };
+    this.getTennis =            function() { return this.currentProfile.tennis };
+    this.getWalking =           function() { return this.currentProfile.walking };
+
+    this.getCamping =           function() { return this.currentProfile.camping };
+    this.getRving =             function() { return this.currentProfile.rving };
+    this.getDomesticTravel =    function() { return this.currentProfile.domesticTravel };
+    this.getTravelAbroad =      function() { return this.currentProfile.travelAbroad };
+
+    /**
      *  setDistanceMax - validate and set distanceMax field.
      *  @param  {int}       distanceMax
      *  @return {boolean}   true if success.
