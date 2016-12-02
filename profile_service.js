@@ -126,12 +126,80 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
     };
 
     /**
+     *  sampleMatchesArray - return data from getSampleMatches.
+     *  @type {[object]}
+     */
+    this.sampleMatches = [];
+
+    /**
+     *  setDistanceMax - validate and set distanceMax field.
+     *  @param  {int}       distanceMax
+     *  @return {boolean}   true if success.
+     */
+    this.setDistanceMax = function(distanceMax) {
+        if (distanceMax >= 1 && distanceMax <= 100) {
+            this.distanceMax = distanceMax;
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    /**
+     *  setOurAge - validate and set ourAgeMin and ourAgeMax fields.
+     *  @param  {int}       ourAgeMin
+     *  @param  {int}       ourAgeMax
+     *  @return {boolean}   true if success.
+     */
+    this.setOurAge = function(ourAgeMin, ourAgeMax) {
+        if (ourAgeMin >= 18 && ourAgeMin <= 99 &&
+            ourAgeMax >= ourAgeMin && ourAgeMax <= 99) {
+            this.ourAgeMin = ourAgeMin;
+            this.ourAgeMax = ourAgeMax;
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    /**
      *  setPictureLink - set link to picture where it got uploaded.
      *  @param {string} link - New string to set.
      */
     this.setPictureLink = function(link) {
         $log.log('setPictureLink: ' + link);
         this.currentProfile.pictureLink = link;
+    };
+
+    /**
+     *  setTheirAge - validate and set theirAgeMin and theirAgeMax fields.
+     *  @param  {int}       theirAgeMin
+     *  @param  {int}       theirAgeMax
+     *  @return {boolean}   true if success.
+     */
+    this.setTheirAge = function(theirAgeMin, theirAgeMax) {
+        if (theirAgeMin >= 18 && theirAgeMin <= 99 &&
+            theirAgeMax >= theirAgeMin && theirAgeMax <= 99) {
+            this.theirAgeMin = theirAgeMin;
+            this.theirAgeMax = theirAgeMax;
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    /**
+     *  setZipcode - validate and set zipcode field.
+     *  @param  {int}       zipcode
+     *  @return {boolean}   true if success.
+     */
+    this.setZipcode = function(zipcode) {
+        if (zipcode >= 90000 && zipcode <= 99999) {
+            this.zipcode = zipcode;
+            return true;
+        } else {
+            return false;
+        }
     };
 
     /**
@@ -206,6 +274,50 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
             },
             error: function(response) {
                 $log.warn('get: error');
+                def.reject('Network error ' + response.status + ': ' + response.statusText);
+            }
+        });
+
+        return def.promise;
+    };
+
+    /**
+     *  getSampleMatches - start a get sample matches operation based on the currentProfile.
+     *  @param profile (object)
+     *  @returns (object) - promise.
+     */
+    this.getSampleMatches = function(profile) {
+        $log.log('getSampleMatches');
+        // Clear out any existing data in the sampleMatches array.
+        this.sampleMatches = [];
+
+        // Create a promise to return to the caller.
+        var def = $q.defer();
+
+        // Check the passed parameters.  If any of them are invalid, reject the
+        // promise (yes, it i
+
+        $.ajax({
+            url: 'profile/sample_matches.php',
+            method: 'post',
+            dataType: 'json',
+            cache: false,
+            data: {
+                profile: profile
+            },
+            success: function(response) {
+                $log.log('getSampleMatches: success: ' + response.success);
+                debugger;
+                if (response.success) {
+                    self.currentProfile = response.profile;
+                    def.resolve(response);
+                } else {
+                    def.reject('Server error: ' + response.message);
+                }
+            },
+            error: function(response) {
+                $log.warn('getSampleMatches: error');
+                debugger;
                 def.reject('Network error ' + response.status + ': ' + response.statusText);
             }
         });
