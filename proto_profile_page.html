@@ -43,6 +43,10 @@
         <button id="update-button" ng-click="pc.onUpdateButton()">Update</button>
         <span>Use 'get' first, then change data and hit 'update'.</span>
     </div>
+    <div>
+        <button id="sample-matches-button" ng-click="pc.onSampleMatchesButton()">Sample Matches</button>
+        <span>Use 'get' first or set data manually, then hit 'sample matches' (scroll down to see list).</span>
+    </div>
     <hr>
     <h3>Results:</h3>
     <p>Add Results: <span>{{pc.addResults}}</span></p>
@@ -267,6 +271,10 @@
         </tr>
     </table>
 </div>
+<hr>
+<h3>Sample Matches:</h3>
+<p>Sample Matches Results: <span>{{pc.sampleMatchesResults}}</span></p>
+
 </body>
 </html>
 

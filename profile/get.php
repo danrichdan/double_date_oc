@@ -34,6 +34,8 @@ if ($username) {
                 else {
                     $response = [
                         'success' => false,
+                        'query' => $query,
+                        '$result' => $result,
                         'message' => 'Profile not found (code q5)'
                     ];
                 }

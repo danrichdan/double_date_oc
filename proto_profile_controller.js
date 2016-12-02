@@ -34,8 +34,15 @@ gApp.controller("protoProfileController", function($scope, profileService){
      */
     this.addResults = '';
     this.getResults = '';
+    this.sampleMatchesResults = '';
     this.updateResults = '';
     this.uploadResults = '';
+
+    /**
+     *  sampleMatches - return data from getSampleMatches.
+     *  @type {[object]}
+     */
+    this.sampleMatches = profileService.sampleMatches;
 
     /**
      *  Dropzone
@@ -131,10 +138,27 @@ gApp.controller("protoProfileController", function($scope, profileService){
                         self.profileGotten = true;
                     },
                     function(response) {
-                        console.log('onGetButton: error: ' + response.message);
+                        console.log('onGetButton: error: ' + response);
                         self.getResults = response;
                     });
         }
+    };
+
+    /**
+     *  onSampleMatchesButton - click handler.
+     */
+    this.onSampleMatchesButton = function() {
+        console.log('onSampleMatchesButton');
+        this.updateResults = 'Starting sample matches.';
+        profileService.getSampleMatches(this.currentProfile)
+            .then(function(response) {
+                console.log('onSampleMatchesButton: success');
+                self.sampleMatchesResults = 'Success';
+            },
+            function(response) {
+                console.log('onSampleMatchesButton: error: ' + response);
+                self.sampleMatchesResults = response;
+            });
     };
 
     /**
@@ -148,13 +172,13 @@ gApp.controller("protoProfileController", function($scope, profileService){
             this.updateResults = 'Starting update.';
             profileService.update(this.currentProfile)
                 .then(function(response) {
-                    console.log('onUpdateButton: success');
-                    self.updateResults = 'Success';
-                },
-                function(response) {
-                    console.log('onUpdateButton: error: ' + response.message);
-                    self.updateResults = response;
-                });
+                        console.log('onUpdateButton: success');
+                        self.updateResults = 'Success';
+                    },
+                    function(response) {
+                        console.log('onUpdateButton: error: ' + response.message);
+                        self.updateResults = response;
+                    });
         }
     };
 
