@@ -25,23 +25,24 @@ $zipcodeFields = array('city', 'latitude', 'longitude');
 
 // Get a sanitized version of a string parameter.
 function get_sanitized_string($s) {
-    return filter_var($s, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+//    return filter_var($s, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_LOW);
+    return filter_var($s, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_LOW);
 }
 
 // Get a sanitized version of the username passed in.
 function get_sanitized_username() {
     if (isset($_POST['username']) && $_POST['username']) {
         return filter_var($_POST['username'], FILTER_SANITIZE_STRING,
-            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_LOW);
     }
     else {
         return "";
     }
 }
 
-// Look up a zip code in the zipcodes table and return city, latitude, longitude.
+// Look up a zipcode in the zipcodes table and return city, latitude, longitude.
 // Returns false on any failure.
-function lookup_zip_code($conn, $zipcode)
+function lookup_zipcode($conn, $zipcode)
 {
     $query = "SELECT `zipcode`, `city`, `latitude`, `longitude`
               FROM `zipcodes` 
@@ -78,6 +79,9 @@ function convert_profile_to_client($profile) {
     $profile['theirAgeMin'] = intval($profile['theirAgeMin']);
     $profile['theirAgeMax'] = intval($profile['theirAgeMax']);
 
+    // Convert the quotes back to the user representation.
+    $profile['paragraph'] = htmlspecialchars_decode($profile['paragraph'], ENT_QUOTES);
+
     // Convert the booleans from "0" or "1" to a boolean.
     global $booleanFields;
     foreach ($booleanFields as $field) {
@@ -95,7 +99,7 @@ function convert_profile_from_client($profile) {
     $profile['paragraph'] = get_sanitized_string($profile['paragraph']);
     
     // Convert the numeric values to sanitized versions.
-    $profile['profileId'] = get_sanitized_string((string)$profile['id']);
+    $profile['id'] = get_sanitized_string((string)$profile['profileId']);
     $profile['zipcode'] = get_sanitized_string((string)$profile['zipcode']);
     $profile['distanceMax'] = get_sanitized_string((string)$profile['distanceMax']);
     $profile['ourAgeMin'] = get_sanitized_string((string)$profile['ourAgeMin']);
@@ -110,4 +114,16 @@ function convert_profile_from_client($profile) {
     }
 
     return $profile;
+}
+
+// Get the count of common interests between two profiles.
+function get_common_interest_count($p1, $p2) {
+    $count = 0;
+    global $booleanFields;
+    foreach ($booleanFields as $field) {
+        if (check_boolean_string($p1[$field]) && check_boolean_string($p2[$field])) {
+            $count += 1;
+        }
+    }
+    return $count;
 }

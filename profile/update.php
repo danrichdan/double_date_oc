@@ -9,7 +9,10 @@ $response = [];
 // If profile supplied, do basic checks.
 if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
     // Convert and sanitize the fields in the profile.
+    $temp0 = ord($profile['paragraph']);
+    $temp1 = $profile['paragraph'];
     $profile = convert_profile_from_client($profile);
+    $temp2 = $profile['paragraph'];
     $profileId = $profile['profileId'];
     $username = $profile['username'];
 
@@ -24,9 +27,9 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             // Add the specified profile to the profiles table.
             if ($conn) {
                 // Validate the zipcode field, and translate it to city, state, latitude, and longitude.
-                $zipcodeRow = lookup_zip_code($conn, $profile['zipcode']);
+                $zipcodeRow = lookup_zipcode($conn, $profile['zipcode']);
                 if ($zipcodeRow) {
-                    // lookup_zip_code succeeded.
+                    // lookup_zipcode succeeded.
                     // Build query strings for the field names and their values.
                     global $fields;
                     $query1 = '';
@@ -41,7 +44,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         $query1 .= ", `$field` = '$profile[$field]'";
                     }
 
-                    // Add in the extra values from the zip code.
+                    // Add in the extra values from the zipcode.
                     global $zipcodeFields;
                     foreach ($zipcodeFields as $field) {
                         $query1 .= ", `$field` = '$zipcodeRow[$field]'";
@@ -58,9 +61,12 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         // Build success response to user.
                         $response = [
                             'success' => true,
+                            'temp0' => $temp0,
+                            'temp1' => $temp1,
+                            'temp2' => $temp2,
                             'query' => $query
                         ];
-                        // Add in the extra values from the zip code.
+                        // Add in the extra values from the zipcode.
                         foreach ($zipcodeFields as $field) {
                             $response[$field] = $zipcodeRow[$field];
                         }
@@ -72,11 +78,11 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             'query' => $query
                         ];
                     }
-                } // lookup_zip_code failed.
+                } // lookup_zipcode failed.
                 else {
                     $response = [
                         'success' => false,
-                        'message' => 'Invalid zip code'
+                        'message' => 'Invalid zipcode'
                     ];
                 }
             }

@@ -27,33 +27,129 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             $ourAgeMax >= $ourAgeMin && $ourAgeMax <= 99) {
             // Check the connection.
             if ($conn) {
+                // Validate the zipcode field, and translate it to city, state, latitude, and longitude.
+                $zipcodeRow = lookup_zipcode($conn, $profile['zipcode']);
+                if ($zipcodeRow) {
+                    // lookup_zipcode succeeded; save lat/long to insert in query.
+                    $latitude = $zipcodeRow['latitude'];
+                    $longitude = $zipcodeRow['longitude'];
 
-                $query = "BLAH;";
+                    /* Sample query.
+                    SELECT *,
+                    ((abs(`p`.`latitude` - 33.70) * 69.172) + (abs(`p`.`longitude` - -117.87) * 0.83 * 69.172)) AS distance
+                    FROM `users` AS `u`
+                    JOIN `profiles` AS `p` ON `u`.`username` = `p`.`username`
 
-                $result = mysqli_query($conn, $query);
-                if ($result && (mysqli_num_rows($result) >= 1)) {
-                    while ($match = mysqli_fetch_assoc($result)) {
-                        // Convert the boolean and numeric data.
-                        $match = convert_profile_to_client($match);
+                    # Find normal users, not locked.
+                    WHERE `u`.`userLevel` = 'normal'
+                    AND `u`.`locked` = '0'
 
-                        // Push data into return array.
+                    # Check age ranges.
+                    AND `p`.`ourAgeMin` >= 42     # compare to new theirAgeMin
+                    AND `p`.`ourAgeMax` <= 62     # compare to new theirAgeMax
+                    AND `p`.`theirAgeMin` <= 55   # compare to new ourAgeMin
+                    AND `p`.`theirAgeMax` >= 57   # compare to new ourAgeMax
 
+                    # Check interests.
+                    AND (`p`.`bicycling` = '1'
+                         OR `p`.`cooking` = '1'
+                        )
+
+                    # Check distance.
+                    HAVING distance <= `p`.`distanceMax`
+                    AND distance <= 20            # compare to new maxDistance
+                    */
+                    // Start with the static part of the query.
+                    $query = "SELECT *,
+                    ((abs(`p`.`latitude` - $latitude) * 69.172) + (abs(`p`.`longitude` - $longitude) * 0.83 * 69.172)) AS distance
+                    FROM `users` AS `u`
+                    JOIN `profiles` AS `p` ON `u`.`username` = `p`.`username`
+                    WHERE `u`.`userLevel` = 'normal'
+                    AND `u`.`locked` = '0' ";
+
+                    // Add the part where we check the age ranges against the supplied profile.
+                    $query .= "AND `p`.`ourAgeMin` >= $theirAgeMin
+                    AND `p`.`ourAgeMax` <= $theirAgeMax
+                    AND `p`.`theirAgeMin` <= $ourAgeMin
+                    AND `p`.`theirAgeMax` >= $ourAgeMax ";
+
+                    // Add the part where we select on any interests in the supplied profile.
+                    $query .= "AND (";
+                    $interestCount = 0;
+
+                    global $booleanFields;
+                    foreach ($booleanFields as $field) {
+                        if ($profile[$field]) {
+                            // Set in supplied profile; add it to the query.
+                            if ($interestCount != 0) {
+                                $query .= "OR ";
+                            }
+                            $query .= "`p`.`$field` = '1' ";
+                            $interestCount += 1;
+                        }
                     }
 
-                    // Build success response to user.
-                    $response = [
-                        'success' => true,
-                        'temp' => $temp,
-                        'query' => $query
-                    ];
+                    // Add the closing parenthesis for the selection on interests.
+                    $query .= ") ";
 
-                }
-                // Failed to get the row data.
+                    // Add the distance checks against the stored record and the supplied profile.
+                    $query .= "HAVING distance <= `p`.`distanceMax`
+                               AND distance <= $distanceMax ";
+
+                    // Add the limit count of 20 for now.
+                    $query .= "LIMIT 20;";
+
+                    // Make sure at least one of the interests was supplied, or there is no point in the query.
+                    if ($interestCount) {
+                        $result = mysqli_query($conn, $query);
+                        if ($result && (mysqli_num_rows($result) >= 1)) {
+                            $matches = [];
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                // Convert the boolean and numeric data.
+                                $row = convert_profile_to_client($row);
+
+                                // Get only the fields that we are going to let the user see.
+                                $match = [
+                                    'username' => $row['username'],
+                                    'pictureLink' => $row['pictureLink'],
+                                    'paragraph' => $row['paragraph'],
+                                    'zipcode' => $row['zipcode'],
+                                    'city' => $row['city'],
+                                    'commonInterests' => get_common_interest_count($profile, $row)
+                                ];
+
+                                // Push data into return array.
+                                array_push($matches, $match);
+                            }
+
+                            // Build success response to user.
+                            $response = [
+                                'success' => true,
+                                'temp' => $temp,
+                                'query' => $query,
+                                'matches' => $matches
+                            ];
+
+                        } // Failed to get the row data.
+                        else {
+                            $response = [
+                                'success' => false,
+                                'message' => 'Failed to locate matches',
+                                'query' => $query
+                            ];
+                        }
+                    } // No interests were specified.
+                    else {
+                        $response = [
+                            'success' => false,
+                            'message' => 'Invalid profile parameter: no interests'
+                        ];
+                    }
+                } // Lookup zipcode failed.
                 else {
                     $response = [
                         'success' => false,
-                        'message' => 'Failed to locate matches',
-                        'query' => $query
+                        'message' => 'Invalid zipcode'
                     ];
                 }
             }

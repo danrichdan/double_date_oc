@@ -363,9 +363,8 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
             },
             success: function(response) {
                 $log.log('getSampleMatches: success: ' + response.success);
-                debugger;
                 if (response.success) {
-                    self.currentProfile = response.profile;
+                    self.sampleMatches = response.matches;
                     def.resolve(response);
                 } else {
                     def.reject('Server error: ' + response.message);
@@ -373,7 +372,6 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
             },
             error: function(response) {
                 $log.warn('getSampleMatches: error');
-                debugger;
                 def.reject('Network error ' + response.status + ': ' + response.statusText);
             }
         });
