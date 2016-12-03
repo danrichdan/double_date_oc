@@ -4,7 +4,7 @@
  *      along with the back end profile/*.php files.
  */
 
-gApp.controller("protoProfileController", function($scope, profileService){
+app.controller("protoProfileController", function($scope, profileService){
     console.log('protoProfileController: constructor');
     var self = this;
 

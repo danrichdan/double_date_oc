@@ -5,8 +5,8 @@
  */
 
 /**
- *  gApp - Angular application.
+ *  app - Angular application.
  *  @type   object.
  */
-var gApp = angular.module('protoUserApp', []);
+var app = angular.module('protoUserApp', []);
 

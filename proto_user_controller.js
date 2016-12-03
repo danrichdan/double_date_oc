@@ -4,7 +4,7 @@
  *      along with the back end user/*.php files.
  */
 
-gApp.controller("protoUserController", function(userService){
+app.controller("protoUserController", function(userService){
     console.log('protoUserController: constructor');
     var self = this;
 
