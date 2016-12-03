@@ -4,7 +4,7 @@
  *      functional interfaces: add, checkStatus, login, logout.
  */
 
-gApp.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
+app.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
     $log.log('userService: constructor');
     var self = this;
 
