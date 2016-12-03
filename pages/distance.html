@@ -1,14 +1,14 @@
 
 <body>
-<h1>we're looking for couples within <span class="miles">{{lc.miles}}</span> miles of us </h1>
+<h1>we're looking for couples within <span class="miles">{{dc.userMaxDistance}}</span> miles of us </h1>
 <!--  -->
 <div class="distance-btns">
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=5; lc.getLocation(5)">5</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=10; lc.getLocation(10)">10</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=20; lc.getLocation(20)">20</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=30; lc.getLocation(30)">30</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=40; lc.getLocation(40)">40</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="lc.miles=50; lc.getLocation(50)">50</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=5; lc.getLocation(5)" ng-class="{buttonHighlighted: dc.userMaxDistance==5}">5</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=10; lc.getLocation(10)" ng-class="{buttonHighlighted: dc.userMaxDistance==10}">10</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=20; lc.getLocation(20)" ng-class="{buttonHighlighted: dc.userMaxDistance==20}">20</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=30; lc.getLocation(30)"ng-class="{buttonHighlighted: dc.userMaxDistance==30}">30</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=40; lc.getLocation(40)"ng-class="{buttonHighlighted: dc.userMaxDistance==40}">40</button>
+    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=50; lc.getLocation(50)"ng-class="{buttonHighlighted: dc.userMaxDistance==50}">50</button>
 
 </div>
 
@@ -18,8 +18,8 @@
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
     </a>
-    <a href="#/user_age_range">
-    <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+    <!-- <a href="#/user_age_range"> -->
+    <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="dc.setDistance()">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     </button>
     </a>

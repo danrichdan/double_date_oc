@@ -115,7 +115,7 @@
     font-size:17px;
 }
 
-/*location page*/
+/*distance page*/
 
 .current-location{
     margin-top:4%;
@@ -139,6 +139,12 @@
     color: #368e8b;
     font-weight: bolder;
     /*text-decoration: underline;*/
+}
+
+.buttonHighlighted{
+    background-color: #368e8b;
+    color: white;
+    border: 1px #E9D555 solid;
 }
 
 /*interests page*/
