@@ -167,11 +167,42 @@ app.controller('distanceController',function(profileService, $location){
 });
 
 
-app.controller('userAgeController',function(signUpService){
-        this.userAge = '__';
+app.controller('userAgeController',function(profileService, $location){
+    this.ourAgeMin = profileService.getOurAgeMin();
+    this.ourAgeMax = profileService.getOurAgeMax();
+    console.log(this.ourAgeMin);
+    console.log(this.ourAgeMax);
+    this.ourAgeRange = function(){
+        if(this.ourAgeMin && this.ourAgeMax){
+            if(this.ourAgeMax =='100'){
+            return this.ourAgeMin+'+';
+            }else{
+            return this.ourAgeMin+'-'+this.ourAgeMax;
+            }
+        }
+        else{
+            return '__';
+        }
+    }
+    this.ourAgeRangeExists = function(){
+        if(this.ourAgeMin && this.ourAgeMax){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    this.setOurAge = function(){
+        console.log('in setOurAge');
+        profileService.currentProfile.ourAgeMin = this.ourAgeMin;
+        profileService.currentProfile.ourAgeMax = this.ourAgeMax; 
+        console.log('profileService.currentProfile.ourAgeMin :', profileService.currentProfile.ourAgeMin, 'profileService.currentProfile.ourAgeMax :', profileService.currentProfile.ourAgeMax);
+        $location.url('/age_range');
+    }
 });
 
-app.controller('ageController', function(signUpService){
+app.controller('ageController', function(signUpService, $location){
     //if person click then select multiple age ranges below
         this.age = '__';
 

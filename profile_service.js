@@ -142,9 +142,9 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     this.getCity =              function() { return this.currentProfile.city };
     this.getLatitude =          function() { return this.currentProfile.latitude };
     this.getLongitude =         function() { return this.currentProfile.longitude };
-    this.getDistanceMax =       function() { console.log('in getDistanceMax in profService'); return this.currentProfile.distanceMax };
+    this.getDistanceMax =       function() { return this.currentProfile.distanceMax };
     this.getOurAgeMin =         function() { return this.currentProfile.ourAgeMin };
-    this.getOurAgeMax =         function() { return this.currentProfile.outAgeMax };
+    this.getOurAgeMax =         function() { return this.currentProfile.ourAgeMax };
     this.getTheirAgeMin =       function() { return this.currentProfile.theirAgeMin };
     this.getTheirAgeMax =       function() { return this.currentProfile.theirAgeMax };
 
