@@ -2,7 +2,7 @@
 <div class="location">
     where are you?
     <div class="match-locale">
-        <input type="number" placeholder="zip code" class="input_text" ng-model="ulc.zip" ng-change='ulc.checkZip()'>
+        <input type="text" maxlength='5' placeholder="zip code" class="input_text" ng-change='ulc.checkMaxZip(ulc.userInputZip)' ng-model="ulc.userInputZip" ng-blur="ulc.getUserLocation(ulc.userInputZip)" >
         <button type="button" class="btn btn-default btn-block current-location">use my current location</button>
 
     <div class="previous-next pull-right">
@@ -11,8 +11,8 @@
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             </button>
         </a>
-        <a href="#/location">
-            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <!-- <a href="#/locati3on"> -->
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="ulc.setUserLocation(ulc.userInputZip)">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
         </a>
