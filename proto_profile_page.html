@@ -22,6 +22,9 @@
             height: 150px;
             width: auto;
         }
+        #sample-matches-table img {
+            height: 150px;
+        }
     </style>
 </head>
 <body>
@@ -270,11 +273,20 @@
             <td><input type="checkbox" ng-model="pc.currentProfile.travelAbroad"></td>
         </tr>
     </table>
+    <hr>
+    <h3>Sample Matches:</h3>
+    <p>Sample Matches Results: <span>{{pc.sampleMatchesResults}}</span></p>
+    <table id="sample-matches-table">
+        <tr ng-repeat="match in pc.sampleMatches">
+            <td>{{match.username}}</td>
+            <td><img src="{{match.pictureLink}}"></td>
+            <td>{{match.paragraph}}</td>
+            <td>{{match.zipcode}}</td>
+            <td>{{match.city}}</td>
+            <td>{{match.commonInterests}} common interests</td>
+        </tr>
+    </table>
 </div>
-<hr>
-<h3>Sample Matches:</h3>
-<p>Sample Matches Results: <span>{{pc.sampleMatchesResults}}</span></p>
-
 </body>
 </html>
 

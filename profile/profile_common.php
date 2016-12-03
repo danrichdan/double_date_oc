@@ -25,14 +25,15 @@ $zipcodeFields = array('city', 'latitude', 'longitude');
 
 // Get a sanitized version of a string parameter.
 function get_sanitized_string($s) {
-    return filter_var($s, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+//    return filter_var($s, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_LOW);
+    return filter_var($s, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_LOW);
 }
 
 // Get a sanitized version of the username passed in.
 function get_sanitized_username() {
     if (isset($_POST['username']) && $_POST['username']) {
         return filter_var($_POST['username'], FILTER_SANITIZE_STRING,
-            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_HIGH);
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_LOW);
     }
     else {
         return "";
@@ -77,6 +78,9 @@ function convert_profile_to_client($profile) {
     $profile['ourAgeMax'] = intval($profile['ourAgeMax']);
     $profile['theirAgeMin'] = intval($profile['theirAgeMin']);
     $profile['theirAgeMax'] = intval($profile['theirAgeMax']);
+
+    // Convert the quotes back to the user representation.
+    $profile['paragraph'] = htmlspecialchars_decode($profile['paragraph'], ENT_QUOTES);
 
     // Convert the booleans from "0" or "1" to a boolean.
     global $booleanFields;

@@ -42,7 +42,7 @@ gApp.controller("protoProfileController", function($scope, profileService){
      *  sampleMatches - return data from getSampleMatches.
      *  @type {[object]}
      */
-    this.sampleMatches = profileService.sampleMatches;
+    this.sampleMatches = [];
 
     /**
      *  Dropzone
@@ -149,11 +149,12 @@ gApp.controller("protoProfileController", function($scope, profileService){
      */
     this.onSampleMatchesButton = function() {
         console.log('onSampleMatchesButton');
-        this.updateResults = 'Starting sample matches.';
+        self.sampleMatchesResults = 'Starting sample matches.';
         profileService.getSampleMatches(this.currentProfile)
             .then(function(response) {
                 console.log('onSampleMatchesButton: success');
-                self.sampleMatchesResults = 'Success';
+                self.sampleMatches = response.matches;
+                self.sampleMatchesResults = 'Success: sample matches returned: ' + self.sampleMatches.length;
             },
             function(response) {
                 console.log('onSampleMatchesButton: error: ' + response);

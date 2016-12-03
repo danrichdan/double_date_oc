@@ -82,9 +82,9 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         if ($profile[$field]) {
                             // Set in supplied profile; add it to the query.
                             if ($interestCount != 0) {
-                                $query .= "AND ";
+                                $query .= "OR ";
                             }
-                            $query .= "`p`.`$field` = '1'";
+                            $query .= "`p`.`$field` = '1' ";
                             $interestCount += 1;
                         }
                     }
@@ -94,7 +94,10 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
 
                     // Add the distance checks against the stored record and the supplied profile.
                     $query .= "HAVING distance <= `p`.`distanceMax`
-                               AND distance <= $distanceMax;";
+                               AND distance <= $distanceMax ";
+
+                    // Add the limit count of 20 for now.
+                    $query .= "LIMIT 20;";
 
                     // Make sure at least one of the interests was supplied, or there is no point in the query.
                     if ($interestCount) {

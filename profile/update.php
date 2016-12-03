@@ -9,7 +9,10 @@ $response = [];
 // If profile supplied, do basic checks.
 if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
     // Convert and sanitize the fields in the profile.
+    $temp0 = ord($profile['paragraph']);
+    $temp1 = $profile['paragraph'];
     $profile = convert_profile_from_client($profile);
+    $temp2 = $profile['paragraph'];
     $profileId = $profile['profileId'];
     $username = $profile['username'];
 
@@ -58,6 +61,9 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         // Build success response to user.
                         $response = [
                             'success' => true,
+                            'temp0' => $temp0,
+                            'temp1' => $temp1,
+                            'temp2' => $temp2,
                             'query' => $query
                         ];
                         // Add in the extra values from the zipcode.
