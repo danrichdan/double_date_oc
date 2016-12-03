@@ -8,8 +8,6 @@ app.controller('routeController',function($scope){
 
 app.config(function($routeProvider){
     $routeProvider
-
-        //route for location page (new user)
         .when('/', {
             templateUrl: 'pages/welcome.html',
             controller: 'mainController'
@@ -20,12 +18,12 @@ app.config(function($routeProvider){
             controller: 'userLocationController',
             controllerAs: 'ulc'
         })
-        //route for location page
+        //route for distance page
 
-        .when('/location',{
-            templateUrl: 'pages/location.html',
-            controller: 'locationController',
-            controllerAs: 'lc'
+        .when('/distance',{
+            templateUrl: 'pages/distance.html',
+            controller: 'distanceController',
+            controllerAs: 'dc'
         })
         //route for user age range page
         .when('/user_age_range',{
@@ -75,42 +73,94 @@ app.config(function($routeProvider){
         })
         .otherwise({
             redirectTo: "/"
-        });
+        })
 });
 
 
 // Controllers for the different pages below
 app.controller('mainController', function(){
+});
 
-}).controller('userLocationController',function(){
-   this.checkZip = function(){
-       console.log('this.zipCode.toString().length :', this.zip.toString().length);
-       if(this.zip.toString().length>5){
-           console.log('true');
-           this.zip = parseInt(this.zip.toString().substring(0,5));
-           console.log(this.zip.toString().substring(0,5));
-           return true;
-       }else{
-           console.log('false');
-           return false;
-       }
-    };
-     //Location Page Controller
-        //get location input from user
-        //store into a variable in controller to pass to service
-}).controller('locationController',function(signUpService){
+app.controller('userLocationController',function(profileService, $location){
+    this.userInputZip = parseFloat(profileService.getZipcode());
+    console.log("userInputZip : ", this.userInputZip);
+
+    //validate info input, save, url after button click
+    this.validateZip = function(input){
+        console.log('in validateZip func', input);
+        this.inputString = input.toString();
+        this.inputLength = input.toString().length; 
+        console.log(this.inputLength);
+        if(parseInt(this.inputLength) === 5){
+            console.log('valid zip');
+            console.log(this.inputString, this.inputString[0]);
+            if(this.inputString[0]==='9'){
+                console.log('first digit of zip is 9');
+                return true;
+            }else{
+                console.log('first digit of zip is NOT 9');
+                return false;
+            }
+        } else{
+            console.log('not valid zip');
+            return false;
+        }
+    }
+
+    this.setUserLocation = function(userInputZip){
+        console.log('in setUserLocation func', userInputZip);
+        if(this.validateZip(userInputZip)===true){
+            console.log('validateZip is true');
+            profileService.currentProfile.zipcode = userInputZip;
+            console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
+            $location.url('/distance');
+        }
+        else{
+            console.log('not valid zip to save to user profile');
+        }
+    }
+
+    this.checkMaxZip = function(){
+        console.log('this.userInputZip.toString().length :', this.userInputZip.toString().length);
+        if(this.userInputZip.toString().length < 6){
+            console.log('true');
+            // this.userInputZip = parseInt(this.zip.toString().substring(0,5));
+            // console.log(this.userInputZip.toString().substring(0,5));
+            return true;
+        }else{
+            console.log('false length');
+            return false;
+        } 
+    }
+
+
+
+});
+
+app.controller('distanceController',function(profileService){
+        console.log('in distanceController function');
         //get location input from user
         this.miles = '__';
+        this.getLocation = function (selectedMiles){
+            this.
+            profileService.currentProfile.distanceMax= selectedMiles;
+            console.log(signUpService.locationMiles);
+        }
 
     //store into a variable in controller to pass to service
-}).controller('userAgeController',function(signUpService){
-        this.userAge = '__';
+});
 
-}).controller('ageController', function($scope){
+app.controller('userAgeController',function(signUpService){
+        this.userAge = '__';
+});
+
+app.controller('ageController', function(signUpService){
     //if person click then select multiple age ranges below
         this.age = '__';
 
-}).controller('interestsHomeController', function(signUpService){
+});
+
+app.controller('interestsHomeController', function(signUpService){
          this.toggleInterest = function(interest){
             console.log('interest : ',interest);
             if(this.checkInterest(interest)){
@@ -130,8 +180,9 @@ app.controller('mainController', function(){
                 return false;
             }
         }
-})
-    .controller('interestsOutController', function(signUpService){
+});
+
+app.controller('interestsOutController', function(signUpService){
         this.toggleInterest = function(interest){
             console.log('interest : ',interest);
             if(this.checkInterest(interest)){
@@ -151,7 +202,9 @@ app.controller('mainController', function(){
                 return false;
             }
         }
-}).controller('interestsOutdoorsController', function(signUpService){
+});
+
+app.controller('interestsOutdoorsController', function(signUpService){
         this.toggleInterest = function(interest){
         console.log('interest : ',interest);
         if(this.checkInterest(interest)){
@@ -171,7 +224,9 @@ app.controller('mainController', function(){
             return false;
         }
     }
-}).controller('interestsTravelController', function(signUpService){
+});
+
+app.controller('interestsTravelController', function(signUpService){
     this.toggleInterest = function(interest){
         console.log('interest : ',interest);
         if(this.checkInterest(interest)){
@@ -193,10 +248,16 @@ app.controller('mainController', function(){
             console.log('CheckInterest is false');
             return false;
         }
+
+    
     }
-}).controller('signUpController', function($scope) {
+});
+
+app.controller('signUpController', function($scope) {
         //Login Page Controller
-}).controller('loginController', function($scope){
+});
+
+app.controller('loginController', function($scope){
     //Login Page Controller
 
 });
@@ -206,6 +267,7 @@ app.service('signUpService', function(){
     this.aNightOut = [];
     this.stayActive = [];
     this.whenTravelling = [];
-    // this.locationMiles = null;
+    this.locationMiles = '';
+    this.userZipCode = '';
 
 });

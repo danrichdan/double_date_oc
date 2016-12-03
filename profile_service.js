@@ -4,10 +4,9 @@
  *      functional interfaces: add, get, and update.
  */
 
-gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) {
+app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) {
     $log.log('profileService: constructor');
     var self = this;
-
     /**
      *  currentProfile - Global object with status.
      *  @type {object}
@@ -139,7 +138,7 @@ gApp.service("profileService", ['$http', '$q', '$log', function($http, $q, $log)
     this.getPictureLink =       function() { return this.currentProfile.pictureLink };
     this.getParagraph =         function() { return this.currentProfile.paragraph };
 
-    this.getZipcode =           function() { return this.currentProfile.zipcode };
+    this.getZipcode =           function() { console.log('in getZipcode func in profService'); return this.currentProfile.zipcode };
     this.getCity =              function() { return this.currentProfile.city };
     this.getLatitude =          function() { return this.currentProfile.latitude };
     this.getLongitude =         function() { return this.currentProfile.longitude };
