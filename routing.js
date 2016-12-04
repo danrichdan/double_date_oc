@@ -25,17 +25,17 @@ app.config(function($routeProvider){
             controller: 'distanceController',
             controllerAs: 'dc'
         })
-        //route for user age range page
-        .when('/user_age_range',{
-            templateUrl: 'pages/user_age_range.html',
-            controller: 'userAgeController',
-            controllerAs: 'uac'
+        //route for our age range page
+        .when('/our_age_range',{
+            templateUrl: 'pages/our_age_range.html',
+            controller: 'ourAgeController',
+            controllerAs: 'oac'
         })
-        //route for age range page
-        .when('/age_range',{
-            templateUrl: 'pages/age_range.html',
-            controller: 'ageController',
-            controllerAs: 'ac'
+        //route for their age range page
+        .when('/their_age_range',{
+            templateUrl: 'pages/their_age_range.html',
+            controller: 'theirAgeController',
+            controllerAs: 'tac'
         })
         //route for user interests page
         .when('/interests_home',{
@@ -133,7 +133,6 @@ app.controller('userLocationController',function(profileService, $location){
     // }
 });
 
-
 app.controller('distanceController',function(profileService, $location){
     //  check if profileService has maxDistance 
     this.userMaxDistance = profileService.getDistanceMax();
@@ -162,12 +161,12 @@ app.controller('distanceController',function(profileService, $location){
         console.log(this.userMaxDistance);
         profileService.currentProfile.distanceMax= this.userMaxDistance;
         console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
-        $location.url('/user_age_range');
+        $location.url('/our_age_range');
     }   
 });
 
 
-app.controller('userAgeController',function(profileService, $location){
+app.controller('ourAgeController',function(profileService, $location){
     this.ourAgeMin = profileService.getOurAgeMin();
     this.ourAgeMax = profileService.getOurAgeMax();
     console.log(this.ourAgeMin);
@@ -176,7 +175,8 @@ app.controller('userAgeController',function(profileService, $location){
         if(this.ourAgeMin && this.ourAgeMax){
             if(this.ourAgeMax =='100'){
             return this.ourAgeMin+'+';
-            }else{
+            }
+            else{
             return this.ourAgeMin+'-'+this.ourAgeMax;
             }
         }
@@ -198,14 +198,41 @@ app.controller('userAgeController',function(profileService, $location){
         profileService.currentProfile.ourAgeMin = this.ourAgeMin;
         profileService.currentProfile.ourAgeMax = this.ourAgeMax; 
         console.log('profileService.currentProfile.ourAgeMin :', profileService.currentProfile.ourAgeMin, 'profileService.currentProfile.ourAgeMax :', profileService.currentProfile.ourAgeMax);
-        $location.url('/age_range');
+        $location.url('/their_age_range');
     }
 });
 
-app.controller('ageController', function(signUpService, $location){
+app.controller('theirAgeController', function(profileService, $location){
     //if person click then select multiple age ranges below
-        this.age = '__';
+    this.theirAgeMin = profileService.getTheirAgeMin();
+    this.theirAgeMax = profileService.getTheirAgeMax();
+    console.log('profileService.getTheirAgeMin()', profileService.getTheirAgeMin());
+    console.log('profileService.currentProfile.theirAgeMin',profileService.currentProfile.theirAgeMin);
+    console.log('profileService.currentProfile.theirAgeMax',profileService.currentProfile.theirAgeMax);
 
+
+    this.theirAgeRange = function(){
+        console.log('in theirAgeRange');
+       if(this.theirAgeMin && this.theirAgeMax){
+            if(this.theirAgeMax == '100'){
+                return this.theirAgeMin+"+";
+            }
+            else{
+                return this.theirAgeMin+"-"+this.theirAgeMax;
+            }
+        }
+        else{
+            return "__";
+        }
+    }
+
+    this.setTheirAge = function(){
+        profileService.currentProfile.theirAgeMin = this.theirAgeMin;
+        profileService.currentProfile.theirAgeMax = this.theirAgeMax;
+        console.log('profileService.currentProfile.theirAgeMin',profileService.currentProfile.theirAgeMin);
+        console.log('profileService.currentProfile.theirAgeMax',profileService.currentProfile.theirAgeMax);
+        $location.url('/interests_home');
+    }
 });
 
 app.controller('interestsHomeController', function(signUpService){

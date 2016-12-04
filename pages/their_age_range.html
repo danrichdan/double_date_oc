@@ -1,0 +1,25 @@
+<div class="age_range">
+    we want to meet other couples who are <span class="age">{{tac.theirAgeRange()}}</span> years old.
+
+    <div class="age-range-buttons">
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="tac.theirAgeMin = '18'; tac.theirAgeMax = '25'" ng-class="{buttonHighlighted: tac.theirAgeMin == '18'}">18-25</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="tac.theirAgeMin ='26'; tac.theirAgeMax = '35'" ng-class="{buttonHighlighted: tac.theirAgeMin == '26'}">26-35</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="tac.theirAgeMin = '36'; tac.theirAgeMax = '50'" ng-class="{buttonHighlighted: tac.theirAgeMin == '36'}">36-50</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="tac.theirAgeMin = '51'; tac.theirAgeMax = '60'" ng-class="{buttonHighlighted: tac.theirAgeMin == '51'}">51-60</button>
+        <button type="button" class="btn btn-default age-btn" aria-label="Left Align" ng-click="tac.theirAgeMin = '61'; tac.theirAgeMax = '100'" ng-class="{buttonHighlighted: tac.theirAgeMin =='61'}">61+</button>
+    </div>
+
+
+    <div class="previous-next pull-right">
+        <a href="#/our_age_range">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
+        <!-- <a href="#/interests_home"> -->
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click = 'tac.setTheirAge()'>
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <!-- </button> -->
+        </a>
+    </div>
+</div>
