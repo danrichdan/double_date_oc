@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="doubleDateApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Francois+One|News+Cycle|Open+Sans+Condensed:300|PT+Sans+Narrow" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <script src="routing.js"></script>
+    -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .edit_profile_body{
+            background-color: #B2DFDB;
+            overflow:visible;
+            color:white;
+            font-family: 'Open Sans Condensed', sans-serif;
+            vertical-align: middle;
+            font-size: 3em;
+            /*
+            padding:1px 10px 50px 10px; /*50px for footer placeholder, please change */
+            */
+            margin:0;
+            padding: 10px;
+            width:100%;
+            height:100%;
+            min-height:100%;
+        }
+        .edit_profile_body h1 {
+            margin: 5%;
+        }
+        .photo {
+            border: 2px solid white;
+            display:block;
+            height:25vh;
+            width: 25vh;
+            margin: auto;
+            box-shadow: 2px 2px 2px #555;
+            background:black;
+        }
+        .profile-edit.list-group {
+            margin: 10%;
+            font-size:0.5em;
+            position:relative;
+        }
+        .profile-option, .photo-option {
+            display:none;
+            height:40vh;
+            width:100%;
+            background:white;
+            color:black;
+            border: 1px solid rgb(221, 221, 221);
+        }
+        .profile-option textarea {
+            width:100%;
+            height:50%;
+        }
+        .profile-option input[type=checkbox] {
+            visibility: hidden;
+        }
+        .profile-option input[type=checkbox] + label {
+            font-size:0.7em;
+            background-color:#a0d4c5;
+            border-radius: 5px;
+            padding: 1px 4px;
+        }
+        .profile-option input[type=checkbox]:checked + label {
+            background-color:#6abca4;
+            color:white;
+        }
+        #footer {
+            position:fixed;
+            bottom:0px;
+            width:100%;
+            height: 50px;
+            background-color:#6abca4;
+            margin:0;
+            left:0;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.profile-list').click(setting_clicked);
+            $('.photo').click(photo_clicked);
+        });
+        function setting_clicked() {
+            $(this).removeClass('profile-list');
+            $('.profile-list').toggle();
+            $(this).addClass('profile-list');
+            var index = $(this).index("a");
+            $('.profile-option:eq('+index+')').toggle();
+        }
+        function photo_clicked() {
+            $('.profile-list').toggle();
+            $('.profile-option:last-child').toggle();
+        }
+    </script>
+</head>
+<body">
+<div class="edit_profile_body">
+    <h1>Profile Editor</h1>
+    <img class="photo" src="test">
+    <div class="profile-edit list-group">
+        <a href="#" class="profile-list list-group-item">Names</a>
+        <div class="profile-option">
+            <input type="text" placeholder="Name 1">
+            <input type="text" placeholder="Name 2">
+            <button>Save</button>
+        </div>
+        <a href="#" class="profile-list list-group-item">Ages</a>
+        <div class="profile-option">
+            <input type="text" placeholder="Age 1">
+            <input type="text" placeholder="Age 2">
+            <button>Save</button>
+        </div>
+        <a href="#" class="profile-list list-group-item">Paragraph</a>
+        <div class="profile-option">
+            <textarea placeholder="enter text here"></textarea>
+            <button>Save</button>
+        </div>
+        <a href="#" class="profile-list list-group-item">Zip Code</a>
+        <div class="profile-option">
+            <input type="text" placeholder="Zip Code">
+            <button>Save</button>
+        </div>
+        <a href="#" class="profile-list list-group-item">Search distance</a>
+        <div class="profile-option">
+            <input type="text" placeholder="Distance">
+            <button>Save</button>
+        </div>
+        <a href="#" class="profile-list list-group-item">Age search filter</a>
+        <div class="profile-option">
+            <input type="text" placeholder="Age min">
+            <input type="text" placeholder="Age max">
+            <button>Save</button>
+        </div>
+        <a href="#" class="profile-list list-group-item">Interests</a>
+        <div class="profile-option">
+            <input type="checkbox" id="cbox1" value="first_checkbox"><label for="cbox1">Interest 1</label>
+            <input type="checkbox" id="cbox2" value="second_checkbox"><label for="cbox2">Interest 2</label>
+            <button>Save</button>
+        </div>
+        <div class="profile-option">
+            <input type="text" placeholder="Photo URL">
+            <button>Save</button>
+        </div>
+    </div>
+    <!--<div id="footer">footer placeholder</div>-->
+    </body>
+</html>
