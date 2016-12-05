@@ -1,5 +1,9 @@
 /*Log-in page */
+<<<<<<< HEAD
 .login_body, .welcome_body, .location_body{
+=======
+.login_body, .welcome_body,.match_body{
+>>>>>>> f62229a05e8bd0b45f5bd7a74ed3eb057fd19d98
     background-color: #B2DFDB;
     overflow:visible;
     color:white;
@@ -126,6 +130,7 @@
     color:grey;
 }
 
+<<<<<<< HEAD
 .previous-next{
     margin-top:10%;
 }
@@ -161,4 +166,40 @@
 }
 .selectedButton{
     background-color: #368e8b;
+=======
+}
+
+.match_content {
+    width:85vw;
+    margin:auto;
+    font-size: 0.7em;
+}
+
+.match_card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #ffffff;
+    color:#000000;
+}
+
+.match_buttons {
+    display:flex;
+    justify-content: space-around;
+    margin-top:8vw;
+}
+
+.match_name,.label {
+    background-color: #559385;
+    color:#ffffff;
+}
+
+.match_name {
+    padding:0 5%;
+}
+
+.btn.btn_match {
+    width:24vw;
+    height:24vw;
+    border-radius: 12vw;
+    font-size: 2.5em;
+>>>>>>> f62229a05e8bd0b45f5bd7a74ed3eb057fd19d98
 }
