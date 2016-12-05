@@ -3,34 +3,42 @@
 <div class="interest-checkboxes">
     <div class="at-home groupings">
         <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
-                ng-click="ihc.toggleInterest('book-club');"
-                ng-class="{selectedButton: ihc.checkInterest('book-club')}">book
+                ng-click="ihc.bookClub=!ihc.bookClub; ihc.$log.log(ihc.bookClub)"
+                ng-class="{selectedButton: ihc.bookClub}">book
             club</button>
-        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align" ng-click="ihc.toggleInterest('conversation');"
-                ng-class="{selectedButton: ihc.checkInterest('conversation')}">conversation (e.g. around the fire
+        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+                ng-click="ihc.conversation=!ihc.conversation; ihc.$log.log(ihc.conversation)"
+                ng-class="{selectedButton: ihc.conversation}">conversation (e.g. around the fire
             pit)</button>
-        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align" ng-click="ihc.toggleInterest('cooking');"
-                ng-class="{selectedButton: ihc.checkInterest('cooking')}">cooking</button>
-        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align" ng-click="ihc.toggleInterest('crafts');"
-                ng-class="{selectedButton: ihc.checkInterest('crafts')}">crafts</button>
-        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align" ng-click="ihc.toggleInterest('movie-night');"
-                ng-class="{selectedButton: ihc.checkInterest('movie-night')}">movie night</button>
-        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align" ng-click="ihc.toggleInterest('board-games');"
-                ng-class="{selectedButton: ihc.checkInterest('board-games')}">playing board games</button>
-        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align" ng-click="ihc.toggleInterest('card-games');"
-                ng-class="{selectedButton: ihc.checkInterest('card-games')}">playing card games</button>
+        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+                ng-click="ihc.cooking=!ihc.cooking; ihc.$log.log(ihc.cooking)"
+                ng-class="{selectedButton: ihc.cooking}">cooking</button>
+        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+                ng-click="ihc.crafts=!ihc.crafts; ihc.$log.log(ihc.crafts)"
+                ng-class="{selectedButton: ihc.crafts}">crafts</button>
+        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+                ng-click="ihc.movieNight=!ihc.movieNight; ihc.$log.log(ihc.movieNight)"
+                ng-class="{selectedButton: ihc.movieNight}">movie night</button>
+        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+                ng-click="ihc.boardGames=!ihc.boardGames; ihc.$log.log(ihc.boardGames)"
+                ng-class="{selectedButton: ihc.boardGames}">playing board games</button>
+        <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+                ng-click="ihc.cardGames=!ihc.cardGames;ihc.$log.log(ihc.cardGames)"
+                ng-class="{selectedButton: ihc.cardGames}">playing card games</button>
     </div>
 </div>
 
 
 <div class="previous-next pull-right">
     <a href="#/their_age_range">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+                ng-click="ihc.setNightAtHomeInterests()">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
     </a>
     <a href="#/interests_out">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+                ng-click="ihc.setNightAtHomeInterests()">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
     </a>
