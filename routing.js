@@ -268,25 +268,6 @@ app.controller('interestsHomeController', function(profileService,$log,$location
         profileService.currentProfile.boardGames = this.boardGames;
         profileService.currentProfile.cardGames = this.cardGames;
     }
-        //  this.toggleInterest = function(interest){
-        //     console.log('interest : ',interest);
-        //     if(this.checkInterest(interest)){
-        //         var interestIndexToRemove = signUpService.aNightIn.indexOf(interest);
-        //         console.log('interestIndexToRemove : ',interestIndexToRemove);
-        //         console.log('signUpService.aNightIn : ',signUpService.aNightIn);
-        //         signUpService.aNightIn.splice(interestIndexToRemove,1);
-        //     } else {
-        //         signUpService.aNightIn.push(interest);
-        //     }
-        //     console.log(' Here is the signUpService.aNightIn : ', signUpService.aNightIn);
-        // }
-        // this.checkInterest = function(interest){
-        //     if(signUpService.aNightIn.indexOf(interest) > -1){
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
 });
 
 app.controller('interestsNightOutController', function(profileService,$log,$location){
@@ -295,43 +276,18 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
     // functions called from interests_out.html
     //Getting the value from the Service in case it's already been selected
     this.artGalleries = profileService.getArtGalleries();
-    console.log('Here is the value in the controller for this.artGalleries after the getArtGalleries function is called : ', this.artGalleries);
-
     this.casualDining = profileService.getCasualDining();
-    console.log('Here is the value in the controller for this.casualDining after the getCasualDining function is called : ', this.casualDining);
-
     this.comedy = profileService.getComedy();
-    console.log('Here is the value in the controller for this.comedy after the getComedy function is called : ', this.comedy);
-
     this.classicalConcerts = profileService.getClassicalConcerts();
-    console.log('Here is the value in the controller for this.classicalConcerts after the getClassicalConcerts function is called : ', this.classicalConcerts);
-
     this.popularConcerts = profileService.getPopularConcerts();
-    console.log('Here is the value in the controller for this.popularConcerts after the getPopularConcerts function is called : ', this.popularConcerts);
-
     this.ballroomDancing = profileService.getBallroomDancing();
-    console.log('Here is the value in the controller for this.ballroomDancing after the getBallroomDancing function is called : ', this.ballroomDancing);
-
     this.countryDancing = profileService.getCountryDancing();
-    console.log('Here is the value in the controller for this.countryDancing after the getCountryDancing function is called : ', this.countryDancing);
-
     this.salsaDancing = profileService.getSalsaDancing();
-    console.log('Here is the value in the controller for this.salsaDancing after the getSalsaDancing function is called : ', this.salsaDancing);
-
     this.fineDining = profileService.getFineDining();
-    console.log('Here is the value in the controller for this.fineDining after the getFineDining function is called : ', this.fineDining);
-
     this.karaoke = profileService.getKaraoke();
-    console.log('Here is the value in the controller for this.karaoke after the getKaraoke function is called : ', this.karaoke);
-
     this.liveTheater = profileService.getLiveTheater();
-    console.log('Here is the value in the controller for this.liveTheater after the getLiveTheater function is called : ', this.liveTheater);
-
     this.movies = profileService.getMovies();
-    console.log('Here is the value in the controller for this.movies after the getMovies function is called : ', this.movies);
-
     this.wineTasting = profileService.getWineTasting();
-    console.log('Here is the value in the controller for this.wineTasting after the getWineTasting function is called : ', this.wineTasting);
 
     //setting values for the service,
     //called from the previous and next buttons
@@ -404,14 +360,15 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     };
 
     //@TODO  -- FINISH THE FUNCTION BELOW
-    this.atLeastOneInterestRequired = function () {
-        //if(this.camping && this.RV-ing && this.dancing etc. are === false) {alert('Please select at least one
-        // interest....');}
-        //prevent the button's default behavior
-        //maybe use $location to get to the next page?
-        //Or maybe create an array which collects values on each view, if empty by the last view, don't move forward
-
-    };
+    // this.interestRequired = function() {
+    //     profileService.interestCount();
+    //     console.log('Interest count total : ', profileService.interestCount());
+    //     if(this.camping && this.RV-ing && this.dancing etc. are === false) {alert('Please select at least one
+    //     interest....');}
+    //     prevent the button's default behavior
+    //     maybe use $location to get to the next page?
+    //     Or maybe create an array which collects values on each view, if empty by the last view, don't move forward
+    // };
 });
 
 app.controller('signUpController', function($scope) {
@@ -423,12 +380,3 @@ app.controller('loginController', function($scope){
 
 });
 
-app.service('signUpService', function(){
-    this.aNightIn = [];
-    this.aNightOut = [];
-    this.stayActive = [];
-    this.whenTravelling = [];
-    this.locationMiles = '';
-    this.userZipCode = '';
-
-});
