@@ -151,7 +151,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     this.getBoardGames =        function() { return this.currentProfile.boardGames };
     this.getCardGames =         function() { return this.currentProfile.cardGames };
     this.getCooking =           function() { return this.currentProfile.cooking };
-    this.getConversation =      function() { return this.currentProfile.converations };
+    this.getConversation =      function() { return this.currentProfile.conversations };
     this.getCrafts =            function() { return this.currentProfile.crafts };
     this.getBookClub =          function() { return this.currentProfile.bookClub };
     this.getMovieNight =        function() { return this.currentProfile.movieNight };
