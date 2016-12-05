@@ -3,29 +3,33 @@ when traveling we like
     <div class="interest-buttons">
         <div class="at-home groupings">
             <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
-                    ng-click="itc.toggleInterest('camping');"
-                    ng-class="{selectedButton: itc.checkInterest('camping')}">camping</button>
+                    ng-click="itc.camping=!itc.camping; itc.$log.log(itc.camping)"
+                    ng-class="{buttonHighlighted:itc.camping}">camping
+            </button>
+
             <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
-                    ng-click="itc.toggleInterest('domestic travel');"
-                    ng-class="{selectedButton: itc.checkInterest('domestic travel')}">domestic travel</button>
+                    ng-click="itc.domesticTravel=!itc.domesticTravel; itc.$log.log(itc.domesticTravel);"
+                    ng-class="{buttonHighlighted:itc.domesticTravel}">domestic
+                travel</button>
             <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
-                    ng-click="itc.toggleInterest('RV-ing');"
-                    ng-class="{selectedButton: itc.checkInterest('RV-ing')}">RV-ing</button>
+                    ng-click="itc.rving=!itc.rving; itc.$log.log(itc.rving)" ng-class="{buttonHighlighted:itc.rving}">RV
+                -ing</button>
             <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
-                    ng-click="itc.toggleInterest('traveling abroad');"
-                    ng-class="{selectedButton: itc.checkInterest('traveling abroad')}">traveling abroad</button>
+                    ng-click="itc.travelAbroad=!itc.travelAbroad; itc.$log.log(itc.travelAbroad)"
+                    ng-class="{buttonHighlighted:itc.travelAbroad}">traveling
+                abroad</button>
         </div>
     </div>
 </div>
 
 <div class="previous-next pull-right">
     <a href="#/interests_outdoors">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="itc.setTravelInterests()">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
     </a>
     <a href="#/sign_up">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="itc.setTravelInterests()">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
     </a>
