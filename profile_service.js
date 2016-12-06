@@ -186,6 +186,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     this.getDomesticTravel =    function() { return this.currentProfile.domesticTravel };
     this.getTravelAbroad =      function() { return this.currentProfile.travelAbroad };
 
+    //Function to count the user's interests, currently not working
     this.interestCount = function(){
         console.log('interestCount function is being called: ');
         this.total = this.currentProfile.boardGames ? 1 : 0 +
@@ -224,9 +225,48 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
         this.currentProfile.camping ? 1 : 0 +
         this.currentProfile.rving ? 1 : 0 +
         this.currentProfile.domesticTravel ? 1 : 0 +
-        this.currentProfile.travelAbroad ? 1 : 0;
+        this.currentProfile.travelAbroad ? 1 : 0
          return this.total;
     };
+    //Forces the user to pick at least one interest
+      this.requireInterest = function(){
+          if(this.currentProfile.boardGames === false &&
+              this.currentProfile.cardGames === false &&
+              this.currentProfile.cooking === false &&
+              this.currentProfile.conversation === false &&
+              this.currentProfile.crafts === false &&
+              this.currentProfile.bookClub === false &&
+              this.currentProfile.movieNight === false &&
+              this.currentProfile.artGalleries === false &&
+              this.currentProfile.comedy === false &&
+              this.currentProfile.classicalConcerts === false &&
+              this.currentProfile.popularConcerts === false &&
+              this.currentProfile.ballroomDancing === false &&
+              this.currentProfile.countryDancing === false &&
+              this.currentProfile.salsaDancing === false &&
+              this.currentProfile.casualDining === false &&
+              this.currentProfile.fineDining === false &&
+              this.currentProfile.karaoke === false &&
+              this.currentProfile.liveTheater === false &&
+              this.currentProfile.movies === false &&
+              this.currentProfile.wineTasting === false &&
+              this.currentProfile.bicycling === false &&
+              this.currentProfile.bowling === false &&
+              this.currentProfile.golf === false &&
+              this.currentProfile.hiking === false &&
+              this.currentProfile.horsebackRiding === false &&
+              this.currentProfile.kayaking === false &&
+              this.currentProfile.motorcycling === false &&
+              this.currentProfile.racquetball === false &&
+              this.currentProfile.tennis === false &&
+              this.currentProfile.walking === false
+          ){
+              document.getElementById("myAnchor").addEventListener("click", function(event){
+                  event.preventDefault()
+              });
+              alert('You need to select an interest!');
+          }
+      };
     /**
      *  setDistanceMax - validate and set distanceMax field.
      *  @param  {int}       distanceMax

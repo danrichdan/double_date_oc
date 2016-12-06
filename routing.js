@@ -268,6 +268,8 @@ app.controller('interestsHomeController', function(profileService,$log,$location
         profileService.currentProfile.boardGames = this.boardGames;
         profileService.currentProfile.cardGames = this.cardGames;
     }
+
+
 });
 
 app.controller('interestsNightOutController', function(profileService,$log,$location){
@@ -338,6 +340,12 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
         profileService.currentProfile.tennis = this.tennis;
         profileService.currentProfile.walking = this.walking;
     };
+    //@TODO  -- FINISH THE FUNCTION BELOW
+    this.interestRequired = function() {
+        profileService.interestCount();
+        profileService.requireInterest();
+        console.log('Interest count total : ', profileService.interestCount());
+    };
 });
 
 app.controller('interestsTravelController', function (profileService, $log, $location) {
@@ -359,16 +367,8 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
         profileService.currentProfile.travelAbroad = this.travelAbroad;
     };
 
-    //@TODO  -- FINISH THE FUNCTION BELOW
-    // this.interestRequired = function() {
-    //     profileService.interestCount();
-    //     console.log('Interest count total : ', profileService.interestCount());
-    //     if(this.camping && this.RV-ing && this.dancing etc. are === false) {alert('Please select at least one
-    //     interest....');}
-    //     prevent the button's default behavior
-    //     maybe use $location to get to the next page?
-    //     Or maybe create an array which collects values on each view, if empty by the last view, don't move forward
-    // };
+
+
 });
 
 app.controller('signUpController', function($scope) {

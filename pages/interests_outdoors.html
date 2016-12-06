@@ -45,8 +45,9 @@ to stay active we like
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
     </a>
-    <a href="#/interests_travel">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="iod.setOutdoorInterests()">
+    <a id="myAnchor" href="#/interests_travel">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+                ng-click="iod.setOutdoorInterests(); iod.interestRequired()">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
     </a>
