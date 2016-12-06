@@ -317,7 +317,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
             success: function(response) {
                 $log.log('add: success: ' + response.success);
                 if (response.success) {
-                    // Save the returned profilel ID.
+                    // Save the returned profile ID.
                     self.currentProfile.profileId = response.profileId;
                     // Save the extra values from the zip code translation.
                     self.currentProfile.city = response.city;
