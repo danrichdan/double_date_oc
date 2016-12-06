@@ -265,6 +265,8 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
                   event.preventDefault()
               });
               alert('You need to select an interest!');
+              //Delete the anchor tags, use the $location service, if these are all false on click then alert, else,
+              // function get sample matches
           }
       };
     /**
