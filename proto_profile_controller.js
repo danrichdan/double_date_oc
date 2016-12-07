@@ -133,7 +133,7 @@ app.controller("protoProfileController", function($scope, profileService){
             profileService.get(username)
                 .then(function(response) {
                         console.log('onGetButton: success');
-                        self.getResults = 'Success: updating fields';
+                        self.getResults = 'Success: displaying profile fields';
                         self.currentProfile = response.profile;
                         self.profileGotten = true;
                     },
