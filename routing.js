@@ -61,16 +61,32 @@ app.config(function($routeProvider){
             controller: 'interestsTravelController',
             controllerAs: 'itc'
         })
+        .when('/before_sample_match',{
+            templateUrl: 'pages/before_sample_match.html',
+            controller: 'beforeSampleMatchController',
+            controllerAs: 'bsmc'
+        })
+        //route for sample matches page
+        .when('/sample_match',{
+            templateUrl: 'pages/sample_match.html',
+            controller: 'sampleMatchController',
+            controllerAs: 'smc'
+        })
         //route for sign up page
-        .when('/sign_up',{
-            templateUrl: 'pages/sign_up.html',
-            controller: 'signUpController'
+        // .when('/sign_up',{
+        //     templateUrl: 'pages/sign_up.html',
+        //     controller: 'signUpController'
+        // })
+        .when('/signup_email',{
+            templateUrl: 'pages/signup_email.html',
+            controller: 'signupEmailController'
         })
         //route for login page (returning user)
         .when('/login',{
             templateUrl: 'pages/login.html',
             controller: 'loginController'
         })
+
         .otherwise({
             redirectTo: "/"
         })
@@ -371,11 +387,19 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     // };
 });
 
-app.controller('signUpController', function($scope) {
+app.controller('beforeSampleMatchController', function(){
+
+})
+
+app.controller('sampleMatchController', function() {
         //Login Page Controller
 });
 
-app.controller('loginController', function($scope){
+app.controller('signupEmailController', function(){
+
+})
+
+app.controller('loginController', function(){
     //Login Page Controller
 
 });
