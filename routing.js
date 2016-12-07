@@ -108,40 +108,38 @@ app.controller('ourLocationController',function(profileService, $location){
     this.ourInputZip = parseFloat(profileService.getZipcode());
     console.log("ourInputZip : ", this.ourInputZip);
     var self = this;
-    this.final = true;
+    this.correctZip = true;
 
     //validate info input, save, url after button click
     this.validateZip = function(){
         console.log('in validateZip func', this.ourInputZip);
         var inputString = this.ourInputZip.toString();
         var inputLength = inputString.length; 
-        
-        console.log(inputLength);
+         console.log(inputLength);
         if(parseInt(inputLength) === 5){
             console.log('valid zip');
             console.log(inputString, inputString[0]);
             if(inputString[0]==='9'){
                 console.log('first digit of zip is 9');
-                self.final = true;
+                self.correctZip = true;
             }
             else{
                 console.log('first digit of zip is NOT 9');
                 // return false;
-                self.final = false;
-
+                self.correctZip = false;
             }
         } 
         else{
             console.log('not valid zip');
             // return false;
-            self.final = false;
-
+            self.correctZip = false;
             }
-        }
+        };
 
     this.setOurLocation = function(ourInputZip){
+        this.validateZip();
         console.log('in setOurLocation func', ourInputZip);
-        if(self.final===true){
+        if(self.correctZip===true){
             console.log('validateZip is true');
             profileService.currentProfile.zipcode = ourInputZip;
             console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
@@ -151,47 +149,21 @@ app.controller('ourLocationController',function(profileService, $location){
             console.log('not valid zip to save to our profile');
         }
     }
-    //using maxlength instead
-    // this.checkMaxZip = function(){
-    //     console.log('this.userInputZip.toString().length :', this.userInputZip.toString().length);
-    //     if(this.userInputZip.toString().length < 6){
-    //         console.log('true');
-    //         // this.userInputZip = parseInt(this.zip.toString().substring(0,5));
-    //         // console.log(this.userInputZip.toString().substring(0,5));
-    //         return true;
-    //     }else{
-    //         console.log('false length');
-    //         return false;
-    //     } 
-    // }
 });
 
+
+
+
+
 app.controller('distanceController',function(profileService, $location){
+    // this.selectedButton = ;
     //  check if profileService has maxDistance 
+    var self = this;
     this.userMaxDistance = profileService.getDistanceMax();
-    // this.addCorrectButton();
-    console.log('userMaxDistance', this.userDistanceMax);
-
-///DONT NEED THE BELOW BECAUSE WE'RE USING ANGULAR... 
-    // this.addCorrectButton = function(user){
-    //     console.log('in checkDistance function');
-    //     //if profileService has maxDistance, than add class to appropriate button
-    //      // if(this.userMaxDistance !== null){
-    //      //    console.log('in if statement');
-    //      //    if(this.userMaxDistance === 5){
-    //      //        console.log('checkDistance is true');
-    //      //        return true;
-    //      //    }
-    //      //    // if(this.userMaxDistance)
-    //      //    else{
-    //      //        console.log('checkDistance is false');
-    //      //        return false;
-    //      //    }
-    //     }
-
+    console.log('userMaxDistance', this.userMaxDistance);
     this.setDistance = function (){
         console.log('in setDistance');   
-        console.log(this.userMaxDistance);
+        console.log('self.userMaxDistance', self.userMaxDistance);
         profileService.currentProfile.distanceMax= this.userMaxDistance;
         console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
         $location.url('/our_age_range');
@@ -202,8 +174,8 @@ app.controller('distanceController',function(profileService, $location){
 app.controller('ourAgeController',function(profileService, $location){
     this.ourAgeMin = profileService.getOurAgeMin();
     this.ourAgeMax = profileService.getOurAgeMax();
-    console.log(this.ourAgeMin);
-    console.log(this.ourAgeMax);
+    console.log('this.ourAgeMin', this.ourAgeMin);
+    console.log('this.ourAgeMax', this.ourAgeMax);
     this.ourAgeRange = function(){
         if(this.ourAgeMin && this.ourAgeMax){
             if(this.ourAgeMax =='100'){
