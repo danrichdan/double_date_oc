@@ -82,7 +82,6 @@ app.service("matchService", ['$http', '$q', '$log', function($http, $q, $log) {
             },
             success: function(response) {
                 $log.log('get: success: ' + response.success);
-                debugger;
                 if (response.success) {
                     self.matches = response.matches;
                     def.resolve(response);
