@@ -303,7 +303,7 @@ app.controller('interestsHomeController', function(profileService,$log,$location
     };
 
     this.setUrl = function(){
-        this.url = $location.url('/interests_out');
+        $location.url('/interests_out');
     };
 });
 
@@ -366,12 +366,11 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
     this.aNightOutInterestButtonClicked = function(){
         this.setNightOutInterests();
         this.aNightOutInterestCount();
-
     };
 
     this.setUrl = function(){
-        this.url = $location.url('/interests_outdoors');
-    }
+        $location.url('/interests_outdoors');
+    };
 });
 
 app.controller('interestsOutdoorsController', function (profileService, $log, $location) {
@@ -420,34 +419,15 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
         profileService.currentProfile.tennis = this.tennis;
         profileService.currentProfile.walking = this.walking;
     };
-    // This section is for validating that at least one interest is selected
-    this.interestCount = function() {
-        var count = profileService.interestCount();
-        console.log('Interest count total : ', count);
-        return count;
-    };
+
         this.outdoorInterestButtonClicked = function(){
             this.setOutdoorInterests();
             this.outdoorInterestCount();
-            this.interestCount();
         };
 
         this.setUrl = function(){
-            this.url = $location.url('/interests_travel');
-        }
-        //this.validateInterest(count);
-
-    //this.validateInterest = function (count){
-    // if(count == 0){
-    //     $location.url('/interests_outdoors');
-    //     alert('You need to select an interest!');
-    //     return count;
-    // }
-    // else {
-    //     $location.url('/interests_travel');
-    //     return count;
-    // }
-   // }
+            $location.url('/interests_travel');
+        };
 });
 
 app.controller('interestsTravelController', function (profileService, $log, $location) {
@@ -460,6 +440,16 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     this.rving = profileService.getRving();
     this.travelAbroad = profileService.getTravelAbroad();
 
+    //Sums up the interests for this view
+    this.travelInterestCount = function() {
+        this.travelInterestTotal = (profileService.currentProfile.camping ? 1 : 0) +
+            (profileService.currentProfile.domesticTravel ? 1 : 0) +
+            (profileService.currentProfile.rving ? 1 : 0) +
+            (profileService.currentProfile.travelAbroad ? 1 : 0);
+        console.log('travelInterestTotal : ', this.travelInterestTotal);
+        return this.travelInterestTotal;
+    };
+
     //setting values for the service,
     //called from the previous and next buttons
     this.setTravelInterests = function () {
@@ -469,8 +459,22 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
         profileService.currentProfile.travelAbroad = this.travelAbroad;
     };
 
+    // This section is for validating that at least one interest is selected
+    this.interestCount = function() {
+        var count = profileService.interestCount();
+        console.log('Interest count total : ', count);
+        return count;
+    };
 
+    this.travelInterestButtonClicked = function(){
+        this.setTravelInterests();
+        this.travelInterestCount();
+        this.interestCount();
+    };
 
+    this.setUrl = function(){
+         $location.url('/before_sample_match');
+    };
 });
 
 app.controller('beforeSampleMatchController', function(){
