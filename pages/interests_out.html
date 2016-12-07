@@ -49,12 +49,9 @@ on a night out we like
                     ng-click="ioc.wineTasting=!ioc.wineTasting; ioc.$log.log(ioc.wineTasting)"
                     ng-class="{selectedButton: ioc.wineTasting}">wine tasting</button>
 
-
-
         </div>
     </div>
 </div>
-
 
 <div class="previous-next pull-right">
     <a href="#/interests_home">
@@ -63,7 +60,8 @@ on a night out we like
         </button>
     </a>
     <a href="#/interests_outdoors">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="ioc.setNightOutInterests()">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+                ng-click="ioc.setNightOutInterests();">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
     </a>
