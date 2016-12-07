@@ -357,17 +357,10 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
         profileService.currentProfile.wineTasting = this.wineTasting;
     };
 
-    //Total number of interests, will probably only call this from the submit button eventually.
-    this.interestCount = function() {
-        this.count = profileService.interestCount();
-        console.log('interestCount : ', this.count);
-        return this.count;
-    };
-
     this.aNightOutInterestButtonClicked = function(){
         this.setNightOutInterests();
         this.aNightOutInterestCount();
-        this.interestCount();
+
     };
 
     this.setUrl = function(){
@@ -391,6 +384,22 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
     this.tennis = profileService.getTennis();
     this.walking = profileService.getWalking();
 
+    //Sums up the interests for this view
+    this.outdoorInterestCount = function() {
+        this.outdoorInterestTotal = (profileService.currentProfile.bicycling ? 1 : 0) +
+            (profileService.currentProfile.bowling ? 1 : 0) +
+            (profileService.currentProfile.golf ? 1 : 0) +
+            (profileService.currentProfile.hiking ? 1 : 0) +
+            (profileService.currentProfile.horsebackRiding ? 1 : 0) +
+            (profileService.currentProfile.kayaking ? 1 : 0) +
+            (profileService.currentProfile.motorcycling ? 1 : 0) +
+            (profileService.currentProfile.racquetball ? 1 : 0) +
+            (profileService.currentProfile.tennis ? 1 : 0) +
+            (profileService.currentProfile.walking ? 1 : 0);
+        console.log('outdoorInterestTotal : ', this.outdoorInterestTotal);
+        return this.outdoorInterestTotal;
+    };
+
     //setting values for the service,
     //called from the previous and next buttons
     this.setOutdoorInterests = function () {
@@ -410,9 +419,18 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
         var count = profileService.interestCount();
         console.log('Interest count total : ', count);
         return count;
-
-        //this.validateInterest(count);
     };
+        this.outdoorInterestButtonClicked = function(){
+            this.setOutdoorInterests();
+            this.outdoorInterestCount();
+            this.interestCount();
+        };
+
+        this.setUrl = function(){
+            this.url = $location.url('/interests_travel');
+        }
+        //this.validateInterest(count);
+
     //this.validateInterest = function (count){
     // if(count == 0){
     //     $location.url('/interests_outdoors');

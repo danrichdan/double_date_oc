@@ -3,42 +3,43 @@ to stay active we like
     <div class="interest-buttons">
         <div class="outdoor groupings">
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.bicycling=!iod.bicycling; iod.$log.log(iod.bicycling)"
+                    ng-click="iod.bicycling=!iod.bicycling; iod.$log.log(iod.bicycling); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.bicycling}">bicycling</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.bowling=!iod.bowling; iod.$log.log(iod.bowling)"
+                    ng-click="iod.bowling=!iod.bowling; iod.$log.log(iod.bowling); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.bowling}">bowling</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.golf=!iod.golf; iod.$log.log(iod.golf)"
+                    ng-click="iod.golf=!iod.golf; iod.$log.log(iod.golf); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.golf}">golfing</button>
 
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.hiking=!iod.hiking; iod.$log.log(iod.hiking)"
+                    ng-click="iod.hiking=!iod.hiking; iod.$log.log(iod.hiking); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.hiking}">hiking</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.horsebackRiding=!iod.horsebackRiding; iod.$log.log(iod.horsebackRiding)"
+                    ng-click="iod.horsebackRiding=!iod.horsebackRiding; iod.$log.log(iod.horsebackRiding); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.horsebackRiding}">horseback-riding</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.kayaking=!iod.kayaking; iod.$log.log(iod.kayaking)"
+                    ng-click="iod.kayaking=!iod.kayaking; iod.$log.log(iod.kayaking); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.kayaking}">kayaking/paddleboarding</button>
 
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.motorcycling=!iod.motorcycling;iod.$log.log(iod.motorcycling)"
+                    ng-click="iod.motorcycling=!iod.motorcycling;iod.$log.log(iod.motorcycling); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.motorcycling}">motorcycling</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.racquetball=!iod.racquetball; iod.$log.log(iod.racquetball)"
+                    ng-click="iod.racquetball=!iod.racquetball; iod.$log.log(iod.racquetball); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.racquetball}">racquetball</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.tennis=!iod.tennis; iod.$log.log(iod.tennis)"
+                    ng-click="iod.tennis=!iod.tennis; iod.$log.log(iod.tennis); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.tennis}">tennis</button>
 
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
-                    ng-click="iod.walking=!iod.walking; iod.$log.log(iod.walking)"
+                    ng-click="iod.walking=!iod.walking; iod.$log.log(iod.walking); iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.walking}">walking</button>
         </div>
     </div>
 </div>
 
+<p>Please select at least one interest.</p>
 <div class="previous-next pull-right">
     <a href="#/interests_out">
         <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="iod.setOutdoorInterests()">
@@ -47,7 +48,7 @@ to stay active we like
     </a>
 
         <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
-                ng-click="iod.setOutdoorInterests();">
+                ng-disabled="iod.outdoorInterestCount()==0;" ng-click="iod.setUrl()">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
 </div>
