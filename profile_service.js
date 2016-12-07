@@ -186,89 +186,49 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     this.getDomesticTravel =    function() { return this.currentProfile.domesticTravel };
     this.getTravelAbroad =      function() { return this.currentProfile.travelAbroad };
 
-    //Function to count the user's interests, currently not working
+    //Function to count the user's interests
     this.interestCount = function(){
         console.log('interestCount function is being called: ');
-        this.total = this.currentProfile.boardGames ? 1 : 0 +
-        this.currentProfile.cardGames ? 1 : 0 +
-        this.currentProfile.cooking ? 1 : 0 +
-        this.currentProfile.conversation ? 1 : 0 +
-        this.currentProfile.crafts ? 1 : 0 +
-        this.currentProfile.bookClub ? 1 : 0 +
-        this.currentProfile.movieNight ? 1 : 0 +
+        var total = (this.currentProfile.boardGames ? 1 : 0) +
+        (this.currentProfile.cardGames ? 1 : 0) +
+        (this.currentProfile.cooking ? 1 : 0) +
+        (this.currentProfile.conversation ? 1 : 0) +
+        (this.currentProfile.crafts ? 1 : 0) +
+        (this.currentProfile.bookClub ? 1 : 0) +
+        (this.currentProfile.movieNight ? 1 : 0) +
 
-        this.currentProfile.artGalleries ? 1 : 0 +
-        this.currentProfile.comedy ? 1 : 0 +
-        this.currentProfile.classicalConcerts ? 1 : 0 +
-        this.currentProfile.popularConcerts ? 1 : 0 +
-        this.currentProfile.ballroomDancing ? 1 : 0 +
-        this.currentProfile.countryDancing ? 1 : 0 +
-        this.currentProfile.salsaDancing ? 1 : 0 +
-        this.currentProfile.casualDining ? 1 : 0 +
-        this.currentProfile.fineDining ? 1 : 0 +
-        this.currentProfile.karaoke ? 1 : 0 +
-        this.currentProfile.liveTheater ? 1 : 0 +
-        this.currentProfile.movies ? 1 : 0 +
-        this.currentProfile.wineTasting ? 1 : 0 +
+        (this.currentProfile.artGalleries ? 1 : 0) +
+        (this.currentProfile.comedy ? 1 : 0) +
+        (this.currentProfile.classicalConcerts ? 1 : 0) +
+        (this.currentProfile.popularConcerts ? 1 : 0) +
+        (this.currentProfile.ballroomDancing ? 1 : 0) +
+        (this.currentProfile.countryDancing ? 1 : 0) +
+        (this.currentProfile.salsaDancing ? 1 : 0) +
+        (this.currentProfile.casualDining ? 1 : 0) +
+        (this.currentProfile.fineDining ? 1 : 0) +
+        (this.currentProfile.karaoke ? 1 : 0) +
+        (this.currentProfile.liveTheater ? 1 : 0) +
+        (this.currentProfile.movies ? 1 : 0) +
+        (this.currentProfile.wineTasting ? 1 : 0) +
 
-        this.currentProfile.bicycling ? 1 : 0 +
-        this.currentProfile.bowling ? 1 : 0 +
-        this.currentProfile.golf ? 1 : 0 +
-        this.currentProfile.hiking ? 1 : 0 +
-        this.currentProfile.horsebackRiding ? 1 : 0 +
-        this.currentProfile.kayaking ? 1 : 0 +
-        this.currentProfile.motorcycling ? 1 : 0 +
-        this.currentProfile.racquetball ? 1 : 0 +
-        this.currentProfile.tennis ? 1 : 0 +
-        this.currentProfile.walking ? 1 : 0 +
+        (this.currentProfile.bicycling ? 1 : 0) +
+        (this.currentProfile.bowling ? 1 : 0) +
+        (this.currentProfile.golf ? 1 : 0) +
+        (this.currentProfile.hiking ? 1 : 0) +
+        (this.currentProfile.horsebackRiding ? 1 : 0) +
+        (this.currentProfile.kayaking ? 1 : 0) +
+        (this.currentProfile.motorcycling ? 1 : 0) +
+        (this.currentProfile.racquetball ? 1 : 0) +
+        (this.currentProfile.tennis ? 1 : 0) +
+        (this.currentProfile.walking ? 1 : 0) +
 
-        this.currentProfile.camping ? 1 : 0 +
-        this.currentProfile.rving ? 1 : 0 +
-        this.currentProfile.domesticTravel ? 1 : 0 +
-        this.currentProfile.travelAbroad ? 1 : 0
-         return this.total;
+        (this.currentProfile.camping ? 1 : 0) +
+        (this.currentProfile.rving ? 1 : 0) +
+        (this.currentProfile.domesticTravel ? 1 : 0) +
+        (this.currentProfile.travelAbroad ? 1 : 0);
+         return total;
     };
-    //Forces the user to pick at least one interest
-      this.requireInterest = function(){
-          if(this.currentProfile.boardGames === false &&
-              this.currentProfile.cardGames === false &&
-              this.currentProfile.cooking === false &&
-              this.currentProfile.conversation === false &&
-              this.currentProfile.crafts === false &&
-              this.currentProfile.bookClub === false &&
-              this.currentProfile.movieNight === false &&
-              this.currentProfile.artGalleries === false &&
-              this.currentProfile.comedy === false &&
-              this.currentProfile.classicalConcerts === false &&
-              this.currentProfile.popularConcerts === false &&
-              this.currentProfile.ballroomDancing === false &&
-              this.currentProfile.countryDancing === false &&
-              this.currentProfile.salsaDancing === false &&
-              this.currentProfile.casualDining === false &&
-              this.currentProfile.fineDining === false &&
-              this.currentProfile.karaoke === false &&
-              this.currentProfile.liveTheater === false &&
-              this.currentProfile.movies === false &&
-              this.currentProfile.wineTasting === false &&
-              this.currentProfile.bicycling === false &&
-              this.currentProfile.bowling === false &&
-              this.currentProfile.golf === false &&
-              this.currentProfile.hiking === false &&
-              this.currentProfile.horsebackRiding === false &&
-              this.currentProfile.kayaking === false &&
-              this.currentProfile.motorcycling === false &&
-              this.currentProfile.racquetball === false &&
-              this.currentProfile.tennis === false &&
-              this.currentProfile.walking === false
-          ){
-              document.getElementById("myAnchor").addEventListener("click", function(event){
-                  event.preventDefault()
-              });
-              alert('You need to select an interest!');
-              //Delete the anchor tags, use the $location service, if these are all false on click then alert, else,
-              // function get sample matches
-          }
-      };
+
     /**
      *  setDistanceMax - validate and set distanceMax field.
      *  @param  {int}       distanceMax

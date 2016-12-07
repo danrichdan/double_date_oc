@@ -241,34 +241,51 @@ app.controller('interestsHomeController', function(profileService,$log,$location
     // functions called from interests_out.html
     //Getting the value from the Service in case it's already been selected
     this.bookClub = profileService.getBookClub();
-    console.log('Here is the value in the controller for this.bookClub after the getBookClub function is called : ', this.bookClub);
     this.conversation = profileService.getConversation();
-    console.log('Here is the value in the controller for this.conversation after the getConversation function is called : ', this.conversation);
     this.cooking = profileService.getCooking();
-    console.log('Here is the value in the controller for this.cooking after the getCooking function is called : ', this.cooking);
     this.crafts = profileService.getCrafts();
-    console.log('Here is the value in the controller for this.crafts after the getCrafts function is called : ', this.crafts);
     this.movieNight = profileService.getMovieNight();
-    console.log('Here is the value in the controller for this.movieNight after the getMovieNight function is called : ', this.movieNight);
     this.boardGames = profileService.getBoardGames();
-    console.log('Here is the value in the controller for this.boardGames after the getBoardGames function is called : ', this.boardGames);
     this.cardGames = profileService.getCardGames();
-    console.log('Here is the value in the controller for this.boardGames after the getCardGames function is called : ', this.cardGames);
 
+    //Sums up the interests for this view
+    this.atHomeInterestCount = function() {
+        this.atHomeInterestTotal = (profileService.currentProfile.boardGames ? 1 : 0) +
+            (profileService.currentProfile.cardGames ? 1 : 0) +
+            (profileService.currentProfile.cooking ? 1 : 0) +
+            (profileService.currentProfile.conversation ? 1 : 0) +
+            (profileService.currentProfile.crafts ? 1 : 0) +
+            (profileService.currentProfile.bookClub ? 1 : 0) +
+            (profileService.currentProfile.movieNight ? 1 : 0);
+        console.log('atHomeInterestTotal : ', this.atHomeInterestTotal);
+        return this.atHomeInterestTotal;
+    };
 
     //setting values for the service,
     //called from the previous and next buttons
     this.setNightAtHomeInterests = function () {
         profileService.currentProfile.bookClub = this.bookClub;
-        profileService.currentProfile.conversation = this.conversation; //This needs to be fixed in the service, I
-        // did not want to do it due to possible merge conflicts
+        profileService.currentProfile.conversation = this.conversation;
         profileService.currentProfile.cooking = this.cooking;
         profileService.currentProfile.crafts = this.crafts;
         profileService.currentProfile.movieNight = this.movieNight;
         profileService.currentProfile.boardGames = this.boardGames;
         profileService.currentProfile.cardGames = this.cardGames;
-    }
+    };
 
+    //Total number of interests, will probably only call this from the submit button eventually.
+    this.interestCount = function() {
+        this.count = profileService.interestCount();
+        console.log('interestCount : ', this.count);
+        return this.count;
+
+    };
+
+    this.atHomeInterestButtonClicked = function(){
+        this.setNightAtHomeInterests();
+        this.atHomeInterestCount();
+        this.interestCount();
+    };
 
 });
 
@@ -340,12 +357,25 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
         profileService.currentProfile.tennis = this.tennis;
         profileService.currentProfile.walking = this.walking;
     };
-    //@TODO  -- FINISH THE FUNCTION BELOW
-    this.interestRequired = function() {
-        profileService.interestCount();
-        profileService.requireInterest();
-        console.log('Interest count total : ', profileService.interestCount());
+    // This section is for validating that at least one interest is selected
+    this.interestCount = function() {
+        var count = profileService.interestCount();
+        console.log('Interest count total : ', count);
+        return count;
+
+        //this.validateInterest(count);
     };
+    //this.validateInterest = function (count){
+    // if(count == 0){
+    //     $location.url('/interests_outdoors');
+    //     alert('You need to select an interest!');
+    //     return count;
+    // }
+    // else {
+    //     $location.url('/interests_travel');
+    //     return count;
+    // }
+   // }
 });
 
 app.controller('interestsTravelController', function (profileService, $log, $location) {
