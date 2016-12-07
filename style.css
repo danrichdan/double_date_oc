@@ -214,3 +214,9 @@
 .btn-block{
     font-size: 20px;
 }
+
+/*sign up email page*/
+.invalidEmail {
+    color:red;
+    font-size: 0.75em;
+}
