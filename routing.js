@@ -288,6 +288,7 @@ app.controller('interestsHomeController', function(profileService,$log,$location
         profileService.currentProfile.movieNight = this.movieNight;
         profileService.currentProfile.boardGames = this.boardGames;
         profileService.currentProfile.cardGames = this.cardGames;
+
     };
 
     //Total number of interests, will probably only call this from the submit button eventually.
@@ -303,7 +304,9 @@ app.controller('interestsHomeController', function(profileService,$log,$location
         this.atHomeInterestCount();
         this.interestCount();
     };
-
+    this.setUrl = function(){
+        this.url = $location.url('/interests_out');
+    }
 });
 
 app.controller('interestsNightOutController', function(profileService,$log,$location){
