@@ -291,22 +291,14 @@ app.controller('interestsHomeController', function(profileService,$log,$location
 
     };
 
-    //Total number of interests, will probably only call this from the submit button eventually.
-    this.interestCount = function() {
-        this.count = profileService.interestCount();
-        console.log('interestCount : ', this.count);
-        return this.count;
-
-    };
-
     this.atHomeInterestButtonClicked = function(){
         this.setNightAtHomeInterests();
         this.atHomeInterestCount();
-        this.interestCount();
     };
+
     this.setUrl = function(){
         this.url = $location.url('/interests_out');
-    }
+    };
 });
 
 app.controller('interestsNightOutController', function(profileService,$log,$location){
@@ -328,6 +320,25 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
     this.movies = profileService.getMovies();
     this.wineTasting = profileService.getWineTasting();
 
+    //Sums up the interests for this view
+    this.aNightOutInterestCount = function() {
+        this.aNightOutInterestTotal = (profileService.currentProfile.artGalleries ? 1 : 0) +
+            (profileService.currentProfile.casualDining ? 1 : 0) +
+            (profileService.currentProfile.comedy ? 1 : 0) +
+            (profileService.currentProfile.classicalConcerts ? 1 : 0) +
+            (profileService.currentProfile.popularConcerts ? 1 : 0) +
+            (profileService.currentProfile.ballroomDancing ? 1 : 0) +
+            (profileService.currentProfile.countryDancing ? 1 : 0) +
+            (profileService.currentProfile.salsaDancing ? 1 : 0) +
+            (profileService.currentProfile.fineDining ? 1 : 0) +
+            (profileService.currentProfile.karaoke ? 1 : 0) +
+            (profileService.currentProfile.liveTheater ? 1 : 0) +
+            (profileService.currentProfile.movies ? 1 : 0) +
+            (profileService.currentProfile.wineTasting ? 1 : 0);
+        console.log('aNightOutInterestTotal : ', this.aNightOutInterestTotal);
+        return this.aNightOutInterestTotal;
+    };
+
     //setting values for the service,
     //called from the previous and next buttons
     this.setNightOutInterests = function () {
@@ -345,6 +356,23 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
         profileService.currentProfile.movies = this.movies;
         profileService.currentProfile.wineTasting = this.wineTasting;
     };
+
+    //Total number of interests, will probably only call this from the submit button eventually.
+    this.interestCount = function() {
+        this.count = profileService.interestCount();
+        console.log('interestCount : ', this.count);
+        return this.count;
+    };
+
+    this.aNightOutInterestButtonClicked = function(){
+        this.setNightOutInterests();
+        this.aNightOutInterestCount();
+        this.interestCount();
+    };
+
+    this.setUrl = function(){
+        this.url = $location.url('/interests_outdoors');
+    }
 });
 
 app.controller('interestsOutdoorsController', function (profileService, $log, $location) {
