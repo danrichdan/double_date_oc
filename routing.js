@@ -469,10 +469,11 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     this.travelInterestButtonClicked = function(){
         this.setTravelInterests();
         this.travelInterestCount();
-        this.interestCount();
+
     };
 
     this.setUrl = function(){
+        this.interestCount();
          $location.url('/before_sample_match');
     };
 });
