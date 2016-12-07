@@ -82,6 +82,12 @@ app.config(function($routeProvider){
             controller: 'signupEmailController',
             controllerAs: 'suec'
         })
+        // route for password
+        .when('/signup_password',{
+            templateUrl: 'pages/signup_password.html',
+            controller: 'signupPasswordController',
+            controllerAs: 'supc'
+        })
         //route for login page (returning user)
         .when('/login',{
             templateUrl: 'pages/login.html',
@@ -485,7 +491,7 @@ app.controller('signupEmailController', function(){
         if (!isValid) {
             //invalid input
             // $('.error').show();
-            console.log('true');
+            console.log('true because email is invalid');
             this.validate = true;
             // return true;
            
@@ -493,11 +499,15 @@ app.controller('signupEmailController', function(){
         else {
             //valid input
             // $('.error').hide();
-            console.log('false');
+            console.log('false becaue email is valid');
             this.validate = false;
         }
     }   
 })
+
+app.controller('signupPasswordController', function() {
+
+});
 
 
 app.controller('loginController', function(){
