@@ -13,10 +13,10 @@ app.config(function($routeProvider){
             controller: 'mainController'
         })
         //route for user location page
-        .when('/user_location',{
-            templateUrl: 'pages/user_location.html',
-            controller: 'userLocationController',
-            controllerAs: 'ulc'
+        .when('/our_location',{
+            templateUrl: 'pages/our_location.html',
+            controller: 'ourLocationController',
+            controllerAs: 'olc'
         })
         //route for distance page
 
@@ -104,41 +104,51 @@ app.config(function($routeProvider){
 app.controller('mainController', function(){
 });
 
-app.controller('userLocationController',function(profileService, $location){
-    this.userInputZip = parseFloat(profileService.getZipcode());
-    console.log("userInputZip : ", this.userInputZip);
+app.controller('ourLocationController',function(profileService, $location){
+    this.ourInputZip = parseFloat(profileService.getZipcode());
+    console.log("ourInputZip : ", this.ourInputZip);
+    var self = this;
+    this.final = true;
 
     //validate info input, save, url after button click
-    this.validateZip = function(input){
-        console.log('in validateZip func', input);
-        this.inputString = input.toString();
-        this.inputLength = input.toString().length; 
-        console.log(this.inputLength);
-        if(parseInt(this.inputLength) === 5){
+    this.validateZip = function(){
+        console.log('in validateZip func', this.ourInputZip);
+        var inputString = this.ourInputZip.toString();
+        var inputLength = inputString.length; 
+        
+        console.log(inputLength);
+        if(parseInt(inputLength) === 5){
             console.log('valid zip');
-            console.log(this.inputString, this.inputString[0]);
-            if(this.inputString[0]==='9'){
+            console.log(inputString, inputString[0]);
+            if(inputString[0]==='9'){
                 console.log('first digit of zip is 9');
-                return true;
-            }else{
-                console.log('first digit of zip is NOT 9');
-                return false;
+                self.final = true;
             }
-        } else{
+            else{
+                console.log('first digit of zip is NOT 9');
+                // return false;
+                self.final = false;
+
+            }
+        } 
+        else{
             console.log('not valid zip');
-            return false;
+            // return false;
+            self.final = false;
+
+            }
         }
-    }
-    this.setUserLocation = function(userInputZip){
-        console.log('in setUserLocation func', userInputZip);
-        if(this.validateZip(userInputZip)===true){
+
+    this.setOurLocation = function(ourInputZip){
+        console.log('in setOurLocation func', ourInputZip);
+        if(self.final===true){
             console.log('validateZip is true');
-            profileService.currentProfile.zipcode = userInputZip;
+            profileService.currentProfile.zipcode = ourInputZip;
             console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
             $location.url('/distance');
         }
         else{
-            console.log('not valid zip to save to user profile');
+            console.log('not valid zip to save to our profile');
         }
     }
     //using maxlength instead
@@ -479,7 +489,7 @@ app.controller('beforeSampleMatchController', function(){
 app.controller('sampleMatchController', function() {
 });
 
-app.controller('signupEmailController', function(){
+app.controller('signupEmailController', function($location){
     this.validate = false;
     this.ourEmail = '';
     this.validate_email = function() {
@@ -491,16 +501,15 @@ app.controller('signupEmailController', function(){
         if (!isValid) {
             //invalid input
             // $('.error').show();
-            console.log('true because email is invalid');
+            console.log('email is invalid');
             this.validate = true;
-            // return true;
-           
         }
         else {
             //valid input
             // $('.error').hide();
-            console.log('false becaue email is valid');
+            console.log('email is valid');
             this.validate = false;
+            $location.url('/signup_password');
         }
     }   
 })
