@@ -79,7 +79,8 @@ app.config(function($routeProvider){
         // })
         .when('/signup_email',{
             templateUrl: 'pages/signup_email.html',
-            controller: 'signupEmailController'
+            controller: 'signupEmailController',
+            controllerAs: 'suec'
         })
         //route for login page (returning user)
         .when('/login',{
@@ -388,16 +389,37 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
 });
 
 app.controller('beforeSampleMatchController', function(){
-
 })
 
 app.controller('sampleMatchController', function() {
-        //Login Page Controller
 });
 
 app.controller('signupEmailController', function(){
-
+    this.validate = false;
+    this.ourEmail = '';
+    this.validate_email = function() {
+        console.log('inside validate_email controller');
+        var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(this.ourEmail);
+        var isValid = regex.test(this.ourEmail);
+        console.log('isValid is', isValid);
+        if (!isValid) {
+            //invalid input
+            // $('.error').show();
+            console.log('true');
+            this.validate = true;
+            // return true;
+           
+        }
+        else {
+            //valid input
+            // $('.error').hide();
+            console.log('false');
+            this.validate = false;
+        }
+    }   
 })
+
 
 app.controller('loginController', function(){
     //Login Page Controller
