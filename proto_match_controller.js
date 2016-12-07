@@ -48,6 +48,11 @@ app.controller("protoMatchController", function($scope, profileService, matchSer
     this.matches = [];
 
     /**
+     *  approveRejectResults    - Results from Approve or Reject operation.
+     */
+    this.approveRejectResults = [];
+    
+    /**
      *  onGetProfileButton - click handler.
      *  Note that this is only for the prototype.  In the real program, we will already have a user
      *  logged in or just created and logged in, and we will be getting matches for that user.
@@ -100,15 +105,18 @@ app.controller("protoMatchController", function($scope, profileService, matchSer
      *  onGetMatchesButton - click handler.
      */
     this.onGetMatchesButton = function() {
+        this.matches = [];
+        this.approveRejectRestuls = [];
+        
         if (!this.profileGotten) {
             self.getMatchesResults = 'Please use Get Profile before clicking on Get Matches.';
         } else if (!this.matchesCalculated) {
             self.getMatchesResults = 'Please use Calculate Matches before clicking on Get Matches.';
         } else {
-            var username = this.currentProfile.Username;
-            console.log('onGetMatchesButton');
+            var username = this.currentProfile.username;
+            console.log('onGetMatchesButton: ' + username);
             self.getMatchesResults = 'Starting get matches.';
-            matchService.getMatches(username)
+            matchService.get(username)
                 .then(function (response) {
                         console.log('onGetMatchesButton: success');
                         self.matches = response.matches;
@@ -117,6 +125,33 @@ app.controller("protoMatchController", function($scope, profileService, matchSer
                     function (response) {
                         console.log('onGetMatchesButton: error: ' + response);
                         self.getMatchesResults = response;
+                    });
+        }
+    };
+
+    /**
+     *  onApproveRejectButton - click handler.
+     */
+    this.onApproveRejectButton = function(matchIndex, approve) {
+        if (!this.profileGotten) {
+            self.approveRejectResults[matchIndex] = 'Please use Get Profile before clicking on Get Matches.';
+        } else if (!this.matchesCalculated) {
+            self.approveRejectResults[matchIndex] = 'Please use Calculate Matches before clicking on Get Matches.';
+        } else if (this.matches.length == 0) {
+            self.approveRejectResults[matchIndex] = 'No matches to compare against.';
+        } else {
+            var username = this.currentProfile.username;
+            var targetUsername = this.matches[matchIndex]['username'];
+            console.log('onApproveRejectButton: ' + username + " --> " + targetUsername);
+            self.approveRejectResults[matchIndex] = 'Starting approve/reject operation.';
+            matchService.approve(username, targetUsername, approve)
+                .then(function (response) {
+                        console.log('onApproveRejectButton: success');
+                        self.approveRejectResults[matchIndex] = 'Success: ' + (approve ? 'approved' : 'rejected');
+                    },
+                    function (response) {
+                        console.log('onApproveRejectButton: error: ' + response);
+                        self.approveRejectResults[matchIndex] = response;
                     });
         }
     };

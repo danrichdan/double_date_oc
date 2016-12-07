@@ -20,6 +20,13 @@
             height: 150px;
             width: auto;
         }
+        #matches-table img {
+            height: 100px;
+            width: auto;
+        }
+        .city-span {
+            text-transform: capitalize;
+        }
     </style>
 </head>
 <body>
@@ -103,16 +110,19 @@
     </table>
     <hr>
     <h3>Next Matches:</h3>
-    <table id="matches-table">
-        <tr ng-repeat="match in mc.matches">
-            <td>{{match.username}}</td>
-            <td>{{match.quality}}</td>
-            <td><img src="{{match.pictureLink}}"></td>
-            <td>{{match.paragraph}}</td>
-            <td>{{match.zipcode}}</td>
-            <td>{{match.city}}</td>
-        </tr>
-    </table>
+    <div id="matches-table">
+        <div ng-repeat="match in mc.matches">
+            <p>{{$index}}: {{match.name}} in <span class="city-span">{{match.city}}</span></p>
+            <p><img src="{{match.pictureLink}}"></p>
+            <p>{{match.paragraph}}</p>
+            <p>
+                <button ng-click="mc.onApproveRejectButton($index,true)">Approve</button>
+                <button ng-click="mc.onApproveRejectButton($index,false)">Reject</button>
+                <span>Results: {{mc.approveRejectResults[$index]}}</span>
+            </p>
+            <hr>
+        </div>
+    </div>
 </div>
 </body>
 </html>
