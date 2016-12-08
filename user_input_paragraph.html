@@ -33,14 +33,15 @@
                 list-style-type:    square;
             }
 
-            body > ul > li {
-                list-style-type:    none;
+            body ul li {
+                list-style-type:    none;   /* i think it looks better w/o bullets */
             }
 
             ul {
 
                 font-size:          1em;
             }
+
             textarea {
                 color:  #B2DFDB;
             }
@@ -56,18 +57,18 @@
         </form>
 
         <p class="smaller"> When finished, click button </p>
-        <a href="#/login" ><button type="button" class="btn btn-default btn-block welcome_button"> I'm finished...next </button></a>
+        <a href="#/login" ><button type="button" class="btn btn-default btn-block welcome_button"> I'm finished...next step </button></a>
 
-        <ul>
+        <ul class="list-unstyled"> <!-- bootstrap class that removes left margin indentation -->
             <li> Do:
-                <ul>
+                <ul class="list-unstyled">
                     <li> mention key interests </li>
-                    <li> describe intangibles you're looking for in other couples </li>
+                    <li> describe what you're looking for in couples </li>
                 </ul>
             </li>
 
             <li> Don't:
-                <ul>
+                <ul class="list-unstyled">
                     <li> list things you dislike in other couples  </li>
                     <li> talk about your work </li>
                 </ul>
