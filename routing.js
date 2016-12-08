@@ -72,11 +72,7 @@ app.config(function($routeProvider){
             controller: 'sampleMatchController',
             controllerAs: 'smc'
         })
-        //route for sign up page
-        // .when('/sign_up',{
-        //     templateUrl: 'pages/sign_up.html',
-        //     controller: 'signUpController'
-        // })
+        //route for sign up email
         .when('/signup_email',{
             templateUrl: 'pages/signup_email.html',
             controller: 'signupEmailController',
@@ -87,6 +83,12 @@ app.config(function($routeProvider){
             templateUrl: 'pages/signup_password.html',
             controller: 'signupPasswordController',
             controllerAs: 'supc'
+        })
+        // route for sign up paragraph
+        .when('/signup_paragraph',{
+            templateUrl: 'pages/signup_paragraph.html',
+            controller: 'signupParagraphController',
+            controllerAs: 'spc'
         })
         //route for login page (returning user)
         .when('/login',{
@@ -491,10 +493,35 @@ app.controller('signupEmailController', function($location){
     }   
 })
 
-app.controller('signupPasswordController', function() {
-
+app.controller('signupPasswordController', function($location) {
+    this.validPw = true;
+    this.matchingPw = true;
+    this.ourPassword = '';
+    this.confirmPassword = '';
+    this.validate_password = function() {
+        console.log('validate_password ran');
+        var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;//8 characters, uppercase, lowercase, number
+        console.log(this.ourPassword);
+        var pass = this.ourPassword;
+        var conf = this.confirmPassword;
+        //if pass==conf, then return true, if not return false
+        this.matchingPw = (pass==conf);
+        //if pass.match(pattern), then return true if not return false
+        this.validPw = (pass.match(pattern));
+        if( this.validPw && this.matchingPw){
+            console.log('validPW and matchingPw are true, should go to next page');
+            $location.url('/signup_paragraph');
+        }
+    // if (pass.match(pattern) === null) {
+    //     return "password must be 8 characters long and contain a number, uppercase letter and lower case letter";
+    // }
+    // return false;
+    }
 });
 
+app.controller('signupParagraphController', function(){
+
+});
 
 app.controller('loginController', function(){
     //Login Page Controller
