@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title> user input paragraph </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Francois+One|News+Cycle|Open+Sans+Condensed:300|PT+Sans+Narrow" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+        <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+        <script src="routing.js"></script>
+        <script src="profile_service.js"></script>
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+            p, textarea {
+                font-size:  0.9em;
+            }
+
+            .smaller {
+                font-size:  0.5em;
+            }
+
+            li {
+                font-size:          0.8em;
+                list-style-type:    square;
+            }
+
+            body > ul > li {
+                list-style-type:    none;
+            }
+
+            ul {
+
+                font-size:          1em;
+            }
+            textarea {
+                color:  #B2DFDB;
+            }
+        </style>
+    </head>
+
+    <body class="welcome_body" ng-controller="routeController">
+        <p> Paragraph describing yourselves: </p>
+        <p class="smaller"> (limit 200 characters) </p>
+        <textarea rows="7" cols="30" maxlength="200"> </textarea>
+
+        <p class="smaller"> When finished, click button </p>
+        <a href="#/login" ><button type="button" class="btn btn-default btn-block welcome_button"> I'm finished...next </button></a>
+
+        <ul>
+            <li> Do:
+                <ul>
+                    <li> mention key interests </li>
+                    <li> describe intangibles you're looking for in other couples </li>
+                </ul>
+            </li>
+
+            <li> Don't:
+                <ul>
+                    <li> list things you dislike in other couples  </li>
+                    <li> talk about your work </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div ng-view>
+        </div>
+
+    </body>
+</html>
