@@ -1,7 +1,7 @@
 <!--include a load animation-->
 
 <input type="text" placeholder="e-mail address" class="input_text" ng-model = 'suec.ourEmail'>
-<div class="invalidEmail" ng-if='suec.validate'>Please enter a valid e-mail address</div>
+<div class="invalidMessage" ng-if='suec.validate'>Please enter a valid e-mail address</div>
 
 <div class="previous-next pull-right">
     <a href="#/signup_password">
@@ -9,9 +9,7 @@
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
     </a>
-    <a href="#/signup_password">
         <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="suec.validate_email()">
              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
-    </a>
 </div>

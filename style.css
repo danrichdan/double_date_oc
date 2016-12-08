@@ -216,7 +216,7 @@
 }
 
 /*sign up email page*/
-.invalidEmail {
+.invalidMessage {
     color:red;
     font-size: 0.75em;
 }
