@@ -3,13 +3,12 @@
 <input type="text" placeholder="e-mail address" class="input_text" ng-model = 'suec.ourEmail'>
 <div class="invalidMessage" ng-if='suec.validate'>Please enter a valid e-mail address</div>
 
-<div class="previous-next pull-right">
-    <a href="#/signup_password">
+<!-- <div class="previous-next pull-right">
+    <a href="#/before_sample_match">
         <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
-    </a>
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="suec.validate_email()">
-             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </button>
-</div>
+    </a> -->
+      <button type="button" class="btn btn-default btn-block" aria-label="Left Align" ng-click="suec.validate_email()" id="submitSignup">
+submit        </button>
+<!-- </div> -->

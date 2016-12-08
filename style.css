@@ -219,3 +219,8 @@
 .invalidMessage {
     color:red;
     font-size: 0.75em;
+
+#submitSignup{
+    position: absolute;
+    bottom: 32%;
+}
