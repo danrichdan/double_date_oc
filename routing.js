@@ -13,10 +13,10 @@ app.config(function($routeProvider){
             controller: 'mainController'
         })
         //route for user location page
-        .when('/user_location',{
-            templateUrl: 'pages/user_location.html',
-            controller: 'userLocationController',
-            controllerAs: 'ulc'
+        .when('/our_location',{
+            templateUrl: 'pages/our_location.html',
+            controller: 'ourLocationController',
+            controllerAs: 'olc'
         })
         //route for distance page
 
@@ -61,16 +61,39 @@ app.config(function($routeProvider){
             controller: 'interestsTravelController',
             controllerAs: 'itc'
         })
+        .when('/before_sample_match',{
+            templateUrl: 'pages/before_sample_match.html',
+            controller: 'beforeSampleMatchController',
+            controllerAs: 'bsmc'
+        })
+        //route for sample matches page
+        .when('/sample_match',{
+            templateUrl: 'pages/sample_match.html',
+            controller: 'sampleMatchController',
+            controllerAs: 'smc'
+        })
         //route for sign up page
-        .when('/sign_up',{
-            templateUrl: 'pages/sign_up.html',
-            controller: 'signUpController'
+        // .when('/sign_up',{
+        //     templateUrl: 'pages/sign_up.html',
+        //     controller: 'signUpController'
+        // })
+        .when('/signup_email',{
+            templateUrl: 'pages/signup_email.html',
+            controller: 'signupEmailController',
+            controllerAs: 'suec'
+        })
+        // route for password
+        .when('/signup_password',{
+            templateUrl: 'pages/signup_password.html',
+            controller: 'signupPasswordController',
+            controllerAs: 'supc'
         })
         //route for login page (returning user)
         .when('/login',{
             templateUrl: 'pages/login.html',
             controller: 'loginController'
         })
+
         .otherwise({
             redirectTo: "/"
         })
@@ -81,84 +104,66 @@ app.config(function($routeProvider){
 app.controller('mainController', function(){
 });
 
-app.controller('userLocationController',function(profileService, $location){
-    this.userInputZip = parseFloat(profileService.getZipcode());
-    console.log("userInputZip : ", this.userInputZip);
+app.controller('ourLocationController',function(profileService, $location){
+    this.ourInputZip = parseFloat(profileService.getZipcode());
+    console.log("ourInputZip : ", this.ourInputZip);
+    var self = this;
+    this.correctZip = true;
 
     //validate info input, save, url after button click
-    this.validateZip = function(input){
-        console.log('in validateZip func', input);
-        this.inputString = input.toString();
-        this.inputLength = input.toString().length; 
-        console.log(this.inputLength);
-        if(parseInt(this.inputLength) === 5){
+    this.validateZip = function(){
+        console.log('in validateZip func', this.ourInputZip);
+        var inputString = this.ourInputZip.toString();
+        var inputLength = inputString.length; 
+         console.log(inputLength);
+        if(parseInt(inputLength) === 5){
             console.log('valid zip');
-            console.log(this.inputString, this.inputString[0]);
-            if(this.inputString[0]==='9'){
+            console.log(inputString, inputString[0]);
+            if(inputString[0]==='9'){
                 console.log('first digit of zip is 9');
-                return true;
-            }else{
-                console.log('first digit of zip is NOT 9');
-                return false;
+                self.correctZip = true;
             }
-        } else{
+            else{
+                console.log('first digit of zip is NOT 9');
+                // return false;
+                self.correctZip = false;
+            }
+        } 
+        else{
             console.log('not valid zip');
-            return false;
-        }
-    }
-    this.setUserLocation = function(userInputZip){
-        console.log('in setUserLocation func', userInputZip);
-        if(this.validateZip(userInputZip)===true){
+            // return false;
+            self.correctZip = false;
+            }
+        };
+
+    this.setOurLocation = function(ourInputZip){
+        this.validateZip();
+        console.log('in setOurLocation func', ourInputZip);
+        if(self.correctZip===true){
             console.log('validateZip is true');
-            profileService.currentProfile.zipcode = userInputZip;
+            profileService.currentProfile.zipcode = ourInputZip;
             console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
             $location.url('/distance');
         }
         else{
-            console.log('not valid zip to save to user profile');
+            console.log('not valid zip to save to our profile');
         }
     }
-    //using maxlength instead
-    // this.checkMaxZip = function(){
-    //     console.log('this.userInputZip.toString().length :', this.userInputZip.toString().length);
-    //     if(this.userInputZip.toString().length < 6){
-    //         console.log('true');
-    //         // this.userInputZip = parseInt(this.zip.toString().substring(0,5));
-    //         // console.log(this.userInputZip.toString().substring(0,5));
-    //         return true;
-    //     }else{
-    //         console.log('false length');
-    //         return false;
-    //     } 
-    // }
 });
 
+
+
+
+
 app.controller('distanceController',function(profileService, $location){
+    // this.selectedButton = ;
     //  check if profileService has maxDistance 
+    var self = this;
     this.userMaxDistance = profileService.getDistanceMax();
-    // this.addCorrectButton();
-    console.log('userMaxDistance', this.userDistanceMax);
-
-///DONT NEED THE BELOW BECAUSE WE'RE USING ANGULAR... 
-    // this.addCorrectButton = function(user){
-    //     console.log('in checkDistance function');
-    //     //if profileService has maxDistance, than add class to appropriate button
-    //      // if(this.userMaxDistance !== null){
-    //      //    console.log('in if statement');
-    //      //    if(this.userMaxDistance === 5){
-    //      //        console.log('checkDistance is true');
-    //      //        return true;
-    //      //    }
-    //      //    // if(this.userMaxDistance)
-    //      //    else{
-    //      //        console.log('checkDistance is false');
-    //      //        return false;
-    //      //    }
-    //     }
-
+    console.log('userMaxDistance', this.userMaxDistance);
     this.setDistance = function (){
         console.log('in setDistance');   
-        console.log(this.userMaxDistance);
+        console.log('self.userMaxDistance', self.userMaxDistance);
         profileService.currentProfile.distanceMax= this.userMaxDistance;
         console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
         $location.url('/our_age_range');
@@ -169,8 +174,8 @@ app.controller('distanceController',function(profileService, $location){
 app.controller('ourAgeController',function(profileService, $location){
     this.ourAgeMin = profileService.getOurAgeMin();
     this.ourAgeMax = profileService.getOurAgeMax();
-    console.log(this.ourAgeMin);
-    console.log(this.ourAgeMax);
+    console.log('this.ourAgeMin', this.ourAgeMin);
+    console.log('this.ourAgeMax', this.ourAgeMax);
     this.ourAgeRange = function(){
         if(this.ourAgeMin && this.ourAgeMax){
             if(this.ourAgeMax =='100'){
@@ -241,33 +246,47 @@ app.controller('interestsHomeController', function(profileService,$log,$location
     // functions called from interests_out.html
     //Getting the value from the Service in case it's already been selected
     this.bookClub = profileService.getBookClub();
-    console.log('Here is the value in the controller for this.bookClub after the getBookClub function is called : ', this.bookClub);
     this.conversation = profileService.getConversation();
-    console.log('Here is the value in the controller for this.conversation after the getConversation function is called : ', this.conversation);
     this.cooking = profileService.getCooking();
-    console.log('Here is the value in the controller for this.cooking after the getCooking function is called : ', this.cooking);
     this.crafts = profileService.getCrafts();
-    console.log('Here is the value in the controller for this.crafts after the getCrafts function is called : ', this.crafts);
     this.movieNight = profileService.getMovieNight();
-    console.log('Here is the value in the controller for this.movieNight after the getMovieNight function is called : ', this.movieNight);
     this.boardGames = profileService.getBoardGames();
-    console.log('Here is the value in the controller for this.boardGames after the getBoardGames function is called : ', this.boardGames);
     this.cardGames = profileService.getCardGames();
-    console.log('Here is the value in the controller for this.boardGames after the getCardGames function is called : ', this.cardGames);
 
+    //Sums up the interests for this view
+    this.atHomeInterestCount = function() {
+        this.atHomeInterestTotal = (profileService.currentProfile.boardGames ? 1 : 0) +
+            (profileService.currentProfile.cardGames ? 1 : 0) +
+            (profileService.currentProfile.cooking ? 1 : 0) +
+            (profileService.currentProfile.conversation ? 1 : 0) +
+            (profileService.currentProfile.crafts ? 1 : 0) +
+            (profileService.currentProfile.bookClub ? 1 : 0) +
+            (profileService.currentProfile.movieNight ? 1 : 0);
+        console.log('atHomeInterestTotal : ', this.atHomeInterestTotal);
+        return this.atHomeInterestTotal;
+    };
 
     //setting values for the service,
     //called from the previous and next buttons
     this.setNightAtHomeInterests = function () {
         profileService.currentProfile.bookClub = this.bookClub;
-        profileService.currentProfile.conversation = this.conversation; //This needs to be fixed in the service, I
-        // did not want to do it due to possible merge conflicts
+        profileService.currentProfile.conversation = this.conversation;
         profileService.currentProfile.cooking = this.cooking;
         profileService.currentProfile.crafts = this.crafts;
         profileService.currentProfile.movieNight = this.movieNight;
         profileService.currentProfile.boardGames = this.boardGames;
         profileService.currentProfile.cardGames = this.cardGames;
-    }
+
+    };
+
+    this.atHomeInterestButtonClicked = function(){
+        this.setNightAtHomeInterests();
+        this.atHomeInterestCount();
+    };
+
+    this.setUrl = function(){
+        $location.url('/interests_out');
+    };
 });
 
 app.controller('interestsNightOutController', function(profileService,$log,$location){
@@ -289,6 +308,25 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
     this.movies = profileService.getMovies();
     this.wineTasting = profileService.getWineTasting();
 
+    //Sums up the interests for this view
+    this.aNightOutInterestCount = function() {
+        this.aNightOutInterestTotal = (profileService.currentProfile.artGalleries ? 1 : 0) +
+            (profileService.currentProfile.casualDining ? 1 : 0) +
+            (profileService.currentProfile.comedy ? 1 : 0) +
+            (profileService.currentProfile.classicalConcerts ? 1 : 0) +
+            (profileService.currentProfile.popularConcerts ? 1 : 0) +
+            (profileService.currentProfile.ballroomDancing ? 1 : 0) +
+            (profileService.currentProfile.countryDancing ? 1 : 0) +
+            (profileService.currentProfile.salsaDancing ? 1 : 0) +
+            (profileService.currentProfile.fineDining ? 1 : 0) +
+            (profileService.currentProfile.karaoke ? 1 : 0) +
+            (profileService.currentProfile.liveTheater ? 1 : 0) +
+            (profileService.currentProfile.movies ? 1 : 0) +
+            (profileService.currentProfile.wineTasting ? 1 : 0);
+        console.log('aNightOutInterestTotal : ', this.aNightOutInterestTotal);
+        return this.aNightOutInterestTotal;
+    };
+
     //setting values for the service,
     //called from the previous and next buttons
     this.setNightOutInterests = function () {
@@ -305,6 +343,15 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
         profileService.currentProfile.liveTheater = this.liveTheater;
         profileService.currentProfile.movies = this.movies;
         profileService.currentProfile.wineTasting = this.wineTasting;
+    };
+
+    this.aNightOutInterestButtonClicked = function(){
+        this.setNightOutInterests();
+        this.aNightOutInterestCount();
+    };
+
+    this.setUrl = function(){
+        $location.url('/interests_outdoors');
     };
 });
 
@@ -324,6 +371,22 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
     this.tennis = profileService.getTennis();
     this.walking = profileService.getWalking();
 
+    //Sums up the interests for this view
+    this.outdoorInterestCount = function() {
+        this.outdoorInterestTotal = (profileService.currentProfile.bicycling ? 1 : 0) +
+            (profileService.currentProfile.bowling ? 1 : 0) +
+            (profileService.currentProfile.golf ? 1 : 0) +
+            (profileService.currentProfile.hiking ? 1 : 0) +
+            (profileService.currentProfile.horsebackRiding ? 1 : 0) +
+            (profileService.currentProfile.kayaking ? 1 : 0) +
+            (profileService.currentProfile.motorcycling ? 1 : 0) +
+            (profileService.currentProfile.racquetball ? 1 : 0) +
+            (profileService.currentProfile.tennis ? 1 : 0) +
+            (profileService.currentProfile.walking ? 1 : 0);
+        console.log('outdoorInterestTotal : ', this.outdoorInterestTotal);
+        return this.outdoorInterestTotal;
+    };
+
     //setting values for the service,
     //called from the previous and next buttons
     this.setOutdoorInterests = function () {
@@ -338,6 +401,15 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
         profileService.currentProfile.tennis = this.tennis;
         profileService.currentProfile.walking = this.walking;
     };
+
+        this.outdoorInterestButtonClicked = function(){
+            this.setOutdoorInterests();
+            this.outdoorInterestCount();
+        };
+
+        this.setUrl = function(){
+            $location.url('/interests_travel');
+        };
 });
 
 app.controller('interestsTravelController', function (profileService, $log, $location) {
@@ -350,6 +422,16 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     this.rving = profileService.getRving();
     this.travelAbroad = profileService.getTravelAbroad();
 
+    //Sums up the interests for this view
+    this.travelInterestCount = function() {
+        this.travelInterestTotal = (profileService.currentProfile.camping ? 1 : 0) +
+            (profileService.currentProfile.domesticTravel ? 1 : 0) +
+            (profileService.currentProfile.rving ? 1 : 0) +
+            (profileService.currentProfile.travelAbroad ? 1 : 0);
+        console.log('travelInterestTotal : ', this.travelInterestTotal);
+        return this.travelInterestTotal;
+    };
+
     //setting values for the service,
     //called from the previous and next buttons
     this.setTravelInterests = function () {
@@ -359,23 +441,62 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
         profileService.currentProfile.travelAbroad = this.travelAbroad;
     };
 
-    //@TODO  -- FINISH THE FUNCTION BELOW
-    // this.interestRequired = function() {
-    //     profileService.interestCount();
-    //     console.log('Interest count total : ', profileService.interestCount());
-    //     if(this.camping && this.RV-ing && this.dancing etc. are === false) {alert('Please select at least one
-    //     interest....');}
-    //     prevent the button's default behavior
-    //     maybe use $location to get to the next page?
-    //     Or maybe create an array which collects values on each view, if empty by the last view, don't move forward
-    // };
+    // This section is for validating that at least one interest is selected
+    this.interestCount = function() {
+        var count = profileService.interestCount();
+        console.log('Interest count total : ', count);
+        return count;
+    };
+
+    this.travelInterestButtonClicked = function(){
+        this.setTravelInterests();
+        this.travelInterestCount();
+
+    };
+
+    this.setUrl = function(){
+        this.interestCount();
+         $location.url('/before_sample_match');
+    };
 });
 
-app.controller('signUpController', function($scope) {
-        //Login Page Controller
+app.controller('beforeSampleMatchController', function(){
+})
+
+app.controller('sampleMatchController', function() {
 });
 
-app.controller('loginController', function($scope){
+app.controller('signupEmailController', function($location){
+    this.validate = false;
+    this.ourEmail = '';
+    this.validate_email = function() {
+        console.log('inside validate_email controller');
+        var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(this.ourEmail);
+        var isValid = regex.test(this.ourEmail);
+        console.log('isValid is', isValid);
+        if (!isValid) {
+            //invalid input
+            // $('.error').show();
+            console.log('email is invalid');
+            this.validate = true;
+        }
+        else {
+            //valid input
+            // $('.error').hide();
+            console.log('email is valid');
+            this.validate = false;
+            $location.url('/signup_password');
+        }
+    }   
+})
+
+app.controller('signupPasswordController', function() {
+
+});
+
+
+app.controller('loginController', function(){
     //Login Page Controller
 
 });
