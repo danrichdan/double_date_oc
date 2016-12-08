@@ -50,7 +50,10 @@
     <body class="welcome_body" ng-controller="routeController">
         <p> Paragraph describing yourselves: </p>
         <p class="smaller"> (limit 200 characters) </p>
-        <textarea rows="7" cols="30" maxlength="200"> </textarea>
+
+        <form action="http://danielpaschal.com/learningfuze/reflect.php" method="get">
+            <textarea rows="7" cols="30" maxlength="200"> </textarea>
+        </form>
 
         <p class="smaller"> When finished, click button </p>
         <a href="#/login" ><button type="button" class="btn btn-default btn-block welcome_button"> I'm finished...next </button></a>
