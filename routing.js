@@ -93,7 +93,11 @@ app.config(function($routeProvider){
             templateUrl: 'pages/login.html',
             controller: 'loginController'
         })
-
+        .when('/faq',{
+            templateUrl: 'pages/faq.html',
+            controller: 'faqController',
+            controllerAs: 'faq'
+        })
         .otherwise({
             redirectTo: "/"
         })
@@ -489,7 +493,10 @@ app.controller('signupEmailController', function($location){
             $location.url('/signup_password');
         }
     }   
-})
+});
+app.controller('faqController', function(){
+
+});
 
 app.controller('signupPasswordController', function() {
 
@@ -500,4 +507,6 @@ app.controller('loginController', function(){
     //Login Page Controller
 
 });
+
+
 
