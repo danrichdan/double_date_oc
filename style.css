@@ -1,5 +1,5 @@
 /*Log-in page */
-.login_body, .welcome_body,.match_body, .location_body{
+.login_body, .welcome_body, .location_body,.match_body{
     background-color: #B2DFDB;
     overflow:visible;
     color:white;
@@ -195,8 +195,8 @@
 }
 
 .btn.btn_match {
-    width:24vw;
-    height:24vw;
+    width: 24vw;
+    height: 24vw;
     border-radius: 12vw;
     font-size: 2.5em;
 }
@@ -216,9 +216,10 @@
 }
 
 /*sign up email page*/
-.invalidEmail {
+.invalidMessage {
     color:red;
     font-size: 0.75em;
+
 }
 
 .faq_body{
@@ -261,3 +262,4 @@ div.list-group {
 .answer {
     cursor: pointer;
 }
+

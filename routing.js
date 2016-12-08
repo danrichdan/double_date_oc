@@ -13,10 +13,10 @@ app.config(function($routeProvider){
             controller: 'mainController'
         })
         //route for user location page
-        .when('/user_location',{
-            templateUrl: 'pages/user_location.html',
-            controller: 'userLocationController',
-            controllerAs: 'ulc'
+        .when('/our_location',{
+            templateUrl: 'pages/our_location.html',
+            controller: 'ourLocationController',
+            controllerAs: 'olc'
         })
         //route for distance page
 
@@ -108,84 +108,66 @@ app.config(function($routeProvider){
 app.controller('mainController', function(){
 });
 
-app.controller('userLocationController',function(profileService, $location){
-    this.userInputZip = parseFloat(profileService.getZipcode());
-    console.log("userInputZip : ", this.userInputZip);
+app.controller('ourLocationController',function(profileService, $location){
+    this.ourInputZip = parseFloat(profileService.getZipcode());
+    console.log("ourInputZip : ", this.ourInputZip);
+    var self = this;
+    this.correctZip = true;
 
     //validate info input, save, url after button click
-    this.validateZip = function(input){
-        console.log('in validateZip func', input);
-        this.inputString = input.toString();
-        this.inputLength = input.toString().length; 
-        console.log(this.inputLength);
-        if(parseInt(this.inputLength) === 5){
+    this.validateZip = function(){
+        console.log('in validateZip func', this.ourInputZip);
+        var inputString = this.ourInputZip.toString();
+        var inputLength = inputString.length; 
+         console.log(inputLength);
+        if(parseInt(inputLength) === 5){
             console.log('valid zip');
-            console.log(this.inputString, this.inputString[0]);
-            if(this.inputString[0]==='9'){
+            console.log(inputString, inputString[0]);
+            if(inputString[0]==='9'){
                 console.log('first digit of zip is 9');
-                return true;
-            }else{
-                console.log('first digit of zip is NOT 9');
-                return false;
+                self.correctZip = true;
             }
-        } else{
+            else{
+                console.log('first digit of zip is NOT 9');
+                // return false;
+                self.correctZip = false;
+            }
+        } 
+        else{
             console.log('not valid zip');
-            return false;
-        }
-    }
-    this.setUserLocation = function(userInputZip){
-        console.log('in setUserLocation func', userInputZip);
-        if(this.validateZip(userInputZip)===true){
+            // return false;
+            self.correctZip = false;
+            }
+        };
+
+    this.setOurLocation = function(ourInputZip){
+        this.validateZip();
+        console.log('in setOurLocation func', ourInputZip);
+        if(self.correctZip===true){
             console.log('validateZip is true');
-            profileService.currentProfile.zipcode = userInputZip;
+            profileService.currentProfile.zipcode = ourInputZip;
             console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
             $location.url('/distance');
         }
         else{
-            console.log('not valid zip to save to user profile');
+            console.log('not valid zip to save to our profile');
         }
     }
-    //using maxlength instead
-    // this.checkMaxZip = function(){
-    //     console.log('this.userInputZip.toString().length :', this.userInputZip.toString().length);
-    //     if(this.userInputZip.toString().length < 6){
-    //         console.log('true');
-    //         // this.userInputZip = parseInt(this.zip.toString().substring(0,5));
-    //         // console.log(this.userInputZip.toString().substring(0,5));
-    //         return true;
-    //     }else{
-    //         console.log('false length');
-    //         return false;
-    //     } 
-    // }
 });
 
+
+
+
+
 app.controller('distanceController',function(profileService, $location){
+    // this.selectedButton = ;
     //  check if profileService has maxDistance 
+    var self = this;
     this.userMaxDistance = profileService.getDistanceMax();
-    // this.addCorrectButton();
-    console.log('userMaxDistance', this.userDistanceMax);
-
-///DONT NEED THE BELOW BECAUSE WE'RE USING ANGULAR... 
-    // this.addCorrectButton = function(user){
-    //     console.log('in checkDistance function');
-    //     //if profileService has maxDistance, than add class to appropriate button
-    //      // if(this.userMaxDistance !== null){
-    //      //    console.log('in if statement');
-    //      //    if(this.userMaxDistance === 5){
-    //      //        console.log('checkDistance is true');
-    //      //        return true;
-    //      //    }
-    //      //    // if(this.userMaxDistance)
-    //      //    else{
-    //      //        console.log('checkDistance is false');
-    //      //        return false;
-    //      //    }
-    //     }
-
+    console.log('userMaxDistance', this.userMaxDistance);
     this.setDistance = function (){
         console.log('in setDistance');   
-        console.log(this.userMaxDistance);
+        console.log('self.userMaxDistance', self.userMaxDistance);
         profileService.currentProfile.distanceMax= this.userMaxDistance;
         console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
         $location.url('/our_age_range');
@@ -196,8 +178,8 @@ app.controller('distanceController',function(profileService, $location){
 app.controller('ourAgeController',function(profileService, $location){
     this.ourAgeMin = profileService.getOurAgeMin();
     this.ourAgeMax = profileService.getOurAgeMax();
-    console.log(this.ourAgeMin);
-    console.log(this.ourAgeMax);
+    console.log('this.ourAgeMin', this.ourAgeMin);
+    console.log('this.ourAgeMax', this.ourAgeMax);
     this.ourAgeRange = function(){
         if(this.ourAgeMin && this.ourAgeMax){
             if(this.ourAgeMax =='100'){
@@ -488,7 +470,7 @@ app.controller('beforeSampleMatchController', function(){
 app.controller('sampleMatchController', function() {
 });
 
-app.controller('signupEmailController', function(){
+app.controller('signupEmailController', function($location){
     this.validate = false;
     this.ourEmail = '';
     this.validate_email = function() {
@@ -500,16 +482,15 @@ app.controller('signupEmailController', function(){
         if (!isValid) {
             //invalid input
             // $('.error').show();
-            console.log('true because email is invalid');
+            console.log('email is invalid');
             this.validate = true;
-            // return true;
-           
         }
         else {
             //valid input
             // $('.error').hide();
-            console.log('false becaue email is valid');
+            console.log('email is valid');
             this.validate = false;
+            $location.url('/signup_password');
         }
     }   
 });
