@@ -467,9 +467,29 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
 });
 
 app.controller('beforeSampleMatchController', function(){
-})
+});
 
-app.controller('sampleMatchController', function() {
+app.controller('sampleMatchController', function(profileService) {
+    console.log('sampleMatchController');
+    var self = this;
+    this.results = 'searching...';
+    this.sampleMatches = [];
+    this.currentProfile = profileService.getCurrentProfile();
+
+    profileService.getSampleMatches(this.currentProfile)
+        .then(function(response) {
+                console.log('sampleMatchController: success');
+                self.sampleMatches = response.matches;
+                self.results = self.sampleMatches.length + ' sample matches:'
+            },
+            function(response) {
+                console.log('sampleMatchController: error: ' + response);
+                self.sampleMatchesResults = response;
+                self.results = 'no matches available at this time; you can go back and select more interests, ' +
+                    'or just sign up and then check back later for new matches';
+                self.results += ' (' + response + ')';
+            });
+
 });
 
 app.controller('signupEmailController', function($location){
