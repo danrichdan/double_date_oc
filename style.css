@@ -216,14 +216,26 @@
 }
 
 /*sign up email page*/
-.invalidMessage {
+/*.invalidMessage {
     color:red;
-    font-size: 0.75em;
+    font-size: 0.75em;*/
 
-#submitSignup{
+.submitSignup{
     position: absolute;
-    bottom: 32%;
+    top: 63%;
 }
+
+.alert-danger{
+    font-size:50%;
+    margin-bottom: 0;
+}
+
+.invalidEmail{
+    position: relative;
+    top: 60px;
+}
+
+/*//faq page*/
 
 .faq_body{
     background-color: #B2DFDB;
