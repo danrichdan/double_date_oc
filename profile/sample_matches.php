@@ -134,7 +134,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         else {
                             $response = [
                                 'success' => false,
-                                'message' => 'Failed to locate matches',
+                                'message' => 'no matches found',
                                 'query' => $query
                             ];
                         }

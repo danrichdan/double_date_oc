@@ -133,6 +133,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     /**
      *  get methods
      */
+    this.getCurrentProfile =    function() { return this.currentProfile };
     this.getProfileId =         function() { return this.currentProfile.profileId };
     this.getUsername =          function() { return this.currentProfile.username };
     this.getPictureLink =       function() { return this.currentProfile.pictureLink };

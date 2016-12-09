@@ -1,5 +1,5 @@
 /*Log-in page */
-.login_body, .welcome_body, .location_body,.match_body{
+.login_body, .welcome_body, .location_body {
     background-color: #B2DFDB;
     overflow:visible;
     color:white;
@@ -208,7 +208,7 @@
 
 /*before sample match page*/
 .sample_paragraph{
-    font-size:23px;
+    font-size:18px;
 }
 
 .btn-block{
