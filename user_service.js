@@ -18,7 +18,9 @@ app.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
         name: null,
         userId: null,
         userLevel: null,
-        message: null
+        message: null,
+        email: null,
+        password: null,
     };
 
     /**
@@ -29,6 +31,8 @@ app.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
     this.getName        = function() { return this.userStatus.name };
     this.getUserId      = function() { return this.userStatus.userId };
     this.getUserLevel   = function() { return this.userStatus.userLevel };
+    this.getEmail       = function() { return this.userStatus.email };
+    this.getPassword    = function() { return this.userStatus.password };
 
     /**
      *  clearUserStatus - clear out the global userStatus object.
