@@ -147,6 +147,10 @@
     border: 1px #E9D555 solid;
 }
 
+.glyphicon-search{
+    top: 4px;
+}
+
 /*interests pages*/
 .interest-btn-home, .interest-btn-out, .interest-btn-active, .interest-btn-travel{
     padding: 3%;

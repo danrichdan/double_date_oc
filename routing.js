@@ -530,8 +530,8 @@ app.controller('signupEmailController', function(userService, $location){
 });
 
 app.controller('signupPasswordController', function(userService, $location) {
-    this.validPw = true;
-    this.matchingPw = true;
+    this.validPassword = true;
+    this.matchingPassword = true;
     this.ourPassword = '';
     this.confirmPassword = '';
     this.validate_password = function() {
@@ -541,11 +541,11 @@ app.controller('signupPasswordController', function(userService, $location) {
         var pass = this.ourPassword;
         var conf = this.confirmPassword;
         //if pass==conf, then return true, if not return false
-        this.matchingPw = (pass==conf);
+        this.matchingPassword = (pass==conf);
         //if pass.match(pattern), then return true if not return false
-        this.validPw = (pass.match(pattern));
-        if( this.validPw && this.matchingPw){
-            console.log('validPW and matchingPw are true, should go to next page');
+        this.validPassword = (pass.match(pattern));
+        if( this.validPassword && this.matchingPassword){
+            console.log('validPassword and matchingPassword are true, should go to next page');
             userService.userStatus.password = this.ourPassword;
             console.log('userService.userStatus.password', userService.userStatus.password)
             $location.url('/signup_paragraph');
