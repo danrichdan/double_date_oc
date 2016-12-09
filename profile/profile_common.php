@@ -116,6 +116,23 @@ function convert_profile_from_client($profile) {
     return $profile;
 }
 
+// Get the list of common interests between two profiles.
+function get_common_interest_string($p1, $p2) {
+    $count = 0;
+    $retString = "";
+    global $booleanFields;
+    foreach ($booleanFields as $field) {
+        if (check_boolean_string($p1[$field]) && check_boolean_string($p2[$field])) {
+            $count += 1;
+            if ($count != 1) {
+                $retString .= ", ";
+            }
+            $retString .= $field;
+        }
+    }
+    return $retString;
+}
+
 // Get the count of common interests between two profiles.
 function get_common_interest_count($p1, $p2) {
     $count = 0;

@@ -1,4 +1,5 @@
 <?php
+require_once('mailer.php');
 require_once('../profile/profile_common.php');
 require_once('../common/connect_database.php');
 
@@ -48,13 +49,64 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
                 // if both users have now approved this match, send e-mails to both users.
 
                 // TODO: check whether to send e-mails on double-approval.
+                $mailStatus = "";
+                if ($approve) {
+                    // Approve (not reject) succeeded; see if second half of double-approve.
+                    $mailStatus = "no double-match";
+                    $query2 = "SELECT * from `matches`
+                    WHERE `$usernameField` = '$username' AND `$targetField` = '$targetUsername';";
 
-                // Return success status.
+                    $result = mysqli_query($conn, $query2);
+                    if ($result && (mysqli_num_rows($result) == 1)) {
+                        // Got the one row we were expecting.
+                        $row = mysqli_fetch_assoc($result);
+                        if ($row['firstApproval'] == 'approved' && $row['secondApproval'] == 'approved') {
+                            // Double-approval; try to send e-mails.
+                            $mailStatus = 'double approval';
+                            $query3 = "SELECT *
+                            FROM `users` AS `u`
+                            JOIN `profiles` AS `p` ON `u`.`username` = `p`.`username`
+                            WHERE `u`.`username` = '$username' OR `u`.`username` = '$targetUsername'";
+
+                            $result = mysqli_query($conn, $query3);
+                            if ($result && (mysqli_num_rows($result) == 2)) {
+                                // Got the two rows for the double-match.
+                                $row1 = mysqli_fetch_assoc($result);
+                                $row2 = mysqli_fetch_assoc($result);
+
+                                $mailStatus = send_both_emails($row1, $row2);
+                            }
+                            else {
+                                $mailStatus = 'get users/profiles failed';
+                            }
+                        }
+                        else {
+                            $mailStatus = 'single approval; no e-mails.';
+                        }
+                    }
+                    else {
+                        // Failed query2 or did not get one row.
+                        $mailStatus = 'get double-match row failed';
+                    }
+                }
+                else {
+                    // Reject; don't bother trying to look for a double-approve.
+                    $mailStatus = "reject; no check for double-approve";
+                }
+
+                // Return success status. Note that the mailer status is returned separately for troubleshooting;
+                // the return status of "approve" is whether the approve/reject worked, not the mailer status.
                 $response = [
                     'success' => true,
-                    'post' => $_POST,
+                    'mailStatus' => $mailStatus,
                     'query1' => $query1
                 ];
+                if (isset($query2)) {
+                    $response['query2'] = $query2;
+                }
+                if (isset($query3)) {
+                    $response['query3'] = $query3;
+                }
             }
             // Match update failed.
             else {
