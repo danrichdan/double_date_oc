@@ -4,7 +4,7 @@
  *      functional interfaces: add, checkStatus, login, logout.
  */
 
-app.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
+app.service("userService", ['$http', '$q', '$log', 'profileService', function($http, $q, $log, profileService) {
     $log.log('userService: constructor');
     var self = this;
 
@@ -156,9 +156,25 @@ app.service("userService", ['$http', '$q', '$log', function($http, $q, $log) {
                     self.userStatus.userId = response.userId;
                     self.userStatus.userLevel = response.userLevel;
 
-                    def.resolve(response);
+                    // Now that we have the user logged in, if this is a normal user, get the profile.
+                    if (response.userLevel === 'normal') {
+                        profileService.get(username)
+                            .then(function(response2) {
+                                    console.log('login: get profile: success');
+                                    def.resolve(response);
+                                },
+                                function(response2) {
+                                    console.log('login: get profile: error: ' + response2);
+                                    def.reject('Profile server error: ' + response2);
+                                });
+                    }
+                    else {
+                        // Administator or moderator logged in; we are already done.
+                        def.resolve(response);
+                    }
+
                 } else {
-                    def.reject('Server error: ' + response.message);
+                    def.reject('User server error: ' + response.message);
                 }
             },
             error: function(response) {

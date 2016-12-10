@@ -7,7 +7,7 @@ header{
 
 
 /*Log-in page */
-.login_body, .welcome_body, .location_body {
+.welcome_body, .location_body {
     background-color: #B2DFDB;
     overflow:visible;
     color:white;
@@ -17,16 +17,8 @@ header{
     position:relative;
 }
 
-.login_body::before{
-    content:"";
-    height:100%;
-    width: 100%;
-    position: absolute;
-}
-
 .form-group {
     position: absolute;
-    bottom: 90%;
     right: 50%;
     transform: translate(55%,45%);
     height: 32vh;
@@ -38,31 +30,11 @@ header{
     height:20%;
 }
 
-.login_body{
-    height:95vh;
-}
-
-.forgotPW{
+.forgot-password{
     font-size: 0.65em;
     position:relative;
     bottom: 38px;
 }
-
-.login_body .chevronButtonContainer{
-    position: relative;
-    bottom: 20%;
-}
-
-.login_body .chevronButtonContainer .chevronButton .intialSubmit{
-    position: absolute;
-    right: 10%;
-}
-
-.login_button{
-    position: relative;
-    right: 49%;
-}
-
 
 /*welcome page*/
 .welcome_body{
@@ -89,9 +61,6 @@ header{
     margin-top: 2%;
 }
 
-.login_body .chevronButton:hover .initalSubmit:hover,
-.login_body .chevronButton:focus .initialSubmit:focus,
-.login_body .chevronButton:active .initialSubmit:active,
 .welcome_body .btn-default:hover,
 .welcome_body .btn-default:focus,
 .welcome_body .btn-default:active,
@@ -153,6 +122,10 @@ header{
     background-color: #368e8b;
     color: white;
     border: 1px #E9D555 solid;
+}
+
+.glyphicon-search{
+    top: 4px;
 }
 
 /*interests pages*/
