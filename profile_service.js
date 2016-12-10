@@ -70,6 +70,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
      *  clearCurrentProfile - clear out the global currentProfile object.
      */
     this.clearCurrentProfile = function() {
+        this.currentProfile.acceptTerms = null;
         this.currentProfile.profileId = null;
         this.currentProfile.username = null;
         this.currentProfile.pictureLink = null;
