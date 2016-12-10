@@ -1,14 +1,19 @@
 <div class="form-group">
-    <label for="usr">username:</label><br>
-    <input type="text" class="form-control" id="usr">
-    <label for="pwd">password:</label><br>
-    <input type="password" class="form-control" id="pwd"><br>
-    <a href="" class="forgotPW">forgot my password</href></a>
+    <label for="username">username:</label><br>
+    <input type="text" class="form-control" id="username" ng-model="lc.username">
+    <label for="password">password:</label><br>
+    <input type="password" class="form-control" id="password" ng-model="lc.password">
+    <br>
+    <a href="" class="forgot-password">forgot my password</a>
+    <div class="alert alert-danger alert-dismissible fade in" ng-show="lc.invalidParams">
+        please provide a username and password</div>
+    <div class="alert alert-danger alert-dismissible fade in" ng-show="lc.loginFailed">
+        login failed</div>
 
     <div class="previous-next pull-right">
-        <button type="button" class="btn btn-default chevronButton login_button" aria-label="Left Align">
+        <button type="button" class="btn btn-default chevronButton login_button" aria-label="login"
+            ng-click="lc.doLogin()">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
     </div>
-
 </div>
