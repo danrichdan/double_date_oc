@@ -61,10 +61,10 @@ app.config(function($routeProvider){
             controller: 'interestsTravelController',
             controllerAs: 'itc'
         })
-        .when('/before_sample_match',{
-            templateUrl: 'pages/before_sample_match.html',
-            controller: 'beforeSampleMatchController',
-            controllerAs: 'bsmc'
+        .when('/user_fyi',{
+            templateUrl: 'pages/user_fyi.html',
+            controller: 'userFyi',
+            controllerAs: 'uf'
         })
         //route for sample matches page
         .when('/sample_match',{
@@ -89,6 +89,12 @@ app.config(function($routeProvider){
             templateUrl: 'pages/signup_paragraph.html',
             controller: 'signupParagraphController',
             controllerAs: 'spc'
+        })
+        // route for sign up picture
+        .when('/signup_picture',{
+            templateUrl: 'pages/signup_picture.html',
+            controller: 'signupPictureController',
+            controllerAs: 'sup'
         })
         //route for login page (returning user)
         .when('/login',{
@@ -480,11 +486,11 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
 
     this.setUrl = function(){
         this.interestCount();
-         $location.url('/before_sample_match');
+         $location.url('/user_fyi');
     };
 });
 
-app.controller('beforeSampleMatchController', function(){
+app.controller('userFyi', function(){
 });
 
 app.controller('sampleMatchController', function(profileService) {
