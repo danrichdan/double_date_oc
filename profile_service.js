@@ -187,7 +187,10 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     this.getDomesticTravel =    function() { return this.currentProfile.domesticTravel };
     this.getTravelAbroad =      function() { return this.currentProfile.travelAbroad };
 
-    //Function to count the user's interests
+    /**
+     *  interestCount - count the profile's interests (used in validation).
+     *  @return {int}   count of booleans set.
+     */
     this.interestCount = function(){
         console.log('interestCount function is being called: ');
         var total = (this.currentProfile.boardGames ? 1 : 0) +
@@ -228,6 +231,56 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
         (this.currentProfile.domesticTravel ? 1 : 0) +
         (this.currentProfile.travelAbroad ? 1 : 0);
          return total;
+    };
+
+    /**
+     *  getCommonInterestString - build a string of common interests between two profiles.
+     *  @param  {object}    profile1
+     *  @param  {object}    profile2
+     *  @return {string}    space-separated list of common interests.
+     */
+    this.getCommonInterestString = function(profile1, profile2){
+        var retString = 
+            ((profile1.boardGames && profile2.boardGames) ? "board games, " : "") +
+            ((profile1.cardGames && profile2.cardGames) ? "card games, " : "") +
+            ((profile1.cooking && profile2.cooking) ? "cooking, " : "") +
+            ((profile1.conversation && profile2.conversation) ? "conversation, " : "") +
+            ((profile1.crafts && profile2.crafts) ? "crafts, " : "") +
+            ((profile1.bookClub && profile2.bookClub) ? "book club, " : "") +
+            ((profile1.movieNight && profile2.movieNight) ? "movie night, " : "") +
+
+            ((profile1.artGalleries && profile2.artGalleries) ? "art galleries, " : "") +
+            ((profile1.comedy && profile2.comedy) ? "comedy, " : "") +
+            ((profile1.classicalConcerts && profile2.classicalConcerts) ? "classical concerts, " : "") +
+            ((profile1.popularConcerts && profile2.popularConcerts) ? "popular concerts, " : "") +
+            ((profile1.ballroomDancing && profile2.ballroomDancing) ? "ballroom dancing, " : "") +
+            ((profile1.countryDancing && profile2.countryDancing) ? "country dancing, " : "") +
+            ((profile1.salsaDancing && profile2.salsaDancing) ? "salsa dancing, " : "") +
+            ((profile1.casualDining && profile2.casualDining) ? "casual dining, " : "") +
+            ((profile1.fineDining && profile2.fineDining) ? "fine dining, " : "") +
+            ((profile1.karaoke && profile2.karaoke) ? "karaoke, " : "") +
+            ((profile1.liveTheater && profile2.liveTheater) ? "live theater, " : "") +
+            ((profile1.movies && profile2.movies) ? "movies, " : "") +
+            ((profile1.wineTasting && profile2.wineTasting) ? "wine tasting, " : "") +
+
+            ((profile1.bicycling && profile2.bicycling) ? "bicycling, " : "") +
+            ((profile1.bowling && profile2.bowling) ? "bowling, " : "") +
+            ((profile1.golf && profile2.golf) ? "golf, " : "") +
+            ((profile1.hiking && profile2.hiking) ? "hiking, " : "") +
+            ((profile1.horsebackRiding && profile2.horsebackRiding) ? "horseback riding, " : "") +
+            ((profile1.kayaking && profile2.kayaking) ? "kayaking, " : "") +
+            ((profile1.motorcycling && profile2.motorcycling) ? "motorcycling, " : "") +
+            ((profile1.racquetball && profile2.racquetball) ? "racquetball, " : "") +
+            ((profile1.tennis && profile2.tennis) ? "tennis, " : "") +
+            ((profile1.walking && profile2.walking) ? "walking, " : "") +
+
+            ((profile1.camping && profile2.camping) ? "camping, " : "") +
+            ((profile1.rving && profile2.rving) ? "RVing, " : "") +
+            ((profile1.domesticTravel && profile2.domesticTravel) ? "domestic travel, " : "") +
+            ((profile1.travelAbroad && profile2.travelAbroad) ? "travel abroad, " : "");
+        // Remove trailing comma and space.
+        retString = retString.slice(0,-2);
+        return retString;
     };
 
     /**

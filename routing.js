@@ -507,7 +507,6 @@ app.controller('sampleMatchController', function(profileService) {
                     'or just sign up and then check back later for new matches';
                 self.results += ' (' + response + ')';
             });
-
 });
 
 app.controller('signupEmailController', function(userService, $location){
@@ -520,7 +519,7 @@ app.controller('signupEmailController', function(userService, $location){
          else{
              return '';
         }
-    }
+    };
 
     this.validate = false;
     // this.ourEmail = '';
@@ -658,21 +657,67 @@ app.controller('loginController', function($location, userService){
 app.controller('matchController', function(profileService, matchService) {
     console.log('matchController');
     var self = this;
-    this.results = 'searching...';
+    this.results = 'calculating...';
     this.matches = [];
     this.currentProfile = profileService.getCurrentProfile();
 
+    // getMatches is called automatically during controller startup (after the calculate),
+    // and can be initiated again from the button to refresh / get more matches.
+    this.getMatches = function() {
+        var username = this.currentProfile.username;
+        console.log('getMatches: ' + username);
+        this.matches = [];
+        this.results = 'getting matches...';
+
+        matchService.get(username)
+            .then(function (response) {
+                    console.log('getMatches: success');
+                    self.matches = response.matches;
+                    self.results = 'Success: matches returned: ' + self.matches.length;
+                    for (var i = 0; i < self.matches.length; i++) {
+                        var match = self.matches[i];
+                        match.commonInterestString = profileService.getCommonInterestString(
+                            self.currentProfile, match);
+                    }
+                },
+                function (response) {
+                    console.log('getMatches: error: ' + response);
+                    self.results = 'no matches available at this time';
+                    self.results += ' (' + response + ')';
+                });
+
+    };
+
+    // approve and reject functions: second parameter is true to approve and false to reject.
+    this.approveOrReject = function(matchIndex, approve) {
+        var username = this.currentProfile.username;
+        var match = this.matches[matchIndex];
+        var targetUsername = match['username'];
+        console.log('approveOrReject: ' + username + ' --> ' + targetUsername + ' = ' + approve);
+        matchService.approve(username, targetUsername, approve)
+            .then(function (response) {
+                    console.log('approveOrReject: success');
+                    match.approveOrRejectResults = (approve ? 'approved' : 'rejected');
+                },
+                function (response) {
+                    console.log('approveOrReject: error: ' + response);
+                    self.approveRejectResults[matchIndex] = response;
+                    match.approveOrRejectResults = (approve ? 'approve' : 'reject') + ' operation failed (' +
+                        response + ')';
+                });
+
+    };
+
+    // This code runs when this controller starts.
     matchService.calculate(this.currentProfile)
         .then(function(response) {
                 console.log('sampleMatchController: success');
-                self.sampleMatches = response.matches;
-                self.results = self.sampleMatches.length + ' sample matches:'
+                self.results = 'Success: match database updated';
+                self.getMatches();
             },
             function(response) {
                 console.log('sampleMatchController: error: ' + response);
-                self.sampleMatchesResults = response;
-                self.results = 'no matches available at this time; you can go back and select more interests, ' +
-                    'or just sign up and then check back later for new matches';
+                self.results = 'no matches available at this time';
                 self.results += ' (' + response + ')';
             });
 

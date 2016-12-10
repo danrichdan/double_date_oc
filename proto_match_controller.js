@@ -106,7 +106,7 @@ app.controller("protoMatchController", function($scope, profileService, matchSer
      */
     this.onGetMatchesButton = function() {
         this.matches = [];
-        this.approveRejectRestuls = [];
+        this.getMatchesResults = [];
         
         if (!this.profileGotten) {
             self.getMatchesResults = 'Please use Get Profile before clicking on Get Matches.';
