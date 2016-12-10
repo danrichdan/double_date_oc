@@ -572,8 +572,39 @@ app.controller('signupPasswordController', function(userService, $location) {
     }
 });
 
-app.controller('signupParagraphController', function(){
+app.controller('signupParagraphController', function(profileService, $log, $location){
+    this.validationText = true;
+    //this.validParagraph = true;
+      //Get the paragraph value from the service
+    this.paragraph = profileService.getParagraph();
 
+      //Set the paragraph value in the service
+    this.setDescriptionParagraph = function (){
+        profileService.currentProfile.paragraph = this.paragraph;
+    };
+
+    this.validateParagraph = function(){
+        if(this.paragraph.length < 50) {
+            console.log('Please add a paragraph that is greater than 50 characters.');
+            this.validationText = false;
+            return true;
+        } else {
+            $location.url('/signup_picture');
+        }
+    };
+
+
+    this.showValidationText = function(){
+        if(this.paragraph.length > 0 && this.paragraph.length < 50 ) {
+            console.log('Please add a paragraph of at least 50 characters.');
+            var showValidationText = false;
+            return showValidationText;
+        };
+    };
+    this.signUpPictureButtonClick = function(){
+        this.setDescriptionParagraph();
+        this.validateParagraph();
+    };
 });
 
 app.controller('faqController', function(){

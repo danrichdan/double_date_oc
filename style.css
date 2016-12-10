@@ -197,9 +197,11 @@ header{
 }
 
 /*sign up email page*/
+
 /*.invalidMessage {
     color:red;
     font-size: 0.75em;*/
+
 
 .submitSignup{
     position: absolute;
@@ -216,7 +218,12 @@ header{
     top: 60px;
 }
 
-/*//faq page*/
+/*************************
+FREQUENTLY ASKED QUESTIONS
+**************************/
+
+
+
 
 .faq_body{
     background-color: #B2DFDB;
@@ -257,5 +264,34 @@ div.list-group {
 .question,
 .answer {
     cursor: pointer;
+}
+
+/***********************
+SignUp Paragraph
+************************/
+.signup-paragraph-page p, textarea {
+    font-size:  0.9em;
+}
+
+.signup-paragraph-page .smaller {
+    font-size:  0.5em;
+}
+
+.signup-paragraph-page li {
+    font-size:          0.8em;
+    list-style-type:    square;
+}
+
+.signup-paragraph-page > ul > li {
+    list-style-type:    none;
+}
+
+.signup-paragraph-page ul {
+
+    font-size:          1em;
+}
+.signup-paragraph-page textarea {
+    color:  #B2DFDB;
+    max-width: 100%;
 }
 
