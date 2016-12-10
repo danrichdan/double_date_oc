@@ -1,7 +1,6 @@
 <!--include a load animation-->
-
-<input type="text" placeholder="e-mail address" class="input_text" ng-model = 'suec.ourEmail'>
-<div class="invalidMessage" ng-if='suec.validate'>Please enter a valid e-mail address</div>
+enter email
+<input type="text" placeholder="e-mail address" class="input_text" ng-model = 'suec.emailAddress'>
 
 <!-- <div class="previous-next pull-right">
     <a href="#/before_sample_match">
@@ -9,6 +8,7 @@
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
     </a> -->
-      <button type="button" class="btn btn-default btn-block" aria-label="Left Align" ng-click="suec.validate_email()" id="submitSignup">
-submit        </button>
+      <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Left Align" ng-click="suec.validate_email()">submit</button>
+      <div class="alert alert-danger alert-dismissible fade in invalidEmail" ng-if='suec.validate'>please enter a valid e-mail address</div>
+
 <!-- </div> -->
