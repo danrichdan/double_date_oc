@@ -93,7 +93,26 @@ app.config(function($routeProvider){
         //route for login page (returning user)
         .when('/login',{
             templateUrl: 'pages/login.html',
-            controller: 'loginController'
+            controller: 'loginController',
+            controllerAs: 'lc'
+        })
+        //route for (real) matches page
+        .when('/match',{
+            templateUrl: 'pages/match.html',
+            controller: 'matchController',
+            controllerAs: 'mc'
+        })
+        //route for administrator functions
+        .when('/administrator',{
+            templateUrl: 'pages/administrator.html',
+            controller: 'administratorController',
+            controllerAs: 'ac'
+        })
+        //route for moderator functions
+        .when('/moderator',{
+            templateUrl: 'pages/moderator.html',
+            controller: 'moderatorController',
+            controllerAs: 'modc'
         })
         .when('/faq',{
             templateUrl: 'pages/faq.html',
@@ -550,10 +569,77 @@ app.controller('signupParagraphController', function(){
 
 });
 
-app.controller('loginController', function(){
+app.controller('loginController', function($location, userService){
     //Login Page Controller
+    console.log('loginController');
+    var self = this;
+    this.username = '';
+    this.password = '';
+    this.invalidParams = false;
+    this.loginFailed = false;
+
+    // Note that the login has two parts for a normal user: log in the user, and get the profile.
+    this.doLogin = function() {
+        console.log('doLogin');
+        self.loginFailed = self.profileFailed = self.invalidParams = false;
+        if (this.username === '' || this.password === '') {
+            this.invalidParams = true;
+        }
+        else {
+            userService.login(this.username, this.password)
+                .then(function(response) {
+                        console.log('doLogin: success, userLevel: ' + userService.getUserLevel());
+                        // Go to the next page based on what level of user we are.
+                        switch (userService.getUserLevel()) {
+                            case 'administrator':
+                                $location.url('/administrator');
+                                break;
+                            case 'moderator':
+                                $location.url('/moderator');
+                                break;
+                            case 'normal':
+                            default:
+                                $location.url('/match');
+                                break;
+                        }
+                    },
+                    function(response) {
+                        console.log('doLogin: error');
+                        self.loginFailed = true;
+                    });
+
+        }
+    };
+});
+
+app.controller('matchController', function(profileService, matchService) {
+    console.log('matchController');
+    var self = this;
+    this.results = 'searching...';
+    this.matches = [];
+    this.currentProfile = profileService.getCurrentProfile();
+
+    matchService.calculate(this.currentProfile)
+        .then(function(response) {
+                console.log('sampleMatchController: success');
+                self.sampleMatches = response.matches;
+                self.results = self.sampleMatches.length + ' sample matches:'
+            },
+            function(response) {
+                console.log('sampleMatchController: error: ' + response);
+                self.sampleMatchesResults = response;
+                self.results = 'no matches available at this time; you can go back and select more interests, ' +
+                    'or just sign up and then check back later for new matches';
+                self.results += ' (' + response + ')';
+            });
 
 });
 
+app.controller('administratorController', function(){
 
+});
+
+app.controller('moderatorController', function(){
+
+});
 
