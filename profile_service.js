@@ -15,7 +15,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
         profileId: null,
         username: null,
         pictureLink: null,
-        paragraph: null,
+        paragraph: '',
 
         zipcode: null,
         city: null,

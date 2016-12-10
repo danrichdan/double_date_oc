@@ -1,3 +1,33 @@
-<div>
-this is the sign up paragraph
+
+<div class="signup-paragraph-page">
+
+        <p> Paragraph describing yourselves: </p>
+        <p class="smaller"> (limit 200 characters) </p>
+        <textarea rows="7" cols="30" maxlength="200" ng-model="spc.paragraph" name="paragraph">
+        </textarea>
+        <span class="invalidMessage" ng-hide="spc.validationText">Please add a paragraph of at least 50 characters
+            .</span>
+        </span>
+        <p class="smaller"> When finished, click button </p>
+        <p>{{spc.paragraph}}</p>
+        <button type="button" class="btn btn-default btn-block welcome_button" ng-click="spc.signUpPictureButtonClick()"> I'm finished...next </button>
+
+
+
+    <ul>
+        <li> Do:
+            <ul>
+                <li> mention key interests </li>
+                <li> describe intangibles you're looking for in other couples </li>
+            </ul>
+        </li>
+
+        <li> Don't:
+            <ul>
+                <li> list things you dislike in other couples  </li>
+                <li> talk about your work </li>
+            </ul>
+        </li>
+    </ul>
+    </div>
 </div>
