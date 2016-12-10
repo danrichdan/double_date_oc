@@ -382,7 +382,6 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
 
 app.controller('interestsOutdoorsController', function (profileService, $log, $location) {
     this.$log = $log;
-
     // functions called from interests_outdoors.html
     //Getting the value from the Service in case it's already been selected
     this.bicycling = profileService.getBicycling();
@@ -511,14 +510,25 @@ app.controller('sampleMatchController', function(profileService) {
 
 });
 
-app.controller('signupEmailController', function($location){
+app.controller('signupEmailController', function(userService, $location){
+    var self = this;
+    self.emailAddress = userService.getEmail();
+    this.displayEmail = function(){
+        if(this.emailAddress){
+        return this.emailAddress;
+        }
+         else{
+             return '';
+        }
+    }
+
     this.validate = false;
-    this.ourEmail = '';
+    // this.ourEmail = '';
     this.validate_email = function() {
         console.log('inside validate_email controller');
         var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        console.log(this.ourEmail);
-        var isValid = regex.test(this.ourEmail);
+        console.log(self.emailAddress);
+        var isValid = regex.test(self.emailAddress);
         console.log('isValid is', isValid);
         if (!isValid) {
             //invalid input
@@ -531,17 +541,16 @@ app.controller('signupEmailController', function($location){
             // $('.error').hide();
             console.log('email is valid');
             this.validate = false;
+            userService.userStatus.email = self.emailAddress; 
+            console.log('userService.userStatus.email', userService.userStatus.email);
             $location.url('/signup_password');
         }
     }   
 });
-app.controller('faqController', function(){
 
-});
-
-app.controller('signupPasswordController', function($location) {
-    this.validPw = true;
-    this.matchingPw = true;
+app.controller('signupPasswordController', function(userService, $location) {
+    this.validPassword = true;
+    this.matchingPassword = true;
     this.ourPassword = '';
     this.confirmPassword = '';
     this.validate_password = function() {
@@ -551,17 +560,15 @@ app.controller('signupPasswordController', function($location) {
         var pass = this.ourPassword;
         var conf = this.confirmPassword;
         //if pass==conf, then return true, if not return false
-        this.matchingPw = (pass==conf);
+        this.matchingPassword = (pass==conf);
         //if pass.match(pattern), then return true if not return false
-        this.validPw = (pass.match(pattern));
-        if( this.validPw && this.matchingPw){
-            console.log('validPW and matchingPw are true, should go to next page');
+        this.validPassword = (pass.match(pattern));
+        if( this.validPassword && this.matchingPassword){
+            console.log('validPassword and matchingPassword are true, should go to next page');
+            userService.userStatus.password = this.ourPassword;
+            console.log('userService.userStatus.password', userService.userStatus.password)
             $location.url('/signup_paragraph');
         }
-    // if (pass.match(pattern) === null) {
-    //     return "password must be 8 characters long and contain a number, uppercase letter and lower case letter";
-    // }
-    // return false;
     }
 });
 
@@ -569,7 +576,12 @@ app.controller('signupParagraphController', function(){
 
 });
 
-app.controller('loginController', function($location, userService){
+app.controller('faqController', function(){
+
+});
+
+
+app.controller('loginController', function(){
     //Login Page Controller
     console.log('loginController');
     var self = this;
