@@ -63,7 +63,7 @@ app.config(function($routeProvider){
         })
         .when('/user_fyi',{
             templateUrl: 'pages/user_fyi.html',
-            controller: 'userFyi',
+            controller: 'userFyiController',
             controllerAs: 'uf'
         })
         //route for sample matches page
@@ -95,6 +95,11 @@ app.config(function($routeProvider){
             templateUrl: 'pages/signup_picture.html',
             controller: 'signupPictureController',
             controllerAs: 'sup'
+        })
+        .when('/terms', {
+            templateUrl: 'pages/terms.html',
+            controller: 'termsController',
+            controllerAs: 'tc'
         })
         //route for login page (returning user)
         .when('/login',{
@@ -472,6 +477,7 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     };
 
     // This section is for validating that at least one interest is selected
+    //and counts the total interests
     this.interestCount = function() {
         var count = profileService.interestCount();
         console.log('Interest count total : ', count);
@@ -490,7 +496,7 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     };
 });
 
-app.controller('userFyi', function(){
+app.controller('userFyiController', function(){
 });
 
 app.controller('sampleMatchController', function(profileService) {
@@ -579,7 +585,7 @@ app.controller('signupPasswordController', function(userService, $location) {
 
 app.controller('signupParagraphController', function(profileService, $log, $location){
     this.validationText = true;
-    //this.validParagraph = true;
+
       //Get the paragraph value from the service
     this.paragraph = profileService.getParagraph();
 
@@ -588,6 +594,7 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
         profileService.currentProfile.paragraph = this.paragraph;
     };
 
+      //paragraph validation
     this.validateParagraph = function(){
         if(this.paragraph.length < 50) {
             console.log('Please add a paragraph that is greater than 50 characters.');
@@ -598,7 +605,6 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
         }
     };
 
-
     this.showValidationText = function(){
         if(this.paragraph.length > 0 && this.paragraph.length < 50 ) {
             console.log('Please add a paragraph of at least 50 characters.');
@@ -606,10 +612,42 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
             return showValidationText;
         };
     };
-    this.signUpPictureButtonClick = function(){
+
+    this.signUpParagraphButtonClick = function(){
         this.setDescriptionParagraph();
         this.validateParagraph();
     };
+});
+
+app.controller('signupPictureController', function (profileService, $log, $location) {
+    this.uploadAndDisplayPicture = function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    };
+    function imageIsLoaded(e) {
+        $('#myImg').attr('src', e.target.result);
+    };
+    this.uploadAndDisplayPicture();
+
+    this.setUrl = function(){
+        $location.url('/terms');
+    };
+
+    this.signUpPictureButtonClicked = function(){
+
+    };
+});
+
+app.controller('termsController', function(){
+    this.termsButtonClick = function(){
+        $location.url('/');
+    };
+
 });
 
 app.controller('faqController', function(){
