@@ -5,9 +5,6 @@ header{
     text-align: center;
 }
 
-.nav_bar { position:fixed; }
-.nav_bar.open { width: 240px; }
-
 
 /*Log-in page */
 .login_body, .welcome_body, .location_body {

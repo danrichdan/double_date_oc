@@ -568,35 +568,3 @@ app.controller('loginController', function(){
 
 });
 
-
-// <section class="nav_bar" ng-class="{open:burgerCtrl.isOpen}">
-//     <div class="nav_content" ng-show="burgerCtrl.isOpen">
-//         <h1 ng-click="burgerCtrl.closeBurger();">X</h1>
-//         <ng-transclude></ng-transclude>
-//     </div>
-// </section>
-
-
-angular.module('app')
-.directive("burgerMenu", [function () {
-    return {
-        scope: false,
-        controller: function () {
-            var self = this;
-            this.openBurger = function () {
-                self.isOpen = true;
-            };
-            this.closeBurger = function () {
-                self.isOpen = false;
-            };
-            this.isOpen = false;
-        },
-        controllerAs: 'burgerCtrl',
-        restrict: 'E',
-        replace: true,
-        transclude: true,
-        templateUrl: 'js/app/burgerMenu/_burger.tpl.html'
-    }
-}
-]);
-
