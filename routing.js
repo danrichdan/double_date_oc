@@ -581,7 +581,7 @@ app.controller('faqController', function(){
 });
 
 
-app.controller('loginController', function(){
+app.controller('loginController', function($location, userService){
     //Login Page Controller
     console.log('loginController');
     var self = this;
