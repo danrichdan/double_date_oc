@@ -5,7 +5,7 @@
         <p class="smaller"> (limit 200 characters) </p>
         <textarea rows="7" cols="30" maxlength="200" ng-model="spc.paragraph" name="paragraph">
         </textarea>
-        <span class="invalidMessage" ng-hide="spc.validationText">Please add a paragraph of at least 50 characters
+        <span class="alert alert-danger alert-dismissible fade in" ng-hide="spc.validationText">Please add a paragraph of at least 50 characters
             .</span>
         </span>
         <p class="smaller"> When finished, click button </p>
