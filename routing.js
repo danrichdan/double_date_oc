@@ -616,6 +616,9 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
 });
 
 app.controller('signupPictureController', function (profileService, $log, $location) {
+    this.setUrl = function(){
+        $location.url('/terms');
+    };
     // this.uploadAndDisplayPicture = function () {
     //     $(":file").change(function () {
     //         if (this.files && this.files[0]) {
@@ -675,9 +678,7 @@ app.controller('signupPictureController', function (profileService, $log, $locat
 
     // this.uploadAndDisplayPicture();
     //
-    // this.setUrl = function(){
-    //     $location.url('/terms');
-    // };
+
     //
     // this.signUpPictureButtonClicked = function(){
     //
