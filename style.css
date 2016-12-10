@@ -1,3 +1,14 @@
+/*home page*/
+header{
+    position: relative;
+    bottom: 43%;
+    text-align: center;
+}
+
+.nav_bar { position:fixed; }
+.nav_bar.open { width: 240px; }
+
+
 /*Log-in page */
 .login_body, .welcome_body, .location_body {
     background-color: #B2DFDB;
