@@ -12,6 +12,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
      *  @type {object}
      */
     this.currentProfile = {
+        acceptedTerms: null,
         profileId: null,
         username: null,
         pictureLink: null,
@@ -70,7 +71,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
      *  clearCurrentProfile - clear out the global currentProfile object.
      */
     this.clearCurrentProfile = function() {
-        this.currentProfile.acceptTerms = null;
+        this.currentProfile.acceptedTerms = true;
         this.currentProfile.profileId = null;
         this.currentProfile.username = null;
         this.currentProfile.pictureLink = null;
@@ -134,6 +135,7 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
     /**
      *  get methods
      */
+    this.getAcceptedTerms =     function() { return this.currentProfile.acceptedTerms };
     this.getCurrentProfile =    function() { return this.currentProfile };
     this.getProfileId =         function() { return this.currentProfile.profileId };
     this.getUsername =          function() { return this.currentProfile.username };

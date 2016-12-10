@@ -303,7 +303,6 @@ app.controller('interestsHomeController', function(profileService,$log,$location
     };
 
     //setting values for the service,
-    //called from the previous and next buttons
     this.setNightAtHomeInterests = function () {
         profileService.currentProfile.bookClub = this.bookClub;
         profileService.currentProfile.conversation = this.conversation;
@@ -364,7 +363,6 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
     };
 
     //setting values for the service,
-    //called from the previous and next buttons
     this.setNightOutInterests = function () {
         profileService.currentProfile.artGalleries = this.artGalleries;
         profileService.currentProfile.casualDining = this.casualDining;
@@ -423,7 +421,6 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
     };
 
     //setting values for the service,
-    //called from the previous and next buttons
     this.setOutdoorInterests = function () {
         profileService.currentProfile.bicycling = this.bicycling;
         profileService.currentProfile.bowling = this.bowling;
@@ -468,7 +465,6 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     };
 
     //setting values for the service,
-    //called from the previous and next buttons
     this.setTravelInterests = function () {
         profileService.currentProfile.camping = this.camping;
         profileService.currentProfile.domesticTravel = this.domesticTravel;
@@ -643,11 +639,17 @@ app.controller('signupPictureController', function (profileService, $log, $locat
     };
 });
 
-app.controller('termsController', function(){
+app.controller('termsController', function(profileService, $log, $location){
+    this.$log = $log;
+
+    //setting value for the service,
+    this.setAcceptedTerms = function () {
+        profileService.currentProfile.acceptedTerms = this.acceptedTerms;
+    };
+
     this.termsButtonClick = function(){
         $location.url('/');
     };
-
 });
 
 app.controller('faqController', function(){

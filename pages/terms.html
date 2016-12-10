@@ -45,7 +45,7 @@
         If you suspect  a security breach into your account, you must immediately contact DoubleDateOC of any unauthorized use of your account.
 
     </div>
-    <input type="checkbox">
-    <button>Sign Up</button>
+    <input type="checkbox" ng-click="tc.acceptedTerms=!tc.acceptedTerms; tc.$log.log(tc.acceptedTerms)" >
+    <button ng-disabled="!tc.acceptedTerms">Sign Up</button>
 
 </div>
