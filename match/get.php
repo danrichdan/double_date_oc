@@ -1,6 +1,7 @@
 <?php
 require_once('../profile/profile_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $response = [];
 $username = '';
@@ -65,6 +66,9 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
                         $match = convert_profile_to_client($row);
                         array_push($matches, $match);
                     }
+
+                    // Log this to the error_log.
+                    dd_error_log("get matches for '$username' from IP " . $_SERVER['REMOTE_ADDR']);
 
                     // Return success status and the matches.
                     $response = [

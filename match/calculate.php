@@ -1,6 +1,7 @@
 <?php
 require_once('../profile/profile_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $profile = null;
 $response = [];
@@ -153,6 +154,9 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             // do NOT try to test mysqli_affected_rows from the $insertQuery.
                             $result = mysqli_query($conn, $insertQuery);
                             if ($result) {
+                                // Log this to the error_log.
+                                dd_error_log("match calculation completed for '$username' from IP " . $_SERVER['REMOTE_ADDR']);
+
                                 // Build success response to user.
                                 $response = [
                                     'success' => true,

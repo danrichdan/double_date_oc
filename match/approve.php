@@ -2,6 +2,7 @@
 require_once('mailer.php');
 require_once('../profile/profile_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $response = [];
 $username = '';
@@ -39,6 +40,9 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
             // Set field value based on whether we are approving or rejected.
             $modifyValue = ($approve ? "approved" : "rejected");
 
+            // Log this to the error_log.
+            dd_error_log("'$username' $modifyValue '$targetUsername' from IP " . $_SERVER['REMOTE_ADDR']);
+
             $query1 = "UPDATE `matches`
             SET `$modifyField` = '$modifyValue'
             WHERE `$usernameField` = '$username' AND `$targetField` = '$targetUsername';";
@@ -47,8 +51,6 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
             if ($result && (mysqli_affected_rows($conn) == 1)) {
                 // The update of the record has worked. If this was an approval, read back the record and,
                 // if both users have now approved this match, send e-mails to both users.
-
-                // TODO: check whether to send e-mails on double-approval.
                 $mailStatus = "";
                 if ($approve) {
                     // Approve (not reject) succeeded; see if second half of double-approve.
@@ -61,6 +63,9 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
                         // Got the one row we were expecting.
                         $row = mysqli_fetch_assoc($result);
                         if ($row['firstApproval'] == 'approved' && $row['secondApproval'] == 'approved') {
+                            // Log this to the error_log.
+                            dd_error_log("double approval emails for '$username' and '$targetUsername' from IP " . $_SERVER['REMOTE_ADDR']);
+
                             // Double-approval; try to send e-mails.
                             $mailStatus = 'double approval';
                             $query3 = "SELECT *
