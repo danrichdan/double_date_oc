@@ -5,9 +5,9 @@
         <p class="smaller"> (limit 200 characters) </p>
         <textarea rows="7" cols="30" maxlength="200" ng-model="spc.paragraph" name="paragraph">
         </textarea>
-        <span class="alert alert-danger alert-dismissible fade in" ng-hide="spc.validationText">Please add a paragraph of at least 50 characters
-            .</span>
-        </span>
+        <p class="alert alert-danger alert-dismissible fade in" ng-hide="spc.validationText">Please add a paragraph
+            of at least 50 characters.
+        </p>
         <p class="smaller"> When finished, click button </p>
         <!--<p>{{spc.paragraph}}</p>-->
         <button type="button" class="btn btn-default btn-block welcome_button" ng-click="spc.signUpParagraphButtonClick()"> I'm finished...next </button>
