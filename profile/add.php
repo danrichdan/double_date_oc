@@ -1,6 +1,7 @@
 <?php
 require_once('profile_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $username = null;
 $profile = null;
@@ -53,6 +54,9 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     if ($result && (mysqli_affected_rows($conn) == 1)) {
                         // Get the new id.
                         $profileId = mysqli_insert_id($conn);
+
+                        // Log this to the error_log.
+                        dd_error_log("user '$username' added profileId $profileId from IP " . $_SERVER['REMOTE_ADDR']);
 
                         // Build success response to user.
                         $response = [

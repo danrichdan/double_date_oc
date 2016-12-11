@@ -1,6 +1,7 @@
 <?php
 require_once('user_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $name = get_sanitized_name();
 $password = get_sanitized_password();
@@ -33,6 +34,9 @@ if ($name && $password && $email) {
                     $userRecord['name'] = $name;
                     $userRecord['userLevel'] = 'normal';
                     $_SESSION['user_record'] = $userRecord;
+
+                    // Log this login to the error_log.
+                    dd_error_log("user '$username' created and logged in from IP " . $_SERVER['REMOTE_ADDR']);
 
                     // Build success response to user.
                     $response = [
