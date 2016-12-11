@@ -25,7 +25,6 @@
 </div>
 
 <p>Please select at least one interest.</p>
-<a href="#faq">Frequently Asked Questions</a>
 <div class="previous-next pull-right">
     <a href="#/interests_outdoors">
         <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="itc.setTravelInterests()">
@@ -36,5 +35,9 @@
         <button type="button" class="btn btn-default initialSubmit" aria-label="Left Align"
                 ng-disabled="itc.travelInterestCount()==0;" ng-click="itc.setUrl()">find our matches
         </button>
+    <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+            ng-disabled="itc.travelInterestCount()==0;" ng-click="itc.setUrl()">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </button>
 
 </div>
