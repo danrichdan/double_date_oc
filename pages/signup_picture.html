@@ -1,9 +1,28 @@
 <div>
 
-        <input type="file" name="pic" accept="image/*">
-        <img id="myImg" src="#" alt="your image" />
+        <!--<input type="file" name="pic" accept="image/*">-->
+        <!--<img id="myImg" src="#" alt="your image" />-->
         <!--<input type="submit">-->
+    <div>
 
+        <div>
+            <div id="picture-dropzone-div" class="dropzone">
+                <!--
+                <form action="profile/upload.php"
+                      class="dropzone"
+                      id="picture-dropzone"></form>
+                -->
+            </div>
+            <div>
+                <img src="{{sup.pictureLink}}" id="profile-picture">
+            </div>
+        </div>
+        <div>
+            <p>Picture Link:</p>
+            <p>{{sup.pictureLink}}</p>
+        </div>
+    </div>
     <button type="button" class="btn btn-default btn-block welcome_button" ng-click="sup.setUrl();">
-        I'm finished...next </button>
+        I'm finished...next
+    </button>
 </div>

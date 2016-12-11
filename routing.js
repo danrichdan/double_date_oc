@@ -616,27 +616,73 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
 });
 
 app.controller('signupPictureController', function (profileService, $log, $location) {
-    this.uploadAndDisplayPicture = function () {
-        $(":file").change(function () {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-                reader.onload = imageIsLoaded;
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-    };
-    function imageIsLoaded(e) {
-        $('#myImg').attr('src', e.target.result);
-    };
-    this.uploadAndDisplayPicture();
-
     this.setUrl = function(){
         $location.url('/terms');
     };
+    // this.uploadAndDisplayPicture = function () {
+    //     $(":file").change(function () {
+    //         if (this.files && this.files[0]) {
+    //             var reader = new FileReader();
+    //             reader.onload = imageIsLoaded;
+    //             reader.readAsDataURL(this.files[0]);
+    //         }
+    //     });
+    // };
+    // function imageIsLoaded(e) {
+    //     $('#myImg').attr('src', e.target.result);
+    // };
 
-    this.signUpPictureButtonClicked = function(){
+    /**
+     *  Dropzone
+     */
+    Dropzone.autoDiscover = false;
+    this.pictureDropzone = new Dropzone("#picture-dropzone-div", {
+        url: 'profile/upload.php',
+        maxFilesize: 2, // MB.
+        paramName: 'file',
+        maxFiles: 1,
+        maxfilesexceeded: function(file) {
+            alert('Only one file is allowed.');
+        },
+        success: function(response) {
+            var responseObj = JSON.parse(response.xhr.response);
 
-    };
+            // Remove the existing file from the Dropzone.
+            this.removeAllFiles();
+
+            if (responseObj.success) {
+                var newLink = responseObj.newLink;
+                console.log('Dropzone: success: ' + newLink);
+                self.uploadResults = 'Success, new link: ' + newLink;
+            }
+            // Error from upload.php
+            else {
+                console.warn('Dropzone: error: ' + responseObj.message);
+                self.uploadResults = 'Error: ' + responseObj.message;
+            }
+
+            // Dropzone operates outside of the digest cycle, so we have to manually declare changes.
+            profileService.setPictureLink(newLink);
+            $scope.$apply();
+        },
+        acceptedFiles: 'image/*,.jpg,.jpeg,.gif,.png',
+        accept: function(file, done) {
+            console.log('Dropzone: accept: ' + file);
+            done();
+        },
+        init: function() {
+            console.log('Dropzone: init: ' + this);
+        }
+
+    });
+
+    // this.uploadAndDisplayPicture();
+    //
+
+    //
+    // this.signUpPictureButtonClicked = function(){
+    //
+    // };
 });
 
 app.controller('termsController', function(profileService, $log, $location){
