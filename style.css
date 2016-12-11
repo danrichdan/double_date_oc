@@ -68,7 +68,7 @@ header{
     background-color: #368e8b;
     color:white;
     /*border-color:;*/
-    border: 1px #E9D555 solid;
+
 }
 
 
@@ -121,7 +121,7 @@ header{
 .buttonHighlighted{
     background-color: #368e8b;
     color: white;
-    border: 1px #E9D555 solid;
+
 }
 
 .glyphicon-search{
