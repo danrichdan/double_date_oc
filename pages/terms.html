@@ -1,7 +1,7 @@
-<div>
+<div class="terms-and-conditions">
     <h1>Terms and Conditions</h1>
     <p>Please read  and accept the Terms and Conditions to continue.</p>
-    <div>Terms and conditions:
+    <textarea>Terms and conditions:
 
         Membership
         The purpose of DoubleDateOC is matching up couples with other couples in their area for shared activities.
@@ -44,8 +44,8 @@
         Any suggestions, comments, issues or questions may be directed to (moderator@doubledateoc.com).
         If you suspect  a security breach into your account, you must immediately contact DoubleDateOC of any unauthorized use of your account.
 
-    </div>
-    <input type="checkbox" ng-click="tc.acceptedTerms=!tc.acceptedTerms; tc.$log.log(tc.acceptedTerms)" >
-    <button ng-disabled="!tc.acceptedTerms">Sign Up</button>
+    </textarea>
+    <input type="checkbox" ng-click="tc.acceptedTerms=!tc.acceptedTerms; tc.$log.log(tc.acceptedTerms) " >
+    <button type="button" class="btn btn-default initialSubmit" ng-disabled="!tc.acceptedTerms">Join!</button>
 
 </div>
