@@ -1,31 +1,17 @@
 
 <div class="signup-paragraph-page">
-
-        <p> Paragraph describing yourselves: </p>
-        <p class="smaller"> (limit 200 characters) </p>
+        <p>enter a short paragraph about yourselves:</p>
+        <p class="input-fyi"><strong>do</strong> mention key interests and other preferences like 'no smokers'<br><strong>don't</strong> give any identifying information like last names, e-mails, or telephone numbers</p>
+        <!--<p class="input-fyi textbox-fyi"> (limit 200 characters) </p>-->
         <textarea rows="7" cols="30" maxlength="200" ng-model="spc.paragraph" name="paragraph">
         </textarea>
-        <p class="alert alert-danger alert-dismissible fade in" ng-hide="spc.validationText">Please add a paragraph
+
+        <!--<p>{{spc.paragraph}}</p>-->
+        <button type="button" class="btn btn-default btn-block welcome_button" ng-click="spc.signUpParagraphButtonClick()">submit</button>
+        <p class="alert alert-danger alert-dismissible fade in paragraph-minimum" ng-hide="spc.validationText">Please add a paragraph
             of at least 50 characters.
         </p>
-        <p class="smaller"> When finished, click button </p>
-        <!--<p>{{spc.paragraph}}</p>-->
-        <button type="button" class="btn btn-default btn-block welcome_button" ng-click="spc.signUpParagraphButtonClick()"> I'm finished...next </button>
 
-    <ul>
-        <li> Do:
-            <ul>
-                <li> mention key interests </li>
-                <li> describe intangibles you're looking for in other couples </li>
-            </ul>
-        </li>
 
-        <li> Don't:
-            <ul>
-                <li> list things you dislike in other couples  </li>
-                <li> talk about your work </li>
-            </ul>
-        </li>
-    </ul>
     </div>
 </div>

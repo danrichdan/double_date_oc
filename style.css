@@ -77,6 +77,7 @@ header{
     background: #74ada0;
     border: black;
     color:white;
+    font-family:NTR;
 }
 .button-spacing > a:not(:last-child){
     margin-bottom: 2%;
@@ -116,6 +117,9 @@ header{
     font-size:17px;
 }
 
+.age-range-buttons{
+    margin-top:10px;
+}
 /*distance page*/
 
 .current-location{
@@ -161,6 +165,14 @@ header{
 
 .initialSubmit{
     padding:15px;
+}
+
+.input-fyi{
+    color: #368e8b;
+    font-size: 13px;
+    position: relative;
+    bottom: 6px;
+    font-family: Quicksand;
 }
 
 /*sign-up email page*/
@@ -211,9 +223,9 @@ header{
 }
 
 
-/*before sample match page*/
-.sample_paragraph{
-    font-size:18px;
+/*before sample match user FYI page*/
+.note-for-sample-match{
+    top: 3px;
 }
 
 .btn-block{
@@ -221,15 +233,14 @@ header{
 }
 
 /*sign up email page*/
-
-/*.invalidMessage {
-    color:red;
-    font-size: 0.75em;*/
-
+.input_text{
+    /*position: absolute;*/
+    top: 69px;
+}
 
 .submitSignup{
     position: absolute;
-    top: 63%;
+    top: 51%;
 }
 
 .alert-danger{
@@ -241,6 +252,7 @@ header{
     position: relative;
     top: 60px;
 }
+
 
 /*************************
 FREQUENTLY ASKED QUESTIONS
@@ -293,37 +305,26 @@ div.list-group {
 /***********************
 SignUp Paragraph
 ************************/
-.signup-paragraph-page p, textarea {
-    font-size:  0.9em;
-}
 
-.signup-paragraph-page .smaller {
-    font-size:  0.5em;
-}
-
-.signup-paragraph-page li {
-    font-size:          0.8em;
-    list-style-type:    square;
-}
-
-.signup-paragraph-page > ul > li {
-    list-style-type:    none;
-}
-
-.signup-paragraph-page ul {
-
-    font-size:          1em;
-}
 .signup-paragraph-page textarea {
-    color:  black;
+    color:  dimgray;
     width: 100%;
     max-width: 100%;
-    font-family: 'Calibri', sans-serif;
-    font-size: .65em;
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
 }
 .signup-paragraph-page p .alert {
     margin-bottom: 15px;
 }
+
+.textbox-fyi{
+    color:white;
+}
+
+/*.paragraph-minimum{*/
+    /*position: relative;*/
+    /*top: 93px;*/
+/*}*/
 
 /**********************
 Terms and Conditions page

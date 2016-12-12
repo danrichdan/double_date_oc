@@ -1,6 +1,6 @@
 
-<div class="outdoors-about groupings">
-    to stay active we like
+<div>
+    <h1>to stay active we like</h1><p class="input-fyi">(select at least one interest)</p>
     <div class="interest-buttons">
         <div class="outdoor groupings">
             <button type="button" class="btn btn-default interest-btn-active" aria-label="Left Align"
@@ -38,18 +38,18 @@
                     ng-class="{buttonHighlighted: iod.walking}">walking</button>
         </div>
     </div>
-</div>
 
-<p>Please select at least one interest.</p>
-<div class="previous-next pull-right">
-    <a href="#/interests_out">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="iod.setOutdoorInterests()">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        </button>
-    </a>
+    <div class="previous-next pull-right">
+        <a href="#/interests_out">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="iod.setOutdoorInterests()">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
 
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
-                ng-disabled="iod.outdoorInterestCount()==0;" ng-click="iod.setUrl()">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </button>
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+                    ng-disabled="iod.outdoorInterestCount()==0;" ng-click="iod.setUrl()">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button>
+    </div>
+
 </div>

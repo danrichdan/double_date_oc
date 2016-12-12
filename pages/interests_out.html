@@ -1,9 +1,7 @@
-
-<div class="out-about groupings">
-    on a night out we like
+<div>
+    <h1>on a night out we like</h1><p class="input-fyi">(select at least one interest)</p>
     <div class="interest-buttons">
         <div class="out groupings">
-
             <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
                     ng-click="ioc.artGalleries=!ioc.artGalleries; ioc.$log.log(ioc.artGalleries);ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.artGalleries}">art shows
@@ -52,18 +50,19 @@
 
         </div>
     </div>
-</div>
-<p>Please select at least one interest.</p>
-<div class="previous-next pull-right">
-    <a href="#/interests_home">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="ioc.setNightOutInterests()">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        </button>
-    </a>
 
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
-                ng-disabled="ioc.aNightOutInterestCount()==0;" ng-click="ioc.setUrl()">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </button>
+    <div class="previous-next pull-right">
+        <a href="#/interests_home">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="ioc.setNightOutInterests()">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
+
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+                    ng-disabled="ioc.aNightOutInterestCount()==0;" ng-click="ioc.setUrl()">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button>
+
+    </div>
 
 </div>
