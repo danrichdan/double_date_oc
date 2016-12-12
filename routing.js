@@ -619,19 +619,6 @@ app.controller('signupPictureController', function (profileService, $log, $locat
     this.setUrl = function(){
         $location.url('/terms');
     };
-    // this.uploadAndDisplayPicture = function () {
-    //     $(":file").change(function () {
-    //         if (this.files && this.files[0]) {
-    //             var reader = new FileReader();
-    //             reader.onload = imageIsLoaded;
-    //             reader.readAsDataURL(this.files[0]);
-    //         }
-    //     });
-    // };
-    // function imageIsLoaded(e) {
-    //     $('#myImg').attr('src', e.target.result);
-    // };
-
     /**
      *  Dropzone
      */
@@ -676,13 +663,6 @@ app.controller('signupPictureController', function (profileService, $log, $locat
 
     });
 
-    // this.uploadAndDisplayPicture();
-    //
-
-    //
-    // this.signUpPictureButtonClicked = function(){
-    //
-    // };
 });
 
 app.controller('termsController', function(profileService, $log, $location){
@@ -693,8 +673,8 @@ app.controller('termsController', function(profileService, $log, $location){
         profileService.currentProfile.acceptedTerms = this.acceptedTerms;
     };
 
-    this.termsButtonClick = function(){
-        $location.url('/');
+    this.termsButtonClicked = function(){
+        $location.url('/match');
     };
 });
 

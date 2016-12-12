@@ -86,7 +86,7 @@ header{
     background-color: #368e8b;
     color:white;
     /*border-color:;*/
-    border: 1px #E9D555 solid;
+
 }
 
 
@@ -137,7 +137,7 @@ header{
 .buttonHighlighted{
     background-color: #368e8b;
     color: white;
-    border: 1px #E9D555 solid;
+
 }
 
 .glyphicon-search{
@@ -307,7 +307,44 @@ SignUp Paragraph
     font-size:          1em;
 }
 .signup-paragraph-page textarea {
-    color:  #B2DFDB;
+    color:  black;
+    width: 100%;
     max-width: 100%;
+    font-family: 'Calibri', sans-serif;
+    font-size: .65em;
+}
+.signup-paragraph-page p .alert {
+    margin-bottom: 15px;
+}
+
+/**********************
+Terms and Conditions page
+**********************/
+
+.terms-and-conditions .textarea{
+    width: 100%;
+    max-width: 100%;
+    color: black;
+    background-color: white;
+    height: 50vh;
+    margin-bottom: 10px;
+    font-size: .65em;
+    font-family: 'Calibri', sans-serif;
+    overflow: scroll;
+    list-style: none;
+    padding: 15px;
+
+}
+
+.terms-and-conditions input[type=checkbox] {
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.terms-and-conditions button {
+    width: 150px;
+    font-size: 1.2em;
+    margin-bottom: 100px;
+    display: block;
 }
 
