@@ -692,7 +692,7 @@ app.controller('termsController', function(profileService, $log, $location){
     };
 
     this.termsButtonClicked = function(){
-        $location.url('/match');
+        $location.url('/user_summary');
     };
 });
 
@@ -827,6 +827,10 @@ app.controller('userSummaryController', function(userService, $location, $log){
     this.$log = $log;
     this.username = userService.getUsername();
     console.log('Here is the userName: ' ,this.username);
+    this.summaryButtonClicked = function(){
+        $location.url('/match');
+    };
+
 });
 
 app.controller('administratorController', function(){
