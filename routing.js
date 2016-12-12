@@ -615,7 +615,11 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
     };
 });
 
-app.controller('signupPictureController', function (profileService, $log, $location) {
+app.controller('signupPictureController', function (profileService, $log, $location, $scope) {
+    var self = this;
+    // Link to picture to allow data binding.
+    this.pictureLink = null;
+
     this.setUrl = function(){
         $location.url('/terms');
     };
@@ -640,6 +644,7 @@ app.controller('signupPictureController', function (profileService, $log, $locat
             if (responseObj.success) {
                 var newLink = responseObj.newLink;
                 console.log('Dropzone: success: ' + newLink);
+                self.pictureLink = newLink;
                 self.uploadResults = 'Success, new link: ' + newLink;
             }
             // Error from upload.php
