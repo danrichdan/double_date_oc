@@ -38,7 +38,11 @@ header{
 .form-group {
     position: absolute;
     right: 50%;
-    transform: translate(55%,45%);
+    transform:translate(55%,45%);
+    -ms-transform:translate(55%,45%);
+    -webkit-transform:translate(55%,45%);
+    -moz-transform:translate(55%,45%);
+    -o-transform:translate(55%,45%);
     height: 32vh;
     width: 100%;
 }
@@ -60,7 +64,11 @@ header{
     position: absolute;
     /*bottom: 50%;*/
     right: 52.5%;
-    transform: translate(54%,47%);
+    transform:translate(54%,47%);
+    -ms-transform:translate(54%,47%);
+    -webkit-transform:translate(54%,47%);
+    -moz-transform:translate(54%,47%);
+    -o-transform:translate(54%,47%);
     height: 30vh;
     width: 77%;
 }
