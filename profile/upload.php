@@ -1,5 +1,6 @@
 <?php
 require_once('profile_common.php');
+require_once('../common/dd_error_log.php');
 
 // Get a convenient name for DIRECTORY_SEPARATOR.
 $ds = DIRECTORY_SEPARATOR;
@@ -35,17 +36,20 @@ if ($_SESSION && $_SESSION['user_record']) {
             $response['newLink'] = $targetPathUrl;
         } // Error moving file.
         else {
+            dd_error_log("profile/upload move_uploaded_file failed");
             $response['message'] = 'move_uploaded_file failed';
         }
 
     } // Necessary information not supplied.
     else {
+        dd_error_log("profile/upload invalid request");
         $response['message'] = 'Invalid request';
         $response['files'] = $_FILES;
     }
 }
 // No user logged in.
 else {
+    dd_error_log("profile/upload not logged in");
     $response['message'] = 'Not logged in';
 }
 

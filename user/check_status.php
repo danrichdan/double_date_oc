@@ -1,5 +1,6 @@
 <?php
 require_once('user_common.php');
+require_once('../common/dd_error_log.php');
 
 $userRecord = null;
 $response = [];
@@ -24,6 +25,7 @@ if ($username) {
             unset($_SESSION['user_record']);
         }
 
+        dd_error_log("user/check specified username is not logged in");
         $response = [
             'success' => false,
             'message' => 'Specified username is not logged in'
@@ -33,6 +35,7 @@ if ($username) {
 
 // username not provided.
 else {
+    dd_error_log("user/check missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing username'

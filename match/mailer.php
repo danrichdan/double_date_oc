@@ -1,5 +1,6 @@
 <?php
 require_once('../common/email_credentials.php');
+require_once('../common/dd_error_log.php');
 require_once('../PHPMailer/PHPMailerAutoload.php');
 
 function send_one_email($thisUser, $otherUser) {
@@ -70,6 +71,7 @@ function send_one_email($thisUser, $otherUser) {
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     if(!$mail->send()) {
+        dd_error_log("match/mailer: failed email to $thisEmail: " . $mail->ErrorInfo);
         $retStatus = 'Message could not be sent: ' . $mail->ErrorInfo;
     } else {
         $retStatus = 'Message sent';

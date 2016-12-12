@@ -155,7 +155,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             $result = mysqli_query($conn, $insertQuery);
                             if ($result) {
                                 // Log this to the error_log.
-                                dd_error_log("match calculation completed for '$username' from IP " . $_SERVER['REMOTE_ADDR']);
+                                dd_error_log("match calculation completed for '$username'");
 
                                 // Build success response to user.
                                 $response = [
@@ -168,6 +168,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             }
                             // Insert query failed.
                             else {
+                                dd_error_log("match/calculate insert query failed");
                                 $response = [
                                     'success' => false,
                                     'message' => 'Insert query failed',
@@ -180,6 +181,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         }
                         // Select query failed.
                         else {
+                            dd_error_log("match/calculate select query failed");
                             $response = [
                                 'success' => false,
                                 'message' => 'Select query failed',
@@ -189,6 +191,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     }
                     // No interests were specified.
                     else {
+                        dd_error_log("match/calculate with no interests");
                         $response = [
                             'success' => false,
                             'message' => 'Invalid profile parameter: no interests'
@@ -197,6 +200,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                 }
                 // Lookup zipcode failed.
                 else {
+                    dd_error_log("match/calculate zipcode failed for $zipcode");
                     $response = [
                         'success' => false,
                         'message' => 'Invalid zipcode'
@@ -205,6 +209,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             }
             // Failed to connect to the database.
             else {
+                dd_error_log("match/calculate failed to connect to database");
                 $response = [
                     'success' => false,
                     'message' => 'Failed to connect to profile database'
@@ -214,6 +219,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
         }
         // Invalid parameter passed.
         else {
+            dd_error_log("match/calculate invalid parameter");
             $response = [
                 'success' => false,
                 'message' => 'Invalid profile parameter'
@@ -222,6 +228,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
     }
     // No session or not logged in.
     else {
+        dd_error_log("match/calculate with no session or login");
         $response = [
             'success' => false,
             'temp' => $temp,
@@ -231,6 +238,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
 }
 // If some parameter missing, return an error.
 else {
+    dd_error_log("match/calculate missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing profile'

@@ -19,7 +19,7 @@ if ($username && $password) {
             if ($userRecord['username'] == $username &&
                 $userRecord['password'] == $password) {
                 // Log this to the error_log.
-                dd_error_log("user '$username' logged in from IP " . $_SERVER['REMOTE_ADDR']);
+                dd_error_log("user '$username' logged in");
 
                 // $username and $password match.  Save in $_SESSION, leaving off the password.
                 unset($userRecord['password]']);
@@ -44,8 +44,7 @@ if ($username && $password) {
                 update_failed_logins($conn, $username, $failedLogins);
 
                 // Log this to the error_log.
-                $ip = $_SERVER['REMOTE_ADDR'];
-                dd_error_log("user '$username' failed login from IP $ip, count: $failedLogins");
+                dd_error_log("user '$username' failed login, count: $failedLogins");
 
                 // Delay the login.
                 sleep($failedLogins * 2);
@@ -58,6 +57,7 @@ if ($username && $password) {
         }
         // Failed to get the row data.
         else {
+            dd_error_log("user/login invalid username $username");
             $response = [
                 'success' => false,
                 'message' => 'Invalid username or password (code q6)'
@@ -67,6 +67,7 @@ if ($username && $password) {
     }
     // Failed to connect to the database.
     else {
+        dd_error_log("user/login failed to connect to database");
         $response = [
             'success' => false,
             'message' => 'Failed to connect to user database'
@@ -77,6 +78,7 @@ if ($username && $password) {
 
 // If username or password missing, return an error.
 else {
+    dd_error_log("user/login missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing username or password'

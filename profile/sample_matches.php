@@ -1,6 +1,7 @@
 <?php
 require_once('profile_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $profile = null;
 $response = [];
@@ -132,6 +133,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
 
                         } // Failed to get the row data.
                         else {
+                            dd_error_log("profile/samples no matches found");
                             $response = [
                                 'success' => false,
                                 'message' => 'no matches found',
@@ -140,6 +142,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         }
                     } // No interests were specified.
                     else {
+                        dd_error_log("profile/samples no interests specified");
                         $response = [
                             'success' => false,
                             'message' => 'Invalid profile parameter: no interests'
@@ -147,6 +150,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     }
                 } // Lookup zipcode failed.
                 else {
+                    dd_error_log("profile/samples lookup zipcode failed");
                     $response = [
                         'success' => false,
                         'message' => 'Invalid zipcode'
@@ -155,6 +159,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             }
             // Failed to connect to the database.
             else {
+                dd_error_log("profile/samples failed to connect to database");
                 $response = [
                     'success' => false,
                     'message' => 'Failed to connect to profile database'
@@ -164,6 +169,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
         }
         // Invalid parameter passed.
         else {
+            dd_error_log("profile/samples invalid parameter");
             $response = [
                 'success' => false,
                 'message' => 'Invalid profile parameter'
@@ -172,6 +178,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
     }
     // No session or not logged in.
     else {
+        dd_error_log("profile/samples with no session or login");
         $response = [
             'success' => false,
             'temp' => $temp,
@@ -181,6 +188,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
 }
 // If some parameter missing, return an error.
 else {
+    dd_error_log("profile/samples missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing profile'
