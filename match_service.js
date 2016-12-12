@@ -86,7 +86,12 @@ app.service("matchService", ['$http', '$q', '$log', function($http, $q, $log) {
                     self.matches = response.matches;
                     def.resolve(response);
                 } else {
-                    def.reject('Server error: ' + response.message);
+                    // Tolerate normal "no matches found" without calling it a "Server error".
+                    if (response.message == 'No matches found') {
+                        def.reject(response.message);
+                    } else {
+                        def.reject('Server error: ' + response.message);
+                    }
                 }
             },
             error: function(response) {

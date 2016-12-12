@@ -41,7 +41,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
             $modifyValue = ($approve ? "approved" : "rejected");
 
             // Log this to the error_log.
-            dd_error_log("'$username' $modifyValue '$targetUsername' from IP " . $_SERVER['REMOTE_ADDR']);
+            dd_error_log("'$username' $modifyValue '$targetUsername'");
 
             $query1 = "UPDATE `matches`
             SET `$modifyField` = '$modifyValue'
@@ -64,7 +64,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
                         $row = mysqli_fetch_assoc($result);
                         if ($row['firstApproval'] == 'approved' && $row['secondApproval'] == 'approved') {
                             // Log this to the error_log.
-                            dd_error_log("double approval emails for '$username' and '$targetUsername' from IP " . $_SERVER['REMOTE_ADDR']);
+                            dd_error_log("double approval emails for '$username' and '$targetUsername'");
 
                             // Double-approval; try to send e-mails.
                             $mailStatus = 'double approval';
@@ -115,6 +115,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
             }
             // Match update failed.
             else {
+                dd_error_log("match/approve match update failed");
                 $response = [
                     'success' => false,
                     'query1' => $query1,
@@ -125,6 +126,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
         }
         // Failed to connect to the database.
         else {
+            dd_error_log("match/approve failed to connect to database");
             $response = [
                 'success' => false,
                 'message' => 'Failed to connect to the database'
@@ -134,6 +136,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
     }
     // No session or not logged in.
     else {
+        dd_error_log("match/approve with no session or login");
         $response = [
             'success' => false,
             'message' => 'Not logged in'
@@ -142,6 +145,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
 }
 // If some parameter missing, return an error.
 else {
+    dd_error_log("match/approve missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing parameter'

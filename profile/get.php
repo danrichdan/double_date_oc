@@ -1,6 +1,7 @@
 <?php
 require_once('profile_common.php');
 require_once('../common/connect_database.php');
+require_once('../common/dd_error_log.php');
 
 $username = get_sanitized_username();
 $profile = null;
@@ -32,6 +33,7 @@ if ($username) {
                 }
                 // Failed to get the row data.
                 else {
+                    dd_error_log("profile/get profile $username not found");
                     $response = [
                         'success' => false,
                         'query' => $query,
@@ -42,6 +44,7 @@ if ($username) {
             }
             // Failed to connect to the database.
             else {
+                dd_error_log("profile/get failed to connect to database");
                 $response = [
                     'success' => false,
                     'message' => 'Failed to connect to profile database'
@@ -50,6 +53,7 @@ if ($username) {
         }
         // Privilege violation: normal user accessing profile other than their own.
         else {
+            dd_error_log("profile/get privilege violation");
             $response = [
                 'success' => false,
                 'message' => 'Invalid account access'
@@ -58,6 +62,7 @@ if ($username) {
     }
     // No session or not logged in.
     else {
+        dd_error_log("profile/get with no session or login");
         $response = [
             'success' => false,
             'message' => 'Not logged in'
@@ -66,6 +71,7 @@ if ($username) {
 }
 // If some parameter missing, return an error.
 else {
+    dd_error_log("profile/get missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing username'

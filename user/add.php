@@ -36,7 +36,7 @@ if ($name && $password && $email) {
                     $_SESSION['user_record'] = $userRecord;
 
                     // Log this login to the error_log.
-                    dd_error_log("user '$username' created and logged in from IP " . $_SERVER['REMOTE_ADDR']);
+                    dd_error_log("user '$username' created and logged in");
 
                     // Build success response to user.
                     $response = [
@@ -49,6 +49,7 @@ if ($name && $password && $email) {
                 }
                 // Second query (update username) failed.
                 else {
+                    dd_error_log("user/add second (update) query failed");
                     $response = [
                         'success' => false,
                         'message' => 'Add failed (code U2)'
@@ -58,6 +59,7 @@ if ($name && $password && $email) {
             }
             // Failed get a new id.
             else {
+                dd_error_log("user/add failed to get a new ID");
                 $response = [
                     'success' => false,
                     'message' => 'Add failed (code I0)'
@@ -66,6 +68,7 @@ if ($name && $password && $email) {
         }
         // Failed to affect one row.
         else {
+            dd_error_log("user/add failed to affect one row");
             $response = [
                 'success' => false,
                 'message' => 'Add failed (code Q3)'
@@ -75,6 +78,7 @@ if ($name && $password && $email) {
     }
     // Failed to connect to the database.
     else {
+        dd_error_log("user/add failed to connect to database");
         $response = [
             'success' => false,
             'message' => 'Failed to connect to user database'
@@ -85,6 +89,7 @@ if ($name && $password && $email) {
 
 // If some parameter missing, return an error.
 else {
+    dd_error_log("user/add missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing name or password or email'

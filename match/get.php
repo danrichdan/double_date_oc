@@ -47,10 +47,10 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
                 $firstOne = true;
                 foreach ($matches as $match) {
                     if ($firstOne) {
-                        $query2 .= "WHERE `u`.`username` = '$match'";
+                        $query2 .= "WHERE `u`.`username` = '$match' ";
                         $firstOne = false;
                     } else {
-                        $query2 .= "OR `u`.`username` = '$match'";
+                        $query2 .= "OR `u`.`username` = '$match' ";
                     }
                 }
 
@@ -68,7 +68,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
                     }
 
                     // Log this to the error_log.
-                    dd_error_log("get matches for '$username' from IP " . $_SERVER['REMOTE_ADDR']);
+                    dd_error_log("get matches for '$username'");
 
                     // Return success status and the matches.
                     $response = [
@@ -81,6 +81,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
                 }
                 // Lookup profiles failed.
                 else {
+                    dd_error_log("match/get lookup profiles failed");
                     $response = [
                         'success' => false,
                         'query1' => $query1,
@@ -91,6 +92,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
             }
             // Lookup matches failed.
             else {
+                dd_error_log("match/get lookup matches failed");
                 $response = [
                     'success' => false,
                     'query1' => $query1,
@@ -101,6 +103,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
         }
         // Failed to connect to the database.
         else {
+            dd_error_log("match/get failed to connect to database");
             $response = [
                 'success' => false,
                 'message' => 'Failed to connect to the database'
@@ -110,6 +113,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
     }
     // No session or not logged in.
     else {
+        dd_error_log("match/get with no session or login");
         $response = [
             'success' => false,
             'message' => 'Not logged in'
@@ -118,6 +122,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
 }
 // If some parameter missing, return an error.
 else {
+    dd_error_log("match/get missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing parameter'

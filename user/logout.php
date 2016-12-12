@@ -11,7 +11,7 @@ if (isset($_SESSION['user_record'])) {
 }
 
 // Log this logout to the error_log.
-dd_error_log("user '$username' logged out from IP " . $_SERVER['REMOTE_ADDR']);
+dd_error_log("user '$username' logged out");
 
 $response = [
     'success' => true,

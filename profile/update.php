@@ -57,7 +57,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     // Just check result; don't check affected rows, to tolerate not updating any fields.
                     if ($result) {
                         // Log this to the error_log.
-                        dd_error_log("user '$username' updated profileId $profileId from IP " . $_SERVER['REMOTE_ADDR']);
+                        dd_error_log("user '$username' updated profileId $profileId");
 
                         // Build success response to user.
                         $response = [
@@ -73,6 +73,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         }
                     } // Failed to get the row data.
                     else {
+                        dd_error_log("profile/update query failed");
                         $response = [
                             'success' => false,
                             'message' => 'Failed to update profile',
@@ -81,6 +82,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     }
                 } // lookup_zipcode failed.
                 else {
+                    dd_error_log("profile/update zipcode failed for " . $profile['zipcode']);
                     $response = [
                         'success' => false,
                         'message' => 'Invalid zipcode'
@@ -89,6 +91,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
             }
             // Failed to connect to the database.
             else {
+                dd_error_log("profile/update failed to connect to database");
                 $response = [
                     'success' => false,
                     'message' => 'Failed to connect to profile database'
@@ -97,6 +100,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
         }
         // Privilege violation: normal user accessing profile other than their own.
         else {
+            dd_error_log("profile/update privilege violation");
             $response = [
                 'success' => false,
                 'message' => 'Invalid account access'
@@ -105,6 +109,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
     }
     // No session or not logged in.
     else {
+        dd_error_log("profile/update with no session or login");
         $response = [
             'success' => false,
             'message' => 'Not logged in'
@@ -113,6 +118,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
 }
 // If some parameter missing, return an error.
 else {
+    dd_error_log("profile/update missing parameters");
     $response = [
         'success' => false,
         'message' => 'Missing profile'
