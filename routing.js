@@ -252,14 +252,47 @@ app.controller('theirAgeController', function(profileService, $location){
     //if person click then select multiple age ranges below
     this.theirAgeMin = profileService.getTheirAgeMin();
     this.theirAgeMax = profileService.getTheirAgeMax();
-    console.log('profileService.getTheirAgeMin()', profileService.getTheirAgeMin());
-    console.log('profileService.currentProfile.theirAgeMin',profileService.currentProfile.theirAgeMin);
-    console.log('profileService.currentProfile.theirAgeMax',profileService.currentProfile.theirAgeMax);
+    console.log('theirAgeRange start: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
 
+    this.rangeButtonClicked = function(min, max) {
+        console.log('Starting range: ' + this.theirAgeMin + ', ' + this.theirAgeMax);
+        //debugger;
+        if (this.theirAgeMin <= min && this.theirAgeMax >= max) {
+            // This button was already highlighted; remove the range.
+            console.log('removing their age range: ' + min + ', ' + max);
+            if (this.theirAgeMin === min && this.theirAgeMax === max) {
+                // Only this range was selected, so revert to null.
+                this.theirAgeMin = this.theirAgeMax = null;
+            } else {
+                if (this.theirAgeMin === min) {
+                    // Removing lowest range.
+                    this.theirAgeMin = max + 1;
+                }
+                if (this.theirAgeMax === max) {
+                    // Removing highest range.
+                    this.theirAgeMax = min - 1;
+                }
+            }
+        } else {
+            // This button was not highlighted; add the range.
+            console.log('adding their age range: ' + min + ', ' + max);
+            if (this.theirAgeMin === null) {
+                this.theirAgeMin = min;
+            } else {
+                this.theirAgeMin = Math.min(this.theirAgeMin, min);
+            }
+
+            if (this.theirAgeMax === null) {
+                this.theirAgeMax = max;
+            } else {
+                this.theirAgeMax = Math.max(this.theirAgeMax, max);
+            }
+        }
+        console.log('Ending range: ' + this.theirAgeMin + ', ' + this.theirAgeMax);
+    };
 
     this.theirAgeRange = function(){
-        console.log('in theirAgeRange');
-       if(this.theirAgeMin && this.theirAgeMax){
+        if (this.theirAgeMin && this.theirAgeMax){
             if(this.theirAgeMax == '100'){
                 return this.theirAgeMin+"+";
             }
@@ -270,13 +303,11 @@ app.controller('theirAgeController', function(profileService, $location){
         else{
             return "__";
         }
-    }
+    };
 
     this.setTheirAge = function(){
-        profileService.currentProfile.theirAgeMin = this.theirAgeMin;
-        profileService.currentProfile.theirAgeMax = this.theirAgeMax;
-        console.log('profileService.currentProfile.theirAgeMin',profileService.currentProfile.theirAgeMin);
-        console.log('profileService.currentProfile.theirAgeMax',profileService.currentProfile.theirAgeMax);
+        profileService.setTheirAge(this.theirAgeMin, this.theirAgeMax);
+        console.log('theirAgeRange end: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
         $location.url('/interests_home');
     }
 });
