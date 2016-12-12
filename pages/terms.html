@@ -55,6 +55,7 @@
         </p>
     </div>
     <input type="checkbox"  ng-click="tc.acceptedTerms=!tc.acceptedTerms; tc.$log.log(tc.acceptedTerms) " >I accept the terms and conditions
-    <button type="button" class="btn btn-default initialSubmit" ng-disabled="!tc.acceptedTerms">Join!</button>
+    <button type="button" class="btn btn-default initialSubmit" ng-disabled="!tc.acceptedTerms"
+            ng-click="tc.termsButtonClicked()">Join!</button>
 
 </div>
