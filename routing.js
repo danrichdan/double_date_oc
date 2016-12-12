@@ -819,9 +819,19 @@ app.controller('signupNameController', function(userService, $location, $log){
             userService.userStatus.name = this.name;
         };
     this.nameButtonClicked = function(){
+        this.validateName();
         this.setName();
-        $location.url('/user_summary');
+
     };
+    this.validateName = function(){
+        if(this.name === null){
+            this.addResults = true;
+            console.log('Here is the result of calling the validateName function', this.addResults);
+        } else {
+            $location.url('/signup_email');
+        }
+    };
+
 });
 app.controller('userSummaryController', function(userService, $location, $log){
     this.$log = $log;
