@@ -125,15 +125,23 @@ app.config(function($routeProvider){
             controller: 'moderatorController',
             controllerAs: 'modc'
         })
+        //route for Frequently Asked Questions
         .when('/faq',{
             templateUrl: 'pages/faq.html',
             controller: 'faqController',
             controllerAs: 'faq'
         })
-        .when('/add_name', {
-            templateUrl: 'pages/add_name.html',
-            controller: 'addNameController',
-            controllerAs: 'anc'
+        //route for the signup name view
+        .when('/signup_name', {
+            templateUrl: 'pages/signup_name.html',
+            controller: 'signupNameController',
+            controllerAs: 'sunc'
+        })
+        //route for the user summary view
+        .when('/user_summary', {
+            templateUrl: 'pages/user_summary.html',
+            controller: 'userSummaryController',
+            controllerAs: 'usc'
         })
         .otherwise({
             redirectTo: "/"
@@ -804,8 +812,21 @@ app.controller('matchController', function(profileService, matchService) {
             });
 
 });
-app.controller('addNameController', function(){
-
+app.controller('signupNameController', function(userService, $location, $log){
+    this.$log = $log;
+    this.name = userService.getName();
+        this.setName = function () {
+            userService.userStatus.name = this.name;
+        };
+    this.nameButtonClicked = function(){
+        this.setName();
+        $location.url('/user_summary');
+    };
+});
+app.controller('userSummaryController', function(userService, $location, $log){
+    this.$log = $log;
+    this.username = userService.getUsername();
+    console.log('Here is the userName: ' ,this.username);
 });
 
 app.controller('administratorController', function(){
