@@ -348,3 +348,11 @@ Terms and Conditions page
     display: block;
 }
 
+
+/**********************
+Signup Photo page
+**********************/
+
+.signup-photo-page img {
+    max-width: 100%;
+}
