@@ -14,7 +14,7 @@ app.service("userService", ['$http', '$q', '$log', 'profileService', function($h
      */
     this.userStatus = {
         loggedIn: false,
-        username: 'howdy',
+        username: null,
         name: null,
         userId: null,
         userLevel: null,
