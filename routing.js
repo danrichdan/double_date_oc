@@ -130,6 +130,11 @@ app.config(function($routeProvider){
             controller: 'faqController',
             controllerAs: 'faq'
         })
+        .when('/add_name', {
+            templateUrl: 'pages/add_name.html',
+            controller: 'addNameController',
+            controllerAs: 'anc'
+        })
         .otherwise({
             redirectTo: "/"
         })
@@ -797,6 +802,9 @@ app.controller('matchController', function(profileService, matchService) {
                 self.results = 'no matches available at this time';
                 self.results += ' (' + response + ')';
             });
+
+});
+app.controller('addNameController', function(){
 
 });
 
