@@ -519,7 +519,7 @@ app.controller('sampleMatchController', function(profileService) {
         .then(function(response) {
                 console.log('sampleMatchController: success');
                 self.sampleMatches = response.matches;
-                self.results = self.sampleMatches.length + ' sample matches:'
+                self.results = self.sampleMatches.length + ' sample matches:';
             },
             function(response) {
                 console.log('sampleMatchController: error: ' + response);
