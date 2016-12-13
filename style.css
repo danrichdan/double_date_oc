@@ -297,7 +297,7 @@ div.list-group {
     height:auto;
     width:100%;
     background:white;
-    color:black;
+    color:grey;
     border: 1px solid rgb(221, 221, 221);
     padding: 5px 20px;
 }
