@@ -269,7 +269,7 @@ FREQUENTLY ASKED QUESTIONS
     /*color:white;*/
     font-family: 'Open Sans Condensed', sans-serif;
     vertical-align: middle;
-    font-size: 2em;
+    font-size: 1.6em;
     margin:0;
     /*padding: 10px;*/
     width:100%;
@@ -284,7 +284,7 @@ FREQUENTLY ASKED QUESTIONS
 }
 div.list-group {
     margin: 10%;
-    font-size:0.5em;
+    font-size:0.55em;
     position:relative;
     color: black;
 }
@@ -292,7 +292,7 @@ div.list-group {
     font-weight:bold;
 }
 .answer{
-    font-size: 0.75em;
+    font-size: 0.9em;
     /*display:none;*/
     height:auto;
     width:100%;
