@@ -4,6 +4,6 @@
     <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Show Us Matches"
             ng-click="usc.summaryButtonClicked()">Show Us Matches</button>
     <div class="alert alert-danger alert-dismissible fade in invalidEmail" ng-show='usc.addError'>
-        Sorry, there was an error adding your user information. Please try again at another time.
+        Sorry, there was an error adding your user information ({{usc.addErrorMessage}}). Please try again at another time.
     </div>
 </div>

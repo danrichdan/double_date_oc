@@ -855,6 +855,7 @@ app.controller('userSummaryController', function(userService, profileService, $l
     this.$log = $log;
     this.username = null;
     this.addError = false;
+    this.addErrorMessage = null;
 
     this.summaryButtonClicked = function(){
         $location.url('/match');
@@ -875,12 +876,14 @@ app.controller('userSummaryController', function(userService, profileService, $l
                         },
                         function(response) {
                             //console.log('addProfile: error: ' + response.message);
+                            self.addErrorMessage = response;
                             self.addError = true;
                         });
 
             },
             function(response) {
                 //console.log('addProfile: error');
+                self.addErrorMessage = response;
                 self.addError = true;
             });
 
