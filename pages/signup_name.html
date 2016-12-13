@@ -1,10 +1,10 @@
 <div class="signup-name-page">
-    <p>Please enter your first names in the field below:</p>
+    <p>enter names below:</p>
 
     <input type="text" placeholder="i.e. 'Donnie and Marie'" class="input_text" ng-model="sunc.name" />
-    <p class="alert alert-danger alert-dismissible fade in invalidEmail" ng-show="sunc.addResults">Please add your names before clicking on the Next button.</p>
+    <p class="alert alert-danger alert-dismissible fade in invalidEmail" ng-show="sunc.addResults">first names</p>
     <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Left Align"
-            ng-click="sunc.nameButtonClicked(); $log.log('This is the name: ' , sunc.name)">I'm finished...next
+            ng-click="sunc.nameButtonClicked(); $log.log('This is the name: ' , sunc.name)">submit
     </button>
 
 </div>

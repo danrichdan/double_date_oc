@@ -245,7 +245,7 @@ header{
 
 .submitSignup{
     position: absolute;
-    top: 51%;
+    margin-top: 19px;
 }
 
 .alert-danger{
