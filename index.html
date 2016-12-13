@@ -22,14 +22,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<header>
-double date oc
-</header>
+<!--<span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle ="modal"></span>-->
+
+<body class="welcome_body" ng-controller="routeController">
+
+<span data-toggle="modal" data-target=".faq-modal" class="glyphicon glyphicon-question-sign"></span>
 
 <div class="container">
-    <span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-question-sign"></span>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
+
+    <header>double date oc</header>
+
+    <div class="view-container">
+        <div ng-view></div>
+    </div>
+</div>
+
+
+    <div class="modal fade faq-modal" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -149,16 +159,6 @@ double date oc
             </div>
         </div>
     </div>
-</div>
 
-
-<!--<span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle ="modal"></span>-->
-
-
-    <body class="welcome_body" ng-controller="routeController">
-
-        <div ng-view>
-        </div>
-
-    </body>
+</body>
 </html>
