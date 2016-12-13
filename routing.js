@@ -612,7 +612,7 @@ app.controller('signupPasswordController', function(userService, $location) {
 app.controller('signupParagraphController', function(profileService, $log, $location){
     this.validationText = true;
     this.validationText = true;
-    this.maxLength = 230;
+    this.maxLength = 200;
 
       //Get the paragraph value from the service
     this.paragraph = profileService.getParagraph();
