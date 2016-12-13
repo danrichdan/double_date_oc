@@ -550,7 +550,7 @@ app.controller('sampleMatchController', function(profileService) {
         .then(function(response) {
                 console.log('sampleMatchController: success');
                 self.sampleMatches = response.matches;
-                self.results = self.sampleMatches.length + ' sample matches:'
+                self.results = self.sampleMatches.length + ' sample matches:';
             },
             function(response) {
                 console.log('sampleMatchController: error: ' + response);
@@ -830,12 +830,12 @@ app.controller('matchController', function(profileService, matchService) {
     // This code runs when this controller starts.
     matchService.calculate(this.currentProfile)
         .then(function(response) {
-                console.log('sampleMatchController: success');
+                console.log('match calculate: success');
                 self.results = 'Success: match database updated';
                 self.getMatches();
             },
             function(response) {
-                console.log('sampleMatchController: error: ' + response);
+                console.log('match calculate: error: ' + response);
                 self.results = 'no matches available at this time';
                 self.results += ' (' + response + ')';
             });
@@ -848,9 +848,19 @@ app.controller('signupNameController', function(userService, $location, $log){
             userService.userStatus.name = this.name;
         };
     this.nameButtonClicked = function(){
+        this.validateName();
         this.setName();
-        $location.url('/user_summary');
+
     };
+    this.validateName = function(){
+        if(this.name === null){
+            this.addResults = true;
+            console.log('Here is the result of calling the validateName function', this.addResults);
+        } else {
+            $location.url('/signup_email');
+        }
+    };
+
 });
 
 app.controller('userSummaryController', function(userService, profileService, $location, $log){
@@ -867,7 +877,10 @@ app.controller('userSummaryController', function(userService, profileService, $l
         .then(function(response) {
                 console.log('onAddUserButton: success');
                 self.username = response.username;
-                console.log('Here is the userName: ' , self.username);
+                console.log('Here is the userName: ', self.username);
+
+                // Got the username from the add user; set that username in the profile.
+                profileService.currentProfile.username = self.username;
 
                 profileService.add(profileService.currentProfile)
                     .then(function(response) {
