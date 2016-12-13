@@ -3,8 +3,7 @@
 <div class="signup">
       <input type="text" placeholder="e-mail address" class="input_text" ng-model = 'suec.emailAddress'>
 
-
-      <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Left Align" ng-click="suec.validate_email()">submit</button>
+      <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Submit"
+              ng-click="suec.validate_email()">submit</button>
       <div class="alert alert-danger alert-dismissible fade in invalidEmail" ng-if='suec.validate'>please enter a valid e-mail address</div>
-
 </div>
