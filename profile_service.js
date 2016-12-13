@@ -307,10 +307,10 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
      *  @return {boolean}   true if success.
      */
     this.setOurAge = function(ourAgeMin, ourAgeMax) {
-        if (ourAgeMin >= 18 && ourAgeMin <= 99 &&
-            ourAgeMax >= ourAgeMin && ourAgeMax <= 99) {
-            this.ourAgeMin = ourAgeMin;
-            this.ourAgeMax = ourAgeMax;
+        if (ourAgeMin >= 18 && ourAgeMin <= 100 &&
+            ourAgeMax >= ourAgeMin && ourAgeMax <= 100) {
+            this.currentProfile.ourAgeMin = ourAgeMin;
+            this.currentProfile.ourAgeMax = ourAgeMax;
             return true;
         } else {
             return false;
@@ -333,10 +333,10 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
      *  @return {boolean}   true if success.
      */
     this.setTheirAge = function(theirAgeMin, theirAgeMax) {
-        if (theirAgeMin >= 18 && theirAgeMin <= 99 &&
-            theirAgeMax >= theirAgeMin && theirAgeMax <= 99) {
-            this.theirAgeMin = theirAgeMin;
-            this.theirAgeMax = theirAgeMax;
+        if (theirAgeMin >= 18 && theirAgeMin <= 100 &&
+            theirAgeMax >= theirAgeMin && theirAgeMax <= 100) {
+            this.currentProfile.theirAgeMin = theirAgeMin;
+            this.currentProfile.theirAgeMax = theirAgeMax;
             return true;
         } else {
             return false;
@@ -466,7 +466,12 @@ app.service("profileService", ['$http', '$q', '$log', function($http, $q, $log) 
                     self.sampleMatches = response.matches;
                     def.resolve(response);
                 } else {
-                    def.reject('Server error: ' + response.message);
+                    // Tolerate normal "no matches found" without calling it a "Server error".
+                    if (response.message == 'No matches found') {
+                        def.reject(response.message);
+                    } else {
+                        def.reject('Server error: ' + response.message);
+                    }
                 }
             },
             error: function(response) {

@@ -607,7 +607,6 @@ app.controller('signupPasswordController', function(userService, $location) {
     this.validate_password = function() {
         console.log('validate_password ran');
         var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;//8 characters, uppercase, lowercase, number
-        console.log(this.ourPassword);
         var pass = this.ourPassword;
         var conf = this.confirmPassword;
         //if pass==conf, then return true, if not return false
@@ -617,7 +616,6 @@ app.controller('signupPasswordController', function(userService, $location) {
         if( this.validPassword && this.matchingPassword){
             console.log('validPassword and matchingPassword are true, should go to next page');
             userService.userStatus.password = this.ourPassword;
-            console.log('userService.userStatus.password', userService.userStatus.password)
             $location.url('/signup_paragraph');
         }
     }
@@ -854,13 +852,37 @@ app.controller('signupNameController', function(userService, $location, $log){
         $location.url('/user_summary');
     };
 });
-app.controller('userSummaryController', function(userService, $location, $log){
+
+app.controller('userSummaryController', function(userService, profileService, $location, $log){
+    var self = this;
     this.$log = $log;
-    this.username = userService.getUsername();
-    console.log('Here is the userName: ' ,this.username);
+    this.username = null;
+    this.addError = false;
+
     this.summaryButtonClicked = function(){
         $location.url('/match');
     };
+
+    userService.add(userService.getName(), userService.getPassword(), userService.getEmail())
+        .then(function(response) {
+                console.log('onAddUserButton: success');
+                self.username = response.username;
+                console.log('Here is the userName: ' , self.username);
+
+                profileService.add(profileService.currentProfile)
+                    .then(function(response) {
+                            console.log('addProfile: success');
+                        },
+                        function(response) {
+                            console.log('addProfile: error: ' + response.message);
+                            self.addError = true;
+                        });
+
+            },
+            function(response) {
+                console.log('addProfile: error');
+                self.addError = true;
+            });
 
 });
 

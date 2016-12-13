@@ -24,8 +24,10 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
 
         if ($zipcode >= 90000 && $zipcode <= 99999 &&
             $distanceMax >= 1 && $distanceMax <= 100 &&
-            $ourAgeMin >= 18 && $ourAgeMin <= 99 &&
-            $ourAgeMax >= $ourAgeMin && $ourAgeMax <= 99) {
+            $ourAgeMin >= 18 && $ourAgeMin <= 100 &&
+            $ourAgeMax >= $ourAgeMin && $ourAgeMax <= 100 &&
+            $theirAgeMin >= 18 && $theirAgeMin <= 100 &&
+            $theirAgeMax >= $theirAgeMin && $theirAgeMax <= 100) {
             // Check the connection.
             if ($conn) {
                 // Validate the zipcode field, and translate it to city, state, latitude, and longitude.
@@ -136,7 +138,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             dd_error_log("profile/samples no matches found");
                             $response = [
                                 'success' => false,
-                                'message' => 'no matches found',
+                                'message' => 'No matches found',
                                 'query' => $query
                             ];
                         }
