@@ -311,7 +311,7 @@ div.list-group {
 SignUp Paragraph
 ************************/
 
-.signup-paragraph-page textarea {
+.signup-paragraph-page textarea{
     color:  dimgray;
     width: 100%;
     max-width: 100%;
@@ -326,28 +326,22 @@ SignUp Paragraph
     color:white;
 }
 
-/*.paragraph-minimum{*/
-    /*position: relative;*/
-    /*top: 93px;*/
-/*}*/
-
 /**********************
 Terms and Conditions page
 **********************/
 
 .terms-and-conditions .textarea{
-    width: 100%;
-    max-width: 100%;
-    color: black;
+    color: grey;
     background-color: white;
     height: 50vh;
     margin-bottom: 10px;
-    font-size: .65em;
-    font-family: 'Calibri', sans-serif;
+    width:100%;
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
     overflow: scroll;
     list-style: none;
-    padding: 15px;
-
+    padding: 0px 10px;
+    border-radius: 10px;
 }
 
 .terms-and-conditions input[type=checkbox] {
@@ -356,10 +350,14 @@ Terms and Conditions page
 }
 
 .terms-and-conditions button {
-    width: 150px;
-    font-size: 1.2em;
-    margin-bottom: 100px;
-    display: block;
+    /*width: 150px;*/
+    /*font-size: 1.2em;*/
+    /*margin-bottom: 100px;*/
+    /*display: block;*/
+}
+
+#accept{
+    font-family: Quicksand;
 }
 
 
