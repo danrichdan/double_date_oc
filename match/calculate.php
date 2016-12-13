@@ -169,6 +169,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                             // Insert query failed.
                             else {
                                 dd_error_log("match/calculate insert query failed");
+                                dd_error_log("failed query: " . $insertQuery);
                                 $response = [
                                     'success' => false,
                                     'message' => 'Insert query failed',
@@ -182,6 +183,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         // Select query failed.
                         else {
                             dd_error_log("match/calculate select query failed");
+                            dd_error_log("failed query: " . $selectQuery);
                             $response = [
                                 'success' => false,
                                 'message' => 'Select query failed',

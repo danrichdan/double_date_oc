@@ -60,10 +60,13 @@ function update_failed_logins($conn, $username, $failedLogins) {
 
     $result = mysqli_query($conn, $query);
     if ($result && (mysqli_affected_rows($conn) == 1)) {
-        // TODO: Log success message here.
+        // dd_error_log("failed logins set to $failedLogins for $username");
     }
-    else {
-        // TODO: Log error message here.
+    // The most common "failure" is setting from 0 to 0, which modifies no rows,
+    // so only log this if the new value is not 0.
+    else if ($failedLogins > 0) {
+        dd_error_log("error setting failed logins to $failedLogins for $username");
+        dd_error_log("failed query: " . $query);
     }
 
 }

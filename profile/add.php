@@ -73,6 +73,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                     // Failed to get the row data.
                     else {
                         dd_error_log("profile/add failed to insert profile");
+                        dd_error_log("failed query: " . $query);
                         $response = [
                             'success' => false,
                             'message' => 'Failed to insert profile',

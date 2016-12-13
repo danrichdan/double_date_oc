@@ -82,6 +82,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
                 // Lookup profiles failed.
                 else {
                     dd_error_log("match/get lookup profiles failed");
+                    dd_error_log("failed query: " . $query2);
                     $response = [
                         'success' => false,
                         'query1' => $query1,
@@ -93,6 +94,7 @@ if (isset($_POST['username']) && ($username = $_POST['username'])) {
             // Lookup matches failed.
             else {
                 dd_error_log("match/get lookup matches failed");
+                dd_error_log("failed query: " . $query1);
                 $response = [
                     'success' => false,
                     'query1' => $query1,

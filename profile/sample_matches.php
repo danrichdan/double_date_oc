@@ -136,6 +136,7 @@ if (isset($_POST['profile']) && ($profile = $_POST['profile'])) {
                         } // Failed to get the row data.
                         else {
                             dd_error_log("profile/samples no matches found");
+                            dd_error_log("failed query: " . $query);
                             $response = [
                                 'success' => false,
                                 'message' => 'No matches found',

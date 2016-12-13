@@ -6,7 +6,7 @@ define('LOGFILE', '../logs/doubledateoc_error.log');
 ini_set('log_errors', 1);
 
 function dd_error_log($message) {
-    $date = date("Y-m-d h:m:s");
+    $date = date("Y-m-d H:i:s");
     $fullMessage = $date . ': IP ' . $_SERVER['REMOTE_ADDR'] . ': ' . $message . PHP_EOL;
 
     // Value 3 means append to the specified log file.
