@@ -20,7 +20,7 @@ app.service("userService", ['$http', '$q', '$log', 'profileService', function($h
         userLevel: null,
         message: null,
         email: null,
-        password: null,
+        password: null
     };
 
     /**

@@ -1,5 +1,9 @@
 <div class="user-summary-page">
     <p>Here is your User Name: <span>"{{ usc.username }}"</span></p>
-    <p> Please write it down for your records.</p>
-    <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Left Align" ng-click="usc.summaryButtonClicked()">Show Us Matches</button>
+    <p>Please write it down for your records.</p>
+    <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Show Us Matches"
+            ng-click="usc.summaryButtonClicked()">Show Us Matches</button>
+    <div class="alert alert-danger alert-dismissible fade in invalidEmail" ng-show='usc.addError'>
+        Sorry, there was an error adding your user information. Please try again at another time.
+    </div>
 </div>
