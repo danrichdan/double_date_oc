@@ -55,7 +55,7 @@ app.service("userService", ['$http', '$q', '$log', 'profileService', function($h
      *  Defaults to adding at userLevel=normal; eventually returns ID and username added.
      */
     this.add = function(name, password, email) {
-        $log.log('add: ' + name + ', ' + password + ', ' + email);
+        $log.log('add: ' + name + ', [password], ' + email);
         var def = $q.defer();
 
         $.ajax({
@@ -134,7 +134,7 @@ app.service("userService", ['$http', '$q', '$log', 'profileService', function($h
      *  @returns (object) - promise.
      */
     this.login = function(username, password) {
-        $log.log('login: ' + username + ' / ' + password);
+        $log.log('login: ' + username + ' / [password]');
         var def = $q.defer();
 
         $.ajax({
