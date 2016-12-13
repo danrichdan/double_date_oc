@@ -82,6 +82,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
                                 $mailStatus = send_both_emails($row1, $row2);
                             }
                             else {
+                                dd_error_log("failed query: " . $query3);
                                 $mailStatus = 'get users/profiles failed';
                             }
                         }
@@ -91,6 +92,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
                     }
                     else {
                         // Failed query2 or did not get one row.
+                        dd_error_log("failed query: " . $query2);
                         $mailStatus = 'get double-match row failed';
                     }
                 }
@@ -116,6 +118,7 @@ if (isset($_POST['username']) && ($username = $_POST['username']) &&
             // Match update failed.
             else {
                 dd_error_log("match/approve match update failed");
+                dd_error_log("failed query: " . $query1);
                 $response = [
                     'success' => false,
                     'query1' => $query1,

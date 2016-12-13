@@ -34,6 +34,7 @@ if ($username) {
                 // Failed to get the row data.
                 else {
                     dd_error_log("profile/get profile $username not found");
+                    dd_error_log("failed query: " . $query);
                     $response = [
                         'success' => false,
                         'query' => $query,

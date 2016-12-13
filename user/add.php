@@ -50,6 +50,7 @@ if ($name && $password && $email) {
                 // Second query (update username) failed.
                 else {
                     dd_error_log("user/add second (update) query failed");
+                    dd_error_log("failed query: " . $query2);
                     $response = [
                         'success' => false,
                         'message' => 'Add failed (code U2)'
@@ -69,6 +70,7 @@ if ($name && $password && $email) {
         // Failed to affect one row.
         else {
             dd_error_log("user/add failed to affect one row");
+            dd_error_log("failed query: " . $query);
             $response = [
                 'success' => false,
                 'message' => 'Add failed (code Q3)'

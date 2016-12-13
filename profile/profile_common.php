@@ -57,6 +57,10 @@ function lookup_zipcode($conn, $zipcode)
             'longitude' => $row['longitude']
         );
     }
+    else {
+        dd_error_log("lookup_zipcode failed");
+        dd_error_log("failed query: " . $query);
+    }
 
     // Query failed, e.g. zipcode not valid or in table.
     return false;

@@ -47,7 +47,7 @@ if ($username && $password) {
                 dd_error_log("user '$username' failed login, count: $failedLogins");
 
                 // Delay the login.
-                sleep($failedLogins * 2);
+                sleep($failedLogins);
 
                 $response = [
                     'success' => false,
@@ -58,6 +58,7 @@ if ($username && $password) {
         // Failed to get the row data.
         else {
             dd_error_log("user/login invalid username $username");
+            dd_error_log("failed query: " . $query);
             $response = [
                 'success' => false,
                 'message' => 'Invalid username or password (code q6)'
