@@ -12,10 +12,11 @@ header{
 
 .glyphicon-question-sign{
     position: absolute;
-    left: 100%;
-    top: -58px;
+    right: 4%;
+    top: 8px;
     color: gray;
-    border-radius: 100%;
+    border-radius: 50%;
+    z-index: 10;
 }
 
 .modal-body{
@@ -23,7 +24,11 @@ header{
     font-size: 19px;
 }
 
-
+.view-container{
+    width:90%;
+    margin:10% auto;
+    position:relative;
+}
 /*Log-in page */
 .welcome_body {
     background-color: #B2DFDB;
@@ -61,16 +66,16 @@ header{
 /*welcome page*/
 .welcome_body{
     font-size: 3em;
-    position: absolute;
+    /*position: absolute;*/
     /*bottom: 50%;*/
-    right: 52.5%;
-    transform:translate(54%,47%);
-    -ms-transform:translate(54%,47%);
-    -webkit-transform:translate(54%,47%);
-    -moz-transform:translate(54%,47%);
-    -o-transform:translate(54%,47%);
-    height: 30vh;
-    width: 77%;
+    /*right: 52.5%;*/
+    /*transform:translate(54%,47%);*/
+    /*-ms-transform:translate(54%,47%);*/
+    /*-webkit-transform:translate(54%,47%);*/
+    /*-moz-transform:translate(54%,47%);*/
+    /*-o-transform:translate(54%,47%);*/
+    /*height: 30vh;*/
+    /*width: 77%;*/
 }
 
 .btn{
