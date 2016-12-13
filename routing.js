@@ -155,31 +155,28 @@ app.controller('mainController', function(){
 
 app.controller('ourLocationController',function(profileService, $location){
     this.ourInputZip = parseFloat(profileService.getZipcode());
-    console.log("ourInputZip : ", this.ourInputZip);
+    ////console.log("ourInputZip : ", this.ourInputZip);
     var self = this;
     this.correctZip = true;
 
     //validate info input, save, url after button click
     this.validateZip = function(){
-        console.log('in validateZip func', this.ourInputZip);
+        //console.log('in validateZip func', this.ourInputZip);
         var inputString = this.ourInputZip.toString();
         var inputLength = inputString.length; 
-         console.log(inputLength);
         if(parseInt(inputLength) === 5){
-            console.log('valid zip');
-            console.log(inputString, inputString[0]);
             if(inputString[0]==='9'){
-                console.log('first digit of zip is 9');
+                //console.log('first digit of zip is 9');
                 self.correctZip = true;
             }
             else{
-                console.log('first digit of zip is NOT 9');
+                //console.log('first digit of zip is NOT 9');
                 // return false;
                 self.correctZip = false;
             }
         } 
         else{
-            console.log('not valid zip');
+            //console.log('not valid zip');
             // return false;
             self.correctZip = false;
             }
@@ -187,15 +184,15 @@ app.controller('ourLocationController',function(profileService, $location){
 
     this.setOurLocation = function(ourInputZip){
         this.validateZip();
-        console.log('in setOurLocation func', ourInputZip);
+        //console.log('in setOurLocation func', ourInputZip);
         if(self.correctZip===true){
-            console.log('validateZip is true');
+            //console.log('validateZip is true');
             profileService.currentProfile.zipcode = ourInputZip;
-            console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
+            //console.log('profileService.currentProfile.zipcode :', profileService.currentProfile.zipcode);
             $location.url('/distance');
         }
         else{
-            console.log('not valid zip to save to our profile');
+            //console.log('not valid zip to save to our profile');
         }
     }
 });
@@ -209,12 +206,11 @@ app.controller('distanceController',function(profileService, $location){
     //  check if profileService has maxDistance 
     var self = this;
     this.userMaxDistance = profileService.getDistanceMax();
-    console.log('userMaxDistance', this.userMaxDistance);
+    //console.log('userMaxDistance', this.userMaxDistance);
     this.setDistance = function (){
-        console.log('in setDistance');   
-        console.log('self.userMaxDistance', self.userMaxDistance);
+        //console.log('self.userMaxDistance', self.userMaxDistance);
         profileService.currentProfile.distanceMax= this.userMaxDistance;
-        console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
+        //console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
         $location.url('/our_age_range');
     }   
 });
@@ -223,8 +219,6 @@ app.controller('distanceController',function(profileService, $location){
 app.controller('ourAgeController',function(profileService, $location){
     this.ourAgeMin = profileService.getOurAgeMin();
     this.ourAgeMax = profileService.getOurAgeMax();
-    console.log('this.ourAgeMin', this.ourAgeMin);
-    console.log('this.ourAgeMax', this.ourAgeMax);
     this.ourAgeRange = function(){
         if(this.ourAgeMin && this.ourAgeMax){
             if(this.ourAgeMax =='100'){
@@ -248,10 +242,9 @@ app.controller('ourAgeController',function(profileService, $location){
     }
 
     this.setOurAge = function(){
-        console.log('in setOurAge');
         profileService.currentProfile.ourAgeMin = this.ourAgeMin;
         profileService.currentProfile.ourAgeMax = this.ourAgeMax; 
-        console.log('profileService.currentProfile.ourAgeMin :', profileService.currentProfile.ourAgeMin, 'profileService.currentProfile.ourAgeMax :', profileService.currentProfile.ourAgeMax);
+        //console.log('profileService.currentProfile.ourAgeMin :', profileService.currentProfile.ourAgeMin, 'profileService.currentProfile.ourAgeMax :', profileService.currentProfile.ourAgeMax);
         $location.url('/their_age_range');
     }
 });
@@ -260,14 +253,13 @@ app.controller('theirAgeController', function(profileService, $location){
     //if person click then select multiple age ranges below
     this.theirAgeMin = profileService.getTheirAgeMin();
     this.theirAgeMax = profileService.getTheirAgeMax();
-    console.log('theirAgeRange start: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
+    //console.log('theirAgeRange start: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
 
     this.rangeButtonClicked = function(min, max) {
-        console.log('Starting range: ' + this.theirAgeMin + ', ' + this.theirAgeMax);
-        //debugger;
+        //console.log('Starting range: ' + this.theirAgeMin + ', ' + this.theirAgeMax);
         if (this.theirAgeMin <= min && this.theirAgeMax >= max) {
             // This button was already highlighted; remove the range.
-            console.log('removing their age range: ' + min + ', ' + max);
+            //console.log('removing their age range: ' + min + ', ' + max);
             if (this.theirAgeMin === min && this.theirAgeMax === max) {
                 // Only this range was selected, so revert to null.
                 this.theirAgeMin = this.theirAgeMax = null;
@@ -283,7 +275,7 @@ app.controller('theirAgeController', function(profileService, $location){
             }
         } else {
             // This button was not highlighted; add the range.
-            console.log('adding their age range: ' + min + ', ' + max);
+            //console.log('adding their age range: ' + min + ', ' + max);
             if (this.theirAgeMin === null) {
                 this.theirAgeMin = min;
             } else {
@@ -296,7 +288,7 @@ app.controller('theirAgeController', function(profileService, $location){
                 this.theirAgeMax = Math.max(this.theirAgeMax, max);
             }
         }
-        console.log('Ending range: ' + this.theirAgeMin + ', ' + this.theirAgeMax);
+        //console.log('Ending range: ' + this.theirAgeMin + ', ' + this.theirAgeMax);
     };
 
     this.theirAgeRange = function(){
@@ -315,7 +307,7 @@ app.controller('theirAgeController', function(profileService, $location){
 
     this.setTheirAge = function(){
         profileService.setTheirAge(this.theirAgeMin, this.theirAgeMax);
-        console.log('theirAgeRange end: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
+        //console.log('theirAgeRange end: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
         $location.url('/interests_home');
     }
 });
@@ -342,7 +334,7 @@ app.controller('interestsHomeController', function(profileService,$log,$location
             (profileService.currentProfile.crafts ? 1 : 0) +
             (profileService.currentProfile.bookClub ? 1 : 0) +
             (profileService.currentProfile.movieNight ? 1 : 0);
-        console.log('atHomeInterestTotal : ', this.atHomeInterestTotal);
+        //console.log('atHomeInterestTotal : ', this.atHomeInterestTotal);
         return this.atHomeInterestTotal;
     };
 
@@ -402,7 +394,7 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
             (profileService.currentProfile.liveTheater ? 1 : 0) +
             (profileService.currentProfile.movies ? 1 : 0) +
             (profileService.currentProfile.wineTasting ? 1 : 0);
-        console.log('aNightOutInterestTotal : ', this.aNightOutInterestTotal);
+        //console.log('aNightOutInterestTotal : ', this.aNightOutInterestTotal);
         return this.aNightOutInterestTotal;
     };
 
@@ -460,7 +452,7 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
             (profileService.currentProfile.racquetball ? 1 : 0) +
             (profileService.currentProfile.tennis ? 1 : 0) +
             (profileService.currentProfile.walking ? 1 : 0);
-        console.log('outdoorInterestTotal : ', this.outdoorInterestTotal);
+        //console.log('outdoorInterestTotal : ', this.outdoorInterestTotal);
         return this.outdoorInterestTotal;
     };
 
@@ -504,7 +496,7 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
             (profileService.currentProfile.domesticTravel ? 1 : 0) +
             (profileService.currentProfile.rving ? 1 : 0) +
             (profileService.currentProfile.travelAbroad ? 1 : 0);
-        console.log('travelInterestTotal : ', this.travelInterestTotal);
+        //console.log('travelInterestTotal : ', this.travelInterestTotal);
         return this.travelInterestTotal;
     };
 
@@ -520,7 +512,7 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     //and counts the total interests
     this.interestCount = function() {
         var count = profileService.interestCount();
-        console.log('Interest count total : ', count);
+        //console.log('Interest count total : ', count);
         return count;
     };
 
@@ -540,7 +532,6 @@ app.controller('userFyiController', function(){
 });
 
 app.controller('sampleMatchController', function(profileService) {
-    console.log('sampleMatchController');
     var self = this;
     this.results = 'searching...';
     this.sampleMatches = [];
@@ -548,12 +539,12 @@ app.controller('sampleMatchController', function(profileService) {
 
     profileService.getSampleMatches(this.currentProfile)
         .then(function(response) {
-                console.log('sampleMatchController: success');
+                //console.log('sampleMatchController: success');
                 self.sampleMatches = response.matches;
                 self.results = self.sampleMatches.length + ' sample matches:';
             },
             function(response) {
-                console.log('sampleMatchController: error: ' + response);
+                //console.log('sampleMatchController: error: ' + response);
                 self.sampleMatchesResults = response;
                 self.results = 'no matches available at this time; you can go back and select more interests, ' +
                     'or just sign up and then check back later for new matches';
@@ -576,24 +567,23 @@ app.controller('signupEmailController', function(userService, $location){
     this.validate = false;
     // this.ourEmail = '';
     this.validate_email = function() {
-        console.log('inside validate_email controller');
         var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        console.log(self.emailAddress);
+        //console.log(self.emailAddress);
         var isValid = regex.test(self.emailAddress);
-        console.log('isValid is', isValid);
+        //console.log('isValid is', isValid);
         if (!isValid) {
             //invalid input
             // $('.error').show();
-            console.log('email is invalid');
+            //console.log('email is invalid');
             this.validate = true;
         }
         else {
             //valid input
             // $('.error').hide();
-            console.log('email is valid');
+            //console.log('email is valid');
             this.validate = false;
             userService.userStatus.email = self.emailAddress; 
-            console.log('userService.userStatus.email', userService.userStatus.email);
+            //console.log('userService.userStatus.email', userService.userStatus.email);
             $location.url('/signup_password');
         }
     }   
@@ -605,7 +595,6 @@ app.controller('signupPasswordController', function(userService, $location) {
     this.ourPassword = '';
     this.confirmPassword = '';
     this.validate_password = function() {
-        console.log('validate_password ran');
         var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;//8 characters, uppercase, lowercase, number
         var pass = this.ourPassword;
         var conf = this.confirmPassword;
@@ -614,7 +603,6 @@ app.controller('signupPasswordController', function(userService, $location) {
         //if pass.match(pattern), then return true if not return false
         this.validPassword = (pass.match(pattern));
         if( this.validPassword && this.matchingPassword){
-            console.log('validPassword and matchingPassword are true, should go to next page');
             userService.userStatus.password = this.ourPassword;
             $location.url('/signup_paragraph');
         }
@@ -637,7 +625,7 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
       //paragraph validation
     this.validateParagraph = function(){
         if(this.paragraph.length < 50) {
-            console.log('Please add a paragraph that is greater than 50 characters.');
+            //console.log('Please add a paragraph that is greater than 50 characters.');
             this.validationText = false;
             return true;
         } else {
@@ -647,7 +635,7 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
 
     this.showValidationText = function(){
         if(this.paragraph.length > 0 && this.paragraph.length < 50 ) {
-            console.log('Please add a paragraph of at least 50 characters.');
+            //console.log('Please add a paragraph of at least 50 characters.');
             var showValidationText = false;
             return showValidationText;
         };
@@ -687,7 +675,7 @@ app.controller('signupPictureController', function (profileService, $log, $locat
 
             if (responseObj.success) {
                 var newLink = responseObj.newLink;
-                console.log('Dropzone: success: ' + newLink);
+                //console.log('Dropzone: success: ' + newLink);
                 self.pictureLink = newLink;
                 self.uploadResults = 'Success, new link: ' + newLink;
             }
@@ -703,11 +691,11 @@ app.controller('signupPictureController', function (profileService, $log, $locat
         },
         acceptedFiles: 'image/*,.jpg,.jpeg,.gif,.png',
         accept: function(file, done) {
-            console.log('Dropzone: accept: ' + file);
+            //console.log('Dropzone: accept: ' + file);
             done();
         },
         init: function() {
-            console.log('Dropzone: init: ' + this);
+            //console.log('Dropzone: init: ' + this);
         }
 
     });
@@ -734,7 +722,6 @@ app.controller('faqController', function(){
 
 app.controller('loginController', function($location, userService){
     //Login Page Controller
-    console.log('loginController');
     var self = this;
     this.username = '';
     this.password = '';
@@ -743,7 +730,6 @@ app.controller('loginController', function($location, userService){
 
     // Note that the login has two parts for a normal user: log in the user, and get the profile.
     this.doLogin = function() {
-        console.log('doLogin');
         self.loginFailed = self.profileFailed = self.invalidParams = false;
         if (this.username === '' || this.password === '') {
             this.invalidParams = true;
@@ -751,7 +737,7 @@ app.controller('loginController', function($location, userService){
         else {
             userService.login(this.username, this.password)
                 .then(function(response) {
-                        console.log('doLogin: success, userLevel: ' + userService.getUserLevel());
+                        //console.log('doLogin: success, userLevel: ' + userService.getUserLevel());
                         // Go to the next page based on what level of user we are.
                         switch (userService.getUserLevel()) {
                             case 'administrator':
@@ -767,7 +753,7 @@ app.controller('loginController', function($location, userService){
                         }
                     },
                     function(response) {
-                        console.log('doLogin: error');
+                        //console.log('doLogin: error');
                         self.loginFailed = true;
                     });
 
@@ -776,7 +762,6 @@ app.controller('loginController', function($location, userService){
 });
 
 app.controller('matchController', function(profileService, matchService) {
-    console.log('matchController');
     var self = this;
     this.results = 'calculating...';
     this.matches = [];
@@ -786,13 +771,13 @@ app.controller('matchController', function(profileService, matchService) {
     // and can be initiated again from the button to refresh / get more matches.
     this.getMatches = function() {
         var username = this.currentProfile.username;
-        console.log('getMatches: ' + username);
+        //console.log('getMatches: ' + username);
         this.matches = [];
         this.results = 'getting matches...';
 
         matchService.get(username)
             .then(function (response) {
-                    console.log('getMatches: success');
+                    //console.log('getMatches: success');
                     self.matches = response.matches;
                     self.results = 'Success: matches returned: ' + self.matches.length;
                     for (var i = 0; i < self.matches.length; i++) {
@@ -802,7 +787,7 @@ app.controller('matchController', function(profileService, matchService) {
                     }
                 },
                 function (response) {
-                    console.log('getMatches: error: ' + response);
+                    //console.log('getMatches: error: ' + response);
                     self.results = 'no matches available at this time';
                     self.results += ' (' + response + ')';
                 });
@@ -814,14 +799,14 @@ app.controller('matchController', function(profileService, matchService) {
         var username = this.currentProfile.username;
         var match = this.matches[matchIndex];
         var targetUsername = match['username'];
-        console.log('approveOrReject: ' + username + ' --> ' + targetUsername + ' = ' + approve);
+        //console.log('approveOrReject: ' + username + ' --> ' + targetUsername + ' = ' + approve);
         matchService.approve(username, targetUsername, approve)
             .then(function (response) {
-                    console.log('approveOrReject: success');
+                    //console.log('approveOrReject: success');
                     match.approveOrRejectResults = (approve ? 'approved' : 'rejected');
                 },
                 function (response) {
-                    console.log('approveOrReject: error: ' + response);
+                    //console.log('approveOrReject: error: ' + response);
                     self.approveRejectResults[matchIndex] = response;
                     match.approveOrRejectResults = (approve ? 'approve' : 'reject') + ' operation failed (' +
                         response + ')';
@@ -832,12 +817,12 @@ app.controller('matchController', function(profileService, matchService) {
     // This code runs when this controller starts.
     matchService.calculate(this.currentProfile)
         .then(function(response) {
-                console.log('match calculate: success');
+                //console.log('match calculate: success');
                 self.results = 'Success: match database updated';
                 self.getMatches();
             },
             function(response) {
-                console.log('match calculate: error: ' + response);
+                //console.log('match calculate: error: ' + response);
                 self.results = 'no matches available at this time';
                 self.results += ' (' + response + ')';
             });
@@ -857,7 +842,7 @@ app.controller('signupNameController', function(userService, $location, $log){
     this.validateName = function(){
         if(this.name === null){
             this.addResults = true;
-            console.log('Here is the result of calling the validateName function', this.addResults);
+            //console.log('Here is the result of calling the validateName function', this.addResults);
         } else {
             $location.url('/signup_email');
         }
@@ -877,25 +862,25 @@ app.controller('userSummaryController', function(userService, profileService, $l
 
     userService.add(userService.getName(), userService.getPassword(), userService.getEmail())
         .then(function(response) {
-                console.log('onAddUserButton: success');
+                //console.log('onAddUserButton: success');
                 self.username = response.username;
-                console.log('Here is the userName: ', self.username);
+                //console.log('Here is the userName: ', self.username);
 
                 // Got the username from the add user; set that username in the profile.
                 profileService.currentProfile.username = self.username;
 
                 profileService.add(profileService.currentProfile)
                     .then(function(response) {
-                            console.log('addProfile: success');
+                            //console.log('addProfile: success');
                         },
                         function(response) {
-                            console.log('addProfile: error: ' + response.message);
+                            //console.log('addProfile: error: ' + response.message);
                             self.addError = true;
                         });
 
             },
             function(response) {
-                console.log('addProfile: error');
+                //console.log('addProfile: error');
                 self.addError = true;
             });
 
