@@ -661,7 +661,7 @@ app.controller('signupPictureController', function (profileService, $log, $locat
     Dropzone.autoDiscover = false;
     this.pictureDropzone = new Dropzone("#picture-dropzone-div", {
         url: 'profile/upload.php',
-        maxFilesize: 2, // MB.
+        maxFilesize: 3, // MB.
         paramName: 'file',
         maxFiles: 1,
         maxfilesexceeded: function(file) {
