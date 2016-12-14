@@ -206,7 +206,7 @@ header{
 .match_buttons {
     display:flex;
     justify-content: space-around;
-    margin-top:8vw;
+    margin-top:25px;
 }
 
 .match_name,.label {
@@ -219,9 +219,9 @@ header{
 }
 
 .btn.btn_match {
-    width: 24vw;
-    height: 24vw;
-    border-radius: 12vw;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
     font-size: 2.5em;
 }
 
@@ -377,8 +377,28 @@ Signup Photo page
 Matches Page - Extra edits
 ***********************/
 
-.thumbs {
-    max-height: 100px;
-    max-width: 100px;
-}
+    .match_content p {
+        padding: 10px;
+    }
 
+    .thmbdown {
+        position: relative;
+        top: 15px;
+    }
+
+    .thmbup {
+        position: relative;
+        top: 15px;
+    }
+
+@media screen and (max-width: 480px) {
+    .thmbdown {
+        position: relative;
+        bottom: 15px;
+    }
+
+    .thmbup {
+        position: relative;
+        bottom: 15px;
+    }
+}
