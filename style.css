@@ -199,6 +199,7 @@ header{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #ffffff;
     color:#000000;
+    overflow: hidden;
 }
 
 .match_buttons {
@@ -368,3 +369,15 @@ Signup Photo page
 .signup-photo-page img {
     max-width: 100%;
 }
+
+
+
+/**********************
+Matches Page - Extra edits
+***********************/
+
+.thumbs {
+    max-height: 100px;
+    max-width: 100px;
+}
+
