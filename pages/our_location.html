@@ -2,7 +2,7 @@
 <div class="location">
     where are you?
     <div class="match-locale">
-        <input type="text" maxlength='5' placeholder="zip code" class="input_text" ng-change='olc.checkMaxZip(olc.ourInputZip)' ng-model="olc.ourInputZip" ng-blur="olc.getOurLocation(olc.ourInputZip)" >
+        <input type="number" maxlength='5' placeholder="zip code" class="input_text" ng-change='olc.checkMaxZip(olc.ourInputZip)' ng-model="olc.ourInputZip" ng-blur="olc.getOurLocation(olc.ourInputZip)" >
         <!-- Not currently supporting "use current location"; this is a possible future enhancement.
         <button type="button" class="btn btn-default btn-block current-location"><span class ="glyphicon glyphicon-search"></span>   use my current location</button>
         -->
