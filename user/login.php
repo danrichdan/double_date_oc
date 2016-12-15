@@ -12,12 +12,13 @@ $response = [];
 // If username and password provided, try to look up the username in the user database.
 if ($username && $password) {
     if ($conn) {
-        $query = "SELECT * FROM `users` WHERE `username` = '$username' AND `locked` = '0';";
+        $query = "SELECT * FROM `users`
+                  WHERE (`username` = '$username' OR `email` = '$username') AND `locked` = '0';";
         $result = mysqli_query($conn, $query);
         if ($result && (mysqli_num_rows($result) == 1) && ($userRecord = mysqli_fetch_assoc($result))) {
-            // Got the row data.
-            if ($userRecord['username'] == $username &&
-                $userRecord['password'] == $password) {
+            // Got the row data; could have found this by username or email, so get the username from the record.
+            $username = $userRecord['username'];
+            if ($userRecord['password'] == $password) {
                 // Log this to the error_log.
                 dd_error_log("user '$username' logged in");
 

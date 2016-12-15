@@ -1,10 +1,14 @@
 <div class="form-group">
-    <label for="username">username:</label><br>
+    <label for="username">username or email:</label><br>
     <input type="text" class="form-control" id="username" ng-model="lc.username">
     <label for="password">password:</label><br>
     <input type="password" class="form-control" id="password" ng-model="lc.password">
     <br>
-    <a href="" class="forgot-password">forgot my password</a>
+    <button class="forgot-password" class="btn btn-default" ng-click="lc.passwordForgotten=!lc.passwordForgotten">forgot my password</button>
+    <div class="alert alert-danger alert-dismissible fade in" ng-show="lc.passwordForgotten">
+        automated password recovery is not yet available, please email to<br>
+        <a href="mailto:doubledateoc.moderator@gamail.com">DoubleDateOC.moderator@gmail.com</a>
+        to recover your password.</div>
     <div class="alert alert-danger alert-dismissible fade in" ng-show="lc.invalidParams">
         please provide a username and password</div>
     <div class="alert alert-danger alert-dismissible fade in" ng-show="lc.loginFailed">

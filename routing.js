@@ -766,6 +766,7 @@ app.controller('loginController', function($location, userService){
     this.password = '';
     this.invalidParams = false;
     this.loginFailed = false;
+    this.passwordForgotten = false;
 
     // Note that the login has two parts for a normal user: log in the user, and get the profile.
     this.doLogin = function() {

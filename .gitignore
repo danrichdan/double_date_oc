@@ -1,4 +1,5 @@
 common/connect_database.php
+common/connect_database.php.live
 common/email_credentials.php
 logs/*.log
 uploads/*
