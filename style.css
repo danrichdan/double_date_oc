@@ -480,10 +480,9 @@ Matches Page - Extra edits
 **************************/
 
 .edit_profile_body{
-    background-color: #B2DFDB;
     overflow:visible;
-    color:white;
-    font-family: 'Open Sans Condensed', sans-serif;
+    /*color:black;*/
+    /*font-family: 'Open Sans Condensed', sans-serif;*/
     vertical-align: middle;
     font-size: 2em;
     /*
@@ -517,12 +516,18 @@ Matches Page - Extra edits
 
 .profile-option, .photo-option {
     /*display:none;*/
-    height:40vh;
+    /*height:40vh;*/
     width:100%;
     background:white;
     color:black;
-    border: 1px solid rgb(221, 221, 221);
+    /*border: 1px solid rgb(221, 221, 221);*/
 }
+
+.profile-option button {
+   font-size: .75em;
+    margin-bottom: 15px;
+}
+
 .profile-option textarea {
     width:100%;
     height:50%;
