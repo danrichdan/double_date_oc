@@ -324,8 +324,9 @@ app.controller('theirAgeController', function(profileService, $location){
     }
 });
 
-app.controller('interestsHomeController', function(profileService,$log,$location){
+app.controller('interestsHomeController', function(profileService, userService, $log, $location){
     this.$log = $log;
+    this.loggedIn = userService.isLoggedIn();
 
     // functions called from interests_out.html
     //Getting the value from the Service in case it's already been selected
@@ -370,12 +371,17 @@ app.controller('interestsHomeController', function(profileService,$log,$location
     this.setUrl = function(){
         $location.url('/interests_out');
     };
+
+    this.clickSaveButton = function () {
+        this.setNightAtHomeInterests();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 });
 
 app.controller('interestsNightOutController', function(profileService,userService, $log,$location){
     this.$log = $log;
     this.loggedIn = userService.isLoggedIn();
-    console.log('User is logged in : ', this.loggedIn);
 
     // functions called from interests_out.html
     //Getting the value from the Service in case it's already been selected

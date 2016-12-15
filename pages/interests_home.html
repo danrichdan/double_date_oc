@@ -29,7 +29,8 @@
         </div>
     </div>
 
-    <div class="previous-next pull-right">
+    <!-----------Previous and Next buttons-------------->
+    <div class="previous-next pull-right" ng-hide="ihc.loggedIn">
         <a href="#/their_age_range">
             <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -40,6 +41,20 @@
                     ng-disabled="ihc.atHomeInterestCount()==0;" ng-click="ihc.setUrl()">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
+    </div>
+
+    <!-----------Save and Cancel buttons-------------->
+    <div class="edit-profile-buttons" ng-show="ihc.loggedIn">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Previous"
+                ng-click="ihc.clickSaveButton();">
+            Save
+        </button>
+
+        <a href="#/edit_profile">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Next">
+                Cancel
+            </button>
+        </a>
     </div>
 
 </div>
