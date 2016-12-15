@@ -58,8 +58,8 @@ header {
     background-color: white;
     overflow: visible;
     color: grey;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 2.2em;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 2.7em;
     vertical-align: middle;
     position: relative;
 }
@@ -87,9 +87,8 @@ header {
     bottom: 38px;
 }
 
-/*welcome page*/
-.welcome_body {
-    font-size: 3em;
+.login-buttons{
+    margin-top:10%;
 }
 
 .btn {
@@ -130,6 +129,9 @@ header {
 
 h1{
     width: 89%;
+    margin-top: 18%;
+    margin-bottom: 2px;
+    font-size: 93%;
 }
 .chevronButton {
     border-radius: 100%;
@@ -152,7 +154,7 @@ h1{
 
 .distance-btns {
     position: relative;
-    left: 7%;
+    left: 0;
 }
 
 .current-location {
@@ -184,13 +186,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
 }
 
 .distance-btn {
-    padding: 7%;
+    padding: 7% 10%;
     font-size: 20px;
     margin: 6px 7px
 }
 
 .distance-btn:first-child {
-    padding: 7% 8.7%;
+    padding: 7% 11.7%;
 }
 
 .miles, .user-age, .age {
@@ -214,6 +216,7 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     font-size: 16px;
 }
 
+
 .initialSubmit {
     padding: 15px;
 }
@@ -222,9 +225,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     color: #368e8b;
     font-size: 13px;
     position: relative;
-    bottom: 6px;
+    bottom: 0;
     font-family: Quicksand;
     width: 89%;
+}
+
+.travel{
+    margin: 10% 0;
 }
 
 /*sign-up email page*/
@@ -496,8 +503,18 @@ Matches Page - Extra edits
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #87b7c1;
+    /*background: #87b7c1;*/
+    background: #E4AF84;
 }
+
+.loading-wineglass{
+    position: absolute;
+    top: 37%;
+    color: white;
+    font-family: NTR;
+    font-size: 79%;
+}
+
 .wineglass {
     height: 36px;
     position: relative;

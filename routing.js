@@ -152,7 +152,7 @@ app.config(function($routeProvider){
 // Controllers for the different pages below
 app.controller('mainController', function() {
     setTimeout(function () {
-        $('.body-wineglass').fadeOut(1000)}, 4000)
+        $('.body-wineglass').fadeOut(1000)}, 3000)
 });
 
 app.controller('ourLocationController',function(profileService, $location){
