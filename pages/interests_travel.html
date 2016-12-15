@@ -3,20 +3,20 @@
     <h1>when traveling we like</h1>
     <div class="interest-buttons">
         <div class="travel groupings">
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="camping"
                     ng-click="itc.camping=!itc.camping; itc.travelInterestButtonClicked();"
                     ng-class="{buttonHighlighted:itc.camping}">camping
             </button>
 
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="domestic travel"
                     ng-click="itc.domesticTravel=!itc.domesticTravel; itc.travelInterestButtonClicked();"
                     ng-class="{buttonHighlighted:itc.domesticTravel}">domestic
                 travel</button>
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="RVing"
                     ng-click="itc.rving=!itc.rving; itc.travelInterestButtonClicked();"
                     ng-class="{buttonHighlighted:itc.rving}">RV
                 -ing</button>
-            <button type="button" class="btn btn-default interest-btn-travel" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-travel" aria-label="travel abroad"
                     ng-click="itc.travelAbroad=!itc.travelAbroad; itc.travelInterestButtonClicked();"
                     ng-class="{buttonHighlighted:itc.travelAbroad}">traveling
                 abroad</button>
@@ -38,13 +38,13 @@
 
     <!-----------Save and Cancel buttons-------------->
     <div class="edit-profile-buttons" ng-show="itc.loggedIn">
-            <button type="button" class="btn btn-default chevronButton" aria-label="Previous"
+            <button type="button" class="btn btn-default chevronButton" aria-label="Save"
                     ng-click="itc.clickSaveButton();">
                 Save
             </button>
 
         <a href="#/edit_profile">
-            <button type="button" class="btn btn-default chevronButton" aria-label="Next">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Cancel">
                 Cancel
             </button>
         </a>
