@@ -158,7 +158,9 @@ app.config(function($routeProvider){
 app.controller('mainController', function(){
 });
 
-app.controller('ourLocationController',function(profileService, $location){
+app.controller('ourLocationController',function(profileService, userService, $location){
+    this.loggedIn = userService.isLoggedIn();
+
     this.ourInputZip = parseFloat(profileService.getZipcode());
     ////console.log("ourInputZip : ", this.ourInputZip);
     var self = this;
@@ -200,13 +202,22 @@ app.controller('ourLocationController',function(profileService, $location){
             //console.log('not valid zip to save to our profile');
         }
     }
+
+    this.clickSaveButton = function(){
+        this.setOurLocation();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
+
 });
 
 
 
 
 
-app.controller('distanceController',function(profileService, $location){
+app.controller('distanceController',function(profileService, userService, $location){
+    this.loggedIn = userService.isLoggedIn();
+
     // this.selectedButton = ;
     //  check if profileService has maxDistance 
     var self = this;
@@ -224,7 +235,13 @@ app.controller('distanceController',function(profileService, $location){
         profileService.currentProfile.distanceMax= this.userMaxDistance;
         //console.log('profileService.currentProfile.distanceMax',profileService.currentProfile.distanceMax);
         $location.url('/our_age_range');
-    }   
+    };
+
+    this.clickSaveButton = function(){
+        this.setDistance();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 });
 
 
@@ -711,7 +728,9 @@ app.controller('signupParagraphController', function(profileService, userService
     };
 });
 
-app.controller('signupPictureController', function (profileService, $log, $location, $scope) {
+app.controller('signupPictureController', function (profileService, userService, $log, $location, $scope) {
+    this.loggedIn = userService.isLoggedIn();
+
     var self = this;
     // Link to picture to allow data binding.
     this.pictureLink = null;
@@ -763,6 +782,12 @@ app.controller('signupPictureController', function (profileService, $log, $locat
         }
 
     });
+
+    this.clickSaveButton = function(){
+        this.setDescriptionParagraph();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 
 });
 

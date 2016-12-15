@@ -1,39 +1,27 @@
 <div class="edit_profile_body">
     <h1>Profile Editor</h1>
-    <!--<img class="photo" src="test">-->
+
     <div class="profile-edit list-group">
-        <div class="profile-list list-group-item">Names</div>
-        <!--<div class="profile-option">-->
-            <!--<input type="text" placeholder="Name 1">-->
-            <!--<input type="text" placeholder="Name 2">-->
-            <!--<button type="button">Save</button>-->
-        <!--</div>-->
-        <!--<div class="profile-list list-group-item" ng-click="epc.ages=!epc.ages">Ages</div>-->
-        <!--<div class="profile-option" ng-show="epc.ages">-->
-            <!--<input type="text" placeholder="Age 1">-->
-            <!--<input type="text" placeholder="Age 2">-->
-            <!--<button type="button">Save</button>-->
+        <!--<div class="profile-list list-group-item" ng-click="epc.names=!epc.names">Names</div>-->
+        <!--<div class="profile-option" ng-show="epc.names">-->
+            <!--<a href="#/signup_name"><button type="button">Names</button></a>-->
         <!--</div>-->
 
         <div class="profile-list list-group-item" ng-click="epc.zip=!epc.zip">Zip Code</div>
         <div class="profile-option" ng-show="epc.zip">
-            <input type="text" placeholder="Zip Code">
-            <button type="button">Save</button>
-        </div>
-        <div class="profile-list list-group-item" ng-click="epc.distance=!epc.distance">Search distance</div>
-        <div class="profile-option" ng-show="epc.distance">
-            <input type="text" placeholder="Distance">
-            <button type="button">Save</button>
+            <!--<a href="#/our_location"><button type="button">Zip Code</button></a>-->
+            <a href="#/distance"><button type="button">Search Distance</button></a>
         </div>
 
-        <div class="profile-list list-group-item" ng-click="epc.search=!epc.search">Ages</div>
-        <div class="profile-option" ng-show="epc.search">
+        <div class="profile-list list-group-item" ng-click="epc.ages=!epc.ages">Ages</div>
+        <div class="profile-option" ng-show="epc.ages">
             <a href="#/our_age_range"><button type="button">Our Age Range</button></a>
             <a href="#/their_age_range"><button type="button">Their Age Range</button></a>
         </div>
 
         <div class="profile-list list-group-item" ng-click="epc.paragraph=!epc.paragraph">Paragraph</div>
         <div class="profile-option" ng-show="epc.paragraph">
+            <!--<a href="#/signup_picture"><button type="button">Photograph of Us</button></a>-->
             <a href="#/signup_paragraph"><button type="button">Paragraph describing selves</button></a>
         </div>
 
@@ -44,9 +32,6 @@
             <a href="#/interests_outdoors"><button type="button">Interests Outdoors</button></a>
             <a href="#/interests_travel"><button type="button">Interests Travel</button></a>
         </div>
-        <!--<div class="profile-option">-->
-            <!--<input type="text" placeholder="Photo URL">-->
-            <!--<button type="button">Save</button>-->
-        <!--</div>-->
+
       </div>
     </div>

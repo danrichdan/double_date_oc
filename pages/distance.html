@@ -1,27 +1,40 @@
 <div>
-<h1>we're looking for couples within <span class="miles">{{dc.userMaxDistance}}</span> miles of us </h1>
-<div class="distance-btns">
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=5" ng-class="{buttonHighlighted: dc.userMaxDistance==5}">5</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=10" ng-class="{buttonHighlighted: dc.userMaxDistance==10}">10</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=20" ng-class="{buttonHighlighted: dc.userMaxDistance==20}">20</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=30" ng-class="{buttonHighlighted: dc.userMaxDistance==30}">30</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=40" ng-class="{buttonHighlighted: dc.userMaxDistance==40}">40</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=50" ng-class="{buttonHighlighted: dc.userMaxDistance==50}">50</button>
+    <h1>we're looking for couples within <span class="miles">{{dc.userMaxDistance}}</span> miles of us </h1>
+    <div class="distance-btns">
+        <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=5" ng-class="{buttonHighlighted: dc.userMaxDistance==5}">5</button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=10" ng-class="{buttonHighlighted: dc.userMaxDistance==10}">10</button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=20" ng-class="{buttonHighlighted: dc.userMaxDistance==20}">20</button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=30" ng-class="{buttonHighlighted: dc.userMaxDistance==30}">30</button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=40" ng-class="{buttonHighlighted: dc.userMaxDistance==40}">40</button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="Left Align" ng-click="dc.userMaxDistance=50" ng-class="{buttonHighlighted: dc.userMaxDistance==50}">50</button>
 
-</div>
+    </div>
 
-<div class="previous-next pull-right">
-    <a href="#/our_location">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <div class="previous-next pull-right" ng-hide="dc.loggedIn">
+        <a href="#/our_location">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
+
+        <button type="button" class="btn btn-default chevronButton" aria-label="Next" ng-click="dc.setDistance()"
+                ng-disabled='!dc.userMaxDistance'>
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
-    </a>
 
-    <button type="button" class="btn btn-default chevronButton" aria-label="Next" ng-click="dc.setDistance()"
-            ng-disabled='!dc.userMaxDistance'>
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    </button>
+    </div>
 
-</div>
+    <!-----------Save and Cancel buttons-------------->
+    <div class="edit-profile-buttons" ng-show="dc.loggedIn">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Save"
+                ng-click="dc.clickSaveButton();">
+            Save
+        </button>
 
+        <a href="#/edit_profile">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Cancel">
+                Cancel
+            </button>
+        </a>
+    </div>
 </div>
