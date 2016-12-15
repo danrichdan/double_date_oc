@@ -228,7 +228,9 @@ app.controller('distanceController',function(profileService, $location){
 });
 
 
-app.controller('ourAgeController',function(profileService, $location){
+app.controller('ourAgeController',function(profileService, userService, $location){
+    this.loggedIn = userService.isLoggedIn();
+
     this.ourAgeMin = profileService.getOurAgeMin();
     this.ourAgeMax = profileService.getOurAgeMax();
     this.ourAgeRange = function(){
@@ -259,9 +261,15 @@ app.controller('ourAgeController',function(profileService, $location){
         //console.log('profileService.currentProfile.ourAgeMin :', profileService.currentProfile.ourAgeMin, 'profileService.currentProfile.ourAgeMax :', profileService.currentProfile.ourAgeMax);
         $location.url('/their_age_range');
     }
+
+    this.clickSaveButton = function () {
+        this.setOurAge();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 });
 
-app.controller('theirAgeController', function(profileService, $location){
+app.controller('theirAgeController', function(profileService, userService, $location){
     this.loggedIn = userService.isLoggedIn();
 
     //if person click then select multiple age ranges below
@@ -657,7 +665,9 @@ app.controller('signupPasswordController', function(userService, $location) {
     }
 });
 
-app.controller('signupParagraphController', function(profileService, $log, $location){
+app.controller('signupParagraphController', function(profileService, userService, $log, $location){
+    this.loggedIn = userService.isLoggedIn();
+
     this.validationText = true;
     this.validationText = true;
     this.maxLength = 200;
@@ -692,6 +702,12 @@ app.controller('signupParagraphController', function(profileService, $log, $loca
     this.signUpParagraphButtonClick = function(){
         this.setDescriptionParagraph();
         this.validateParagraph();
+    };
+
+    this.clickSaveButton = function(){
+        this.setDescriptionParagraph();
+        profileService.update();
+        $location.url('/edit_profile');
     };
 });
 

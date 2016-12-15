@@ -1,32 +1,47 @@
 <div>
-<h1>we are <span class="user-age">{{ oac.ourAgeRange() }}</span> years old. </h1>
+    <h1>we are <span class="user-age">{{ oac.ourAgeRange() }}</span> years old. </h1>
 
-<div class="age-range-buttons">
-    <!--Add an ng-click attr that calls a function which
-     captures the value and displays the text to the user.
+    <div class="age-range-buttons">
+        <!--Add an ng-click attr that calls a function which
+         captures the value and displays the text to the user.
 
-     Also, this function should store the value to pass on.-->
+         Also, this function should store the value to pass on.-->
 
-    <!--Later on, maybe store text and values in an array or object and make a loop to create the buttons-->
+        <!--Later on, maybe store text and values in an array or object and make a loop to create the buttons-->
 
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '18'; oac.ourAgeMax = '25'" ng-class="{buttonHighlighted: oac.ourAgeMin == '18'}">18-25</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '26'; oac.ourAgeMax = '35'" ng-class="{buttonHighlighted: oac.ourAgeMin == '26'}">26-35</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '36'; oac.ourAgeMax = '50'" ng-class="{buttonHighlighted: oac.ourAgeMin == '36'}">36-50</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '51'; oac.ourAgeMax = '60'" ng-class="{buttonHighlighted: oac.ourAgeMin == '51'}">51-60</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '61'; oac.ourAgeMax = '100'" ng-class="{buttonHighlighted: oac.ourAgeMin == '61'}">61+</button>
-</div>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '18'; oac.ourAgeMax = '25'" ng-class="{buttonHighlighted: oac.ourAgeMin == '18'}">18-25</button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '26'; oac.ourAgeMax = '35'" ng-class="{buttonHighlighted: oac.ourAgeMin == '26'}">26-35</button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '36'; oac.ourAgeMax = '50'" ng-class="{buttonHighlighted: oac.ourAgeMin == '36'}">36-50</button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '51'; oac.ourAgeMax = '60'" ng-class="{buttonHighlighted: oac.ourAgeMin == '51'}">51-60</button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '61'; oac.ourAgeMax = '100'" ng-class="{buttonHighlighted: oac.ourAgeMin == '61'}">61+</button>
+    </div>
 
-<div class="previous-next pull-right">
-    <a href="#/distance">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <!-----------Previous and Next buttons-------------->
+    <div class="previous-next pull-right" ng-hide="oac.loggedIn">
+        <a href="#/distance">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
+        <!-- <a href="#/age_range"> -->
+            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click = 'oac.setOurAge()' ng-disabled='!oac.ourAgeMin'>
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button>
+        <!-- </a> -->
+    </div>
+
+    <!-----------Save and Cancel buttons-------------->
+    <div class="edit-profile-buttons" ng-show="oac.loggedIn">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Previous"
+                ng-click="oac.clickSaveButton();">
+            Save
         </button>
-    </a>
-    <!-- <a href="#/age_range"> -->
-        <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click = 'oac.setOurAge()' ng-disabled='!oac.ourAgeMin'>
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </button>
-    <!-- </a> -->
-</div>
+
+        <a href="#/edit_profile">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Next">
+                Cancel
+            </button>
+        </a>
+    </div>
 
 </div>
