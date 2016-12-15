@@ -1,0 +1,50 @@
+<div class="edit_profile_body">
+    <h1>Profile Editor</h1>
+    <!--<img class="photo" src="test">-->
+    <div class="profile-edit list-group">
+        <div class="profile-list list-group-item">Names</div>
+        <!--<div class="profile-option">-->
+            <!--<input type="text" placeholder="Name 1">-->
+            <!--<input type="text" placeholder="Name 2">-->
+            <!--<button type="button">Save</button>-->
+        <!--</div>-->
+        <div class="profile-list list-group-item" ng-click="epc.ages=!epc.ages">Ages</div>
+        <div class="profile-option" ng-show="epc.ages">
+            <input type="text" placeholder="Age 1">
+            <input type="text" placeholder="Age 2">
+            <button type="button">Save</button>
+        </div>
+        <div class="profile-list list-group-item" ng-click="epc.paragraph=!epc.paragraph">Paragraph</div>
+        <div class="profile-option" ng-show="epc.paragraph">
+            <textarea placeholder="enter text here"></textarea>
+            <button type="button">Save</button>
+        </div>
+        <div class="profile-list list-group-item" ng-click="epc.zip=!epc.zip">Zip Code</div>
+        <div class="profile-option" ng-show="epc.zip">
+            <input type="text" placeholder="Zip Code">
+            <button type="button">Save</button>
+        </div>
+        <div class="profile-list list-group-item" ng-click="epc.distance=!epc.distance">Search distance</div>
+        <div class="profile-option" ng-show="epc.distance">
+            <input type="text" placeholder="Distance">
+            <button type="button">Save</button>
+        </div>
+        <div class="profile-list list-group-item" ng-click="epc.search=!epc.search">Age search filter</div>
+        <div class="profile-option" ng-show="epc.search">
+            <input type="text" placeholder="Age min">
+            <input type="text" placeholder="Age max">
+            <button type="button">Save</button>
+        </div>
+        <div class="profile-list list-group-item" ng-click="epc.interests=!epc.interests">Interests</div>
+        <div class="profile-option" ng-show="epc.interests">
+            <a href="#/interests_outdoors"><button type="button">Interests Outdoors</button></a>
+            <a href="#/interests_travel"><button type="button">Interests Travel</button></a>
+            <input type="checkbox" id="cbox2" value="second_checkbox"><label for="cbox2">Interest 2</label>
+            <button type="button">Save</button>
+        </div>
+        <!--<div class="profile-option">-->
+            <!--<input type="text" placeholder="Photo URL">-->
+            <!--<button type="button">Save</button>-->
+        <!--</div>-->
+      </div>
+    </div>
