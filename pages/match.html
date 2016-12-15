@@ -1,4 +1,5 @@
 <div class="match_content">
+    <div class="loader" ng-show ="mc.waiting"></div>
     <p>{{mc.results}}</p>
     <div ng-repeat="match in mc.matches">
         <p>Match {{$index+1}} of {{mc.matches.length}}</p>

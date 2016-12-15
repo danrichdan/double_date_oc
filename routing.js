@@ -2,8 +2,8 @@
 
 var app = angular.module('doubleDateApp',['ngRoute', 'rzModule', 'ui.bootstrap']);
 
-app.controller('routeController',function($scope){
-    $scope.message = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.';
+app.controller('routeController',function(){
+
 });
 
 app.config(function($routeProvider){
@@ -150,7 +150,9 @@ app.config(function($routeProvider){
 
 
 // Controllers for the different pages below
-app.controller('mainController', function(){
+app.controller('mainController', function() {
+    setTimeout(function () {
+        $('.body-wineglass').fadeOut(1000)}, 4000)
 });
 
 app.controller('ourLocationController',function(profileService, $location){
@@ -541,6 +543,7 @@ app.controller('userFyiController', function(){
 app.controller('sampleMatchController', function(profileService) {
     var self = this;
     this.results = 'searching...';
+    this.waiting = true;
     this.sampleMatches = [];
     this.currentProfile = profileService.getCurrentProfile();
 
@@ -549,6 +552,7 @@ app.controller('sampleMatchController', function(profileService) {
                 //console.log('sampleMatchController: success');
                 self.sampleMatches = response.matches;
                 self.results = self.sampleMatches.length + ' sample matches:';
+                self.waiting = false;
             },
             function(response) {
                 //console.log('sampleMatchController: error: ' + response);
@@ -556,6 +560,7 @@ app.controller('sampleMatchController', function(profileService) {
                 self.results = 'no matches available at this time; you can go back and select more interests, ' +
                     'or just sign up and then check back later for new matches';
                 self.results += ' (' + response + ')';
+                self.waiting = false;
             });
 });
 
