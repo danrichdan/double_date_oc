@@ -3,27 +3,27 @@
 
     <div class="interest-checkboxes">
         <div class="at-home groupings">
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="book club"
                     ng-click="ihc.bookClub=!ihc.bookClub;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.bookClub}">book
                 club</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="conversation"
                     ng-click="ihc.conversation=!ihc.conversation;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.conversation}">conversation (e.g. around the fire
                 pit)</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="cooking"
                     ng-click="ihc.cooking=!ihc.cooking; ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.cooking}">cooking</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="crafts"
                     ng-click="ihc.crafts=!ihc.crafts;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.crafts}">crafts</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="movie night"
                     ng-click="ihc.movieNight=!ihc.movieNight;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.movieNight}">movie night</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="board games"
                     ng-click="ihc.boardGames=!ihc.boardGames;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.boardGames}">playing board games</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="card games"
                     ng-click="ihc.cardGames=!ihc.cardGames;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.cardGames}">playing card games</button>
         </div>
@@ -31,12 +31,12 @@
 
     <div class="previous-next pull-right">
         <a href="#/their_age_range">
-            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             </button>
         </a>
 
-            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+            <button type="button" class="btn btn-default chevronButton" aria-label="Next"
                     ng-disabled="ihc.atHomeInterestCount()==0;" ng-click="ihc.setUrl()">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>

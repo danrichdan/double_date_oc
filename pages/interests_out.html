@@ -2,49 +2,49 @@
     <h1>on a night out we like</h1><p class="input-fyi">(select at least one interest)</p>
     <div class="interest-buttons">
         <div class="out groupings">
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="art shows"
                     ng-click="ioc.artGalleries=!ioc.artGalleries;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.artGalleries}">art shows
                 and galleries</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="casual dining"
                     ng-click="ioc.casualDining=!ioc.casualDining;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.casualDining}">casual dining</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="comedy shows"
                     ng-click="ioc.comedy=!ioc.comedy; ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.comedy}">comedy shows</button>
 
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="classical concerts"
                     ng-click="ioc.classicalConcerts=!ioc.classicalConcerts;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.classicalConcerts}">concerts (classical)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="popular concerts"
                     ng-click="ioc.popularConcerts=!ioc.popularConcerts;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.popularConcerts}">concerts (popular - jazz, rock, country)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="ballroom dancing"
                     ng-click="ioc.ballroomDancing=!ioc.ballroomDancing;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.ballroomDancing}">dancing (ballroom)</button>
 
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="country dancing"
                     ng-click="ioc.countryDancing=!ioc.countryDancing;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.countryDancing}">dancing (country)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="salsa dancing"
                     ng-click="ioc.salsaDancing=!ioc.salsaDancing;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.salsaDancing}">dancing
                 (salsa)</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="fine dining"
                     ng-click="ioc.fineDining=!ioc.fineDining;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.fineDining}">fine dining</button>
 
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="karaoke"
                     ng-click="ioc.karaoke=!ioc.karaoke;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.karaoke}">karaoke</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="live theater"
                     ng-click="ioc.liveTheater=!ioc.liveTheater;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.liveTheater}">live theater shows</button>
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="movies"
                     ng-click="ioc.movies=!ioc.movies;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{buttonHighlighted: ioc.movies}">movies</button>
 
-            <button type="button" class="btn btn-default interest-btn-out" aria-label="Left Align"
+            <button type="button" class="btn btn-default interest-btn-out" aria-label="wine tasting"
                     ng-click="ioc.wineTasting=!ioc.wineTasting;ioc.aNightOutInterestButtonClicked();"
                     ng-class="{selectedButton: ioc.wineTasting}">wine tasting</button>
 
@@ -54,12 +54,12 @@
     <!-----------Previous and Next buttons-------------->
     <div class="previous-next pull-right" ng-hide="ioc.loggedIn">
         <a href="#/interests_home">
-            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="ioc.setNightOutInterests()">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Previous" ng-click="ioc.setNightOutInterests()">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             </button>
         </a>
 
-            <button type="button" class="btn btn-default chevronButton" aria-label="Left Align"
+            <button type="button" class="btn btn-default chevronButton" aria-label="Next"
                     ng-disabled="ioc.aNightOutInterestCount()==0;" ng-click="ioc.setUrl()">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
@@ -67,13 +67,13 @@
 
     <!-----------Save and Cancel buttons-------------->
     <div class="edit-profile-buttons" ng-show="ioc.loggedIn">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Previous"
+        <button type="button" class="btn btn-default chevronButton" aria-label="Save"
                 ng-click="ioc.clickSaveButton();">
             Save
         </button>
 
         <a href="#/edit_profile">
-            <button type="button" class="btn btn-default chevronButton" aria-label="Next">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Cancel">
                 Cancel
             </button>
         </a>
