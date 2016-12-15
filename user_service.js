@@ -151,12 +151,13 @@ app.service("userService", ['$http', '$q', '$log', 'profileService', function($h
                 $log.log('login: success: ' + response.success);
                 if (response.success) {
                     self.userStatus.loggedIn = true;
-                    self.userStatus.username = response.username;
+                    self.userStatus.username = username = response.username;
                     self.userStatus.name = response.name;
                     self.userStatus.userId = response.userId;
                     self.userStatus.userLevel = response.userLevel;
 
                     // Now that we have the user logged in, if this is a normal user, get the profile.
+                    // Note that we might have logged in by email, so use the returned username.
                     if (response.userLevel === 'normal') {
                         profileService.get(username)
                             .then(function(response2) {
