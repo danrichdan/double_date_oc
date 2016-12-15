@@ -205,7 +205,14 @@ app.controller('distanceController',function(profileService, $location){
     // this.selectedButton = ;
     //  check if profileService has maxDistance 
     var self = this;
-    this.userMaxDistance = profileService.getDistanceMax();
+    var tempMaxDistance = profileService.getDistanceMax();
+    console.log('tempMaxDistance', tempMaxDistance);
+    if(tempMaxDistance==null){
+        this.userMaxDistance = '__';
+    }
+    else{
+        this.userMaxDistance = tempMaxDistance;
+    };
     //console.log('userMaxDistance', this.userMaxDistance);
     this.setDistance = function (){
         //console.log('self.userMaxDistance', self.userMaxDistance);
@@ -229,7 +236,7 @@ app.controller('ourAgeController',function(profileService, $location){
             }
         }
         else{
-            return '__';
+            return " "+ '__';
         }
     }
     this.ourAgeRangeExists = function(){

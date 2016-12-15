@@ -1,5 +1,7 @@
+<div>
+<h1>we are <span class="user-age">{{ oac.ourAgeRange() }}</span> years old. </h1>
+
 <div class="age-range-buttons">
-    <p>we are <span class="user-age">{{ oac.ourAgeRange() }}</span> years old. </p>
     <!--Add an ng-click attr that calls a function which
      captures the value and displays the text to the user.
 
@@ -13,6 +15,7 @@
     <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '51'; oac.ourAgeMax = '60'" ng-class="{buttonHighlighted: oac.ourAgeMin == '51'}">51-60</button>
     <button type="button" class="btn btn-default age-user-btn" aria-label="Left Align" ng-click="oac.ourAgeMin = '61'; oac.ourAgeMax = '100'" ng-class="{buttonHighlighted: oac.ourAgeMin == '61'}">61+</button>
 </div>
+
 <div class="previous-next pull-right">
     <a href="#/distance">
         <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
@@ -25,4 +28,5 @@
         </button>
     <!-- </a> -->
 </div>
+
 </div>

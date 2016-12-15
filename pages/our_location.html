@@ -1,6 +1,6 @@
 
 <div class="location">
-    where are you?
+    <h1>where are you?</h1>
     <div class="match-locale">
         <input type="number" maxlength='5' placeholder="zip code" class="input_text" ng-change='olc.checkMaxZip(olc.ourInputZip)' ng-model="olc.ourInputZip" ng-blur="olc.getOurLocation(olc.ourInputZip)" >
         <!-- Not currently supporting "use current location"; this is a possible future enhancement.
@@ -8,7 +8,7 @@
         -->
         <div class="alert alert-danger alert-dismissible fade in" ng-if='olc.correctZip==false'>invalid zip code </div>
 
-    <div class="previous-next pull-right">
+    <div class="previous-next">
         <a href="#/welcome">
             <button type="button" class="btn btn-default chevronButton" aria-label="Left Align">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
