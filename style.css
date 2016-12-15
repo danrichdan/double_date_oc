@@ -1,197 +1,245 @@
 /*home page*/
-header{
+header {
     position: relative;
     bottom: 43%;
     text-align: center;
-    font-family: 'Francois One', sans-serif;
-    color: salmon;
-    height: 20%;
-    font-size: 100%;
-
+    /*font-family: 'Francois One', sans-serif;*/
+    font-family: 'Poppins', sans-serif;
+    color: #FFD4B9;
+    height: 100px;
+    font-size: 90%;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.38),
+            rgba(0, 0, 0, 0.38)
+    ),
+    url("/assets/header.jpg");
+    /*background-image: url("/assets/header.jpg");*/
+    background-position: 0px 237px;
+    background-size: 100%;
 }
 
-.glyphicon-question-sign{
+.header-oc {
+    font-family: 'Abel', sans-serif;
+    color: white;
+    text-shadow: -1px 0 #74ada0, 0 1px #74ada0, 1px 0 #74ada0, 0 -1px #74ada0;
+}
+
+.container {
+    padding: 0px 0px;
+}
+
+.title {
+    position: relative;
+    top: 37px;
+}
+
+.glyphicon-question-sign {
     position: absolute;
     right: 4%;
-    top: 8px;
-    color: gray;
+    top: 12px;
+    color: white;
     border-radius: 50%;
     z-index: 10;
 }
 
-.modal-body{
+.modal-body {
     color: slategrey;
     font-size: 19px;
 }
 
-.view-container{
-    width:90%;
-    margin:10% auto;
-    position:relative;
+.view-container {
+    width: 90%;
+    margin: 10% 10%;
+    position: relative;
 }
+
 /*Log-in page */
 .welcome_body {
-    background-color: #B2DFDB;
-    overflow:visible;
-    color:white;
+    background-color: white;
+    overflow: visible;
+    color: grey;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 2.2em;
     vertical-align: middle;
-    position:relative;
+    position: relative;
 }
 
 .form-group {
     position: absolute;
     right: 50%;
-    transform:translate(55%,45%);
-    -ms-transform:translate(55%,45%);
-    -webkit-transform:translate(55%,45%);
-    -moz-transform:translate(55%,45%);
-    -o-transform:translate(55%,45%);
+    transform: translate(55%, 45%);
+    -ms-transform: translate(55%, 45%);
+    -webkit-transform: translate(55%, 45%);
+    -moz-transform: translate(55%, 45%);
+    -o-transform: translate(55%, 45%);
     height: 32vh;
     width: 100%;
 }
 
-.form-control{
-    width:90%;
-    height:20%;
+.form-control {
+    width: 90%;
+    height: 20%;
 }
 
-.forgot-password{
+.forgot-password {
     font-size: 0.65em;
-    position:relative;
+    position: relative;
     bottom: 38px;
 }
 
 /*welcome page*/
-.welcome_body{
+.welcome_body {
     font-size: 3em;
-    /*position: absolute;*/
-    /*bottom: 50%;*/
-    /*right: 52.5%;*/
-    /*transform:translate(54%,47%);*/
-    /*-ms-transform:translate(54%,47%);*/
-    /*-webkit-transform:translate(54%,47%);*/
-    /*-moz-transform:translate(54%,47%);*/
-    /*-o-transform:translate(54%,47%);*/
-    /*height: 30vh;*/
-    /*width: 77%;*/
 }
 
-.btn{
+.btn {
     background: #74ada0;
     border: black;
-    color:white;
-    font-family:NTR;
+    color: white;
+    font-family: NTR;
 }
-.button-spacing > a:not(:last-child){
+
+.btn {
+    background: #74ada0;
+    border: black;
+    color: white;
+    font-family: NTR;
+}
+
+.button-spacing > a:not(:last-child) {
     margin-bottom: 2%;
 
 }
 
-.button-spacing > a:first-child{
+.button-spacing > a:first-child {
     margin-top: 2%;
 }
 
 .welcome_body .btn-default:hover,
 .welcome_body .btn-default:focus,
 .welcome_body .btn-default:active,
-.open>.dropdown-toggle.welcome_body .btn .btn-default .chevronButton .initialSubmit{
+.open > .dropdown-toggle.welcome_body .btn .btn-default .chevronButton .initialSubmit {
     background-color: #368e8b;
-    color:white;
-    /*border-color:;*/
-
+    color: white;
 }
 
-
-
-/*age range page*/
-.age-range{
+.age-range {
     position: absolute;
     bottom: 10px;
 }
 
-.chevronButton{
+h1{
+    width: 89%;
+}
+.chevronButton {
     border-radius: 100%;
     width: 47px;
-    height:47px;
+    height: 47px;
 }
 
-.age-user-btn, .age-btn{
-    padding:4%;
-    font-size:17px;
+.age-user-btn, .age-btn {
+    padding: 5% 6%;
+    font-size: 23px;
+    margin: 2% 3px;
 }
 
-.age-range-buttons{
-    margin-top:10px;
-}
 /*distance page*/
 
-.current-location{
-    margin-top:4%;
+.div-distance {
+    position: relative;
+    left: 13px;
 }
 
-.input_text{
-    width:100%;
-    color:grey;
+.distance-btns {
+    position: relative;
+    left: 7%;
 }
 
-.previous-next{
-    margin-top:10%;
+.current-location {
+    margin-top: 4%;
 }
 
-.distance-btn{
-    padding:5%;
-    font-size:18px;
+input[type=text], input[type=number], input[type=password], input[type=email], textarea {
+    width: 89%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    border: 3px solid lightgray;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
 }
 
-.miles, .user-age, .age{
+input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, input[type=email]:focus, textarea:focus {
+    border: 3px solid #368e8b;
+}
+
+.previous-next {
+    margin-top: 10%;
+    position: absolute;
+    right: 38%;
+}
+
+.distance-btn {
+    padding: 7%;
+    font-size: 20px;
+    margin: 6px 7px
+}
+
+.distance-btn:first-child {
+    padding: 7% 8.7%;
+}
+
+.miles, .user-age, .age {
     color: #368e8b;
     font-weight: bolder;
-    /*text-decoration: underline;*/
 }
 
-.buttonHighlighted{
+.buttonHighlighted {
     background-color: #368e8b;
     color: white;
-
 }
 
-.glyphicon-search{
+.glyphicon-search {
     top: 4px;
 }
 
 /*interests pages*/
-.interest-btn-home, .interest-btn-out, .interest-btn-active, .interest-btn-travel{
-    padding: 3%;
+.interest-btn-home, .interest-btn-out, .interest-btn-active, .interest-btn-travel {
+    padding: 2.3%;
     margin-bottom: 5%;
     font-size: 16px;
 }
 
-.initialSubmit{
-    padding:15px;
+.initialSubmit {
+    padding: 15px;
 }
 
-.input-fyi{
+.input-fyi {
     color: #368e8b;
     font-size: 13px;
     position: relative;
     bottom: 6px;
     font-family: Quicksand;
+    width: 89%;
 }
 
 /*sign-up email page*/
 
-.signup-button{
+.signup-button {
     padding: 10%;
 }
-.selectedButton{
+
+.selectedButton {
     background-color: #368e8b;
 }
 
 .match_content {
-    width:78vw;
-    margin:auto;
+    width: 78vw;
+    margin: auto;
     font-size: 0.7em;
     max-width: 100%;
 }
@@ -199,23 +247,23 @@ header{
 .match_card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #ffffff;
-    color:#000000;
+    color: #000000;
     overflow: hidden;
 }
 
 .match_buttons {
-    display:flex;
+    display: flex;
     justify-content: space-around;
-    margin-top:8vw;
+    margin-top: 8vw;
 }
 
-.match_name,.label {
+.match_name, .label {
     background-color: #559385;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .match_name {
-    padding:0 5%;
+    padding: 0 5%;
 }
 
 .btn.btn_match {
@@ -225,81 +273,79 @@ header{
     font-size: 2.5em;
 }
 
-.match_interests, .match_description{
+.match_interests, .match_description {
     text-align: center;
 }
 
-
 /*before sample match user FYI page*/
-.note-for-sample-match{
+.note-for-sample-match {
     top: 3px;
 }
 
-.btn-block{
+.btn-block {
     font-size: 20px;
+    width: 89%;
 }
 
-/*sign up email page*/
-.input_text{
-    /*position: absolute;*/
-    top: 69px;
-}
-
-.submitSignup{
+.submitSignup {
     position: absolute;
     margin-top: 19px;
 }
 
-.alert-danger{
-    font-size:50%;
-    margin-bottom: 0;
+.alert-danger {
+    font-size: 50%;
+    width: 89%;
+    position: relative;
+    bottom: 8px;
 }
 
-.invalidEmail{
+.invalidEmail {
     position: relative;
     top: 60px;
 }
-
 
 /*************************
 FREQUENTLY ASKED QUESTIONS
 **************************/
 
-.faq_body{
+.faq_body {
     /*background-color: #B2DFDB;*/
-    overflow:visible;
+    overflow: visible;
     /*color:white;*/
     font-family: 'Open Sans Condensed', sans-serif;
     vertical-align: middle;
     font-size: 1.6em;
-    margin:0;
+    margin: 0;
     /*padding: 10px;*/
-    width:100%;
-    height:100%;
-    min-height:100%;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
 }
-.faq_body h1 {
+
+.modal-title {
     /*margin: 5%;*/
-    text-align:center;
+    text-align: center;
     font-family: 'Francois One', sans-serif;
-    color:gray;
+    color: gray;
 }
+
 div.list-group {
     margin: 10%;
-    font-size:0.55em;
-    position:relative;
+    font-size: 0.55em;
+    position: relative;
     color: black;
 }
+
 .question {
-    font-weight:bold;
+    font-weight: bold;
 }
-.answer{
+
+.answer {
     font-size: 0.9em;
-    /*display:none;*/
-    height:auto;
-    width:100%;
-    background:white;
-    color:grey;
+    height: auto;
+    width: 100%;
+    background: white;
+    color: grey;
     border: 1px solid rgb(221, 221, 221);
     padding: 5px 20px;
 }
@@ -313,9 +359,9 @@ div.list-group {
 SignUp Paragraph
 ************************/
 
-.signup-paragraph-page textarea{
-    color:  dimgray;
-    width: 100%;
+.signup-paragraph-page textarea {
+    color: dimgray;
+    width: 89%;
     max-width: 100%;
     font-family: 'Dosis', sans-serif;
     font-size: 16px;
@@ -325,20 +371,20 @@ SignUp Paragraph
     margin-bottom: 15px;
 }
 
-.textbox-fyi{
-    color:white;
+.textbox-fyi {
+    color: white;
 }
 
 /**********************
 Terms and Conditions page
 **********************/
 
-.terms-and-conditions .textarea{
+.terms-and-conditions .textarea {
     color: grey;
     background-color: white;
     height: 50vh;
     margin-bottom: 10px;
-    width:100%;
+    width: 100%;
     font-family: 'Dosis', sans-serif;
     font-size: 16px;
     overflow: scroll;
@@ -359,10 +405,9 @@ Terms and Conditions page
     /*display: block;*/
 }
 
-#accept{
+#accept {
     font-family: Quicksand;
 }
-
 
 /**********************
 Signup Photo page
@@ -372,8 +417,6 @@ Signup Photo page
     max-width: 100%;
 }
 
-
-
 /**********************
 Matches Page - Extra edits
 ***********************/
@@ -382,4 +425,43 @@ Matches Page - Extra edits
     max-height: 100px;
     max-width: 100px;
 }
+
+.password-confirm {
+    margin: -2px;
+}
+
+/*animations*/
+
+.loader {
+    border: 16px solid lightgray;
+    border-radius: 50%;
+    border-top: 16px solid grey;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    top: 111%;
+    position: absolute;
+    left: 33%;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*location page*/
 
