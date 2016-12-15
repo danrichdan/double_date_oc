@@ -262,6 +262,8 @@ app.controller('ourAgeController',function(profileService, $location){
 });
 
 app.controller('theirAgeController', function(profileService, $location){
+    this.loggedIn = userService.isLoggedIn();
+
     //if person click then select multiple age ranges below
     this.theirAgeMin = profileService.getTheirAgeMin();
     this.theirAgeMax = profileService.getTheirAgeMax();
@@ -322,6 +324,12 @@ app.controller('theirAgeController', function(profileService, $location){
         //console.log('theirAgeRange end: ' + profileService.getTheirAgeMin() + '-' + profileService.getTheirAgeMax());
         $location.url('/interests_home');
     }
+
+    this.clickSaveButton = function () {
+        this.setTheirAge();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 });
 
 app.controller('interestsHomeController', function(profileService, userService, $log, $location){
