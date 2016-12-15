@@ -58,8 +58,8 @@ header {
     background-color: white;
     overflow: visible;
     color: grey;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 2.2em;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 2.7em;
     vertical-align: middle;
     position: relative;
 }
@@ -87,9 +87,8 @@ header {
     bottom: 38px;
 }
 
-/*welcome page*/
-.welcome_body {
-    font-size: 3em;
+.login-buttons{
+    margin-top:10%;
 }
 
 .btn {
@@ -130,6 +129,9 @@ header {
 
 h1{
     width: 89%;
+    margin-top: 18%;
+    margin-bottom: 2px;
+    font-size: 93%;
 }
 .chevronButton {
     border-radius: 100%;
@@ -152,7 +154,7 @@ h1{
 
 .distance-btns {
     position: relative;
-    left: 7%;
+    left: 0;
 }
 
 .current-location {
@@ -184,13 +186,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
 }
 
 .distance-btn {
-    padding: 7%;
+    padding: 7% 10%;
     font-size: 20px;
     margin: 6px 7px
 }
 
 .distance-btn:first-child {
-    padding: 7% 8.7%;
+    padding: 7% 11.7%;
 }
 
 .miles, .user-age, .age {
@@ -214,6 +216,7 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     font-size: 16px;
 }
 
+
 .initialSubmit {
     padding: 15px;
 }
@@ -222,9 +225,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     color: #368e8b;
     font-size: 13px;
     position: relative;
-    bottom: 6px;
+    bottom: 0;
     font-family: Quicksand;
     width: 89%;
+}
+
+.travel{
+    margin: 10% 0;
 }
 
 /*sign-up email page*/
@@ -566,4 +573,149 @@ Matches Page - Extra edits
         position: relative;
         bottom: 15px;
     }
+}
+
+
+
+/*welcome animation*/
+
+.body-wineglass {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /*background: #87b7c1;*/
+    background: #E4AF84;
+}
+
+.loading-wineglass{
+    position: absolute;
+    top: 37%;
+    color: white;
+    font-family: NTR;
+    font-size: 79%;
+}
+
+.wineglass {
+    height: 36px;
+    position: relative;
+}
+.wineglass:after {
+    content: '';
+    position: absolute;
+    top: 47px;
+    left: 5px;
+    width: 20px;
+    height: 5px;
+    background: white;
+    box-shadow: 0 0 1px white;
+}
+.top {
+    background: white;
+    width: 30px;
+    height: 36px;
+    border-radius: 0 0 36px 36px;
+    box-shadow: 0 0 1px white;
+}
+.top:before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(transparent 50%, #F36E3E 50%);
+}
+.left .top:before {
+    animation: rotate2 2s linear infinite;
+}
+.right .top:before {
+    animation: rotate1 2s linear infinite;
+}
+.top:after {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 12px;
+    width: 6px;
+    height: 13px;
+    background: white;
+    box-shadow: 0 0 1px white;
+}
+.left {
+    display: inline-block;
+    margin-right: 10px;
+    animation: rotate1 2s cubic-bezier(.39,1.52,.46,.92) infinite;
+}
+.right {
+    display: inline-block;
+    animation: rotate2 2s cubic-bezier(.39,1.52,.46,.92) infinite;
+}
+@keyframes rotate1{
+    0% {transform: rotate(0deg);}
+    50% {transform:rotate(22deg);}
+}
+@keyframes rotate2{
+    0% {transform:rotate(0deg);}
+    50% {transform:rotate(-22deg);}
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 70px;
+    height: 25px;
+    position: relative;
+    opacity: 0;
+    animation: 2s fadeInUp infinite linear 2s;
+}
+li {
+    width: 6px;
+    height: 15px;
+    background: white;
+    position: absolute;
+    box-shadow: 0 0 1px white;
+    transform-origin: bottom;
+}
+li:nth-child(1) {
+    left: 26px;
+    bottom: 5px;
+    transform: rotate(-35deg);
+}
+li:nth-child(2) {
+    left: 34px;
+    bottom: 8px;
+}
+li:nth-child(3) {
+    left: 42px;
+    bottom: 5px;
+    transform: rotate(35deg);
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: scaleY(1);
+    }
+
+    33% {
+        opacity: 1;
+        transform: scaleY(1.4);
+    }
+    64% {
+        opacity: .1;
+        transform: scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(.3);
+    }
+}
+
+.body-wineglass{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
