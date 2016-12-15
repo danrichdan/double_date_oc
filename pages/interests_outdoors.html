@@ -39,7 +39,8 @@
         </div>
     </div>
 
-    <div class="previous-next pull-right">
+    <!-----------Previous and Next buttons-------------->
+    <div class="previous-next pull-right" ng-hide="iod.loggedIn">
         <a href="#/interests_out">
             <button type="button" class="btn btn-default chevronButton" aria-label="Left Align" ng-click="iod.setOutdoorInterests()">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -50,6 +51,20 @@
                     ng-disabled="iod.outdoorInterestCount()==0;" ng-click="iod.setUrl()">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
+    </div>
+
+    <!-----------Save and Cancel buttons-------------->
+    <div class="edit-profile-buttons" ng-show="iod.loggedIn">
+        <button type="button" class="btn btn-default chevronButton" aria-label="Previous"
+                ng-click="iod.clickSaveButton();">
+            Save
+        </button>
+
+        <a href="#/edit_profile">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Next">
+                Cancel
+            </button>
+        </a>
     </div>
 
 </div>

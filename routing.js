@@ -143,6 +143,11 @@ app.config(function($routeProvider){
             controller: 'userSummaryController',
             controllerAs: 'usc'
         })
+        .when('/edit_profile', {
+            templateUrl: 'pages/edit_profile.html',
+            controller: 'editProfileController',
+            controllerAs: 'epc'
+        })
         .otherwise({
             redirectTo: "/"
         })
@@ -367,8 +372,10 @@ app.controller('interestsHomeController', function(profileService,$log,$location
     };
 });
 
-app.controller('interestsNightOutController', function(profileService,$log,$location){
+app.controller('interestsNightOutController', function(profileService,userService, $log,$location){
     this.$log = $log;
+    this.loggedIn = userService.isLoggedIn();
+    console.log('User is logged in : ', this.loggedIn);
 
     // functions called from interests_out.html
     //Getting the value from the Service in case it's already been selected
@@ -430,10 +437,18 @@ app.controller('interestsNightOutController', function(profileService,$log,$loca
     this.setUrl = function(){
         $location.url('/interests_outdoors');
     };
+
+    this.clickSaveButton = function () {
+        this.setNightOutInterests();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 });
 
-app.controller('interestsOutdoorsController', function (profileService, $log, $location) {
+app.controller('interestsOutdoorsController', function (profileService, userService, $log, $location) {
     this.$log = $log;
+    this.loggedIn = userService.isLoggedIn();
+
     // functions called from interests_outdoors.html
     //Getting the value from the Service in case it's already been selected
     this.bicycling = profileService.getBicycling();
@@ -448,7 +463,7 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
     this.walking = profileService.getWalking();
 
     //Sums up the interests for this view
-    this.outdoorInterestCount = function() {
+    this.outdoorInterestCount = function () {
         this.outdoorInterestTotal = (profileService.currentProfile.bicycling ? 1 : 0) +
             (profileService.currentProfile.bowling ? 1 : 0) +
             (profileService.currentProfile.golf ? 1 : 0) +
@@ -477,18 +492,25 @@ app.controller('interestsOutdoorsController', function (profileService, $log, $l
         profileService.currentProfile.walking = this.walking;
     };
 
-        this.outdoorInterestButtonClicked = function(){
-            this.setOutdoorInterests();
-            this.outdoorInterestCount();
-        };
+    this.outdoorInterestButtonClicked = function () {
+        this.setOutdoorInterests();
+        this.outdoorInterestCount();
+    };
 
-        this.setUrl = function(){
-            $location.url('/interests_travel');
-        };
+    this.setUrl = function () {
+        $location.url('/interests_travel');
+    };
+
+    this.clickSaveButton = function () {
+        this.setOutdoorInterests();
+        profileService.update();
+        $location.url('/edit_profile');
+    };
 });
 
-app.controller('interestsTravelController', function (profileService, $log, $location) {
+app.controller('interestsTravelController', function (profileService, userService, $log, $location) {
     this.$log = $log;
+    this.loggedIn = userService.isLoggedIn();
 
     // functions called from interests_travel.html
     //Getting the value from the Service in case it's already been selected
@@ -526,12 +548,17 @@ app.controller('interestsTravelController', function (profileService, $log, $loc
     this.travelInterestButtonClicked = function(){
         this.setTravelInterests();
         this.travelInterestCount();
-
     };
 
     this.setUrl = function(){
         this.interestCount();
          $location.url('/user_fyi');
+    };
+
+    this.clickSaveButton = function(){
+        this.setTravelInterests();
+        profileService.update();
+        $location.url('/edit_profile');
     };
 });
 
@@ -896,6 +923,9 @@ app.controller('userSummaryController', function(userService, profileService, $l
 
 });
 
+app.controller('editProfileController',function(){
+
+});
 app.controller('administratorController', function(){
 
 });
