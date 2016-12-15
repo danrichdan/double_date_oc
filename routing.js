@@ -3,7 +3,9 @@
 var app = angular.module('doubleDateApp',['ngRoute', 'rzModule', 'ui.bootstrap']);
 
 app.controller('routeController',function(){
-
+    setTimeout(function () {
+        console.log('Fading wineglass');
+        $('.body-wineglass').fadeOut(1000)}, 3000);
 });
 
 app.config(function($routeProvider){
@@ -156,8 +158,6 @@ app.config(function($routeProvider){
 
 // Controllers for the different pages below
 app.controller('mainController', function() {
-    setTimeout(function () {
-        $('.body-wineglass').fadeOut(1000)}, 3000)
 });
 
 app.controller('ourLocationController',function(profileService, $location){
