@@ -1,26 +1,39 @@
 <div>
-<h1>we're looking for couples within <span class="miles">{{dc.userMaxDistance}}</span> miles of us </h1>
-<div class="distance-btns">
-    <button type="button" class="btn btn-default distance-btn" aria-label="5" ng-click="dc.userMaxDistance=5" ng-class="{buttonHighlighted: dc.userMaxDistance==5}">5</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="10" ng-click="dc.userMaxDistance=10" ng-class="{buttonHighlighted: dc.userMaxDistance==10}">10</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="20" ng-click="dc.userMaxDistance=20" ng-class="{buttonHighlighted: dc.userMaxDistance==20}">20</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="30" ng-click="dc.userMaxDistance=30" ng-class="{buttonHighlighted: dc.userMaxDistance==30}">30</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="40" ng-click="dc.userMaxDistance=40" ng-class="{buttonHighlighted: dc.userMaxDistance==40}">40</button>
-    <button type="button" class="btn btn-default distance-btn" aria-label="50" ng-click="dc.userMaxDistance=50" ng-class="{buttonHighlighted: dc.userMaxDistance==50}">50</button>
-</div>
-
-<div class="previous-next pull-right">
-    <a href="#/our_location">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <div class="text-center"><i class="fa fa-car fa-4x" aria-hidden="true"></i></div>
+    <h1>we're looking for couples within <span class="miles">{{dc.userMaxDistance}}</span> miles of us </h1>
+    <div class="distance-btns">
+        <button type="button" class="btn btn-default distance-btn" aria-label="5" ng-click="dc.userMaxDistance=5"
+                ng-class="{buttonHighlighted: dc.userMaxDistance==5}">5
         </button>
-    </a>
+        <button type="button" class="btn btn-default distance-btn" aria-label="10" ng-click="dc.userMaxDistance=10"
+                ng-class="{buttonHighlighted: dc.userMaxDistance==10}">10
+        </button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="20" ng-click="dc.userMaxDistance=20"
+                ng-class="{buttonHighlighted: dc.userMaxDistance==20}">20
+        </button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="30" ng-click="dc.userMaxDistance=30"
+                ng-class="{buttonHighlighted: dc.userMaxDistance==30}">30
+        </button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="40" ng-click="dc.userMaxDistance=40"
+                ng-class="{buttonHighlighted: dc.userMaxDistance==40}">40
+        </button>
+        <button type="button" class="btn btn-default distance-btn" aria-label="50" ng-click="dc.userMaxDistance=50"
+                ng-class="{buttonHighlighted: dc.userMaxDistance==50}">50
+        </button>
+    </div>
 
-    <button type="button" class="btn btn-default chevronButton" aria-label="Next" ng-click="dc.setDistance()"
-            ng-disabled='!dc.userMaxDistance'>
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    </button>
+    <div class="previous-next">
+        <a href="#/our_location">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
 
-</div>
+        <button type="button" class="btn btn-default chevronButton" aria-label="Next" ng-click="dc.setDistance()"
+                ng-disabled='!dc.userMaxDistance'>
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </button>
+
+    </div>
 
 </div>

@@ -1,12 +1,10 @@
 <div>
+    <div class="text-center"><i class="fa fa-home fa-4x" aria-hidden="true"></i></div>
     <h1>on a night in we like</h1><p class="input-fyi">(select at least one interest)</p>
 
-    <div class="interest-checkboxes">
+    <div class="interest-buttons">
         <div class="at-home groupings">
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="book club"
-                    ng-click="ihc.bookClub=!ihc.bookClub;ihc.atHomeInterestButtonClicked();"
-                    ng-class="{selectedButton: ihc.bookClub}">book
-                club</button>
+
             <button type="button" class="btn btn-default interest-btn-home" aria-label="conversation"
                     ng-click="ihc.conversation=!ihc.conversation;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.conversation}">conversation (e.g. around the fire
@@ -20,16 +18,19 @@
             <button type="button" class="btn btn-default interest-btn-home" aria-label="movie night"
                     ng-click="ihc.movieNight=!ihc.movieNight;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.movieNight}">movie night</button>
-            <button type="button" class="btn btn-default interest-btn-home" aria-label="board games"
-                    ng-click="ihc.boardGames=!ihc.boardGames;ihc.atHomeInterestButtonClicked();"
-                    ng-class="{selectedButton: ihc.boardGames}">playing board games</button>
             <button type="button" class="btn btn-default interest-btn-home" aria-label="card games"
                     ng-click="ihc.cardGames=!ihc.cardGames;ihc.atHomeInterestButtonClicked();"
                     ng-class="{selectedButton: ihc.cardGames}">playing card games</button>
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="book club"
+                    ng-click="ihc.bookClub=!ihc.bookClub;ihc.atHomeInterestButtonClicked();"
+                    ng-class="{selectedButton: ihc.bookClub}">book club</button>
+            <button type="button" class="btn btn-default interest-btn-home" aria-label="board games"
+                    ng-click="ihc.boardGames=!ihc.boardGames;ihc.atHomeInterestButtonClicked();"
+                    ng-class="{selectedButton: ihc.boardGames}">playing board games</button>
         </div>
     </div>
 
-    <div class="previous-next pull-right">
+    <div class="previous-next">
         <a href="#/their_age_range">
             <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

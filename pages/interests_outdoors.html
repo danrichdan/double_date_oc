@@ -1,5 +1,6 @@
 
 <div>
+    <div class="text-center"><i class="fa fa-bicycle fa-4x" aria-hidden="true"></i></div>
     <h1>to stay active we like</h1><p class="input-fyi">(select at least one interest)</p>
     <div class="interest-buttons">
         <div class="outdoor groupings">
@@ -12,35 +13,32 @@
             <button type="button" class="btn btn-default interest-btn-active" aria-label="golfing"
                     ng-click="iod.golf=!iod.golf; iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.golf}">golfing</button>
-
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="hiking"
-                    ng-click="iod.hiking=!iod.hiking; iod.outdoorInterestButtonClicked();"
-                    ng-class="{buttonHighlighted: iod.hiking}">hiking</button>
             <button type="button" class="btn btn-default interest-btn-active" aria-label="horseback riding"
                     ng-click="iod.horsebackRiding=!iod.horsebackRiding; iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.horsebackRiding}">horseback-riding</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="kayaking / paddleboarding"
-                    ng-click="iod.kayaking=!iod.kayaking; iod.outdoorInterestButtonClicked();"
-                    ng-class="{buttonHighlighted: iod.kayaking}">kayaking/paddleboarding</button>
-
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="motorcycling"
-                    ng-click="iod.motorcycling=!iod.motorcycling; iod.outdoorInterestButtonClicked();"
-                    ng-class="{buttonHighlighted: iod.motorcycling}">motorcycling</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="racquetball"
-                    ng-click="iod.racquetball=!iod.racquetball; iod.outdoorInterestButtonClicked();"
-                    ng-class="{buttonHighlighted: iod.racquetball}">racquetball</button>
-            <button type="button" class="btn btn-default interest-btn-active" aria-label="tennis"
-                    ng-click="iod.tennis=!iod.tennis; iod.outdoorInterestButtonClicked();"
-                    ng-class="{buttonHighlighted: iod.tennis}">tennis</button>
-
             <button type="button" class="btn btn-default interest-btn-active" aria-label="walking"
                     ng-click="iod.walking=!iod.walking; iod.outdoorInterestButtonClicked();"
                     ng-class="{buttonHighlighted: iod.walking}">walking</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="tennis"
+                    ng-click="iod.tennis=!iod.tennis; iod.outdoorInterestButtonClicked();"
+                    ng-class="{buttonHighlighted: iod.tennis}">tennis</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="racquetball"
+                    ng-click="iod.racquetball=!iod.racquetball; iod.outdoorInterestButtonClicked();"
+                    ng-class="{buttonHighlighted: iod.racquetball}">racquetball</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="motorcycling"
+                    ng-click="iod.motorcycling=!iod.motorcycling; iod.outdoorInterestButtonClicked();"
+                    ng-class="{buttonHighlighted: iod.motorcycling}">motorcycling</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="kayaking / paddleboarding"
+                    ng-click="iod.kayaking=!iod.kayaking; iod.outdoorInterestButtonClicked();"
+                    ng-class="{buttonHighlighted: iod.kayaking}">kayaking/paddleboarding</button>
+            <button type="button" class="btn btn-default interest-btn-active" aria-label="hiking"
+                    ng-click="iod.hiking=!iod.hiking; iod.outdoorInterestButtonClicked();"
+                    ng-class="{buttonHighlighted: iod.hiking}">hiking</button>
         </div>
     </div>
 
     <!-----------Previous and Next buttons-------------->
-    <div class="previous-next pull-right" ng-hide="iod.loggedIn">
+    <div class="previous-next" ng-hide="iod.loggedIn">
         <a href="#/interests_out">
             <button type="button" class="btn btn-default chevronButton" aria-label="Previous" ng-click="iod.setOutdoorInterests()">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

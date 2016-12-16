@@ -215,7 +215,7 @@ app.controller('distanceController',function(profileService, $location){
     var tempMaxDistance = profileService.getDistanceMax();
     console.log('tempMaxDistance', tempMaxDistance);
     if(tempMaxDistance==null){
-        this.userMaxDistance = '__';
+        this.userMaxDistance = '_';
     }
     else{
         this.userMaxDistance = tempMaxDistance;
@@ -243,7 +243,7 @@ app.controller('ourAgeController',function(profileService, $location){
             }
         }
         else{
-            return " "+ '__';
+            return " "+ '_';
         }
     }
     this.ourAgeRangeExists = function(){
@@ -315,7 +315,7 @@ app.controller('theirAgeController', function(profileService, $location){
             }
         }
         else{
-            return "__";
+            return "_";
         }
     };
 

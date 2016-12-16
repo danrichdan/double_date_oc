@@ -1,10 +1,10 @@
 <div class="signup-name-page">
-    <p>enter names below:</p>
-    <input type="text" placeholder="i.e. 'Donnie and Marie'" class="input_text" ng-model="sunc.name" />
-
-    <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Submit"
+    <div class="text-center"><i class="fa fa-user-circle-o fa-4x signup-icon" aria-hidden="true"></i></div>
+    <input type="text" placeholder="enter names" class="input_text" ng-model="sunc.name" />
+    <p class="input-fyi">(i.e. 'Donnie and Marie')</p>
+    <button type="button" class="btn btn-default btn-block" aria-label="Submit"
             ng-click="sunc.nameButtonClicked();">submit
     </button>
-    <p class="alert alert-danger alert-dismissible fade in invalidEmail" ng-show="sunc.addResults">Please add your
+    <p class="alert alert-danger alert-dismissible fade in" ng-show="sunc.addResults">please add your
         first names</p>
 </div>

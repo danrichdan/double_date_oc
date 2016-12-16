@@ -8,12 +8,8 @@ header {
     color: #FFD4B9;
     height: 100px;
     font-size: 90%;
-    background: linear-gradient(
-            rgba(0, 0, 0, 0.38),
-            rgba(0, 0, 0, 0.38)
-    ),
+    background: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
     url("/assets/header.jpg");
-    /*background-image: url("/assets/header.jpg");*/
     background-position: 0px 237px;
     background-size: 100%;
 }
@@ -48,7 +44,6 @@ header {
 }
 
 .view-container {
-    width: 90%;
     margin: 10% 10%;
     position: relative;
 }
@@ -87,8 +82,8 @@ header {
     bottom: 38px;
 }
 
-.login-buttons{
-    margin-top:10%;
+.login-buttons {
+    margin-top: 10%;
 }
 
 .btn {
@@ -127,12 +122,12 @@ header {
     bottom: 10px;
 }
 
-h1{
-    width: 89%;
+h1 {
     margin-top: 18%;
     margin-bottom: 2px;
     font-size: 93%;
 }
+
 .chevronButton {
     border-radius: 100%;
     width: 47px;
@@ -162,7 +157,7 @@ h1{
 }
 
 input[type=text], input[type=number], input[type=password], input[type=email], textarea {
-    width: 89%;
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     border-radius: 3px;
@@ -179,10 +174,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     border: 3px solid #368e8b;
 }
 
+input[type=number]{
+    margin:0;
+}
+
 .previous-next {
-    margin-top: 10%;
-    position: absolute;
-    right: 38%;
+    margin-top: 7%;
+    text-align: center;
 }
 
 .distance-btn {
@@ -216,7 +214,6 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     font-size: 16px;
 }
 
-
 .initialSubmit {
     padding: 15px;
 }
@@ -227,10 +224,10 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     position: relative;
     bottom: 0;
     font-family: Quicksand;
-    width: 89%;
+    text-align: center;
 }
 
-.travel{
+.travel {
     margin: 10% 0;
 }
 
@@ -261,7 +258,7 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
 .match_buttons {
     display: flex;
     justify-content: space-around;
-    margin-top:25px;
+    margin-top: 25px;
 }
 
 .match_name, .label {
@@ -291,24 +288,15 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
 
 .btn-block {
     font-size: 20px;
-    width: 89%;
-}
-
-.submitSignup {
-    position: absolute;
-    margin-top: 19px;
 }
 
 .alert-danger {
     font-size: 50%;
-    width: 89%;
     position: relative;
-    bottom: 8px;
 }
 
-.invalidEmail {
-    position: relative;
-    top: 60px;
+.alert{
+    margin-bottom:0px;
 }
 
 /*************************
@@ -363,12 +351,24 @@ div.list-group {
 }
 
 /***********************
+SignUp Names
+************************/
+
+.signup-name-page .input-fyi{
+    text-align: left;
+    bottom: 7px;
+}
+
+.signup-icon{
+    margin-bottom:6%;
+}
+
+/***********************
 SignUp Paragraph
 ************************/
 
 .signup-paragraph-page textarea {
     color: dimgray;
-    width: 89%;
     max-width: 100%;
     font-family: 'Dosis', sans-serif;
     font-size: 16px;
@@ -380,6 +380,14 @@ SignUp Paragraph
 
 .textbox-fyi {
     color: white;
+}
+
+.signup-paragraph-page .input-fyi{
+    text-align: left;
+}
+
+textarea{
+    margin:0;
 }
 
 /**********************
@@ -424,21 +432,30 @@ Signup Photo page
     max-width: 100%;
 }
 
+.signup-photo-page .dropzone{
+    display:block;
+    background: white;
+    color: #368e8b;
+    border: solid darkgrey;
+    margin-top: 10px;
+}
+
 /**********************
 Matches Page - Extra edits
 ***********************/
 
-    .match_content p {
-        padding: 10px;
-    }
+.match_content p {
+    padding: 10px;
+}
 
-    .thmbdown {
-        position: relative;
-        top: 15px;
-    }
+.thmbdown {
+    position: relative;
+    top: 15px;
+}
 
 .password-confirm {
-    margin: -2px;
+    position: relative;
+    bottom: 19px;
 }
 
 /*animations*/
@@ -476,88 +493,93 @@ Matches Page - Extra edits
 
 /*location page*/
 
-    .thmbup {
-        position: relative;
-        top: 15px;
-    }
-
+.thmbup {
+    position: relative;
+    top: 15px;
+}
 
 /*************************
     Edit Profile Page
 **************************/
 
-.edit_profile_body{
+.edit_profile_body {
     background-color: #B2DFDB;
-    overflow:visible;
-    color:white;
+    overflow: visible;
+    color: white;
     font-family: 'Open Sans Condensed', sans-serif;
     vertical-align: middle;
     font-size: 2em;
     /*
     padding:1px 10px 50px 10px; /*50px for footer placeholder, please change
     */
-    margin:0;
+    margin: 0;
     padding: 10px;
-    width:100%;
-    height:100%;
-    min-height:100%;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
 }
+
 .edit_profile_body h1 {
     margin: 5%;
 }
+
 .photo {
     border: 2px solid white;
-    display:block;
-    height:25vh;
+    display: block;
+    height: 25vh;
     width: 25vh;
     margin: auto;
     box-shadow: 2px 2px 2px #555;
-    background:black;
+    background: black;
 }
+
 .profile-edit.list-group {
     margin: 10%;
-    font-size:0.5em;
-    position:relative;
+    font-size: 0.5em;
+    position: relative;
     color: black;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .profile-option, .photo-option {
     /*display:none;*/
-    height:40vh;
-    width:100%;
-    background:white;
-    color:black;
+    height: 40vh;
+    width: 100%;
+    background: white;
+    color: black;
     border: 1px solid rgb(221, 221, 221);
 }
+
 .profile-option textarea {
-    width:100%;
-    height:50%;
+    width: 100%;
+    height: 50%;
 }
+
 .profile-option input[type=checkbox] {
     visibility: hidden;
 }
+
 .profile-option input[type=checkbox] + label {
-    font-size:0.7em;
-    background-color:#a0d4c5;
+    font-size: 0.7em;
+    background-color: #a0d4c5;
     border-radius: 5px;
     padding: 1px 4px;
 }
+
 .profile-option input[type=checkbox]:checked + label {
-    background-color:#6abca4;
-    color:white;
+    background-color: #6abca4;
+    color: white;
 }
+
 #footer {
-    position:fixed;
-    bottom:0px;
-    width:100%;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
     height: 50px;
-    background-color:#6abca4;
-    margin:0;
-    left:0;
+    background-color: #6abca4;
+    margin: 0;
+    left: 0;
 }
-
-
 
 /*************************
     Media Queries
@@ -575,8 +597,6 @@ Matches Page - Extra edits
     }
 }
 
-
-
 /*welcome animation*/
 
 .body-wineglass {
@@ -586,10 +606,11 @@ Matches Page - Extra edits
     align-items: center;
     height: 100vh;
     /*background: #87b7c1;*/
-    background: #E4AF84;
+    /*background: #E4AF84;*/
+    background:#FFD4B9;
 }
 
-.loading-wineglass{
+.loading-wineglass {
     position: absolute;
     top: 37%;
     color: white;
@@ -601,6 +622,7 @@ Matches Page - Extra edits
     height: 36px;
     position: relative;
 }
+
 .wineglass:after {
     content: '';
     position: absolute;
@@ -611,6 +633,7 @@ Matches Page - Extra edits
     background: white;
     box-shadow: 0 0 1px white;
 }
+
 .top {
     background: white;
     width: 30px;
@@ -618,6 +641,7 @@ Matches Page - Extra edits
     border-radius: 0 0 36px 36px;
     box-shadow: 0 0 1px white;
 }
+
 .top:before {
     content: '';
     position: absolute;
@@ -628,12 +652,15 @@ Matches Page - Extra edits
     border-radius: 50%;
     background: linear-gradient(transparent 50%, #F36E3E 50%);
 }
+
 .left .top:before {
     animation: rotate2 2s linear infinite;
 }
+
 .right .top:before {
     animation: rotate1 2s linear infinite;
 }
+
 .top:after {
     content: '';
     position: absolute;
@@ -644,23 +671,36 @@ Matches Page - Extra edits
     background: white;
     box-shadow: 0 0 1px white;
 }
+
 .left {
     display: inline-block;
     margin-right: 10px;
-    animation: rotate1 2s cubic-bezier(.39,1.52,.46,.92) infinite;
+    animation: rotate1 2s cubic-bezier(.39, 1.52, .46, .92) infinite;
 }
+
 .right {
     display: inline-block;
-    animation: rotate2 2s cubic-bezier(.39,1.52,.46,.92) infinite;
+    animation: rotate2 2s cubic-bezier(.39, 1.52, .46, .92) infinite;
 }
-@keyframes rotate1{
-    0% {transform: rotate(0deg);}
-    50% {transform:rotate(22deg);}
+
+@keyframes rotate1 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(22deg);
+    }
 }
-@keyframes rotate2{
-    0% {transform:rotate(0deg);}
-    50% {transform:rotate(-22deg);}
+
+@keyframes rotate2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-22deg);
+    }
 }
+
 .body-wineglass ul {
     list-style: none;
     margin: 0;
@@ -671,6 +711,7 @@ Matches Page - Extra edits
     opacity: 0;
     animation: 2s fadeInUp infinite linear 2s;
 }
+
 .body-wineglass li {
     width: 6px;
     height: 15px;
@@ -679,20 +720,24 @@ Matches Page - Extra edits
     box-shadow: 0 0 1px white;
     transform-origin: bottom;
 }
+
 .body-wineglass li:nth-child(1) {
     left: 26px;
     bottom: 5px;
     transform: rotate(-35deg);
 }
+
 .body-wineglass li:nth-child(2) {
     left: 34px;
     bottom: 8px;
 }
+
 .body-wineglass li:nth-child(3) {
     left: 42px;
     bottom: 5px;
     transform: rotate(35deg);
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -713,9 +758,24 @@ Matches Page - Extra edits
     }
 }
 
-.body-wineglass{
+.body-wineglass {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+}
+
+/*icons*/
+
+h1, h2, h3 {
+    margin: 5% 0 5%;
+    text-align: center;
+}
+
+.age-range-buttons{
+    text-align: center;
+}
+
+.interest-buttons{
+    text-align: center;
 }
