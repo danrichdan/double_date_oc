@@ -1,5 +1,6 @@
 <div class="signup-paragraph-page">
-    <p>enter a short paragraph about yourselves:</p>
+    <div class="text-center"><i class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i></div>
+    <h3>enter a brief 'about us':</h3>
     <p class="input-fyi"><strong>do</strong> mention key interests and other preferences like 'no smokers'<br><strong>don't</strong> give any identifying information like last names, e-mails, or telephone numbers</p>
 
     <!--<p class="input-fyi textbox-fyi"> (limit 200 characters) </p>-->
@@ -9,7 +10,7 @@
 
     <button type="button" class="btn btn-default btn-block welcome_button"
             ng-click="spc.signUpParagraphButtonClick()" aria-label="Submit">submit</button>
-    <p class="alert alert-danger alert-dismissible fade in paragraph-minimum" ng-hide="spc.validationText">Please add a paragraph
+    <p class="alert alert-danger alert-dismissible fade in paragraph-minimum" ng-hide="spc.validationText">please add a paragraph
         of at least 50 characters.
     </p>
 </div>

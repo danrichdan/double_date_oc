@@ -8,12 +8,8 @@ header {
     color: #FFD4B9;
     height: 100px;
     font-size: 90%;
-    background: linear-gradient(
-            rgba(0, 0, 0, 0.38),
-            rgba(0, 0, 0, 0.38)
-    ),
+    background: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
     url("/assets/header.jpg");
-    /*background-image: url("/assets/header.jpg");*/
     background-position: 0px 237px;
     background-size: 100%;
 }
@@ -48,7 +44,6 @@ header {
 }
 
 .view-container {
-    /*width: 90%;*/
     margin: 10% 10%;
     position: relative;
 }
@@ -128,7 +123,6 @@ header {
 }
 
 h1 {
-    /*width: 89%;*/
     margin-top: 18%;
     margin-bottom: 2px;
     font-size: 93%;
@@ -163,7 +157,7 @@ h1 {
 }
 
 input[type=text], input[type=number], input[type=password], input[type=email], textarea {
-    /*width: 89%;*/
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     border-radius: 3px;
@@ -178,6 +172,10 @@ input[type=text], input[type=number], input[type=password], input[type=email], t
 
 input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, input[type=email]:focus, textarea:focus {
     border: 3px solid #368e8b;
+}
+
+input[type=number]{
+    margin:0;
 }
 
 .previous-next {
@@ -226,7 +224,6 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     position: relative;
     bottom: 0;
     font-family: Quicksand;
-    /*width: 89%;*/
     text-align: center;
 }
 
@@ -293,21 +290,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, in
     font-size: 20px;
 }
 
-.submitSignup {
-    position: absolute;
-    margin-top: 19px;
-}
-
 .alert-danger {
     font-size: 50%;
-    width: 96%;
     position: relative;
-    bottom: 8px;
 }
 
-.invalidEmail {
-    position: relative;
-    top: 60px;
+.alert{
+    margin-bottom:0px;
 }
 
 /*************************
@@ -362,12 +351,24 @@ div.list-group {
 }
 
 /***********************
+SignUp Names
+************************/
+
+.signup-name-page .input-fyi{
+    text-align: left;
+    bottom: 7px;
+}
+
+.signup-icon{
+    margin-bottom:6%;
+}
+
+/***********************
 SignUp Paragraph
 ************************/
 
 .signup-paragraph-page textarea {
     color: dimgray;
-    width: 89%;
     max-width: 100%;
     font-family: 'Dosis', sans-serif;
     font-size: 16px;
@@ -379,6 +380,14 @@ SignUp Paragraph
 
 .textbox-fyi {
     color: white;
+}
+
+.signup-paragraph-page .input-fyi{
+    text-align: left;
+}
+
+textarea{
+    margin:0;
 }
 
 /**********************
@@ -423,6 +432,14 @@ Signup Photo page
     max-width: 100%;
 }
 
+.signup-photo-page .dropzone{
+    display:block;
+    background: white;
+    color: #368e8b;
+    border: solid darkgrey;
+    margin-top: 10px;
+}
+
 /**********************
 Matches Page - Extra edits
 ***********************/
@@ -437,7 +454,8 @@ Matches Page - Extra edits
 }
 
 .password-confirm {
-    margin: -2px;
+    position: relative;
+    bottom: 19px;
 }
 
 /*animations*/
@@ -588,7 +606,8 @@ Matches Page - Extra edits
     align-items: center;
     height: 100vh;
     /*background: #87b7c1;*/
-    background: #E4AF84;
+    /*background: #E4AF84;*/
+    background:#FFD4B9;
 }
 
 .loading-wineglass {
@@ -748,13 +767,7 @@ Matches Page - Extra edits
 
 /*icons*/
 
-/*.fa {*/
-    /*position: relative;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%);*/
-/*}*/
-
-h1 {
+h1, h2, h3 {
     margin: 5% 0 5%;
     text-align: center;
 }

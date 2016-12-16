@@ -1,8 +1,9 @@
 <!--include a load animation-->
 <!--enter email for us to contact you as a couple-->
 <div class="signup">
+      <div class="text-center"><i class="fa fa-envelope-o fa-4x signup-icon" aria-hidden="true"></i></div>
       <input type="email" placeholder="e-mail address" class="input_text" ng-model = 'suec.emailAddress'>
-      <button type="button" class="btn btn-default btn-block submitSignup" aria-label="Submit"
+      <button type="button" class="btn btn-default btn-block" aria-label="Submit"
               ng-click="suec.validate_email()">submit</button>
-      <div class="alert alert-danger alert-dismissible fade in invalidEmail" ng-if='suec.validate'>please enter a valid e-mail address</div>
+      <div class="alert alert-danger alert-dismissible fade in" ng-if='suec.validate'>please enter a valid e-mail address</div>
 </div>
