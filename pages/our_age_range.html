@@ -1,32 +1,51 @@
 <div>
-<h1>we are <span class="user-age">{{ oac.ourAgeRange() }}</span> years old. </h1>
+    <div class="text-center"><i class="fa fa-male fa-4x" aria-hidden="true"></i>
+        <i class="fa fa-female fa-4x" aria-hidden="true"></i>
+    </div>
+    <h1>we are <span class="user-age">{{ oac.ourAgeRange() }}</span> years old. </h1>
 
-<div class="age-range-buttons">
-    <!--Add an ng-click attr that calls a function which
-     captures the value and displays the text to the user.
+    <div class="age-range-buttons">
+        <!--Add an ng-click attr that calls a function which
+         captures the value and displays the text to the user.
 
-     Also, this function should store the value to pass on.-->
+         Also, this function should store the value to pass on.-->
 
-    <!--Later on, maybe store text and values in an array or object and make a loop to create the buttons-->
+        <!--Later on, maybe store text and values in an array or object and make a loop to create the buttons-->
 
-    <button type="button" class="btn btn-default age-user-btn" aria-label="18 to 25" ng-click="oac.ourAgeMin = '18'; oac.ourAgeMax = '25'" ng-class="{buttonHighlighted: oac.ourAgeMin == '18'}">18-25</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="26 to 35" ng-click="oac.ourAgeMin = '26'; oac.ourAgeMax = '35'" ng-class="{buttonHighlighted: oac.ourAgeMin == '26'}">26-35</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="36 to 50" ng-click="oac.ourAgeMin = '36'; oac.ourAgeMax = '50'" ng-class="{buttonHighlighted: oac.ourAgeMin == '36'}">36-50</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="51 to 60" ng-click="oac.ourAgeMin = '51'; oac.ourAgeMax = '60'" ng-class="{buttonHighlighted: oac.ourAgeMin == '51'}">51-60</button>
-    <button type="button" class="btn btn-default age-user-btn" aria-label="61 to 100" ng-click="oac.ourAgeMin = '61'; oac.ourAgeMax = '100'" ng-class="{buttonHighlighted: oac.ourAgeMin == '61'}">61+</button>
-</div>
-
-<div class="previous-next pull-right">
-    <a href="#/distance">
-        <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="18 to 25"
+                ng-click="oac.ourAgeMin = '18'; oac.ourAgeMax = '25'"
+                ng-class="{buttonHighlighted: oac.ourAgeMin == '18'}">18-25
         </button>
-    </a>
-    <!-- <a href="#/age_range"> -->
-        <button type="button" class="btn btn-default chevronButton" aria-label="Next" ng-click = 'oac.setOurAge()' ng-disabled='!oac.ourAgeMin'>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="26 to 35"
+                ng-click="oac.ourAgeMin = '26'; oac.ourAgeMax = '35'"
+                ng-class="{buttonHighlighted: oac.ourAgeMin == '26'}">26-35
+        </button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="36 to 50"
+                ng-click="oac.ourAgeMin = '36'; oac.ourAgeMax = '50'"
+                ng-class="{buttonHighlighted: oac.ourAgeMin == '36'}">36-50
+        </button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="51 to 60"
+                ng-click="oac.ourAgeMin = '51'; oac.ourAgeMax = '60'"
+                ng-class="{buttonHighlighted: oac.ourAgeMin == '51'}">51-60
+        </button>
+        <button type="button" class="btn btn-default age-user-btn" aria-label="61 to 100"
+                ng-click="oac.ourAgeMin = '61'; oac.ourAgeMax = '100'"
+                ng-class="{buttonHighlighted: oac.ourAgeMin == '61'}">61+
+        </button>
+    </div>
+
+    <div class="previous-next">
+        <a href="#/distance">
+            <button type="button" class="btn btn-default chevronButton" aria-label="Previous">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
+        </a>
+        <!-- <a href="#/age_range"> -->
+        <button type="button" class="btn btn-default chevronButton" aria-label="Next" ng-click='oac.setOurAge()'
+                ng-disabled='!oac.ourAgeMin'>
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
-    <!-- </a> -->
-</div>
+        <!-- </a> -->
+    </div>
 
 </div>
